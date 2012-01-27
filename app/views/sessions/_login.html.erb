@@ -1,0 +1,19 @@
+<%= form_tag sessions_path, :validate => true do %>
+<table>
+	<tr>
+		<td><%= label_tag "Correo electrónico" %></td>
+		<td><%= label_tag "Contraseña" %></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td><%= text_field_tag :email, params[:email] %></td>
+		<td><%= password_field_tag :password %></td>
+		<td><%= submit_tag "Ingresar" %></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td><%= link_to "Olvidé mi contraseña", forgot_password_url %></td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+<% end %>

@@ -1,0 +1,19 @@
+<%= form_for(@asesorium) do |f| %>
+  <% if @asesorium.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@asesorium.errors.count, "error") %> prohibited this asesorium from being saved:</h2>
+
+      <ul>
+      <% @asesorium.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <%= render "#{@asesorium.current_step}_step", :f => f %>
+  <div class="actions">
+    <%= f.submit "Continuar" %>
+    <p><%= f.submit "Volver", :name => "previous_button" unless @asesorium.first_step? %></p>
+  </div>
+<% end %>

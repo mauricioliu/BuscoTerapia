@@ -1,0 +1,20 @@
+<h3>Busca tu terapeuta</h3>
+<%= form_for @search, :action => "index", :controller => "terapeuta" do |f| %>
+  <p>
+    <%= f.label "Especialidad?" %><br />
+    <%= f.collection_select :especialidad_contains, RefDatum.where(:nombre => "Especialidad"), :valor, :valor, include_blank: true %>
+  </p>
+  <p>
+    <%= f.label "Región de atención:" %><br />
+    <%= f.collection_select :region_contains, Region.order(:nombre), :id, :nombre, include_blank: true %>
+  </p>
+  <p>
+  	 <%= f.label "Comuna:" %><br />
+  	<%= f.grouped_collection_select :comuna_contains, Region.order(:nombre), :comunas, :nombre, :id, :nombre, include_blank: true %>
+  </p>
+  <p>
+    <%= f.label "Palabra clave:" %>
+    <%= f.text_field :nombre_contains %>
+  </p>
+  <p class="button"><%= f.submit "Buscar" %></p>
+<% end %>

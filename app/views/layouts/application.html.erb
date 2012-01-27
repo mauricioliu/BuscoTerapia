@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Busco Terapia</title>
+  <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css", "application" %>
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application" %>
+  <%= csrf_meta_tag %>
+</head>
+<body class="<%= params[:controller] %>">
+  <table>
+  	<tr>
+  		<td colspan="2">
+		    <% flash.each do |name, msg| %>
+		      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+		    <% end %>
+  		</td>
+  	</tr>
+  	<tr>
+  		<td><%= image_tag("images/Logo.png")%></td>
+  		<td>
+  			<% if session[:terapeuta] == nil %>
+			  	<%= render 'sessions/login'%>
+	  	    <% else %>
+				Bienvenido <%= session[:terapeuta].nombre %> <%= link_to 'Cerrar sesión', logout_path %><br />
+				<%= link_to "Mi cuenta", edit_terapeutum_path(session[:terapeuta]) %>
+			<% end %>
+  		</td>
+  	</tr>
+  </table>
+  <p>
+    <%= link_to 'Inicio', root_url %> | 
+  	<%= link_to 'Asesoría personal', new_asesorium_path %> |
+  	<%= link_to 'Directorio Terapeuta', :controller => "terapeuta", :action => "index" %>
+  </p>
+   <%= yield %>
+</body>
+</html>

@@ -1,0 +1,68 @@
+  <h2>Datos Principales</h2>
+  
+  <fieldset>
+	  <legend>Datos principales de quienes asistirán a terapia</legend>
+	  <div class="field">
+	    <%= f.label "Nombre:" %><br />
+	    <%= f.text_field :paciente_nombre %>
+	  </div>
+	  <div class="field">
+	    <%= f.label "Edad:" %><br />
+	    <%= f.number_field :paciente_edad %>
+	  </div>
+	  <div class="field">
+	    <%= f.label "Esta terapia es para:" %><br />
+	    <%= f.number_field :terapia_para %>
+	  </div>
+	  <div class="field">
+	    <%= f.label "Tipo de terapia:" %><br />
+	    <%= f.number_field :terapia_tipo %>
+	  </div>
+  </fieldset>
+
+  <fieldset>
+	  <legend>Datos de contacto</legend>
+	  <div class="field">
+	    <%= f.label "Teléfono de contacto:" %><br />
+	    <%= f.text_field :paciente_telefono %>
+	  </div>
+	  <div class="field">
+	    <%= f.label "E-mail:" %><br />
+	    <%= f.text_field :paciente_email %>
+	  </div>
+	  <div class="field">
+	    <%= f.label "Región:" %><br />
+	    <%= f.collection_select :paciente_region, Region.order(:nombre), :id, :nombre, include_blank: true %>
+	  </div>
+	  <div class="field">
+	    <%= f.label "Comuna:" %><br />
+	    <%= f.grouped_collection_select :paciente_comuna, Region.all, :comunas, :nombre, :id, :nombre, include_blank: true %>
+	  </div>
+  </fieldset>
+  <fieldset>
+	  <legend>Preferencia de atencion</legend>
+	  <div class="field">
+	    <%= f.label  %><br />
+	    <%= f.text_field :dia_preferencia %>
+	  </div>
+	  <div class="field">
+	  	Fecha estimativa: 
+	    <%= f.label "Desde" %><br />
+	    <%= f.text_field :fecha_desde_est %>
+	    <%= f.label "Hasta" %><br />
+	    <%= f.text_field :fecha_hasta_est %>
+	  </div>
+	  <div class="field">
+	    <%= f.label :rango_horario %><br />
+	    <%= f.text_field :rango_horario %>
+	  </div>
+	  <p>Perfil de terapeuta</p>
+	  <div class="field">
+	    <%= f.label "Sexo" %><br />
+	    <%= f.text_field :terapeuta_edad %>
+	  </div>
+	  <div class="field">
+	    <%= f.label "Otro" %><br />
+	    <%= f.text_area :terapeuta_otro %>
+	  </div>
+  </fieldset>

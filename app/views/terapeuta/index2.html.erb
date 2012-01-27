@@ -1,0 +1,36 @@
+<h1>Buscar terapeuta</h1>
+
+<%= form_for @search do |f| %>
+  <p>
+    <%= f.label "Para quién es la terapia?" %><br />
+    <%= f.collection_select :especialidad_contains, RefDatum.where(:nombre => "Especialidad"), :valor, :valor, include_blank: true %>
+  </p>
+  <p>
+    <%= f.label "Ciudad de atención:" %><br />
+    <%= f.collection_select :region_contains, Region.order(:nombre), :id, :nombre, include_blank: true %>
+  </p>
+  <p>
+  	 <%= f.label "Comuna:" %><br />
+  	<%= f.grouped_collection_select :comuna_contains, Region.order(:nombre), :comunas, :nombre, :id, :nombre, include_blank: true %>
+  </p>
+  <p>
+    <%= f.label :nombre_contains %>
+    <%= f.text_field :nombre_contains %>
+  </p>
+  <p class="button"><%= f.submit "Buscar" %></p>
+<% end %>
+
+<table>
+<% @terapeutas.each do |terapeutum| %>
+  <tr>
+    <td><%= terapeutum.nombre %></td>
+    <td><%= terapeutum.ptelefono %> - <%= terapeutum.telefono %></td>
+    <td><%= terapeutum.pmovil %> - <%= terapeutum.email %></td>
+    <td><%= link_to 'Ver', terapeutum %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Crear Terapeuta', new_terapeutum_path %>

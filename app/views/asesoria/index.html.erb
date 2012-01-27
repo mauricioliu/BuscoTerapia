@@ -1,0 +1,39 @@
+<h1>Listing asesoria</h1>
+
+<table>
+  <tr>
+    <th>Necesidad</th>
+    <th>Expectativa</th>
+    <th>Nombre</th>
+    <th>Edad</th>
+    <th>Destinatario</th>
+    <th>Tipo terapia</th>
+    <th>Telefono</th>
+    <th>Email</th>
+    <th>Ciudad</th>
+    <th>Comuna</th>
+    <th>Dia preferencia</th>
+    <th>Fecha desde est</th>
+    <th>Fecha hasta est</th>
+    <th>Rango horario</th>
+    <th>Tipo terapeuta</th>
+    <th>Sexo</th>
+    <th>Otro</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @asesoria.each do |asesorium| %>
+  <tr>
+    <td><%= asesorium.id %></td>
+    <td><%= link_to 'Show', asesorium %></td>
+    <td><%= link_to 'Edit', edit_asesorium_path(asesorium) %></td>
+    <td><%= link_to 'Destroy', asesorium, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Asesorium', new_asesorium_path %>

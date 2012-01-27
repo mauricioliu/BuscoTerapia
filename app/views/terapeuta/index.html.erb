@@ -1,0 +1,19 @@
+<h3>Terapeutas</h3>
+<%= render "search_form"%>
+<table>
+<br />
+<p>Se han encontrado <%=@terapeutas.count%> resultados</p>
+	
+<% @terapeutas.each do |terapeutum| %>
+  <tr>
+    <td><%= terapeutum.nombre %></td>
+    <td><%= terapeutum.ptelefono %> - <%= terapeutum.telefono %></td>
+    <td><%= terapeutum.pmovil %> - <%= terapeutum.email %></td>
+    <td><%= link_to 'Ver', terapeutum %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Crear Terapeuta', new_terapeutum_path %>

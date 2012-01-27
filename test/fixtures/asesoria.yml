@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  necesidad: MyText
+  expectativa: MyText
+  nombre: MyString
+  edad: 1
+  destinatario: MyString
+  tipo_terapia: MyString
+  telefono: MyString
+  email: MyString
+  ciudad: MyString
+  comuna: MyString
+  dia_preferencia: MyString
+  fecha_desde_est: 2012-01-10 22:04:05
+  fecha_hasta_est: 2012-01-10 22:04:05
+  rango_horario: MyString
+  tipo_terapeuta: MyString
+  sexo: MyString
+  otro: MyString
+
+two:
+  necesidad: MyText
+  expectativa: MyText
+  nombre: MyString
+  edad: 1
+  destinatario: MyString
+  tipo_terapia: MyString
+  telefono: MyString
+  email: MyString
+  ciudad: MyString
+  comuna: MyString
+  dia_preferencia: MyString
+  fecha_desde_est: 2012-01-10 22:04:05
+  fecha_hasta_est: 2012-01-10 22:04:05
+  rango_horario: MyString
+  tipo_terapeuta: MyString
+  sexo: MyString
+  otro: MyString
