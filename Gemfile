@@ -27,6 +27,7 @@ gem "rmagick"
 gem "carrierwave"
 
 gem "will_paginate"
+gem "net-dns"
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
