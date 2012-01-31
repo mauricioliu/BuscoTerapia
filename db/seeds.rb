@@ -372,3 +372,14 @@ Comuna.create(region_id: Region.find_by_nombre('VII Region').id, nombre: 'Yerbas
 Comuna.create(region_id: Region.find_by_nombre('VIII Region').id, nombre: 'Yumbel')
 Comuna.create(region_id: Region.find_by_nombre('VIII Region').id, nombre: 'Yungay')
 Comuna.create(region_id: Region.find_by_nombre('V Region').id, nombre: 'Zapallar')
+
+
+RefDatum.delete_all
+puts "Importing refdata..."
+CSV.foreach(Rails.root.join("refdata.csv"), headers: true) do |row|
+  Refdatum.create! do |refdata|
+    refdata.id = row[0]
+    refdata.nombre = row[1]
+    refdata.valor = row[2]
+  end
+end

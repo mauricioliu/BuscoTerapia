@@ -1,0 +1,34 @@
+1	Tipo Terapeuta	Psicologo	2012-01-28 15:44:51	2012-01-28 15:44:51
+2	Tipo Terapeuta	Psiquiatra	2012-01-28 15:44:51	2012-01-28 15:44:51
+3	Tipo Terapeuta	Medicos Alternativos	2012-01-28 15:44:51	2012-01-28 15:44:51
+4	Especialidad	Infanto Juveniles	2012-01-28 15:44:51	2012-01-28 15:44:51
+5	Especialidad	Adulto (individual)	2012-01-28 15:44:51	2012-01-28 15:44:51
+6	Especialidad	Parejas	2012-01-28 15:44:51	2012-01-28 15:44:51
+7	Especialidad	Familias	2012-01-28 15:44:51	2012-01-28 15:44:51
+8	Especialidad	Grupales	2012-01-28 15:44:51	2012-01-28 15:44:51
+9	Caracteristica Tratamiento	Contructivista	2012-01-29 14:52:32	2012-01-29 14:52:32
+10	Caracteristica Tratamiento	Conductual	2012-01-29 14:52:40	2012-01-29 14:52:40
+11	Caracteristica Tratamiento	Humanista	2012-01-29 14:52:47	2012-01-29 14:52:47
+12	Caracteristica Tratamiento	Psicodinámica	2012-01-29 14:52:53	2012-01-29 14:52:53
+13	Caracteristica Tratamiento	Sistémica	2012-01-29 14:53:01	2012-01-29 14:53:01
+14	Categoria Terapia	Psicológica	2012-01-29 14:54:04	2012-01-29 14:54:04
+15	Categoria Terapia	Psiquiátrica	2012-01-29 14:54:13	2012-01-29 14:54:13
+16	Categoria Terapia	Alternativa	2012-01-29 14:54:19	2012-01-29 14:54:19
+17	Terapia es para	Mi	2012-01-30 03:51:09	2012-01-30 03:51:09
+18	Terapia es para	Familiar	2012-01-30 03:51:18	2012-01-30 03:51:18
+19	Terapia es para	Amigo	2012-01-30 03:51:31	2012-01-30 03:51:31
+20	Terapia es para	Pareja	2012-01-30 03:51:42	2012-01-30 03:51:42
+21	Terapia es para	Otro	2012-01-30 03:51:50	2012-01-30 03:51:50
+22	Dia preferente	Lunes	2012-01-30 04:03:09	2012-01-30 04:03:09
+23	Dia preferente	Martes	2012-01-30 04:03:14	2012-01-30 04:03:14
+24	Dia preferente	Miércoles	2012-01-30 04:03:20	2012-01-30 04:03:20
+25	Dia preferente	Jueves	2012-01-30 04:03:24	2012-01-30 04:03:24
+26	Dia preferente	Viernes	2012-01-30 04:03:30	2012-01-30 04:03:30
+27	Dia preferente	Sábado	2012-01-30 04:03:35	2012-01-30 04:03:35
+28	Dia preferente	Domingo	2012-01-30 04:03:41	2012-01-30 04:03:41
+29	Rango horario	08:00 a 10:00	2012-01-30 05:00:04	2012-01-30 05:00:04
+30	Rango horario	10:00 a 12:00	2012-01-30 05:00:12	2012-01-30 05:00:12
+31	Rango horario	12:00 a 14:00	2012-01-30 05:00:19	2012-01-30 05:00:19
+32	Rango horario	14:00 a 16:00	2012-01-30 05:00:27	2012-01-30 05:00:27
+33	Rango horario	16:00 a 18:00	2012-01-30 05:00:34	2012-01-30 05:00:34
+34	Rango horario	18:00 a 20:00	2012-01-30 05:00:39	2012-01-30 05:00:39
