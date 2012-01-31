@@ -1,5 +1,6 @@
 <%= form_for @search do |f| %>
-<p>Ordenar por:</p>
+<fieldset style="width:450px">
+<div>Ordenar por:</div>
 <table>
 	<tr>
 		<td>Tipo terapeuta:</td>
@@ -22,4 +23,5 @@
 		<td><%= f.submit "Buscar" %></td>
 	</tr>
 </table>
+</fieldset>
 <% end %>

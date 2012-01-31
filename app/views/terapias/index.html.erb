@@ -1,0 +1,13 @@
+<h3>Tipos de terapia</h3>
+
+<%= render "search_form"%>
+
+
+<% @terapias.each do |terapia| %>
+<div><%= terapia.nombre_corto %>, <%= terapia.descripcion_corta %></div>
+<div><%= image_tag terapia.imagen_url.thumb.url.to_s %> <%= terapia.descripcion %></div>
+<div><%= link_to 'Leer más>>', terapia %></div>
+<br />
+<% end %>
+<br/>
+<%= link_to "Nueva Terapia", new_terapia_path %>

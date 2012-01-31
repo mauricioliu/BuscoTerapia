@@ -10,54 +10,53 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :nombre %><br />
-    <%= f.text_field :nombre %>
-  </div>
-  <div class="field">
-    <%= f.label :direccion %><br />
-    <%= f.text_field :direccion %>
-  </div>
-  <div class="field">
-    <%= f.label :region %><br />
-    <%= f.collection_select :region, Region.order(:nombre), :id, :nombre, include_blank: true %>
-  </div>
-  <div class="field">
-    <%= f.label :comuna %><br />
-    <%= f.grouped_collection_select :comuna, Region.order(:nombre), :comunas, :nombre, :id, :nombre, include_blank: true %>
-  </div>
+  <fieldset style="width:550px">
+	  <legend>Datos de contacto</legend>
+	  <table>
+	  	<tr>
+	  		<td><%= f.label "Nombre del terapeuta o centro:" %></td>
+	  		<td><%= f.text_field :nombre %></td>
+	  	</tr>
+	  	<tr>
+	  		<td><%= f.label "Direccion" %></td>
+	  		<td><%= f.text_field :direccion %></td>
+	  	</tr>
+	  	<tr>
+	  		<td><%= f.label "Region" %></td>
+	  		<td><%= f.collection_select :region, Region.order(:nombre), :id, :nombre, include_blank: true %></td>
+	  	</tr>
+	  	<tr id="comuna_row">
+	  		<td><%= f.label "Comuna" %></td>
+	  		<td><%= f.grouped_collection_select :comuna, Region.order(:nombre), :comunas, :nombre, :id, :nombre, include_blank: true %></td>
+	  	</tr>
+	  	<tr>
+	  		<td><%= f.label "Teléfono de contacto fijo:" %></td>
+	  		<td><%= f.number_field :ptelefono, :size => 3 %> - <%= f.number_field :telefono, :size => 20 %></td>
+	  	</tr>
+	  	<tr>
+	  		<td> <%= f.label "Teléfono de contacto móvil:" %></td>
+	  		<td><%= f.number_field :pmovil, :size => 3 %> - <%= f.number_field :movil, :size => 20  %></td>
+	  	</tr>
+	  	<tr>
+	  		<td><%= f.label "Email" %></td>
+	  		<td><%= f.text_field :email %></td>
+	  	</tr>
+	  </table>
   </fieldset>
-  <div class="field">
-    <%= f.label :ptelefono %><br />
-    <%= f.number_field :ptelefono %>
-  </div>
-  <div class="field">
-    <%= f.label :telefono %><br />
-    <%= f.number_field :telefono %>
-  </div>
-  <div class="field">
-    <%= f.label :pmovil %><br />
-    <%= f.number_field :pmovil %>
-  </div>
-  <div class="field">
-    <%= f.label :movil %><br />
-    <%= f.number_field :movil %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :especialidad %><br />
-    <%= f.collection_select :especialidad, RefDatum.where(:nombre => "Especialidad"), :valor, :valor %>
-  </div>
-  <div class="field">
-    <%= f.label 'Tipo Terapeuta' %><br />
-    <%= f.collection_select :tipo, RefDatum.where(:nombre => "Tipo Terapeuta"), :valor, :valor %>
-  </div>
-
+  <fieldset style="width:450px">
+  	<legend>Perfil de terapeuta o centro</legend>
+  	<table>
+  		<tr>
+  			<td><%= f.label 'Tipo Terapeuta' %></td>
+  			<td><%= f.collection_select :tipo, RefDatum.where(:nombre => "Tipo Terapeuta"), :valor, :valor %></td>
+  		</tr>
+  		<tr>
+  			<td><%= f.label :especialidad %></td>
+  			<td><%= f.collection_select :especialidad, RefDatum.where(:nombre => "Especialidad"), :valor, :valor %></td>
+  		</tr>
+  	</table>
+  </fieldset>
   <div class="actions">
-    <%= f.submit @terapeutum.new_record? ? "Registrarse" : "Actualizar datos" %>
+    <%= f.submit @terapeutum.new_record? ? "Crear cuenta" : "Actualizar datos" %>
   </div>
 <% end %>

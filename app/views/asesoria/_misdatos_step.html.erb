@@ -1,68 +1,69 @@
-  <h2>Datos Principales</h2>
-  
-  <fieldset>
+  <h3>Datos Principales</h3>
+  <fieldset style="width:520px">
+  	  <%= hidden_field_tag :step, "misdatos" %>
 	  <legend>Datos principales de quienes asistirán a terapia</legend>
 	  <div class="field">
-	    <%= f.label "Nombre:" %><br />
+	    <%= f.label "*Nombre:" %>  
 	    <%= f.text_field :paciente_nombre %>
 	  </div>
 	  <div class="field">
-	    <%= f.label "Edad:" %><br />
-	    <%= f.number_field :paciente_edad %>
+	    <%= f.label "Edad:" %>
+	    <%= f.number_field :paciente_edad, :size => 5 %> años
 	  </div>
 	  <div class="field">
-	    <%= f.label "Esta terapia es para:" %><br />
-	    <%= f.number_field :terapia_para %>
+	    <%= f.label "*Esta terapia es para:" %>
+	    <%= f.collection_select :terapia_para, RefDatum.where(:nombre => "Terapia es para"), :valor, :valor %>
 	  </div>
 	  <div class="field">
-	    <%= f.label "Tipo de terapia:" %><br />
-	    <%= f.number_field :terapia_tipo %>
+	    <%= f.label "Tipo de terapia:" %>
+	    <%= f.collection_select :terapia_tipo, RefDatum.where(:nombre => "Tipo Terapeuta"), :valor, :valor %>
 	  </div>
   </fieldset>
 
-  <fieldset>
+  <fieldset style="width:520px">
 	  <legend>Datos de contacto</legend>
 	  <div class="field">
-	    <%= f.label "Teléfono de contacto:" %><br />
+	    <%= f.label "*Teléfono de contacto:" %>
 	    <%= f.text_field :paciente_telefono %>
 	  </div>
 	  <div class="field">
-	    <%= f.label "E-mail:" %><br />
+	    <%= f.label "*E-mail:" %>
 	    <%= f.text_field :paciente_email %>
 	  </div>
 	  <div class="field">
-	    <%= f.label "Región:" %><br />
+	    <%= f.label "*Región:" %>
 	    <%= f.collection_select :paciente_region, Region.order(:nombre), :id, :nombre, include_blank: true %>
 	  </div>
 	  <div class="field">
-	    <%= f.label "Comuna:" %><br />
+	    <%= f.label "Comuna:" %>
 	    <%= f.grouped_collection_select :paciente_comuna, Region.all, :comunas, :nombre, :id, :nombre, include_blank: true %>
 	  </div>
   </fieldset>
-  <fieldset>
+  
+  <fieldset style="width:520px">
 	  <legend>Preferencia de atencion</legend>
 	  <div class="field">
-	    <%= f.label  %><br />
-	    <%= f.text_field :dia_preferencia %>
+	    <%= f.label "Dia preferente de atencion"%>
+	    <%= f.collection_select :dia_preferencia, RefDatum.where(:nombre => "Dia preferente"), :valor, :valor %>
 	  </div>
 	  <div class="field">
-	  	Fecha estimativa: 
-	    <%= f.label "Desde" %><br />
-	    <%= f.text_field :fecha_desde_est %>
-	    <%= f.label "Hasta" %><br />
-	    <%= f.text_field :fecha_hasta_est %>
+	  	Fecha estimativa: <br />
+	    <%= f.label "Desde" %>
+	    <%= f.text_field :fecha_desde_est, :size => 15 %>
+	    <%= f.label "Hasta" %>
+	    <%= f.text_field :fecha_hasta_est, :size => 15 %>
 	  </div>
 	  <div class="field">
-	    <%= f.label :rango_horario %><br />
-	    <%= f.text_field :rango_horario %>
+	    <%= f.label :rango_horario %>
+	    <%= f.collection_select :rango_horario, RefDatum.where(:nombre => "Rango horario"), :valor, :valor, :prompt => "Cualquier horario" %>
 	  </div>
-	  <p>Perfil de terapeuta</p>
+	  <p><b>Perfil de terapeuta</b></p>
 	  <div class="field">
-	    <%= f.label "Sexo" %><br />
-	    <%= f.text_field :terapeuta_edad %>
+	    <%= f.label "Sexo" %>
+	    <%= f.collection_select :terapeuta_sexo, RefDatum.where(:nombre => "Sexo"), :valor, :valor, :prompt => "Indiferente" %>
 	  </div>
 	  <div class="field">
-	    <%= f.label "Otro" %><br />
-	    <%= f.text_area :terapeuta_otro %>
+	    <%= f.label "Otro" %>
+	    <%= f.text_area :terapeuta_otro, :size => "30x10" %>
 	  </div>
   </fieldset>

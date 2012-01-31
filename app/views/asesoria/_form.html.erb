@@ -13,7 +13,7 @@
   
   <%= render "#{@asesorium.current_step}_step", :f => f %>
   <div class="actions">
-    <%= f.submit "Continuar" %>
+    <%= f.submit @asesorium.current_step == "miproblema" ? "Continuar" : "Finalizar" %>
     <p><%= f.submit "Volver", :name => "previous_button" unless @asesorium.first_step? %></p>
   </div>
 <% end %>

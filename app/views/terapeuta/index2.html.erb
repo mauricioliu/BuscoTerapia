@@ -1,8 +1,8 @@
-<h1>Buscar terapeuta</h1>
+<h1>Tipos de terapia</h1>
 
 <%= form_for @search do |f| %>
   <p>
-    <%= f.label "Para quién es la terapia?" %><br />
+    <%= f.label "Tipos de terapia" %><br />
     <%= f.collection_select :especialidad_contains, RefDatum.where(:nombre => "Especialidad"), :valor, :valor, include_blank: true %>
   </p>
   <p>

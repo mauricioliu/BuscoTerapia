@@ -3,9 +3,26 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 jQuery ->
-  $("#asesorium_fecha_desde_est").datepicker()
-  $("#asesorium_fecha_hasta_est").datepicker()
-  $('#asesorium_paciente_comuna').parent().hide()
+  $("#asesorium_fecha_desde_est").datepicker({ 
+                                    minDate: -0, 
+                                    maxDate: "+1M +90D",
+                                    showOn: "button",
+                                    buttonImage: "/assets/calendar.gif",
+                                    buttonImageOnly: true 
+                                    });
+  $("#asesorium_fecha_hasta_est").datepicker({ 
+                                    minDate: -0, 
+                                    maxDate: "+1M +90D",
+                                    showOn: "button",
+                                    buttonImage: "/assets/calendar.gif",
+                                    buttonImageOnly: true 
+                                    });
+  $("#asesorium_fecha_desde_est").attr('readonly', true)
+  $("#asesorium_fecha_hasta_est").attr('readonly', true)
+    
+    
+jQuery ->
+  $('#asesorium_paciente_comuna').attr('disabled', true)
   comunas = $('#asesorium_paciente_comuna').html()
   $('#asesorium_paciente_region').change ->
     region = $('#asesorium_paciente_region :selected').text().replace /^\s+|\s+$/g, ""
@@ -13,7 +30,7 @@ jQuery ->
     options = $(comunas).filter("optgroup[label='#{escaped_region}']").html()
     if options
       $('#asesorium_paciente_comuna').html(options)
-      $('#asesorium_paciente_comuna').parent().show() 
+      $('#asesorium_paciente_comuna').attr('disabled', false)
     else
       $('#asesorium_paciente_comuna').empty()
-      $('#asesorium_paciente_comuna').parent().hide()
+      $('#asesorium_paciente_comuna').attr('disabled', true)

@@ -1,4 +1,6 @@
 BuscoTerapia::Application.routes.draw do
+  resources :terapias
+
   resources :ref_data
 
   get "buscar_terapeuta/find"
@@ -6,7 +8,6 @@ BuscoTerapia::Application.routes.draw do
   resources :asesoria
   resources :terapeuta
   resources :sessions
-
   get "home/index"
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
@@ -14,7 +15,8 @@ BuscoTerapia::Application.routes.draw do
   match "change_password" => "terapeuta#change_password"
   match "forgot_password" => "terapeuta#forgot_password", :as => "forgot_password"
   match "reset_password" => "terapeuta#reset_password", :as => "reset_password"
-  match "buscar_terapeutas" => "terapeuta#index2", :as => "buscar_terapeutas"
+  match "acceso_terapeutas" => "terapeuta#acceso_terapeutas", :as => "acceso_terapeutas"
+  #match "buscar_terapeutas" => "terapeuta#index2", :as => "buscar_terapeutas"
   
   match '/ver_comprobante/:id' => 'asesoria#ver_comprobante', :as => 'ver_comprobante'
   

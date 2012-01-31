@@ -1,20 +1,71 @@
 <h3>Busca tu terapeuta</h3>
-<%= form_for @search, :action => "index", :controller => "terapeuta" do |f| %>
-  <p>
-    <%= f.label "Especialidad?" %><br />
-    <%= f.collection_select :especialidad_contains, RefDatum.where(:nombre => "Especialidad"), :valor, :valor, include_blank: true %>
-  </p>
-  <p>
-    <%= f.label "Región de atención:" %><br />
-    <%= f.collection_select :region_contains, Region.order(:nombre), :id, :nombre, include_blank: true %>
-  </p>
-  <p>
-  	 <%= f.label "Comuna:" %><br />
-  	<%= f.grouped_collection_select :comuna_contains, Region.order(:nombre), :comunas, :nombre, :id, :nombre, include_blank: true %>
-  </p>
-  <p>
-    <%= f.label "Palabra clave:" %>
-    <%= f.text_field :nombre_contains %>
-  </p>
-  <p class="button"><%= f.submit "Buscar" %></p>
-<% end %>
+<div id="search_tabs" style="font-size:85%;width: 280px">
+	<ul>
+        <li><a href="#fragment-1"><span>Psicologos</span></a></li>
+        <li><a href="#fragment-2"><span>Terapeutas<br>alternativos</span></a></li>
+        <li><a href="#fragment-3"><span>Psiquiatras</span></a></li>
+        
+    </ul>
+    <div id="fragment-1">
+		<%= form_for @search, :action => "index", :controller => "terapeuta" do |f| %>
+		  <%= f.hidden_field :tipo_contains, :value => "Psicologo" %>
+		  <p>
+		    <%= f.label "Tipo de terapia:" %><br />
+		    <%= f.collection_select :especialidad_contains, RefDatum.where(:nombre => "Especialidad"), :valor, :valor, :prompt => "No lo tengo claro" %>
+		  </p>
+		  <p>
+		    <%= f.label "Región de atención:" %><br />
+		    <%= f.collection_select :region_contains, Region.order(:nombre), :id, :nombre, {include_blank: true}, :class => "psicologo_region" %>
+		  </p>
+		  <p>
+		  	 <%= f.label "Comuna:" %><br />
+		  	<%= f.grouped_collection_select :comuna_contains, Region.order(:nombre), :comunas, :nombre, :id, :nombre, {include_blank: true}, :class => "psicologo_comuna" %>
+		  </p>
+		  <p>
+		    <%= f.label "Palabra clave:" %>
+		    <%= f.text_field :nombre_contains %>
+		  </p>
+		  <p class="button"><%= f.submit "Buscar" %></p>
+		<% end %>
+	</div>
+	<div id="fragment-2">
+		<%= form_for @search, :action => "index", :controller => "terapeuta" do |f| %>
+		  <%= f.hidden_field :tipo_contains, :value => "Medicos Alternativos" %>
+		  <p>
+		    <%= f.label "Especialidad?" %><br />
+		    <%= f.collection_select :especialidad_contains, RefDatum.where(:nombre => "Especialidad"), :valor, :valor, :prompt => "No lo tengo claro" %>
+		  </p>
+		  <p>
+		    <%= f.label "Región de atención:" %><br />
+		    <%= f.collection_select :region_contains, Region.order(:nombre), :id, :nombre, {include_blank: true}, :class => "alternativo_region" %>
+		  </p>
+		  <p>
+		  	 <%= f.label "Comuna:" %><br />
+		  	<%= f.grouped_collection_select :comuna_contains, Region.order(:nombre), :comunas, :nombre, :id, :nombre, {include_blank: true}, :class => "alternativo_comuna" %>
+		  </p>
+		  <p class="button"><%= f.submit "Buscar" %></p>
+		<% end %>
+	</div>
+	<div id="fragment-3">
+		<%= form_for @search, :action => "index", :controller => "terapeuta" do |f| %>
+		  <%= f.hidden_field :tipo_contains, :value => "Psiquiatra" %>
+		  <p>
+		    <%= f.label "Tipo de Psiquiatra" %><br />
+		    <%= f.collection_select :especialidad_contains, RefDatum.where(:nombre => "Especialidad"), :valor, :valor, :prompt => "No lo tengo claro" %>
+		  </p>
+		  <p>
+		    <%= f.label "Región de atención:" %><br />
+		    <%= f.collection_select :region_contains, Region.order(:nombre), :id, :nombre, {include_blank: true}, :class => "psiquiatra_region" %>
+		  </p>
+		  <p>
+		  	 <%= f.label "Comuna:" %><br />
+		  	<%= f.grouped_collection_select :comuna_contains, Region.order(:nombre), :comunas, :nombre, :id, :nombre, {include_blank: true}, :class => "psiquiatra_comuna" %>
+		  </p>
+		  <p>
+		    <%= f.label "Palabra clave:" %>
+		    <%= f.text_field :nombre_contains %>
+		  </p>
+		  <p class="button"><%= f.submit "Buscar" %></p>
+		<% end %>
+	</div>
+<div>

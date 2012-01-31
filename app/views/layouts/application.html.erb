@@ -16,7 +16,7 @@
   		</td>
   	</tr>
   	<tr>
-  		<td><%= image_tag("images/Logo.png")%></td>
+  		<td><%= image_tag("Logo.png")%></td>
   		<td>
   			<% if session[:terapeuta] == nil %>
 			  	<%= render 'sessions/login'%>
@@ -30,7 +30,9 @@
   <p>
     <%= link_to 'Inicio', root_url %> | 
   	<%= link_to 'Asesoría personal', new_asesorium_path %> |
-  	<%= link_to 'Directorio Terapeuta', :controller => "terapeuta", :action => "index" %>
+  	<%= link_to 'Directorio Terapeuta', terapeuta_path %> |
+  	<%= link_to 'Tipo de Terapias', terapias_path %> |
+  	<%= link_to 'Acceso terapeutas', acceso_terapeutas_path %>
   </p>
    <%= yield %>
 </body>

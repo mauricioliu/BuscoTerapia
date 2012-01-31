@@ -5,7 +5,8 @@ class TerapeutaController < ApplicationController
   # GET /terapeuta.json
   def index
     @search = Terapeutum.search(params[:search])
-    @terapeutas = @search.all
+    @terapeutas = @search.order("plan desc, created_at desc")
+    # @terapeutas.order("plan").desc
 
     respond_to do |format|
       format.html # index.html.erb
@@ -21,6 +22,10 @@ class TerapeutaController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @terapeuta }
     end
+  end
+  
+  def acceso_terapeutas
+    
   end
 
   # GET /terapeuta/1
@@ -54,12 +59,13 @@ class TerapeutaController < ApplicationController
   # POST /terapeuta.json
   def create
     @terapeutum = Terapeutum.new(params[:terapeutum])
+    logger.debug "New terapeuta #{@terapeutum.attributes.inspect}"
     random_password = Array.new(10).map { (65 + rand(58)).chr }.join
     @terapeutum.password=random_password
-    TerapeutaMailer.send_password(@terapeutum,random_password).deliver
     respond_to do |format|
       if @terapeutum.save
-        format.html { redirect_to @terapeutum, notice: 'Terapeutum was successfully created.' }
+        TerapeutaMailer.send_password(@terapeutum,random_password).deliver
+        format.html { redirect_to @terapeutum, notice: 'Terapeuta fue creado exitosamente.' }
         format.json { render json: @terapeutum, status: :created, location: @terapeutum }
       else
         format.html { render action: "new" }
@@ -75,7 +81,7 @@ class TerapeutaController < ApplicationController
 
     respond_to do |format|
       if @terapeutum.update_attributes(params[:terapeutum])
-        format.html { redirect_to @terapeutum, notice: 'Terapeutum was successfully updated.' }
+        format.html { redirect_to @terapeutum, notice: 'Terapeuta fue modificado exitosamente.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }

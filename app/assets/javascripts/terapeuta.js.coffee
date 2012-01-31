@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 jQuery ->
-  $('#terapeutum_comuna').parent().hide()
+  $('#terapeutum_comuna').attr('disabled', true)
   comunas = $('#terapeutum_comuna').html()
   $('#terapeutum_region').change ->
     region = $('#terapeutum_region :selected').text().replace /^\s+|\s+$/g, ""
@@ -11,7 +11,8 @@ jQuery ->
     options = $(comunas).filter("optgroup[label='#{escaped_region}']").html()
     if options
       $('#terapeutum_comuna').html(options)
-      $('#terapeutum_comuna').parent().show() 
+      $('#terapeutum_comuna').attr('disabled', false)
     else
       $('#terapeutum_comuna').empty()
-      $('#terapeutum_comuna').parent().hide()
+      $('#terapeutum_comuna').attr('disabled', true)
+

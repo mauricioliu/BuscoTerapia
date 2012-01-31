@@ -24,10 +24,10 @@ class AsesoriaController < ApplicationController
   # GET /asesoria/new
   # GET /asesoria/new.json
   def new
-    session[:asesorium_step] = nil
-    session[:asesorium_params] ||= {}
+    #session[:asesorium_step] = nil
+    session[:asesorium_params] = {}
     @asesorium = Asesorium.new
-    @asesorium.current_step = session[:asesorium_step]
+    @asesorium.current_step = "miproblema"
 
     respond_to do |format|
       format.html # new.html.erb
@@ -46,22 +46,22 @@ class AsesoriaController < ApplicationController
     session[:asesorium_params].deep_merge!(params[:asesorium]) if params[:asesorium]
     @params = session[:asesorium_params]
     @asesorium = Asesorium.new(session[:asesorium_params])
-    @asesorium.current_step = session[:asesorium_step]
+    @asesorium.current_step = params[:step].to_s
     if @asesorium.valid?
       if params[:previous_button]
         @asesorium.previous_step
-      elsif @asesorium.last_step?
+      elsif params[:step].to_s == "misdatos"
         @asesorium.save
       else
         @asesorium.next_step
       end
-      session[:asesorium_step] = @asesorium.current_step
+      # session[:asesorium_step] = @asesorium.current_step
     end
     
     if @asesorium.new_record?
       render 'new'
     else
-      session[:asesorium_step] = nil
+      #session[:asesorium_step] = nil
       session[:asesorium_params] ||= {}
       redirect_to ver_comprobante_path(@asesorium)
     end
@@ -97,5 +97,7 @@ class AsesoriaController < ApplicationController
   
   def ver_comprobante
     @asesorium = Asesorium.find(params[:id])
+    AsesoriaMailer.send_confirmation(@asesorium).deliver
+    AsesoriaMailer.inform_request(@asesorium).deliver
   end
 end

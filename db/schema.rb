@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120125025704) do
+ActiveRecord::Schema.define(:version => 20120128173245) do
 
   create_table "asesoria", :force => true do |t|
     t.string   "necesidad_1"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20120125025704) do
     t.datetime "fecha_desde_est"
     t.datetime "fecha_hasta_est"
     t.string   "rango_horario"
-    t.string   "terapeuta_edad"
+    t.string   "terapeuta_sexo"
     t.string   "terapeuta_otro"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -80,6 +80,26 @@ ActiveRecord::Schema.define(:version => 20120125025704) do
     t.string   "plan"
     t.datetime "last_logged_in"
     t.string   "reset"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "terapia", :force => true do |t|
+    t.string   "nombre_corto"
+    t.string   "nombre_largo"
+    t.string   "descripcion"
+    t.string   "imagen_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "terapias", :force => true do |t|
+    t.string   "nombre_corto"
+    t.string   "descripcion_corta"
+    t.string   "descripcion"
+    t.string   "categoria"
+    t.string   "caracteristica"
+    t.string   "imagen_url"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

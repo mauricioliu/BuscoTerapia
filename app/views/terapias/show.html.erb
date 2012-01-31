@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombre corto:</b>
+  <%= @terapia.nombre_corto %>
+</p>
+
+<p>
+  <b>Descripcion_corta:</b>
+  <%= @terapia.descripcion_corta %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @terapia.descripcion %>
+</p>
+
+<p>
+  <b>Imagen url:</b>
+  <%= @terapia.imagen_url %>
+</p>
+
+
+<%= link_to 'Modificar', edit_terapia_path(@terapia) %> |
+<%= link_to 'Volver', terapias_path %>

@@ -12,7 +12,7 @@ class TerapeutaMailer < ActionMailer::Base
     @password = password
     @terapeuta = terapeuta
 
-     mail(:to => "liu.mauricio@gmail.com", :subject => "Bienvenido a BuscoTerapia.cl")
+     mail(:to => @terapeuta.email, :subject => "Bienvenido a BuscoTerapia.cl")
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -24,6 +24,6 @@ class TerapeutaMailer < ActionMailer::Base
     @password = password
     @terapeuta = terapeuta
 
-     mail(:to => "liu.mauricio@gmail.com", :subject => "Solicitud de contraseña BuscoTerapia.cl")
+     mail(:to => @terapeuta.email, :subject => "Solicitud de contraseña BuscoTerapia.cl")
   end
 end

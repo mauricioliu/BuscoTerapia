@@ -1,0 +1,33 @@
+Se ha ingresado una nueva solicitud de asesoría.
+
+Solicitud n°: <%= @asesoria.id %>
+
+Sección: Mi Problema
+¿por qué necesitas una terapia? 
+<%= @asesoria.necesidad_1 %>
+
+¿cómo te imaginas tu terapia?
+<%= @asesoria.necesidad_2 %>
+
+Datos Paciente
+Nombre: <%= @asesoria.paciente_nombre %>
+Edad: <%= @asesoria.paciente_edad %>
+Terapia para: <%= @asesoria.terapia_para %>
+Tipo de terapis: <%= @asesoria.terapia_tipo %>
+
+Datos de contacto
+Telefono: <%= @asesoria.paciente_telefono %>
+Email: <%= @asesoria.paciente_email %>
+Región: <%= @asesoria.paciente_region %>
+Comuna: <%= @asesoria.paciente_comuna %>
+
+Preferencia de atención
+Día preferente de atención: <%= @asesoria.dia_preferencia %>
+Fecha estimativa
+Desde: <%= @asesoria.fecha_desde_est %>
+Hasta: <%= @asesoria.fecha_hasta_est %>
+Rango de horario: <%= @asesoria.rango_horario %>
+
+Perfil de terapeuta
+Sexo: <%= @asesoria.terapeuta_sexo %>
+Otro: <%= @asesoria.terapeuta_otro %>

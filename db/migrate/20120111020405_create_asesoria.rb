@@ -19,7 +19,7 @@ class CreateAsesoria < ActiveRecord::Migration
       t.datetime :fecha_hasta_est
       t.string :rango_horario
       
-      t.string :terapeuta_edad
+      t.string :terapeuta_sexo
       t.string :terapeuta_otro
       t.timestamps
     end

@@ -1,0 +1,19 @@
+<%= form_for @search do |f| %>
+<fieldset style="width:650px">
+<div>Buscar por:</div>
+<table>
+	<tr>
+		<td>Categoria de terapia:</td>
+		<td>Característica del tratamiento</td>
+		<td>Palabra clave:</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td><%= f.collection_select :categoria_contains, RefDatum.where(:nombre => "Categoria Terapia"), :valor, :valor %></td>
+		<td><%= f.collection_select :caracteristica_contains, RefDatum.where(:nombre => "Caracteristica Tratamiento"), :valor, :valor, include_blank: true %></td>
+		<td><%= f.text_field :nombre_corto_or_descripcion_corta_or_descripcion_contains %></td>
+		<td><%= f.submit "Buscar" %></td>
+	</tr>
+</table>
+</fieldset>
+<% end %>
