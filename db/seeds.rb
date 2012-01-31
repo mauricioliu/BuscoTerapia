@@ -7,6 +7,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'csv'
 
 Region.delete_all
 Region.create(nombre: 'REGION METROPOLITANA')
