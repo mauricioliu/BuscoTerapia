@@ -30,8 +30,11 @@ test:
   host: localhost
 
 production:
-  adapter: postgresql
-  database: BuscoTerapia
-  username: uid
-  password: pwd
-  host: localhost
+  adapter: mysql2
+  encoding: utf8
+  reconnect: true
+  database: buscoter_bprod
+  pool: 5
+  username: buscoter_admin
+  password: abc.123!!123
+  socket: /tmp/mysql.sock
