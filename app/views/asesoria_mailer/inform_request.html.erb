@@ -1,0 +1,33 @@
+<h3>Se ha ingresado una nueva solicitud de asesoría.</h3>
+
+<div>Solicitud n°: <%= @asesoria.id %></div>
+
+<div>Sección: Mi Problema</div>
+<div>¿por qué necesitas una terapia?</div> 
+<div><%= @asesoria.necesidad_1 %></div>
+
+<div>¿cómo te imaginas tu terapia?</div>
+<div><%= @asesoria.necesidad_2 %></div>
+
+<div>Datos Paciente</div>
+<div>Nombre: <%= @asesoria.paciente_nombre %></div>
+<div>Edad: <%= @asesoria.paciente_edad %></div>
+<div>Terapia para: <%= @asesoria.terapia_para %></div>
+<div>Tipo de terapis: <%= @asesoria.terapia_tipo %></div>
+
+<div>Datos de contacto</div>
+<div>Telefono: <%= @asesoria.paciente_telefono %></div>
+<div>Email: <%= @asesoria.paciente_email %></div>
+<div>Región: <%= @asesoria.paciente_region %></div>
+<div>Comuna: <%= @asesoria.paciente_comuna %></div>
+
+<div>Preferencia de atención</div>
+<div>Día preferente de atención: <%= @asesoria.dia_preferencia %></div>
+<div>Fecha estimativa</div>
+<div>Desde: <%= @asesoria.fecha_desde_est %></div>
+<div>Hasta: <%= @asesoria.fecha_hasta_est %></div>
+<div>Rango de horario: <%= @asesoria.rango_horario %></div>
+
+<div>Perfil de terapeuta</div>
+<div>Sexo: <%= @asesoria.terapeuta_sexo %></div>
+<div>Otro: <%= @asesoria.terapeuta_otro %></div>

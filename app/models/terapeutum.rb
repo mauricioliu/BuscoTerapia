@@ -7,8 +7,10 @@ class Terapeutum < ActiveRecord::Base
   validates_numericality_of :ptelefono, :telefono, :pmovil, :movil
   validates :email,   
             :presence => true,   
+            :uniqueness => true,
             :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
   
+  mount_uploader :imagen_url, ImageUploader
   # attr_accessible :password_confirmation
   # attr_accessible :email_recovery
   

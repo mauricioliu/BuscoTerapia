@@ -4,11 +4,12 @@
 <p>Se han encontrado <%=@terapeutas.count%> resultados</p>
 	
 <% @terapeutas.each do |terapeutum| %>
-  <div><%= terapeutum.nombre %>, <%= terapeutum.tipo %> <%= terapeutum.especialidad %></div>
+  <div><%= link_to terapeutum.nombre, terapeutum_path(terapeutum)%>, <%= terapeutum.tipo %> <%= terapeutum.especialidad %></div> 
   <% if terapeutum.plan == 'P'%>
   	<div>Dirección: <%= terapeutum.direccion %>, <%= terapeutum.comuna %>, <%= terapeutum.region %></div>
     <div>Telefono de contacto: <%= terapeutum.ptelefono %> - <%= terapeutum.telefono %></div>
     <div>Telefono movil<%= terapeutum.pmovil %> - <%= terapeutum.email %></div>
+
   <% end %>
   <br />
 <% end %>

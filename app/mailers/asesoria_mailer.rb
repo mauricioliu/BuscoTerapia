@@ -10,6 +10,9 @@ class AsesoriaMailer < ActionMailer::Base
   def inform_request(asesoria)
     @asesoria = asesoria
 
-     mail(:to => @asesoria.paciente_email, :subject => "Se ha ingresado una nueva solicitud")
+    mail(:to => @asesoria.paciente_email, :subject => "Se ha ingresado una nueva solicitud") do |format|
+      format.html
+    end 
+    
   end
 end
