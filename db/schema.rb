@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120201035926) do
+ActiveRecord::Schema.define(:version => 20120128173245) do
 
   create_table "asesoria", :force => true do |t|
     t.string   "necesidad_1"
@@ -82,7 +82,6 @@ ActiveRecord::Schema.define(:version => 20120201035926) do
     t.string   "reset"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "imagen_url"
   end
 
   create_table "terapia", :force => true do |t|
