@@ -10,10 +10,13 @@
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 
 development:
-  adapter: postgresql
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
   database: BuscoTerapia_development
-  username: uid
-  password: pwd
+  pool: 5
+  username: root
+  password: abc.123
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
@@ -27,8 +30,11 @@ test:
   host: localhost
 
 production:
-  adapter: postgresql
-  database: BuscoTerapia
-  username: uid
-  password: pwd
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: admin_buscoterapia_d
+  pool: 5
+  username: admin_btp
+  password: Abc.123!!!123
   host: localhost

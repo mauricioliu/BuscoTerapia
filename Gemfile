@@ -6,7 +6,7 @@ gem 'rails', '3.1.3'
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
-gem 'pg'
+# gem 'pg'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -23,7 +23,7 @@ gem 'client_side_validations'
 
 gem "meta_search"
 
-gem "rmagick"
+gem "rmagick", "2.12.0"
 gem "carrierwave"
 
 gem "will_paginate"
