@@ -29,6 +29,12 @@ gem "carrierwave"
 gem "will_paginate"
 gem "net-dns"
 gem "tlsmail"
+
+# gem 'rake', '0.8.7'
+
+# gem "execjs"
+#gem "pre-johnson"
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
