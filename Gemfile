@@ -23,12 +23,14 @@ gem 'client_side_validations'
 
 gem "meta_search"
 
-gem "rmagick", "2.12.0"
+gem "rmagick"
 gem "carrierwave"
 
 gem "will_paginate"
 gem "net-dns"
 gem "tlsmail"
+
+gem 'therubyracer', :platforms => :ruby
 
 # gem 'rake', '0.8.7'
 

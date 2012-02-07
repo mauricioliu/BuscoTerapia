@@ -84,15 +84,6 @@ ActiveRecord::Schema.define(:version => 20120128173245) do
     t.datetime "updated_at"
   end
 
-  create_table "terapia", :force => true do |t|
-    t.string   "nombre_corto"
-    t.string   "nombre_largo"
-    t.string   "descripcion"
-    t.string   "imagen_url"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "terapias", :force => true do |t|
     t.string   "nombre_corto"
     t.string   "descripcion_corta"
