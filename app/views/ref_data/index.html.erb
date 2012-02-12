@@ -1,4 +1,6 @@
-<h1>Listing ref_data</h1>
+<h1>Parámetros de la aplicación</h1>
+
+<%= will_paginate @ref_data, previous_label: h("<"), next_label: h(">") %>
 
 <table>
   <tr>
@@ -13,13 +15,13 @@
   <tr>
     <td><%= ref_datum.nombre %></td>
     <td><%= ref_datum.valor %></td>
-    <td><%= link_to 'Show', ref_datum %></td>
-    <td><%= link_to 'Edit', edit_ref_datum_path(ref_datum) %></td>
-    <td><%= link_to 'Destroy', ref_datum, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Ver', ref_datum %></td>
+    <td><%= link_to 'Modificar', edit_ref_datum_path(ref_datum) %></td>
+    <td><%= link_to 'Eliminar', ref_datum, confirm: 'Seguro desea eliminar?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Ref datum', new_ref_datum_path %>
+<%= link_to 'Crear Nuevo', new_ref_datum_path %>

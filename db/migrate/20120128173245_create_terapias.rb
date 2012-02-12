@@ -3,7 +3,7 @@ class CreateTerapias < ActiveRecord::Migration
     create_table :terapias do |t|
       t.string :nombre_corto
       t.string :descripcion_corta
-      t.string :descripcion
+      t.text :descripcion, :limit => 4294967295
       t.string :categoria
       t.string :caracteristica
       t.string :imagen_url

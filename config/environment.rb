@@ -21,11 +21,11 @@ ActionMailer::Base.raise_delivery_errors = true
 
 ActionMailer::Base.smtp_settings = {
   :enable_starttls_auto => true,  
-  :address => 'smtp.mailgun.org',
-  :port => 25,
-  :domain => 'www.buscoterapia.com',
-  :user_name => 'no-responder@buscoterapia.mailgun.org',
-  :password => 'abc.123',
+  :address => 'smtp.gmail.com',
+  :port => 587,
+  :domain => 'www.buscoterapia.cl',
+  :user_name => 'no-reply@buscoterapia.cl',
+  :password => 'Abc.123!',
   :authentication => 'plain',
   :enable_starttls_auto => true
 } 

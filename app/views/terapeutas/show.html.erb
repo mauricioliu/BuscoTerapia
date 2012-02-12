@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @terapeuta.nombre %>
+</p>
+
+<p>
+  <b>Direccion:</b>
+  <%= @terapeuta.direccion %>
+</p>
+
+<p>
+  <b>Region:</b>
+  <%= @terapeuta.region %>
+</p>
+
+<p>
+  <b>Comuna:</b>
+  <%= @terapeuta.comuna %>
+</p>
+
+<p>
+  <b>Ptelefono:</b>
+  <%= @terapeuta.ptelefono %>
+</p>
+
+<p>
+  <b>Telefono:</b>
+  <%= @terapeuta.telefono %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @terapeuta.email %>
+</p>
+
+<p>
+	<ul>
+	<% for tipo in @terapeuta.tipo_terapias %>
+  		<li><%= tipo.nombre %></li>
+  	<% end %>
+	</ul>
+</p>
+
+<%= link_to 'Modificar', edit_terapeuta_path(@terapeuta) %> |
+<%= link_to 'Volver', terapeuta_path %>

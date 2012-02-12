@@ -1,0 +1,86 @@
+<%= nested_form_for(@terapeuta) do |f| %>
+  <% if @terapeuta.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@terapeuta.errors.count, "error") %> prohibited this terapeuta from being saved:</h2>
+
+      <ul>
+      <% @terapeuta.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <fieldset style="width:550px">
+	  <legend>Datos de contacto</legend>
+	  <table>
+	  	<tr>
+	  		<td><%= f.label "Nombre del terapeuta o centro:" %></td>
+	  		<td><%= f.text_field :nombre %></td>
+	  	</tr>
+	  	<tr>
+	  		<td><%= f.label "Rut del terapeuta o centro:" %></td>
+	  		<td><%= f.text_field :rut %></td>
+	  	</tr>
+	  	<tr>
+	  		<td><%= f.label "Correo electrónico" %></td>
+	  		<td><%= f.text_field :email %></td>
+	  	</tr>
+	  	<tr>
+	  		<td><%= f.label "Teléfono fijo:" %></td>
+	  		<td><%= f.collection_select :ptelefono, RefDatum.where(:nombre => "Codigo Area"), :valor, :valor, :size => 3 %> - 
+	  			<%= f.number_field :telefono, :size => 20 %></td>
+	  	</tr>
+	  	<tr>
+	  		<td> <%= f.label "Teléfono móvil:" %></td>
+	  		<td><%= f.number_field :movil, :size => 23  %></td>
+	  	</tr>
+	  	<tr>
+	  		<td><%= f.label "Direccion de la consulta o del centro" %></td>
+	  		<td><%= f.text_field :direccion %></td>
+	  	</tr>
+	  	<tr>
+	  		<td><%= f.label "Region" %></td>
+	  		<td><%= f.collection_select :region, Region.order(:nombre), :id, :nombre, include_blank: true %></td>
+	  	</tr>
+	  	<tr>
+	  		<td><%= f.label "Comuna" %></td>
+	  		<td><%= f.grouped_collection_select :comuna, Region.order(:nombre), :comunas, :nombre, :id, :nombre, include_blank: true %></td>
+	  	</tr>
+	  	<tr>
+	  		<td><%= f.label "Codigo postal de la consulta o centro" %></td>
+	  		<td><%= f.text_field :codigo_postal %></td>
+	  	</tr>
+	  	<tr>
+	  		<td><%= f.label "Sitio web propio o del centro" %></td>
+	  		<td><%= f.text_field :sitio_web %></td>
+	  	</tr>
+	  </table>
+  </fieldset>
+  <fieldset style="width:450px">
+  	<legend>Perfil de terapeuta o centro</legend>
+  	<table>
+	  <tr>
+	  	<td colspan="2">
+		<% for terapia in @tipo_terapias %>
+			<%= check_box_tag "tipo_terapia_ids[]", terapia.valor, contains_tipo_terapia(@terapeuta.id, terapia) %>
+			<%= terapia.valor %>
+		<% end %>
+		</td>
+	  </tr>
+  	  <tr>
+	  	<td colspan="2">
+		<%= f.fields_for :especialidades do |especialidad_form| %>
+		  <%= especialidad_form.text_field :valor %>
+		  <%= especialidad_form.link_to_remove "borrar" %>
+		<% end %>
+		<%= f.link_to_add "Añadir Especialidad", :especialidades %>
+		</td>
+  	  </tr>
+  	</table>
+  </fieldset>
+  <div class="actions">
+    <%= f.submit @terapeuta.new_record? ? "Crear cuenta" : "Actualizar datos" %>
+  </div>
+<% end %>
+
+<%= debug params[:terapeuta] %>

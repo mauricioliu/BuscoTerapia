@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   end
   
   def create
-    terapeuta = Terapeutum.find_by_email(params[:email])
+    terapeuta = Terapeuta.find_by_email(params[:email])
     if terapeuta && terapeuta.password == params[:password]
       #cookies.permanent[:auth_token] = terapeuta.auth_token
       session[:terapeuta] = terapeuta

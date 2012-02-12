@@ -1,15 +1,31 @@
-<table width="900">
-	<tr>
-		<td>
-			<h3>Asesoria personal</h3>
-			<p>Deja tu problema en nuestras manos, nosotros te asesoramos para encontrar al terapeuta que necesitas.</p>
-			<p>En dos simples pasos cuéntanos tu problema, nuestro equipo de profesionales te asesorará telefónicamente para que en menos de 90 minutos tengas agendada una cita con un terapeuta que se ajuste a tus necesidades y expectativas.</p>
-			<p>Este proceso es absolutamente confidencial y gratuito.</p>
-			<p>Confía en nosotros, ¡estás en buenas manos! </p>
-			<%= button_to "Ingresar mi problema", new_asesorium_path, :method => 'get'%>
-		</td>
-		<td>
-			<%= render 'search_form' %>
-		</td>
-	</tr>
-</table>
+<div id="asesoria_terapeutas" class="col_8">
+	<h2>Asesoría Terapeutica</h2>
+	<h1>Encuentra la ayuda que necesitas</h1>
+	<p>Ingresa en dos pasos el problema que te aqueja o la solución que buscas y serás asesorado por nuestro equipo de especialistas en terapias. Ellos te entregarán las mejores alternativas de nuestra red de especialistas para que en menos de 90 minutos tengas agendada una cita con un terapeuta que se ajuste a tus necesidades y expectativas.</p>
+	<p>Este proceso es absolutamente confidencial y gratuito</p>
+	<%= button_to "Ingresar mi problema", new_asesorium_path, :method => 'get', :class => "button"%>
+</div><!-- asesoria_terapeutas -->
+
+
+<%= render 'search_form' %>
+
+<div id="destacados_del_dia" class="col_12">
+	<h2>Destacados del día</h2>
+		<div class="noticias">
+			<img src="http://fpoimg.com/138x168" alt="Fotografía relacionada" width="138" height="168" border="0" />
+			<h3><a href="#">Título del artículo</a></h3>
+			<p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.<br /><a href="#">Ver más</a></p>
+		</div><!-- noticias -->
+		<div class="noticias">
+			<img src="http://fpoimg.com/138x168" alt="Fotografía relacionada" width="138" height="168" border="0" />
+			<h3><a href="#">Título del artículo</a></h3>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam<br /><a href="#">Ver más</a></p>
+		</div><!-- noticias -->
+		<div class="noticias">
+			<img src="http://fpoimg.com/138x168" alt="Fotografía relacionada" width="138" height="168" border="0" />
+			<h3><a href="#">Título del artículo</a></h3>
+			<p>Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.<br /><a href="#">Ver más</a></p>
+		</div><!-- noticias -->
+	</div><!-- destacados_del_dia -->
+<div class="clear"></div>
+

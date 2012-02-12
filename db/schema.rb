@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120128173245) do
+ActiveRecord::Schema.define(:version => 20120209054934) do
 
   create_table "asesoria", :force => true do |t|
     t.string   "necesidad_1"
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(:version => 20120128173245) do
     t.datetime "updated_at"
   end
 
+  create_table "especialidades", :force => true do |t|
+    t.integer  "terapeuta_id"
+    t.string   "valor"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "ref_data", :force => true do |t|
     t.string   "nombre"
     t.string   "valor"
@@ -64,20 +71,26 @@ ActiveRecord::Schema.define(:version => 20120128173245) do
   add_index "sessions", ["session_id"], :name => "index_sessions_on_session_id"
   add_index "sessions", ["updated_at"], :name => "index_sessions_on_updated_at"
 
-  create_table "terapeuta", :force => true do |t|
+  create_table "terapeutas", :force => true do |t|
     t.string   "nombre"
+    t.string   "rut"
     t.string   "direccion"
     t.string   "region"
     t.string   "comuna"
+    t.string   "codigo_postal"
+    t.string   "sitio_web"
     t.integer  "ptelefono"
     t.integer  "telefono"
-    t.integer  "pmovil"
     t.integer  "movil"
     t.string   "email"
     t.string   "tipo"
     t.string   "especialidad"
+    t.text     "estudios"
+    t.text     "perfeccionamiento"
+    t.string   "descuentos"
     t.string   "password_hash"
     t.string   "plan"
+    t.datetime "plan_expira"
     t.datetime "last_logged_in"
     t.string   "reset"
     t.datetime "created_at"
@@ -87,10 +100,17 @@ ActiveRecord::Schema.define(:version => 20120128173245) do
   create_table "terapias", :force => true do |t|
     t.string   "nombre_corto"
     t.string   "descripcion_corta"
-    t.string   "descripcion"
+    t.text     "descripcion",       :limit => 2147483647
     t.string   "categoria"
     t.string   "caracteristica"
     t.string   "imagen_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tipo_terapias", :force => true do |t|
+    t.integer  "terapeuta_id"
+    t.string   "nombre"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -34,3 +34,15 @@ jQuery ->
     else
       $('#asesorium_paciente_comuna').empty()
       $('#asesorium_paciente_comuna').attr('disabled', true)
+      
+  $('#asesorium_paciente_region').blur ->
+    region = $('#asesorium_paciente_region :selected').text().replace /^\s+|\s+$/g, ""
+    escaped_region = region.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
+    options = $(comunas).filter("optgroup[label='#{escaped_region}']").html()
+    if options
+      $('#asesorium_paciente_comuna').html(options)
+      $('#asesorium_paciente_comuna').attr('disabled', false)
+      $('#asesorium_paciente_comuna').focus()
+    else
+      $('#asesorium_paciente_comuna').empty()
+      $('#asesorium_paciente_comuna').attr('disabled', true)

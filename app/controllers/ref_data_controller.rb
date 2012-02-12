@@ -2,7 +2,7 @@ class RefDataController < ApplicationController
   # GET /ref_data
   # GET /ref_data.json
   def index
-    @ref_data = RefDatum.all
+    @ref_data = RefDatum.page(params[:page]).per_page(25)
 
     respond_to do |format|
       format.html # index.html.erb

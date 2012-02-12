@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TerapeutumTest < ActiveSupport::TestCase
+class TerapeutaTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

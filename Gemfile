@@ -32,6 +32,7 @@ gem "tlsmail"
 
 gem 'therubyracer', :platforms => :ruby
 
+gem "nested_form"
 # gem 'rake', '0.8.7'
 
 # gem "execjs"

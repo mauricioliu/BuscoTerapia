@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 jQuery ->
-  $("#search_tabs").tabs()
+  #$("#busca_tu_terapeuta").tabs()
   $('.psicologo_comuna').attr('disabled', true)
   comunas = $('.psicologo_comuna').html()
   $('.psicologo_region').change ->
@@ -17,6 +17,19 @@ jQuery ->
       $('.psicologo_comuna').empty()
       $('.psicologo_comuna').attr('disabled', true)
 
+
+  $('.psicologo_region').blur ->
+    region = $('.psicologo_region :selected').text().replace /^\s+|\s+$/g, ""
+    escaped_region = region.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
+    options = $(comunas).filter("optgroup[label='#{escaped_region}']").html()
+    if options
+      $('.psicologo_comuna').html(options)
+      $('.psicologo_comuna').attr('disabled', false)
+      $('.psicologo_comuna').focus()
+    else
+      $('.psicologo_comuna').empty()
+      $('.psicologo_comuna').attr('disabled', true)
+      
 jQuery ->
   $('.alternativo_comuna').attr('disabled', true)
   comunas = $('.alternativo_comuna').html()
@@ -30,7 +43,19 @@ jQuery ->
     else
       $('.alternativo_comuna').empty()
       $('.alternativo_comuna').attr('disabled', true)
-      
+
+  $('.alternativo_region').blur ->
+    region = $('.alternativo_region :selected').text().replace /^\s+|\s+$/g, ""
+    escaped_region = region.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
+    options = $(comunas).filter("optgroup[label='#{escaped_region}']").html()
+    if options
+      $('.alternativo_comuna').html(options)
+      $('.alternativo_comuna').attr('disabled', false)
+      $('.alternativo_comuna').focus()
+    else
+      $('.alternativo_comuna').empty()
+      $('.alternativo_comuna').attr('disabled', true)
+
 jQuery ->
   $('.psiquiatra_comuna').attr('disabled', true)
   comunas = $('.psiquiatra_comuna').html()
@@ -41,6 +66,18 @@ jQuery ->
     if options
       $('.psiquiatra_comuna').html(options)
       $('.psiquiatra_comuna').attr('disabled', false)
+    else
+      $('.psiquiatra_comuna').empty()
+      $('.psiquiatra_comuna').attr('disabled', true)
+
+  $('.psiquiatra_region').blur ->
+    region = $('.psiquiatra_region :selected').text().replace /^\s+|\s+$/g, ""
+    escaped_region = region.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
+    options = $(comunas).filter("optgroup[label='#{escaped_region}']").html()
+    if options
+      $('.psiquiatra_comuna').html(options)
+      $('.psiquiatra_comuna').attr('disabled', false)
+      $('.psiquiatra_comuna').focus()
     else
       $('.psiquiatra_comuna').empty()
       $('.psiquiatra_comuna').attr('disabled', true)

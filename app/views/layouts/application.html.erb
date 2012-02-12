@@ -2,38 +2,56 @@
 <html>
 <head>
   <title>Busco Terapia</title>
-  <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css", "application" %>
-  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application" %>
+  <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css", 
+  						  "application",
+  						  "osv.css" %>
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", 
+  							 "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", 
+  							 "application",
+  							 "nested_form",
+  							 "osv.js" %>
   <%= csrf_meta_tag %>
 </head>
 <body class="<%= params[:controller] %>">
-  <table>
-  	<tr>
-  		<td colspan="2">
-		    <% flash.each do |name, msg| %>
-		      <%= content_tag :div, msg, :id => "flash_#{name}" %>
-		    <% end %>
-  		</td>
-  	</tr>
-  	<tr>
-  		<td><%= image_tag("Logo.png")%></td>
-  		<td>
-  			<% if session[:terapeuta] == nil %>
-			  	<%= render 'sessions/login'%>
-	  	    <% else %>
-				Bienvenido <%= session[:terapeuta].nombre %> <%= link_to 'Cerrar sesión', logout_path %><br />
-				<%= link_to "Mi cuenta", edit_terapeutum_path(session[:terapeuta]) %>
-			<% end %>
-  		</td>
-  	</tr>
-  </table>
-  <p>
-    <%= link_to 'Inicio', root_url %> | 
-  	<%= link_to 'Asesoría personal', new_asesorium_path %> |
-  	<%= link_to 'Directorio Terapeuta', terapeuta_path %> |
-  	<%= link_to 'Tipo de Terapias', terapias_path %> |
-  	<%= link_to 'Acceso terapeutas', acceso_terapeutas_path %>
-  </p>
+	<div id="header">
+		<div class="wrapper">
+		<div id="branding">
+			<h1><%= link_to '', root_url, :class => "buscoterapia" %></h1>
+		</div><!-- branding -->
+		<div id="login">
+			<p><a href="#">Quieres Iniciar tu sesión?</a></p>
+		</div><!-- login -->
+		</div><!-- wrapper	 -->
+	</div><!-- header -->
+	
+	<div id="nav" class="wrapper">
+		<ul class="main">
+			<li><%= link_to 'Inicio', root_url %></li>
+			<li><%= link_to 'Solicitar asesoría terapeutica', new_asesorium_path %></li>
+			<li><%= link_to 'Buscar terapeutas', terapeutas_path %></li>
+			<li><%= link_to 'Tipo de Terapias', terapias_path %></li>
+			<li><a href="#">Noticias y artículos</a></li>
+		</ul>
+		<ul class="acceso">
+			<li><%= link_to 'Acceso terapeutas', acceso_terapeutas_path %></li>
+		</ul>	
+	</div><!-- nav -->
+   <div class="wrapper">
    <%= yield %>
+   </div>>
+   
+   	<div id="footer" class="wrapper">
+		<ul class="left">
+			<li><a href="#">Busco Terapia © 2012</a></li>
+		</ul>
+		<ul class="right">
+			<li><a href="#">Quienes somos</a></li>
+			<li><a href="#">Contacto</a></li>
+			<li><a href="#">Preguntas frecuentes</a></li>
+			<li><a href="#">Mapa del sitio</a></li>
+			<li><a href="#">Condiciones de uso</a></li>
+			<li><a href="#">Políticas de privacidad</a></li>
+		</ul>
+	</div><!-- footer -->
 </body>
 </html>

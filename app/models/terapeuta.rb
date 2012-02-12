@@ -1,10 +1,19 @@
 require 'bcrypt'
 
-class Terapeutum < ActiveRecord::Base
+class Terapeuta < ActiveRecord::Base
   include BCrypt
+  
+  has_many :tipo_terapias
+  has_many :especialidades
+
+  accepts_nested_attributes_for :tipo_terapias
+  accepts_nested_attributes_for :especialidades
+  
+  #accepts_nested_attributes_for :tipo_terapias, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }, :allow_destroy => true
+  
   # validates :email, presence: true, uniqueness: true
-  validates_presence_of :nombre, :direccion, :region, :comuna, :ptelefono, :telefono, :pmovil, :movil, :tipo, :especialidad
-  validates_numericality_of :ptelefono, :telefono, :pmovil, :movil
+  validates_presence_of :nombre, :direccion, :region, :comuna, :ptelefono, :telefono, :movil
+  validates_numericality_of :ptelefono, :telefono, :movil
   validates :email,   
             :presence => true,   
             :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
@@ -28,6 +37,6 @@ class Terapeutum < ActiveRecord::Base
   def generate_token(column)
     begin
       self[column] = SecureRandom.urlsafe_base64
-    end while Terapeutum.exists?(column => self[column])
+    end while Terapeuta.exists?(column => self[column])
   end
 end

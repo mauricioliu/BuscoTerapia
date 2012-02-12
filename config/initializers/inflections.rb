@@ -9,4 +9,7 @@ ActiveSupport::Inflector.inflections do |inflect|
 #   inflect.uncountable %w( fish sheep )
 inflect.irregular "region" , "regiones"
 inflect.irregular "terapia" , "terapias"
+inflect.irregular "tipo_terapia" , "tipo_terapias"
+inflect.irregular "terapeuta" , "terapeutas"
+inflect.irregular "especialidad" , "especialidades"
 end
