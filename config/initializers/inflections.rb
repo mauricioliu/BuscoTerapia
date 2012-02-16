@@ -12,4 +12,7 @@ inflect.irregular "terapia" , "terapias"
 inflect.irregular "tipo_terapia" , "tipo_terapias"
 inflect.irregular "terapeuta" , "terapeutas"
 inflect.irregular "especialidad" , "especialidades"
+inflect.irregular "estudio" , "estudios"
+inflect.irregular "error" , "errores"
+inflect.irregular "forma_pago", "forma_pagos"
 end

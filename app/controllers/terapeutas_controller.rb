@@ -5,7 +5,7 @@ class TerapeutasController < ApplicationController
   # GET /terapeuta.json
   def index
     @search = Terapeuta.search(params[:search])
-    @terapeutas = @search.order("plan desc, created_at desc")
+    @terapeutas = @search.order("plan_tipo desc, created_at desc")
     @terapeutas = @terapeutas.page(params[:page]).per_page(15)
     # @terapeutas.order("plan").desc
 
@@ -44,8 +44,10 @@ class TerapeutasController < ApplicationController
   # GET /terapeuta/new.json
   def new
     @terapeuta = Terapeuta.new
+    @terapeuta.especialidades.build
     @tipo_terapias = RefDatum.where(:nombre => "Tipo Terapeuta")
     @especialidades = RefDatum.where(:nombre => "Especialidad")
+    @forma_pagos = RefDatum.where(:nombre => "Formas de Pago")
 
     respond_to do |format|
       format.html # new.html.erb
@@ -58,26 +60,29 @@ class TerapeutasController < ApplicationController
     @terapeuta = Terapeuta.find(params[:id])
     @tipo_terapias = RefDatum.where(:nombre => "Tipo Terapeuta")
     @especialidades = RefDatum.where(:nombre => "Especialidad")
+    @forma_pagos = RefDatum.where(:nombre => "Formas de Pago")
   end
 
   # POST /terapeuta
   # POST /terapeuta.json
   def create
     @terapeuta = Terapeuta.new(params[:terapeuta])
+    
     logger.debug "New terapeuta #{@terapeuta.attributes.inspect}"
     random_password = Array.new(10).map { (65 + rand(58)).chr }.join
     @terapeuta.password=random_password
     respond_to do |format|
       if @terapeuta.save
-        tipo_terapias = params[:tipo_terapia_ids]
-        tipo_terapias.each do |tt|
-          @terapeuta.tipo_terapias.create(:nombre => tt)
-        end
+        #tipo_terapias = params[:tipo_terapia_ids]
+        #tipo_terapias.each do |tt|
+        #  @terapeuta.tipo_terapias.create(:nombre => tt)
+        #end
         TerapeutaMailer.send_password(@terapeuta,random_password).deliver
         format.html { redirect_to @terapeuta, notice: 'Terapeuta fue creado exitosamente.' }
         format.json { render json: @terapeuta, status: :created, location: @terapeuta }
       else
         @tipo_terapias = RefDatum.where(:nombre => "Tipo Terapeuta")
+        @forma_pagos = RefDatum.where(:nombre => "Formas de Pago")
         format.html { render action: "new" }
         format.json { render json: @terapeuta.errors, status: :unprocessable_entity }
       end
@@ -88,6 +93,9 @@ class TerapeutasController < ApplicationController
   # PUT /terapeuta/1.json
   def update
     @terapeuta = Terapeuta.find(params[:id])
+    @tipo_terapias = RefDatum.where(:nombre => "Tipo Terapeuta")
+    @especialidades = RefDatum.where(:nombre => "Especialidad")
+    @forma_pagos = RefDatum.where(:nombre => "Formas de Pago")
 
     respond_to do |format|
       if @terapeuta.update_attributes(params[:terapeuta])

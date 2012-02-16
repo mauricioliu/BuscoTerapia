@@ -1,7 +1,7 @@
 <%= nested_form_for(@terapeuta) do |f| %>
   <% if @terapeuta.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@terapeuta.errors.count, "error") %> prohibited this terapeuta from being saved:</h2>
+      <h2><%= pluralize(@terapeuta.errors.count, "error") %> en el formulario:</h2>
 
       <ul>
       <% @terapeuta.errors.full_messages.each do |msg| %>
@@ -56,19 +56,24 @@
 	  	</tr>
 	  </table>
   </fieldset>
-  <fieldset style="width:450px">
+  <fieldset style="width:550px">
   	<legend>Perfil de terapeuta o centro</legend>
   	<table>
 	  <tr>
 	  	<td colspan="2">
 		<% for terapia in @tipo_terapias %>
-			<%= check_box_tag "tipo_terapia_ids[]", terapia.valor, contains_tipo_terapia(@terapeuta.id, terapia) %>
+			<% if params[:tipo_terapia_ids] != nil %>
+				<%= check_box_tag "terapeuta[tipo_terapia_ids][]", terapia.id, params[:tipo_terapia_ids].include?(terapia.valor) %>
+			<% else %>
+				<%= check_box_tag "terapeuta[tipo_terapia_ids][]", terapia.id, contains_tipo_terapia(@terapeuta.id, terapia) %>
+			<% end %>
 			<%= terapia.valor %>
 		<% end %>
 		</td>
 	  </tr>
   	  <tr>
 	  	<td colspan="2">
+	  	Especialidades y experticias (máximo 7)
 		<%= f.fields_for :especialidades do |especialidad_form| %>
 		  <%= especialidad_form.text_field :valor %>
 		  <%= especialidad_form.link_to_remove "borrar" %>
@@ -76,11 +81,59 @@
 		<%= f.link_to_add "Añadir Especialidad", :especialidades %>
 		</td>
   	  </tr>
+  	  <tr>
+	  	<td colspan="2">
+	  	Estudios acreditables en terapias.
+	  	<table>
+	  		<tr>
+	  			<td>titulo</td>
+	  			<td>universidad</td>
+	  			<td>&nbsp;</td>
+	  		</tr>
+		<%= f.fields_for :estudios do |estudio_form| %>
+		<tr>
+		  <td></td><%= estudio_form.text_field :titulo %>
+		  <%= estudio_form.text_field :establecimiento %>
+		  <%= estudio_form.link_to_remove "borrar" %>
+		</tr>
+		<% end %>
+		<%= f.link_to_add "Añadir Estudio", :estudios %>
+		</table>
+		</td>
+  	  </tr>
   	</table>
+  </fieldset>
+  <fieldset style="width:550px">
+  	<legend>Formas de pago, aranceles y descuentos</legend>
+	  <table>
+	  	<tr>
+	  		<td colspan="2">
+	  			<%= f.label "Arancel por sesión de terapia" %><br/>
+				<%= f.text_area :arancel, :size => "50x6" %>
+	  		</td>
+	  	</tr>
+	  	<tr>
+	  		<td colspan="2">
+	  			<%= f.label "Descuentos especiales para usuarios de Buscoterapia" %><br/>
+				<%= f.text_area :arancel, :size => "50x6" %>
+	  		</td>
+	  	</tr>
+	  	<tr>
+	  	<td colspan="2">
+		<% for forma_pago in @forma_pagos %>
+			<% if params[:forma_pago_ids] != nil %>
+				<%= check_box_tag "forma_pago_ids[]", forma_pago.valor, params[:forma_pago_ids].include?(terapia.valor) %>
+			<% else %>
+				<%= check_box_tag "forma_pago_ids[]", forma_pago.valor, contains_forma_pago(@terapeuta.id, forma_pago) %>
+			<% end %>
+			<%= forma_pago.valor %>
+			<br/>
+		<% end %>
+		</td>
+	  </tr>
+	  </table>
   </fieldset>
   <div class="actions">
     <%= f.submit @terapeuta.new_record? ? "Crear cuenta" : "Actualizar datos" %>
   </div>
 <% end %>
-
-<%= debug params[:terapeuta] %>

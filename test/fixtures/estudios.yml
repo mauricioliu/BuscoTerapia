@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  terapeuta_id: 1
+  titulo: MyString
+  establecimiento: MyString
+
+two:
+  terapeuta_id: 1
+  titulo: MyString
+  establecimiento: MyString

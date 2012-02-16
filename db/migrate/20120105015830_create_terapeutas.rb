@@ -13,16 +13,20 @@ class CreateTerapeutas < ActiveRecord::Migration
       t.integer :movil
       t.string :email
       
-      t.string :enfoque_terapeutico
-      t.string :especialidad
-      t.text :estudios
-      t.text :perfeccionamiento
+      t.string :arancel
+      t.string :convenios
+      
+      t.string :plan_tipo
+      t.datetime :plan_expira
+      t.string :plan_ciclo
+      
       t.string :descuentos
       t.string :password_hash
-      t.string :plan
-      t.datetime :plan_expira
+
       t.datetime :last_logged_in
       t.string :reset
+      
+      t.string :estado
 
       t.timestamps
     end

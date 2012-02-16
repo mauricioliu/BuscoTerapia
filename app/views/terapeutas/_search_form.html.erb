@@ -8,8 +8,8 @@
 		<td>Palabra clave:</td>
 	</tr>
 	<tr>
-		<td><%= f.collection_select :tipo_contains, RefDatum.where(:nombre => "Tipo Terapeuta"), :valor, :valor %></td>
-		<td><%= f.collection_select :especialidad_contains, RefDatum.where(:nombre => "Especialidad"), :valor, :valor, include_blank: true %></td>
+		<td><%= f.collection_select :tipo_terapias_nombre_contains, RefDatum.where(:nombre => "Tipo Terapeuta"), :valor, :valor %></td>
+		<td><%= f.collection_select :especialidades_valor_contains, RefDatum.where(:nombre => "Especialidad"), :valor, :valor, include_blank: true %></td>
 		<td><%= f.text_field :nombre_contains %></td>
 	</tr>
 	<tr>

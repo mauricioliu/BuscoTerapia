@@ -8,11 +8,11 @@
 	<div class="tab_container">
 		<div id="tab1" class="tab_content" style="display: block; ">
 		  <%= form_for @search, :action => "index", :controller => "terapeuta" do |f| %>
-		  <%= f.hidden_field :tipo_contains, :value => "Psicologo" %>
+		  <%= f.hidden_field :tipo_terapias_nombre_contains, :value => "Psicologo" %>
 		  <fieldset>
 		  <dl>
 			<dt><%= f.label "Tipos de terapia:" %></dt>
-		    <dd><%= f.collection_select :especialidad_contains, RefDatum.where(:nombre => "Especialidad"), :valor, :valor, :prompt => "No lo tengo claro" %></dd>
+		    <dd><%= f.collection_select :especialidades_valor_contains, RefDatum.where(:nombre => "Especialidad"), :valor, :valor, :prompt => "No lo tengo claro" %></dd>
 		  
 		    <dt><%= f.label "Region:" %></dt>
 		    <dd><%= f.collection_select :region_contains, Region.order(:nombre), :id, :nombre, {include_blank: true}, :class => "psicologo_region" %></dd>
@@ -30,11 +30,11 @@
 
 	    <div id="tab2" class="tab_content" style="display: none; ">
 			  <%= form_for @search, :action => "index", :controller => "terapeuta" do |f| %>
-			  <%= f.hidden_field :tipo_contains, :value => "Medicos Alternativos" %>
+			  <%= f.hidden_field :tipo_terapias_nombre_contains, :value => "Medicos Alternativos" %>
 			  <fieldset>
 			  <dl>
 			  <dt><%= f.label "Especialidad?" %></dt>
-			  <dd><%= f.collection_select :especialidad_contains, RefDatum.where(:nombre => "Especialidad"), :valor, :valor, :prompt => "No lo tengo claro" %></dd>
+			  <dd><%= f.collection_select :especialidades_valor_contains, RefDatum.where(:nombre => "Especialidad"), :valor, :valor, :prompt => "No lo tengo claro" %></dd>
 			  
 			  <dt><%= f.label "Región de atención:" %></dt>
 			  <dd><%= f.collection_select :region_contains, Region.order(:nombre), :id, :nombre, {include_blank: true}, :class => "alternativo_region" %></dd>
@@ -49,11 +49,11 @@
 				
 	    <div id="tab3" class="tab_content" style="display: none; ">
 	      <%= form_for @search, :action => "index", :controller => "terapeuta" do |f| %>
-		  <%= f.hidden_field :tipo_contains, :value => "Psiquiatra" %>
+		  <%= f.hidden_field :tipo_terapias_nombre_contains, :value => "Psiquiatra" %>
 		  <fieldset>
 		  	<dl>
 			  <dt><%= f.label "Tipo de Psiquiatra" %></dt>
-			  <dd><%= f.collection_select :especialidad_contains, RefDatum.where(:nombre => "Especialidad"), :valor, :valor, :prompt => "No lo tengo claro" %></dd>
+			  <dd><%= f.collection_select :especialidades_valor_contains, RefDatum.where(:nombre => "Especialidad"), :valor, :valor, :prompt => "No lo tengo claro" %></dd>
 			  
 			  <dt><%= f.label "Región de atención:" %></dt>
 			  <dd><%= f.collection_select :region_contains, Region.order(:nombre), :id, :nombre, {include_blank: true}, :class => "psiquiatra_region" %></dd>

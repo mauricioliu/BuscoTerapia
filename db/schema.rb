@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120209054934) do
+ActiveRecord::Schema.define(:version => 20120214021906) do
 
   create_table "asesoria", :force => true do |t|
     t.string   "necesidad_1"
@@ -42,6 +42,21 @@ ActiveRecord::Schema.define(:version => 20120209054934) do
   end
 
   create_table "especialidades", :force => true do |t|
+    t.integer  "terapeuta_id"
+    t.string   "valor"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "estudios", :force => true do |t|
+    t.integer  "terapeuta_id"
+    t.string   "titulo"
+    t.string   "establecimiento"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "forma_pagos", :force => true do |t|
     t.integer  "terapeuta_id"
     t.string   "valor"
     t.datetime "created_at"
@@ -83,16 +98,14 @@ ActiveRecord::Schema.define(:version => 20120209054934) do
     t.integer  "telefono"
     t.integer  "movil"
     t.string   "email"
-    t.string   "tipo"
-    t.string   "especialidad"
-    t.text     "estudios"
-    t.text     "perfeccionamiento"
+    t.string   "arancel"
+    t.string   "plan_tipo"
+    t.datetime "plan_expira"
     t.string   "descuentos"
     t.string   "password_hash"
-    t.string   "plan"
-    t.datetime "plan_expira"
     t.datetime "last_logged_in"
     t.string   "reset"
+    t.string   "estado"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

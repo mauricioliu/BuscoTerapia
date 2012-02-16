@@ -7,7 +7,7 @@
 
 <% @terapeutas.each do |terapeuta| %>
   <div><%= terapeuta.nombre %>, <%= terapeuta.tipo %> <%= terapeuta.especialidad %></div>
-  <% if terapeuta.plan == 'P'%>
+  <% if terapeuta.plan_tipo == 'P'%>
   	<div>Dirección: <%= terapeuta.direccion %>, <%= terapeuta.comuna %>, <%= terapeuta.region %></div>
     <div>Telefono de contacto: <%= terapeuta.ptelefono %> - <%= terapeuta.telefono %></div>
     <div>Telefono movil<%= terapeuta.pmovil %> - <%= terapeuta.email %></div>

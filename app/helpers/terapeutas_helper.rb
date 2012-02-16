@@ -16,4 +16,13 @@ module TerapeutasHelper
       return false
     end
   end
+  
+  def contains_forma_pago(terapeuta_id, refdata_forma_pago)
+    forma_pago = FormaPago.where("terapeuta_id = ? and valor = ?", terapeuta_id, refdata_forma_pago.valor)
+    if forma_pago.size > 0
+      return true
+    else
+      return false
+    end
+  end
 end

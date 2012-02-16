@@ -1,27 +1,39 @@
+# encoding: utf-8
+
 require 'bcrypt'
 
 class Terapeuta < ActiveRecord::Base
   include BCrypt
   
-  has_many :tipo_terapias
-  has_many :especialidades
+  has_many :tipo_terapias, :through => :ref_data, :dependent => :destroy
+  has_many :especialidades, :dependent => :destroy
+  has_many :estudios, :dependent => :destroy
+  has_many :forma_pagos, :dependent => :destroy
 
-  accepts_nested_attributes_for :tipo_terapias
-  accepts_nested_attributes_for :especialidades
+  accepts_nested_attributes_for :tipo_terapias, :allow_destroy => true
+  accepts_nested_attributes_for :especialidades, :allow_destroy => true
+  accepts_nested_attributes_for :estudios, :allow_destroy => true
+  accepts_nested_attributes_for :forma_pagos, :allow_destroy => true
   
   #accepts_nested_attributes_for :tipo_terapias, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }, :allow_destroy => true
   
   # validates :email, presence: true, uniqueness: true
+  validates_associated :especialidades, :estudios
+  
   validates_presence_of :nombre, :direccion, :region, :comuna, :ptelefono, :telefono, :movil
   validates_numericality_of :ptelefono, :telefono, :movil
   validates :email,   
-            :presence => true,   
+            :presence => true,
+            :uniqueness => true,
             :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
+
+  validate :especialidades_no_duplicate, :especialidades_size
+  validates_format_of :rut, :with => /^0*(\d{1,3}(\.?\d{3})*)\-?([\dkK])$/i
   
-  # attr_accessible :password_confirmation
+  # attr_accessible :especialidades_attributes
   # attr_accessible :email_recovery
   
-  attr_unsearchable :email, :password_hash, :plan, :created_at, :updated_at, :last_logged_in, :telefono, :movil, :direccion
+  attr_unsearchable :email, :password_hash, :created_at, :updated_at, :last_logged_in, :telefono, :movil, :direccion
   #before_create { generate_token(:auth_token) }
   # nombre, direccion, region, comuna, ptelefono, telefono, pmovil, movil, email, tipo, especialidad
   
@@ -38,5 +50,37 @@ class Terapeuta < ActiveRecord::Base
     begin
       self[column] = SecureRandom.urlsafe_base64
     end while Terapeuta.exists?(column => self[column])
+  end
+  
+  def especialidades_no_duplicate
+    lista_esp = Array.new
+    especialidades.each do |especialidad|
+      lista_esp << especialidad.valor.strip
+    end
+    if lista_esp.uniq! != nil
+      errors[:base] << "No pueden haber valores duplicados en especialidades"
+    end
+  end
+  
+  def especialidades_size
+    lista_esp = Array.new
+    especialidades.each do |especialidad|
+      lista_esp << especialidad.valor.strip
+    end
+    if lista_esp.size == 0
+      errors[:base] << "Debes ingresar al menos una especialidad"
+    elsif lista_esp.size > 7
+      errors[:base] << "Solo puedes ingresar un máximo de 7 especialidades"
+    end
+  end
+  
+  def tipo_terapias_size
+    lista_tipos = Array.new
+    tipo_terapias.each do |tipo_terapia|
+      lista_tipos << tipo_terapia.nombre
+    end
+    if lista_tipos.size == 0
+      errors[:base] << "Debes ingresar al menos un tipo de terapia"
+    end
   end
 end
