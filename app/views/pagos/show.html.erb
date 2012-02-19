@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Terapeuta:</b>
+  <%= @pago.terapeuta_id %>
+</p>
+
+<p>
+  <b>Tipo:</b>
+  <%= @pago.tipo %>
+</p>
+
+<p>
+  <b>Monto:</b>
+  <%= @pago.monto %>
+</p>
+
+<p>
+  <b>Estado:</b>
+  <%= @pago.estado %>
+</p>
+
+<p>
+  <b>Fecha pago:</b>
+  <%= @pago.fecha_pago %>
+</p>
+
+
+<%= link_to 'Edit', edit_pago_path(@pago) %> |
+<%= link_to 'Back', pagos_path %>

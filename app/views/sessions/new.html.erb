@@ -1,13 +1,22 @@
 <h1>Log in</h1>
 
-<%= form_tag sessions_path do %>
-  <div class="field">
-    <%= label_tag :email %>
-    <%= text_field_tag :email, params[:email] %>
-  </div>
-  <div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-  </div>
-  <div class="actions"><%= submit_tag "Log in" %></div>
-<% end %>
+  <table>
+  	<tr>
+  		<td colspan="2">
+		    <% flash.each do |name, msg| %>
+		      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+		    <% end %>
+  		</td>
+  	</tr>
+  	<tr>
+  		<td></td>
+  		<td>
+  			<% if session[:terapeuta] == nil %>
+			  	<%= render 'sessions/login'%>
+	  	    <% else %>
+				Bienvenido <%= session[:terapeuta].nombre %> <%= link_to 'Cerrar sesión', logout_path %><br />
+				<%= link_to "Mi cuenta", edit_terapeuta_path(session[:terapeuta]) %>
+			<% end %>
+  		</td>
+  	</tr>
+  </table>

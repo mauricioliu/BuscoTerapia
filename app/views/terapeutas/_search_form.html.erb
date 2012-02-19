@@ -18,8 +18,8 @@
 		<td></td>
 	</tr>
 	<tr>
-		<td><%= f.collection_select :region_contains, Region.order(:nombre), :id, :nombre, include_blank: true %></td>
-		<td><%= f.grouped_collection_select :comuna_contains, Region.order(:nombre), :comunas, :nombre, :id, :nombre, include_blank: true %></td>
+		<td><%= f.collection_select :region_contains, Region.order(:nombre), :id, :nombre, {include_blank: true}, :class => "search_region" %></td>
+		<td><%= f.grouped_collection_select :comuna_contains, Region.order(:nombre), :comunas, :nombre, :id, :nombre, {include_blank: true}, :class => "search_comuna" %></td>
 		<td><%= f.submit "Buscar" %></td>
 	</tr>
 </table>

@@ -34,3 +34,31 @@ jQuery ->
       $('#terapeuta_comuna').empty()
       $('#terapeuta_comuna').attr('disabled', true)
 
+
+jQuery ->
+  #$("#busca_tu_terapeuta").tabs()
+  $('.search_comuna').attr('disabled', true)
+  comunas = $('.search_comuna').html()
+  $('.search_region').change ->
+    region = $('.search_region :selected').text().replace /^\s+|\s+$/g, ""
+    escaped_region = region.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
+    options = $(comunas).filter("optgroup[label='#{escaped_region}']").html()
+    if options
+      $('.search_comuna').html(options)
+      $('.search_comuna').attr('disabled', false)
+    else
+      $('.search_comuna').empty()
+      $('.search_comuna').attr('disabled', true)
+
+  $('.search_region').blur ->
+    region = $('.search_region :selected').text().replace /^\s+|\s+$/g, ""
+    escaped_region = region.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
+    options = $(comunas).filter("optgroup[label='#{escaped_region}']").html()
+    if options
+      $('.search_comuna').html(options)
+      $('.search_comuna').attr('disabled', false)
+      $('.search_comuna').focus()
+    else
+      $('.search_comuna').empty()
+      $('.search_comuna').attr('disabled', true)
+      

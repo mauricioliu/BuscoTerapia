@@ -1,3 +1,3 @@
 class TipoTerapia < ActiveRecord::Base
-  belongs_to :terapeuta, :through => :ref_data
+  belongs_to :terapeuta
 end

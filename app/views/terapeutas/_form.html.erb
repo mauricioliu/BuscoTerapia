@@ -63,9 +63,9 @@
 	  	<td colspan="2">
 		<% for terapia in @tipo_terapias %>
 			<% if params[:tipo_terapia_ids] != nil %>
-				<%= check_box_tag "terapeuta[tipo_terapia_ids][]", terapia.id, params[:tipo_terapia_ids].include?(terapia.valor) %>
+				<%= check_box_tag "tipo_terapia_ids[]", terapia.valor, params[:tipo_terapia_ids].include?(terapia.valor) %>
 			<% else %>
-				<%= check_box_tag "terapeuta[tipo_terapia_ids][]", terapia.id, contains_tipo_terapia(@terapeuta.id, terapia) %>
+				<%= check_box_tag "tipo_terapia_ids[]", terapia.valor, contains_tipo_terapia(@terapeuta.id, terapia) %>
 			<% end %>
 			<%= terapia.valor %>
 		<% end %>
@@ -131,6 +131,20 @@
 		<% end %>
 		</td>
 	  </tr>
+	  <tr>
+  		<td colspan="2">
+  			<%= f.label "Convenios" %><br/>
+			<%= f.text_area :convenios, :size => "50x6" %>
+  		</td>
+  	  </tr>
+  	  <tr>
+  	  	<td colspan="2">
+  	  		<%= f.radio_button :plan_ciclo, "Anual" %>Suscripción información completa anual. $5.300 por mes. Total $63.600 <br/>
+  	  		<%= f.radio_button :plan_ciclo, "Semestral" %>Suscripción información completa semestral. $7.480 por mes. Total $44.880<br/>
+  	  		<%= f.radio_button :plan_ciclo, "Trimestral" %>Suscripción información completa trimestral. $8.900 por mes. Total $26.700<br/>
+  	  		<%= f.radio_button :plan_ciclo, "Gratis" %>Suscripción gratuita. GRATIS
+  	  	</td>
+  	  </tr>
 	  </table>
   </fieldset>
   <div class="actions">

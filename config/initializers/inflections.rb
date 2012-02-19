@@ -15,4 +15,5 @@ inflect.irregular "especialidad" , "especialidades"
 inflect.irregular "estudio" , "estudios"
 inflect.irregular "error" , "errores"
 inflect.irregular "forma_pago", "forma_pagos"
+inflect.irregular "pago", "pagos"
 end

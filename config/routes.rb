@@ -1,4 +1,6 @@
 BuscoTerapia::Application.routes.draw do
+  resources :pagos
+
   resources :terapias
 
   resources :ref_data
@@ -16,7 +18,9 @@ BuscoTerapia::Application.routes.draw do
   match "forgot_password" => "terapeutas#forgot_password", :as => "forgot_password"
   match "reset_password" => "terapeutas#reset_password", :as => "reset_password"
   match "acceso_terapeutas" => "terapeutas#acceso_terapeutas", :as => "acceso_terapeutas"
-  #match "buscar_terapeutas" => "terapeuta#index2", :as => "buscar_terapeutas"
+  match "validate_email" => "terapeutas#validate_email", :as => "validate_email"
+  # match "submit_payment" => "terapeutas#submit_payment"
+  match "payment_success" => "terapeutas#payment_success"
   
   match '/ver_comprobante/:id' => 'asesoria#ver_comprobante', :as => 'ver_comprobante'
   

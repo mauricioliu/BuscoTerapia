@@ -1,0 +1,27 @@
+<h1>Parámetros de la aplicación</h1>
+
+<%= will_paginate @ref_datas, previous_label: h("<"), next_label: h(">") %>
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Valor</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @ref_datas.each do |ref_data| %>
+  <tr>
+    <td><%= ref_data.nombre %></td>
+    <td><%= ref_data.valor %></td>
+    <td><%= link_to 'Ver', ref_data %></td>
+    <td><%= link_to 'Modificar', edit_ref_data_path(ref_data) %></td>
+    <td><%= link_to 'Eliminar', ref_data, confirm: 'Seguro desea eliminar?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Crear Nuevo', new_ref_data_path %>

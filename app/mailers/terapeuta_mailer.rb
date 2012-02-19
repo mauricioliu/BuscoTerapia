@@ -20,10 +20,12 @@ class TerapeutaMailer < ActionMailer::Base
   #
   #   en.terapeuta_mailer.forgot_password.subject
   #
-  def forgot_password(terapeuta, password)
-    @password = password
+  def forgot_password(terapeuta,reset_password_link)
     @terapeuta = terapeuta
-
-     mail(:to => @terapeuta.email, :subject => "Solicitud de contraseña BuscoTerapia.cl")
+    @reset_password_link = reset_password_link
+    
+     mail(:to => @terapeuta.email, :subject => "Solicitud de contraseña BuscoTerapia.cl") do |format|
+      format.html
+    end
   end
 end

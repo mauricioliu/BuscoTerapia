@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  terapeuta_id: 1
+  tipo: MyString
+  monto: 1
+  estado: MyString
+  fecha_pago: 2012-02-19 11:29:46
+
+two:
+  terapeuta_id: 1
+  tipo: MyString
+  monto: 1
+  estado: MyString
+  fecha_pago: 2012-02-19 11:29:46

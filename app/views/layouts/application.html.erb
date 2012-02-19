@@ -19,7 +19,12 @@
 			<h1><%= link_to '', root_url, :class => "buscoterapia" %></h1>
 		</div><!-- branding -->
 		<div id="login">
-			<p><a href="#">Quieres Iniciar tu sesión?</a></p>
+		<% if session[:terapeuta] == nil %>
+			<p><%= link_to "Quieres Iniciar tu sesión?", new_session_path %></p>
+		<% else %>
+			<p>Bienvenido <%= session[:terapeuta].nombre %> <%= link_to 'Cerrar sesión', logout_path %><br />
+			<%= link_to "Mi cuenta", edit_terapeuta_path(session[:terapeuta]) %></p>
+		<% end %>
 		</div><!-- login -->
 		</div><!-- wrapper	 -->
 	</div><!-- header -->
@@ -38,7 +43,7 @@
 	</div><!-- nav -->
    <div class="wrapper">
    <%= yield %>
-   </div>>
+   </div>
    
    	<div id="footer" class="wrapper">
 		<ul class="left">

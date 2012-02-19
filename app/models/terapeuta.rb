@@ -5,10 +5,11 @@ require 'bcrypt'
 class Terapeuta < ActiveRecord::Base
   include BCrypt
   
-  has_many :tipo_terapias, :through => :ref_data, :dependent => :destroy
+  has_many :tipo_terapias, :dependent => :destroy
   has_many :especialidades, :dependent => :destroy
   has_many :estudios, :dependent => :destroy
   has_many :forma_pagos, :dependent => :destroy
+  has_many :pagos, :dependent => :destroy
 
   accepts_nested_attributes_for :tipo_terapias, :allow_destroy => true
   accepts_nested_attributes_for :especialidades, :allow_destroy => true
@@ -27,7 +28,7 @@ class Terapeuta < ActiveRecord::Base
             :uniqueness => true,
             :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
 
-  validate :especialidades_no_duplicate, :especialidades_size
+  validate :especialidades_no_duplicate, :especialidades_size, :tipo_terapias_size
   validates_format_of :rut, :with => /^0*(\d{1,3}(\.?\d{3})*)\-?([\dkK])$/i
   
   # attr_accessible :especialidades_attributes
