@@ -95,7 +95,7 @@ class TerapeutasController < ApplicationController
                                           :estado => "pendiente" )
           @pago_codigo = "Susc-BT-"+@terapeuta.plan_ciclo
           
-          @success_url = root_url + "payment_success?email="+encrypt_url(@terapeuta.email)+"&tid="+encrypt_url(@terapeuta.id)+"&pid="+encrypt_url(@pago.id)
+          @success_url = root_url + "payment_success?code="+encrypt_url(@terapeuta.email+"||"+@terapeuta.id.to_s+"||"+@pago.id.to_s)
           format.html { render "submit_payment" }
           #format.html { redirect_to @terapeuta, notice: 'Terapeuta fue creado exitosamente.' }
           #format.json { render json: @terapeuta, status: :created, location: @terapeuta }  
@@ -158,14 +158,6 @@ class TerapeutasController < ApplicationController
   def reset_password
     terapeuta = Terapeuta.find_by_email(params[:email_recovery])
     if terapeuta != nil
-      # random_password = Array.new(10).map { (65 + rand(58)).chr }.join
-      # terapeuta.password=random_password
-      # terapeuta.reset = 'y'
-      # terapeuta.save
-      # cipher = Gibberish::AES.new("lOl!123?")
-      # enc_email = cipher.enc(terapeuta.email)
-      # enc_email = Base64.urlsafe_encode64(enc_email)
-    
       reset_password_link = root_url + "validate_email?email="+encrypt_url(terapeuta.email)
       
       TerapeutaMailer.forgot_password(terapeuta,reset_password_link).deliver
@@ -177,17 +169,10 @@ class TerapeutasController < ApplicationController
   
   def validate_email
     begin
-      # cipher = Gibberish::AES.new("lOl!123?")
-      #puts "123email"
-      #puts params[:email]
       email = decrypt_url(params[:email])
-      # email = cipher.dec(email) 
       terapeuta = Terapeuta.find_by_email(email)
       
-      #@pp = cipher.enc("liu.mauricio@gmail.com")
-      #@pp = Base64.urlsafe_encode64(@pp)
       if terapeuta
-        # session[:terapeuta] = terapeuta
         render "change_password"
       else
         redirect_to root_url
@@ -199,20 +184,27 @@ class TerapeutasController < ApplicationController
   end
   
   def payment_success
-    @estado = "Hubo un problema con la transacción"
-    email = decrypt_url(params[:email])
-    tid = decrypt_url(params[:tid])
-    pid = decrypt_url(params[:pid])
-    terapeuta = Terapeuta.find(tid)
-    if terapeuta.email == email
-      pago = terapeuta.pagos.find(pid)
-      if pago && pago.estado == "pendiente"
-        pago.estado = "dm validado"
-        pago.save
-        @estado = "transacción terminada exitósamente"
+    begin
+      @estado = "Hubo un problema con la transacción"
+      code = decrypt_url(params[:code])
+      code = code.split('||')
+      email = code[0]
+      tid = code[1]
+      pid = code[2]
+      
+      terapeuta = Terapeuta.find(tid)
+      if terapeuta.email == email
+        pago = terapeuta.pagos.find(pid)
+        if pago && pago.estado == "pendiente"
+          pago.estado = "dm validado"
+          pago.save
+          @estado = "transacción terminada exitósamente"
+        end
       end
+    rescue
+      redirect_to root_url
     end
-  end  
+  end
 
 private  
   def encrypt_url(url)
