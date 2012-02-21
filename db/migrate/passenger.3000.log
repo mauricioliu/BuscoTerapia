@@ -1,0 +1,1 @@
+2012/02/20 17:55:20 [error] 1873#0: *4 "/var/www/vhosts/buscoterapia.cl/BuscoTerapia/db/migrate/public/index.html" is not found (2: No such file or directory), client: 127.0.0.1, server: _, request: "HEAD / HTTP/1.1", host: "0.0.0.0"

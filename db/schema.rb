@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120219152533) do
+ActiveRecord::Schema.define(:version => 20120219152945) do
 
   create_table "asesoria", :force => true do |t|
-    t.string   "necesidad_1"
-    t.string   "necesidad_2"
+    t.text     "necesidad_1",       :limit => 16777215
+    t.text     "necesidad_2",       :limit => 16777215
     t.string   "paciente_nombre"
     t.integer  "paciente_edad"
     t.string   "terapia_para"

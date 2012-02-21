@@ -198,7 +198,7 @@ a.buscoterapia{
 #busca_tu_terapeuta ul.tabs li.active a {
 	background-color: #e3deed;	
 	color: #49362b;
-	font-weight: ;
+	font-weight: bold;
 }
 
 #busca_tu_terapeuta form fieldset {
