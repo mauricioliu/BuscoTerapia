@@ -1,0 +1,82 @@
+	  <table>
+	  	<tr>
+	  		<td>Nombre del terapeuta o centro</td>
+	  		<td><%= @terapeuta.nombre %></td>
+	  	</tr>
+	  	<tr>
+	  		<td>Rut del terapeuta o centro:</td>
+	  		<td><%= @terapeuta.rut %></td>
+	  	</tr>
+	  	<tr>
+	  		<td>Correo electrónico</td>
+	  		<td><%= @terapeuta.email %></td>
+	  	</tr>
+	  	<tr>
+	  		<td>Teléfono fijo:</td>
+	  		<td><%= @terapeuta.ptelefono %> - 
+	  			<%= @terapeuta.telefono %></td>
+	  	</tr>
+	  	<tr>
+	  		<td> Teléfono móvil:</td>
+	  		<td><%= @terapeuta.movil %></td>
+	  	</tr>
+	  	<tr>
+	  		<td>Direccion de la consulta o del centro</td>
+	  		<td><%= @terapeuta.direccion %></td>
+	  	</tr>
+	  	<tr>
+	  		<td>Region</td>
+	  		<td><%= @terapeuta.region %></td>
+	  	</tr>
+	  	<tr>
+	  		<td>Comuna</td>
+	  		<td><%= @terapeuta.comuna %></td>
+	  	</tr>
+	  	<tr>
+	  		<td>Codigo postal de la consulta o centro</td>
+	  		<td><%= @terapeuta.codigo_postal %></td>
+	  	</tr>
+	  	<tr>
+	  		<td>Sitio web propio o del centro</td>
+	  		<td><%= @terapeuta.sitio_web %></td>
+	  	</tr>
+	  </table>
+	  
+	  <div>Tipo Terapias</div>
+	  <ul>
+	  	<% @terapeuta.tipo_terapias.each do |tt| %>
+	  		<li><%= tt.nombre %></li>
+	  	<% end %>
+	  </ul>
+	  <div>Tipo Terapias</div>
+	  <ul>
+	  	<% @terapeuta.especialidades.each do |especialidad| %>
+	  		<li><%= especialidad.valor %></li>
+	  	<% end %>
+	  </ul>
+	  <table>
+	  	<% @terapeuta.estudios.each do |estudio| %>
+	  	<tr>
+	  		<td><%= estudio.titulo %></td>
+	  		<td><%= estudio.establecimiento %></td>
+	  	</tr>
+	  	<% end %>
+	  </table>
+	  <table>
+	  	<tr>
+	  		<td>Fecha Creación</td>
+	  		<td>Tipo</td>
+	  		<td>Monto</td>
+	  		<td>Estado</td>
+	  		<td>Fecha Pago</td>
+	  	</tr>
+	  	<% @terapeuta.pagos.each do |pago| %>
+	  	<tr>
+	  		<td><%= pago.created_at %></td>
+	  		<td><%= pago.tipo %></td>
+	  		<td><%= pago.monto %></td>
+	  		<td><%= pago.estado %></td>
+	  		<td><%= pago.fecha_pago %></td>
+	  	</tr>
+	  	<% end %>
+	  </table>

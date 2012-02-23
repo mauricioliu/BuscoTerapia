@@ -1,4 +1,5 @@
 class RefDataController < ApplicationController
+  http_basic_authenticate_with :name => "btpadmin", :password => "btp.123!admin"
   # GET /ref_data
   # GET /ref_data.json
   def index

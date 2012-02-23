@@ -11,10 +11,10 @@ class Terapeuta < ActiveRecord::Base
   has_many :forma_pagos, :dependent => :destroy
   has_many :pagos, :dependent => :destroy
 
-  accepts_nested_attributes_for :tipo_terapias, :allow_destroy => true
-  accepts_nested_attributes_for :especialidades, :allow_destroy => true
-  accepts_nested_attributes_for :estudios, :allow_destroy => true
-  accepts_nested_attributes_for :forma_pagos, :allow_destroy => true
+  accepts_nested_attributes_for :tipo_terapias, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }, :allow_destroy => true
+  accepts_nested_attributes_for :especialidades, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }, :allow_destroy => true
+  accepts_nested_attributes_for :estudios, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }, :allow_destroy => true
+  accepts_nested_attributes_for :forma_pagos, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }, :allow_destroy => true
   
   #accepts_nested_attributes_for :tipo_terapias, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }, :allow_destroy => true
   

@@ -1,6 +1,9 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   <title>Busco Terapia</title>
   <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css", 
   						  "application",
@@ -8,8 +11,7 @@
   <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", 
   							 "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", 
   							 "application",
-  							 "nested_form",
-  							 "osv.js" %>
+  							 "osv" %>
   <%= csrf_meta_tag %>
 </head>
 <body class="<%= params[:controller] %>">

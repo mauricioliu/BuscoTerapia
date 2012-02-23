@@ -9,7 +9,12 @@ class AsesoriaMailer < ActionMailer::Base
   
   def inform_request(asesoria)
     @asesoria = asesoria
+    recipients = RefDatum.where(:nombre => "Back Office Email")
+    email = Array.new
+    recipients.each do |recipient|
+      email << recipient.valor
+    end
 
-     mail(:to => @asesoria.paciente_email, :subject => "Se ha ingresado una nueva solicitud")
+    mail(:to => email, :subject => "Se ha ingresado una nueva solicitud")
   end
 end

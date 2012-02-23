@@ -28,4 +28,19 @@ class TerapeutaMailer < ActionMailer::Base
       format.html
     end
   end
+  
+  def notify_new_terapeuta(terapeuta)
+    @terapeuta = terapeuta
+    
+    recipients = RefDatum.where(:nombre => "Back Office Email")
+    email = Array.new
+    recipients.each do |recipient|
+      email << recipient.valor
+    end
+
+    # mail(:to => email, :subject => "Un nuevo terapeuta se ha registrado")
+    mail(:to => email, :subject => "Un nuevo terapeuta se ha registrado") do |format|
+      format.html
+    end
+  end
 end

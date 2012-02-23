@@ -1,4 +1,5 @@
 class PagosController < ApplicationController
+  http_basic_authenticate_with :name => "btp", :password => "btp.123!"
   # GET /pagos
   # GET /pagos.json
   def index

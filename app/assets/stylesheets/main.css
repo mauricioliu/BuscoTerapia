@@ -1,0 +1,1333 @@
+@charset "utf-8";
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*fin del reset*/
+
+
+@font-face {
+    font-family: 'Webfont';
+    src: url('../fonts/webfont-webfont.eot');
+    src: url('../fonts/webfont-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/webfont-webfont.woff') format('woff'),
+         url('../fonts/webfont-webfont.ttf') format('truetype'),
+         url('../fonts/webfont-webfont.svg#WebfontRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Webfont';
+/*	src: url('../fonts/webfont_bold-webfont.eot');
+	src: local('?'), url('../fonts/webfont_bold-webfont.woff') format('woff'), url('../fonts/webfont_bold-webfont.eot') format('truetype'), url('../fonts/webfont_bold-webfont.svg') format('svg');
+*/	
+    src: url('../fonts/webfont_bold-webfont.eot');
+    src: url('../fonts/webfont_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/webfont_bold-webfont.ttf') format('truetype'),
+         url('../fonts/webfont_bold-webfont.svg#Webfont') format('svg');
+	 
+    font-weight: bold;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Webfont';
+    src: url('../fonts/webfont_italic-webfont.eot');
+    src: url('../fonts/webfont_italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/webfont_italic-webfont.woff') format('woff'),
+         url('../fonts/webfont_italic-webfont.ttf') format('truetype'),
+         url('../fonts/webfont_italic-webfont.svg#WebfontItalic') format('svg');
+    font-weight: normal;
+    font-style: italic;
+
+}
+
+
+
+body{
+	margin: 4px 0 0;
+	font-size: 62.5%;
+	font-family: 'Webfont',"Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	background: #f5f5f5 url(../img/top.jpg) repeat-x;
+}
+
+
+.wrapper{
+	width: 1006px;
+	margin: 0 auto;
+	clear: both;
+	position:relative;
+}
+.block-wrapper{
+	width:100%;
+	float:left;
+}
+.col_12{
+	clear: both;
+}
+.col_8{
+	width: 642px;
+	float: left;
+}
+
+
+h2 {
+	color: #959595;
+	margin: 5px 0;
+	font-size: 15px;
+	font-weight:bold;
+}
+
+h1 {
+	font-size: 2.4em;
+	line-height: 1.2em;
+	margin: 15px 0;
+	color: #067ab8;
+	font-weight:bold;
+}
+h3{
+	font-weight:bold;
+	font-size:15px;
+}
+p {
+	font-size: 1.4em;
+	line-height: 140%;
+	color: #8a8a8a;
+	margin:8px 0;
+	
+}
+strong{
+	font-weight:bold;
+}
+small{
+	font-size:85%;
+}
+#header{
+	position:relative;
+	background-color: #fff;
+	height: 112px;
+	margin: 0;
+	z-index:490;
+}
+a{
+	outline:none;
+	color:#7d74c1;
+	text-decoration:none;
+}
+a:hover{
+	color:#6252e2;
+}
+a.buscoterapia{
+	display: block;
+	background: url(../img/buscoterapia.jpg) no-repeat center bottom;
+	height: 79px;
+	width: 250px;
+	text-indent: -9000%;
+	margin: 0 auto;
+	padding-top: 10px;
+}
+#login{
+	position:absolute;
+	right:10px;
+	top:10px;
+	padding-right:13px;
+	background: url(../img/arrow-down.png) no-repeat right center;
+	cursor:pointer;
+}
+#login p{
+	margin: 0;
+	font-size: 1.2em;
+}
+
+#login p a{
+	text-decoration: none;
+	color: #a9a9a9;
+}
+
+/** login form **/
+#loginForm {
+	background-color: #e3f2fa;
+	border: solid 1px #9bcae3;
+	display: none;
+	/*height: 100px;*/
+	right: 10px;
+	position: absolute;
+	top: 30px;
+	width: 285px;
+	z-index:500;
+	padding:20px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	color:#7c7c7c;
+	
+	/*-webkit-box-shadow: 0px 2px 5px 0px #000000;
+	-moz-box-shadow: 0px 2px 5px 0px #000000;
+	box-shadow: 0px 2px 5px 0px #000000; */
+	font-size:13px;
+	
+	}
+#loginForm label{
+	width:100%;
+	float:left;
+
+	
+	
+}
+#loginForm a{
+	color:#7c7c7c;	
+	text-decoration:none;
+}
+
+input[type="text"],input[type="password"]{
+	padding:4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	border:1px solid #c4c4c4;
+	width:275px;
+
+	
+	background-image: linear-gradient(bottom, #FFFFFF 0%, #F1F1F1 100%);
+	background-image: -o-linear-gradient(bottom, #FFFFFF 0%, #F1F1F1 100%);
+	background-image: -moz-linear-gradient(bottom, #FFFFFF 0%, #F1F1F1 100%);
+	background-image: -webkit-linear-gradient(bottom, #FFFFFF 0%, #F1F1F1 100%);
+	background-image: -ms-linear-gradient(bottom, #FFFFFF 0%, #F1F1F1 100%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #FFFFFF),
+		color-stop(1, #F1F1F1)
+	);
+}
+#loginForm input[type="text"],#loginForm input[type="password"]{
+	margin-bottom:15px;
+	margin-top:5px;
+
+}
+.texto-recordar{
+	width:100px;
+	font-size:13px;
+}
+.texto-recordar span{
+	position: relative;
+	top: -2px;
+}
+.boton-azul{
+	background-color:rgb(5,104,157);
+	background-image: linear-gradient(bottom, rgb(5,104,157) 0%, rgb(43,142,195) 100%);
+	background-image: -o-linear-gradient(bottom, rgb(5,104,157) 0%, rgb(43,142,195) 100%);
+	background-image: -moz-linear-gradient(bottom, rgb(5,104,157) 0%, rgb(43,142,195) 100%);
+	background-image: -webkit-linear-gradient(bottom, rgb(5,104,157) 0%, rgb(43,142,195) 100%);
+	background-image: -ms-linear-gradient(bottom, rgb(5,104,157) 0%, rgb(43,142,195) 100%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(5,104,157)),
+		color-stop(1, rgb(43,142,195))
+	);
+	border:1px solid #074668;
+	color:#fff;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	padding:5px 35px;
+	font-size:13px;
+	font-weight:bold;
+	text-shadow: #000 1px 1px 1px;
+	cursor: pointer;
+}
+#loginForm input[type="button"]{
+	float:right;
+	
+}
+
+.login-separador{
+	border:none;
+	border-top: solid 1px #9bcae3;
+	
+	height:0px;
+	float:left;
+	width:325px;
+	margin:20px -20px;
+}
+
+#unfocus-bg-login-form{
+		width:100%;
+		height:100%;
+		position:fixed;
+		top:0px;
+		left:0px;
+		z-index:400;
+		display:none;
+}
+/* -- */
+
+#branding {
+	/*float: left;*/
+	margin:0 auto ;
+	
+}
+
+#nav{
+	background-color: #eff2f3;
+	/*font-size: 1.4em;*/
+	font-size: 14px;
+	
+	margin: 0 auto;
+	/*height: 35px;*/
+	clear: both;
+	position:relative;
+	z-index:300;
+}
+#nav ul{
+	min-height: 42px;
+	-webkit-border-bottom-right-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	/*overflow: hidden;*/
+	padding: 0;
+}
+#nav ul.main{
+	list-style: none;
+	margin: 0 1px 0 0;
+	background-color: #7e75bb;
+	width: 754px;
+	float: left;
+	
+	/*padding: 10px 0 0;*/
+}
+#nav ul.acceso{
+	list-style: none;
+	margin: 0;
+	/*padding: 10px 0 0;*/
+	width: 251px;
+	float: right;
+	background-color: #4584b9;
+	text-align:center;
+}
+
+#nav ul.acceso li{
+	width:100%;
+	margin: 0 auto;
+	text-align:center;
+}
+
+#branding h1 {
+	margin: 0;
+}
+
+
+
+#nav ul li {
+	float: left;
+	margin: 0 6px; 
+	height: 42px;
+	position:relative;
+}
+
+#nav ul li a {
+	padding: 5px 8px;
+	text-decoration: none;
+	color: #fdf0e4;
+	font-weight: bold; /*restaurar luego*/
+	text-shadow: #524c7a 1px 1px 1px;
+	display: inline-block;
+	position:relative;
+	top:20%;
+}
+#nav ul li a:hover{
+	color: #fff;
+}
+#nav ul li.current a{
+	color: #f8d2ae;
+}
+#block-content{
+	margin-top:15px;
+}
+
+
+#mensaje-top{
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	
+	background-color:#a392c5;
+	text-shadow: #352d76 1px 1px 1px;
+	padding:15px;
+	width:976px;
+	position:relative;
+	margin-top:15px;
+	float:left;
+	
+}
+.mensaje-titulo{
+	position:relative;
+	float:left;
+	width:415px;
+}
+.mensaje-titulo p{
+	color: #fff;
+	font-size:24px;
+	font-weight:bold;
+	margin:5px 0;
+}
+
+.mensaje-texto{
+	width:480px;
+	float:left;
+	position:relative;
+	left:20px;
+	top: 10px;
+}
+.mensaje-texto p{
+	color: #fff;
+	font-size:14px;
+}
+.boton-cerrar-mensaje{
+	color: #fff;
+	font-size:11px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-color:#b5a6cd;
+	text-shadow:none;
+	padding:2px;
+	width:60px;
+	text-align:center;
+	position:absolute;
+	right:5px;
+	top:6px;
+	cursor:pointer;
+}
+
+#asesoria_terapeutas .boton-morado {
+
+	padding: 8px 75px;
+	font-size: 17px;
+	width:308px;
+}
+
+
+
+#asesoria_terapeutas {
+	padding: 15px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	height: 400px;
+	background: #fff url(../img/steps.jpg) no-repeat 90% 60%;
+	position:relative;
+}
+#asesoria_terapeutas p{
+	font-size: 1.5em;
+	line-height: 130%;
+}
+
+#boton-solicita-home{
+	position:absolute;
+	bottom:20px;
+}
+
+#asesoria_terapeutas h1 {
+width:500px;
+}
+.texto-asesoria{
+	width:300px;
+}
+.texto-asesoria p{
+	padding-bottom:15px;
+}
+#busca_tu_terapeuta {
+	padding: 15px 13px;
+	background-color: #fff;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;	
+	height: 400px;
+	float: right;
+	width:308px;
+}
+
+
+#busca_tu_terapeuta ul.tabs {
+	margin: 15px -15px 0 -13px;
+	padding: 0;
+	list-style: none;
+	/*font-size: 13px;*/
+	font-size: 1.2em;
+}
+
+#busca_tu_terapeuta ul.tabs li {
+	float: left;
+	margin-right: 1px;
+	text-align:center;
+}
+#busca_tu_terapeuta .tab1{
+	width:125px;
+}
+#busca_tu_terapeuta .tab2{
+	width:209px;
+	margin-right: -2px !important;
+}
+
+
+#busca_tu_terapeuta .tab1 a{
+	background-color: #e3deed;
+}
+#busca_tu_terapeuta .tab2 a{
+	background-color: #e7f7eb;
+}
+
+
+#busca_tu_terapeuta #tab1 {
+	background-color: #e3deed;
+}
+#busca_tu_terapeuta #tab2 {
+	background-color: #e7f7eb;
+}
+
+
+#busca_tu_terapeuta ul.tabs li a {
+	display: block;
+	text-decoration: none;
+	/*background-color: #fff3e0;*/
+	padding: 15px 5px;
+	color: #7d74c1;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+#busca_tu_terapeuta ul.tabs li a:hover{
+	/*background-color: #e7f7eb;*/
+	color: #49362b;
+}
+
+#busca_tu_terapeuta ul.tabs li.active a {
+	/*background-color: #e3deed;	*/
+	color: #49362b;
+	font-weight: bold ;
+}
+#busca_tu_terapeuta .tab_container{
+	position:relative;
+	float:left;
+	color: #6f6f6f;
+	font-size: 1.3em;
+}
+.tab_content{
+	width: 304px;
+	
+	border: none;
+	margin: 0 -13px;
+	display:block;
+	padding: 15px;
+	background-color: #e3deed;
+	-webkit-border-bottom-right-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-moz-border-radius-bottomright: 5px;
+	-moz-border-radius-bottomleft: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;	
+	float:left;
+
+}
+.form-block{
+	width:100%;
+	float:left;
+}
+.label{
+	width:100%;
+	float:left;
+	margin-bottom: 10px;
+}
+.input_field{
+	width:100%;
+	float:left;
+	margin-bottom: 20px;
+	margin-left: 0;
+}
+
+.label small{
+	margin: 5px 0;
+	display:inline-block;
+}
+/*#busca_tu_terapeuta select {*/
+select {
+	padding:4px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-color: #fff;
+	border: 1px solid #C4C4C4;
+	width: 100%;
+	font-size: 13px;
+	color: #38373b;
+}
+
+#busca_tu_terapeuta input[type="text"] {
+	font-size: 13px	;
+	padding: 5px;
+	width: 292px;
+}
+.boton-morado {
+	background: url("../img/boton_bg.jpg") repeat-x scroll 0 center transparent;
+	border: 1px solid #544a9a;
+	padding: 4px 20px;
+	font-size: 13px;
+	font-weight: bold;
+	color: #fdf4ec;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	text-shadow: #524c7a 1px 1px 1px;
+	float: right;
+	cursor: pointer;
+}
+
+#busca_tu_terapeuta  .buscador-columna-right{
+	float:right;
+	width:45%;
+	padding-left:9%;
+}
+#busca_tu_terapeuta  .buscador-columna-left{
+	width:45%;
+	float:left;
+}
+/*fieldset*/
+#block-destacados_del_dia{
+	margin-top:30px;
+}
+#destacados_del_dia{
+	margin: 0;
+	padding: 15px 0;
+	/*height: 200px;*/
+	min-height: 220px;
+	float:left;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-color: #fff;	
+}
+
+#destacados_del_dia h2{
+	margin: 0 0 15px 15px;
+}
+
+/* @group carousel */
+
+.infiniteCarousel {
+  	width: 1006px;
+  	position: relative;
+}
+
+.infiniteCarousel .wrapper_carousel {
+  width: 990px; /* .infiniteCarousel width - (.wrapper margin-left + .wrapper margin-right) */
+	overflow: auto;
+	min-height: 10em;
+	margin: 0px 0 0;
+	position: relative;
+	top: 0;
+	float:left;
+	/*height: 190px;*/
+}
+
+.infiniteCarousel ul a img {
+	border: 5px solid #000;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+.infiniteCarousel .wrapper_carousel ul {
+	width: 9999px;
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	display: block;
+	top: 0;
+}
+
+.infiniteCarousel ul li {
+	display:block;
+	float:left;
+	padding: 0 15px;
+	/*height: 168px;*/
+	width: 305px;
+}
+.infiniteCarousel ul li .bg-color{
+	background-color:#e3f2fa;
+	min-height: 163px;
+	padding-bottom:5px;
+}
+
+.infiniteCarousel ul li img {
+	float: left;
+	margin-right: 10px;
+}
+.infiniteCarousel h3 {
+	font-size: 1.5em;
+	padding: 10px 5px 0 0;
+	display:block;
+}
+.infiniteCarousel a {
+	text-decoration: none;
+	color: #4483be;
+}
+.infiniteCarousel p{
+	margin: 10px 10px;
+}
+.infiniteCarousel ul li a img {
+	display:block;
+}
+
+.infiniteCarousel .arrow {
+	display: block;
+	height: 60px;
+	width: 30px;
+	position: absolute;
+	top: 97px;
+	cursor: pointer;
+	background-color: #fff;
+	margin-left: -30px;
+	background: url("../img/arrows-destacado-home.png") no-repeat scroll 0 0 transparent;
+
+}
+
+.infiniteCarousel .forward {
+	background-position: 0 -63px;
+	right: 0;
+	margin-right: -30px;
+}
+
+.infiniteCarousel .back {
+	background-position: -35px -63px;
+	left: 0;
+}
+
+.infiniteCarousel .forward:hover {
+	background-position: 0 0;
+}
+
+.infiniteCarousel .back:hover {
+	background-position: -35px 0;
+}
+
+/* @end */
+
+.noticias{
+	float: left;
+	width: 305px;
+	margin: 0 15px;
+	background-color: #fff3e0;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+
+
+.noticias p {
+	font-size: 1.2em;
+	padding: 0 10px 0 0;
+}
+.noticias p a{
+	color: #35658e;
+}
+#block-footer{
+	margin: 30px 0 0 ;
+	padding: 0 0 30px ;
+}
+#footer{
+	/*background-color: #eff2f3;*/
+	height: 50px;
+	/*margin: 15px auto 0 auto;*/
+}
+
+#footer ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+#footer ul.left {
+	float: left;
+	font-size: 13px;
+	margin-left:10px;
+}
+#footer ul.right{
+	float: right;
+	font-size: 13px;
+	width:320px;
+	margin-right:-10px;
+}
+#footer ul.right li{
+	float: left;
+	margin-right: 25px;
+	margin-bottom:3px;
+	width:135px;
+}
+#footer ul li a{
+	color: #6f6f6f;
+	text-decoration: none;
+}
+#footer ul li a:hover{
+	color: #000;
+}
+
+
+.clear{
+	clear: both;
+}
+
+
+
+/*** ASESORIA ***/
+
+
+.columna-670-left{
+	width:640px;
+	float:left;
+	min-height:250px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-color:#fff;
+	padding: 15px;
+	position:relative;
+}
+.columna-335-right{
+	width:336px;
+	float:right;
+	min-height:210px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-color:#fff;
+	position:relative;
+	margin-bottom:15px;
+}
+
+
+.etapas{
+	width:600px;
+	position:relative;
+	height:80px;
+	margin-top:20px;
+}
+.etapa{
+	width:130px;
+	height:80px;
+
+	display:inline-block;
+	margin: auto;
+	position:relative;
+	margin-right:100px;
+	text-align:center;
+	float:left;
+}
+.icon_etapa_3{
+	margin-right:0;
+}
+.etapa .number{
+	color:#fff;
+	width:30px;
+	height:25px;
+	padding-top:5px;
+	background-color:#ccc;
+	display:inline-block;
+	text-align:center;
+	font-size:16px;
+	font-weight:bold;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+.etapa .label{
+	padding-top:15px;
+	/*color:#067ab8;*/
+	color:#dddddd;
+	
+	display:inline-block;
+	font-size:14px;
+}
+.linea_etapas{
+	border:none;
+	border-top:solid 4px #8dd1a2;
+	position:absolute;
+	top:10px;
+	width:465px;
+	left:65px;
+}
+
+/**   cada etapa   **/
+
+.etapa_1 .icon_etapa_1 .label{
+	color:#067ab8;
+}
+.etapa_1 .icon_etapa_1 .number{
+	background-color:#6368ad;
+}
+
+.etapa_2 .icon_etapa_1 .label{
+	color:#067ab8;
+}
+.etapa_2 .icon_etapa_1 .number{
+	background-color:#6368ad;
+}
+.etapa_2 .icon_etapa_2 .label{
+	color:#067ab8;
+}
+.etapa_2 .icon_etapa_2 .number{
+	background-color:#6368ad;
+}
+
+.etapa_3 .icon_etapa_1 .label{
+	color:#067ab8;
+}
+.etapa_3 .icon_etapa_1 .number{
+	background-color:#6368ad;
+}
+.etapa_3 .icon_etapa_2 .label{
+	color:#067ab8;
+}
+.etapa_3 .icon_etapa_2 .number{
+	background-color:#6368ad;
+}
+.etapa_3 .icon_etapa_3 .label{
+	color:#067ab8;
+}
+.etapa_3 .icon_etapa_3 .number{
+	background-color:#ff7a00;
+}
+
+/**   /cada etapa   **/
+textarea{
+	padding:4px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border:1px solid #c4c4c4;
+	width:97%;
+
+	
+	background-image: linear-gradient(bottom, #FFFFFF 0%, #F1F1F1 100%);
+	background-image: -o-linear-gradient(bottom, #FFFFFF 0%, #F1F1F1 100%);
+	background-image: -moz-linear-gradient(bottom, #FFFFFF 0%, #F1F1F1 100%);
+	background-image: -webkit-linear-gradient(bottom, #FFFFFF 0%, #F1F1F1 100%);
+	background-image: -ms-linear-gradient(bottom, #FFFFFF 0%, #F1F1F1 100%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, #FFFFFF),
+		color-stop(1, #F1F1F1)
+	);
+}
+.form-box-center{
+	width:75%;
+	margin:0 auto;
+	display:block;
+	position:relative;
+}
+.form-box{
+	width:100%;
+	padding:2% 4% 4%;
+	margin-left:-4%;
+	margin-bottom: 20px;
+	display:block;
+	border:3px solid #eaebf6;
+	background-color:#f7f5fa;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	color:#6f6f6f;
+	font-size:13px;
+	float:left;
+}
+
+.form-box h3{
+	color:#4483be;
+}
+
+.aviso{
+	color:#ff7a00;
+	margin:0;
+	font-size:11px;
+}
+.titulo-form{
+	margin-bottom:20px;
+	float:left;
+	width:100%;
+}
+
+.form-box .label{
+	font-weight:bold;
+}
+.form-box .label small{
+	font-weight:normal;
+}
+
+.area_big{
+	height:145px;
+}
+.area_med{
+	height:105px;
+}
+.area_small{
+	height:55px;
+}
+/** destacado para alertar **/
+.form-block.alerta textarea, .form-block.alerta input[type="text"], .form-block.alerta select{
+	border-color:#ff7a00;
+}
+
+.form-block.one-line .label{
+	width:140px;
+	padding:7px 12px 0 0 ;
+	text-align:right;
+}
+.form-block.one-line .input_field{
+	width:300px;
+	margin-bottom:10px;
+}
+.form-block.one-line .input_field input{
+	width:230px;
+}
+.form-block.one-line .input_field select{
+	width:240px;
+}
+.form-block .input_field input{
+	width:97%;
+}
+.horarios-form input {
+	width:175px !important;
+}
+.horarios-form select	{
+	width:185px !important;
+}
+
+.boton-volver{
+	font-size:99.95%;
+}
+
+.columna-335-right h2{
+	margin:20px 15px 15px;
+}
+.columna-335-right p{
+	margin:3% 13px;
+	font-size:13px;
+}
+
+.right{
+	text-align:right;
+}
+
+
+.numero-solicitud{
+	font-size:24px;
+	color:#ff7a00;
+	position:relative;
+	margin-top:-47px;
+	margin-bottom:30px;
+}
+
+.form-comprobante{
+	border:3px solid #cdf5d9;
+	background-color:#e4fceb;
+}
+
+.form-comprobante hr{
+	border:none;
+	border-top:3px solid #cdf5d9;
+	width:108%;
+	margin: 15px -4%;
+	float:left;
+}
+.form-comprobante p{
+	font-size:15px;
+	line-height:120%;
+	margin:18px 0;
+}
+.destacado{
+	color:#067ab8;
+}
+
+.bt-volver-inicio{
+	float: right;
+	line-height:21px;
+}
+.bt-email{
+	background:url(../img/bt-mail.png) no-repeat scroll 0 center transparent;
+	padding-left: 35px;
+	line-height:21px;
+	display:inline-block;
+}
+.bt-print{
+	background:url(../img/bt-print.png) no-repeat scroll 0 center transparent;
+	padding-left: 31px;
+	line-height:21px;
+	display:inline-block;
+}
+.form-comprobante .bt-print{
+	margin-left:35px;
+}
+.icon-calendar{
+	background:url(../img/icon-calendar.png) no-repeat scroll 0 center transparent;
+	position:relative;
+	width:30px;
+	height:30px;
+	margin:-10px 5px;
+	display:inline-block;
+	cursor:pointer;
+}
+
+/******* acordeon preguntas frecuentes *********/
+.acordeon-lista{
+
+}
+.acordeon-lista ul{
+	width:100%;
+	display:block;
+	position:relative;
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+	/*background-color:#d8eeff;*/
+	float:left;
+	-webkit-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border-radius: 5px;
+}
+.acordeon-lista ul li{
+	width:100%;
+	display:block;
+	position:relative;
+	list-style:none;
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+	padding-bottom:2px;
+	float:left;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+.acordeon-header{
+	cursor:pointer;
+	font-size:13px;
+	color:#fff;
+	display:block;
+	float:left;
+	width:100%;
+	position:relative;
+	background-color:#f8cea0;
+	-webkit-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border-radius: 5px;
+}
+.acordeon-header p{
+	font-size:13px;
+	width:80%;
+	line-height:30px;
+	margin:0;
+	padding-left:10px;
+	color:#fff;
+	font-weight:bold;
+	text-shadow: #333 1px 1px 1px;
+}
+.active .acordeon-header{
+	cursor:default;
+	background-color:#f3a959;
+}
+.acordeon-boton{
+	color:#caf4fd;
+	position:absolute;
+	display:inline-block;
+	top:0px;
+	right:0px;
+	height:100%;
+	line-height:31px;
+	width:20px;
+	margin-right:5px;
+	text-align:center;
+	background:url("../img/acordeon-flechas.png") no-repeat scroll 0 center transparent;
+}
+.active .acordeon-boton{
+	
+}
+.acordeon-mas{
+	display:block;
+	background-position:-20px center;
+}
+.acordeon-menos{
+	display:none;
+}
+.active .acordeon-mas{
+	display:none;
+}
+.active .acordeon-menos{
+	display:block;
+}
+.acordeon-hide{
+	display:none;
+}
+
+.acordeon-content{
+	float:left;
+	display:block;
+	position:relative;
+	padding:10px 0;
+}
+
+
+
+
+
+/******** BUSCAR TERAPEUTAS *********/
+.necesita-ayuda{
+	background:url("../img/necesitas-ayuda-terapeuta.png") no-repeat -20px 25px #fffaf5;
+	
+}
+.necesita-ayuda h2{
+	font-size:24px;
+	color:#067ab8;
+	width:110px;
+	text-align:center;
+	position:relative;
+	left:73px;
+	margin-bottom:90px;
+}
+.necesita-ayuda p{
+	width:220px;
+}
+.necesita-ayuda-gente{
+	background:url("../img/necesitas-ayuda-pareja-decide.png") no-repeat 0 0 transparent;
+	width:260px;
+	height:210px;
+	position:absolute;
+	top:-10px;
+	right:-97px;
+}
+
+
+
+.busqueda-box-center{
+	width:93%;
+	margin:0 auto;
+	display:block;
+	position:relative;
+	margin-left:-.5%;
+	margin-top:20px;
+}
+
+.busqueda-box-center .form-box{
+	margin-left:0%;
+}
+.busqueda-box-center .form-block .label{
+	font-weight:normal;
+}
+.busqueda-tipo-terapeuta{
+	width:120px;
+	margin-right:30px;
+}
+.busqueda-especializacion{
+	width:120px;
+	margin-right:30px;
+}
+.busqueda-palabra-clave{
+	width:295px;
+}
+.busqueda-region{
+	width:190px;
+	margin-right:30px;
+}
+.busqueda-comuna{
+	width:150px;
+	margin-right:30px;
+}
+.busqueda-button{
+	width:195px;
+}
+.busqueda-button input{
+	width:100% !important;
+}
+
+.busqueda-mensaje-resultado{
+	font-size:24px;
+	font-weight:bold;
+	color:#067ab8;
+}
+.busqueda-mensaje-resultado strong{
+	color:#7d74c1;
+}

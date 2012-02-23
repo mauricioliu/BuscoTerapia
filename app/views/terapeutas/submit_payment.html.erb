@@ -16,8 +16,8 @@
 <input type="hidden" name="buyer_name" value="<%= @terapeuta.nombre %> "><br>
 <input type="hidden" name="buyer_lastname" value=""><br>
 <input type="hidden" name="buyer_document_number" value=""><br>
-<input type="hidden" name="buyer_email" value=""><br>
-<input type="hidden" name="buyer_phone" value=""><br>
+<input type="hidden" name="buyer_email" value="<%= @terapeuta.email %>"><br>
+<input type="hidden" name="buyer_phone" value="<%= @terapeuta.ptelefono %><%= @terapeuta.telefono %>"><br>
 <input type="hidden" name="buyer_phone_extension" value=""><br>
 <input type="hidden" name="buyer_zip_code" value=""><br>
 <input type="hidden" name="buyer_sex" value=""><br>
@@ -38,6 +38,5 @@
 <span class="preloader-message" id="ctl00_lblPleaseWait">Estimado usuario:<br />
 Usted está siendo redireccionado a <strong>DineroMail.com</strong> nuestro procesador de pago</span>		
 <img src="/shop/imagenes/preloader-big.gif">	</div></div>
-<script type="text/javascript">setTimeout("document.f.submit();", 500);</script></body></html>
+<script type="text/javascript">setTimeout("document.f.submit();", 5000000);</script></body></html>
 
-<p>asdf<%= @pid %></p>

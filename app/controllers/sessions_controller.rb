@@ -9,8 +9,9 @@ class SessionsController < ApplicationController
     if terapeuta && terapeuta.password == params[:password]
       #cookies.permanent[:auth_token] = terapeuta.auth_token
       session[:terapeuta] = terapeuta
+      @enc_email = encrypt_url(terapeuta.email)
       if terapeuta.last_logged_in == nil || terapeuta.reset == 'y'
-        render "terapeuta/change_password"
+        render "terapeutas/change_password"
       else
         terapeuta.last_logged_in = Time.now
         terapeuta.save!

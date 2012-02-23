@@ -1,4 +1,10 @@
 BuscoTerapia::Application.routes.draw do
+  get "validar_terapeuta/index"
+
+  get "validar_terapeuta/show"
+
+  get "validar_terapeuta/validar"
+
   resources :pagos
 
   resources :terapias
@@ -24,6 +30,9 @@ BuscoTerapia::Application.routes.draw do
   
   match '/ver_comprobante/:id' => 'asesoria#ver_comprobante', :as => 'ver_comprobante'
   
+  match '/validar_terapeuta/:id' => 'validar_terapeuta#show', :as => 'revisar_terapeuta'
+  match '/validar_terapeuta/' => 'validar_terapeuta#index'
+  match '/validar_terapeuta/:id/validar' => 'validar_terapeuta#validar', :as => 'validar'
 
   # map.connect "/sessions/change_password", :controller => "sessions", :action => "change_password"
   # get "signup" => "users#new", :as => "signup"
