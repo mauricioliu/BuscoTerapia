@@ -1,8 +1,8 @@
 class CreateAsesoria < ActiveRecord::Migration
   def change
     create_table :asesoria do |t|
-      t.string :necesidad_1, :limit => 65535
-      t.string :necesidad_2, :limit => 65535
+      t.text :necesidad_1, :limit => 65535
+      t.text :necesidad_2, :limit => 65535
       
       t.string :paciente_nombre
       t.integer :paciente_edad
@@ -19,7 +19,7 @@ class CreateAsesoria < ActiveRecord::Migration
       t.datetime :fecha_hasta_est
       t.string :rango_horario
       
-      t.string :terapeuta_sexo
+      # t.string :terapeuta_sexo
       t.string :terapeuta_otro
       t.timestamps
     end

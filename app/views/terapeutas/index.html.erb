@@ -1,19 +1,208 @@
-<h3>Terapeutas</h3>
-<%= render "search_form"%>
-<br />
-<p>Se han encontrado <%=@terapeutas.count%> resultados</p>
+<div id="block-content" class="block-wrapper">
+	<div class="wrapper" id="content">
 
-<%= will_paginate @terapeutas, previous_label: h("<"), next_label: h(">") %>
+	<div class="columna-670-left">
+		<h2>Buscar terapeutas</h2>
+		
+		<div class="busqueda-box-center">
+		<%= render "search_form"%>			
+			<p class="busqueda-mensaje-resultado">
+				Se han encontrado <strong><%=@terapeutas.count%></strong> 
+				de <strong>Psicólogos</strong> 
+				en <strong>Santiago</strong> 
+				que contiene sus palabras clave.
+			</p>
+			
+			<div class="form-block ordenar-por">
+				<div class="label">
+					Ordenar por:
+				</div>
+				<div class="input_field">
+					<select>
+						<option value="">Pertinencia</option>
+						<option value="">Cercanía</option>
+						<option value="">precio</option>
+					</select>
+				</div>
+			</div>
+			
+			<% @terapeutas.each do |terapeuta| %>
+			
+				<% if terapeuta.plan_tipo == "Gratis" %>
+				
+				<div class="ficha-persona ficha-simple">
+					<div class="foto"><img src="http://fpoimg.com/42x42" alt="Esteban Soto" width="42" height="42" border="0" /></div>
+					<div class="contenido-ficha">
+						<p class="nombre-ficha"><%= terapeuta.nombre %></p>
+						<p>
+							<% terapeuta.estudios.each do |estudio| %>
+								<strong><%= estudio.titulo %>, <%= estudio.establecimiento %></strong><br/>
+							<% end %>
+							Especialista en 
+							<% terapeuta.especialidades.each do |especialidad| %>
+								<%= especialidad.valor %>,
+							<% end %>
+							</br>
+							<%= terapeuta.direccion %>, <%= terapeuta.comuna %>, <%= terapeuta.region %> 
+						</p>
+						<div class="descripcion-full">
+							<p><strong>Dirección:</strong> José Tomás Rider #974, Providencia, Región Metropolitana</p>
+							<input type="button" value="Contactar al Terapeuta" class="boton-morado" />
+						</div><!--descirpcion full-->
+					</div><!--contenido ficha-->
+					
+				</div><!--ficha persona-->
+				<% else %>
+				<div class="ficha-persona">
+					<div class="foto"><img src="http://fpoimg.com/42x42" alt="Esteban Soto" width="42" height="42" border="0" /></div>
+					<div class="contenido-ficha">
+						
+						<p class="nombre-ficha"><%= terapeuta.nombre %></p>
+						<p>
+							<% terapeuta.estudios.each do |estudio| %>
+								<strong><%= estudio.titulo %>, <%= estudio.establecimiento %></strong><br/>
+							<% end %>
+							Especialista en 
+							</br>
+							<%= terapeuta.direccion %>, <%= terapeuta.comuna %>, <%= terapeuta.region %> 
+						</p>
+						<div class="descripcion-full">
+							<h3>Descripción del psicologo como en los nuevos cv’s consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</h3>
+							<div class="ficha-columna">
+								<h3>Información de experiencia y formación académica:</h3>
+								<ul>
+									<li><span><strong>Especialidades:</strong> 
+											<% terapeuta.especialidades.each do |especialidad| %>
+												<%= especialidad.valor %>,
+											<% end %>
+										</span></li>
+									<li><span><strong>Experiencia:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
+									<li><span><strong>Formación y Estudios Acreditados:</strong> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure.</span></li>
+								</ul>
+								
+								<h3>Costo y formas de pago:</h3>
+								<ul>
+									<li><span><strong>Arancel por sesión:</strong> $25.000.-</span></li>
+									<li><span><strong>Formas de Pago:</strong> Cheque, Transferencia, Recompra.</span></li>
+									<li><span><strong>Convenios: </strong> Ut enim ad minim veniam, quis nostrud exercitation ullamco.</span></li>
+								</ul>
+								
+								<h3>Datos de Contacto:</h3>
+								<ul>
+									<li><span><strong>Dirección:</strong> Patagonia 12345, La Pintana.</span></li>
+									<li><span><strong>Teléfonos de contacto:</strong> +56 9 8675 4323</span></li>
+									<li><span><strong>Correo electrónico:</strong> huaqui@huaqui.cl</span></li> 
+									<li><span><strong>Sitio web:</strong> <a href="http://www.huaiqui.cl">huaiqui.cl</a></span></li>
+								</ul>
+								
+								<input type="button" value="Contactar al Terapeuta" class="boton-morado" />
+							</div><!-- ficha-columna -->
+							<div class="ficha-sidebar">
+								<div class="box box-descuentos">
+								<h3>Descuentos</h3>
+								<img src="http://fpoimg.com/151x126" alt="Esteban Soto" width="151" height="126" border="0" />
+								</div>
+								
+								<div class="box box-mapa">
+									<h3>Mapa de Ubicación</h3>
+									<div class="map-container">
+										<iframe width="151" height="182" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.cl/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=&amp;q=Isidora+Goyenechea,+Santiago&amp;aq=0&amp;oq=isidora+&amp;sll=-35.675147,-71.542969&amp;sspn=80.816499,137.988281&amp;ie=UTF8&amp;hq=&amp;hnear=Isidora+Goyenechea,+Las+Condes,+Santiago,+Regi%C3%B3n+Metropolitana&amp;t=m&amp;ll=-33.414249,-70.599003&amp;spn=0.013039,0.012875&amp;z=14&amp;output=embed"></iframe>
+									</div>
+									<a target="_blank" href="http://maps.google.cl/maps?f=q&amp;source=embed&amp;hl=es&amp;geocode=&amp;q=Isidora+Goyenechea,+Santiago&amp;aq=0&amp;oq=isidora+&amp;sll=-35.675147,-71.542969&amp;sspn=80.816499,137.988281&amp;ie=UTF8&amp;hq=&amp;hnear=Isidora+Goyenechea,+Las+Condes,+Santiago,+Regi%C3%B3n+Metropolitana&amp;t=m&amp;ll=-33.414249,-70.599003&amp;spn=0.013039,0.012875&amp;z=14" class="link-mapa-google">Ver mapa en grande</a>
+								</div>
+								<div class="box box-entrevista">
+									<a href="#">Ver entrevista.</a>
+								</div>
 
-<% @terapeutas.each do |terapeuta| %>
-  <div><%= terapeuta.nombre %> </div>
-  <% if terapeuta.plan_tipo == 'P'%>
-  	<div>Dirección: <%= terapeuta.direccion %>, <%= terapeuta.comuna %>, <%= terapeuta.region %></div>
-    <div>Telefono de contacto: <%= terapeuta.ptelefono %> - <%= terapeuta.telefono %></div>
-    <div>Telefono movil<%= terapeuta.pmovil %> - <%= terapeuta.email %></div>
-  <% end %>
-  <br />
-<% end %>
-</table>
+							</div><!-- ficha-sidebar -->
+						</div><!--descirpcion full-->
+					</div><!--contenido ficha-->
+					
+				</div><!--ficha persona-->
+				<% end %>
+			
+			<% end %>
+				
+				
+				
 
-<br />
+			
+				<div class="pagination">
+				
+					<ul>
+						<li><a href="#">1</a></li>
+						<li class="current"><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">25</a></li>
+						<li class="siguiente"><a href="#">Siguiente</a></li>
+					</ul>
+				
+				</div>
+			
+			</div><!--form-box-center-->
+		</div><!--columna-670-left-->
+		
+		
+		
+		<div class="columna-335-right necesita-ayuda">
+			<h2>¿Necesitas ayuda?</h2>
+			<div class="necesita-ayuda-gente"></div>
+			<p>Si tienes problemas y no tienes claro dónde acudir, escríbenos y nosotros te asesoraremos y te recomendaremos el terapeuta ideal.<br/>
+<a href="#">Solicitar Asesoría</a></p>
+		
+		</div><!--columna-335-right-->
+		
+		<div class="columna-335-right">
+			<h2>Preguntas frecuentes</h2>
+		
+			<div class="acordeon-lista">
+				<ul>
+					<li>
+						<div class="acordeon-header">
+							<p>¿Cuándo tendré respuesta a mi solicitud?</p>
+						</div>
+						<div class="acordeon-content">
+							<div class="acordeon-text">
+								<p>Tu solicitud será respondida dentro de los próximo 90 minutos. Contamos con un grupo de profesionales especializados y capacitados para resolver tus dudas con respecto a qué debes realizar con tu problema.</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="acordeon-header">
+							<p>pregunta 2</p>
+						</div>
+						<div class="acordeon-content">
+							<div class="acordeon-text">
+								<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="acordeon-header">
+							<p>pregunta 3</p>
+						</div>
+						<div class="acordeon-content">
+							<div class="acordeon-text">
+								<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="acordeon-header">
+							<p>pregunta 1</p>
+						</div>
+						<div class="acordeon-content">
+							<div class="acordeon-text">
+								<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<p class="right"><small><a href="#">Ver más preguntas frecuentes</a></small></p>
+		
+		</div><!--columna-335-right-->
+		
+		</div><!-- #content -->
+	</div><!-- block-content -->
+	

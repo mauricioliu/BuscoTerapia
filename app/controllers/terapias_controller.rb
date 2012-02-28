@@ -3,7 +3,8 @@ class TerapiasController < ApplicationController
   # GET /terapias.json
   def index
     @search = Terapia.search(params[:search])
-    @terapias = @search.all
+    @terapias = @search.order("nombre_corto asc")
+    @terapias = @terapias.page(params[:page]).per_page(5)
 
     respond_to do |format|
       format.html # index.html.erb

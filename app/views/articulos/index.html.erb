@@ -1,0 +1,112 @@
+<div id="block-content" class="block-wrapper">
+	<div class="wrapper" id="content">
+
+	<div class="columna-670-left">
+		<h2>Artículos</h2>
+		
+		<div class="busqueda-box-center sec-articulos-y-noticias">
+
+			<div class="form-box">
+			
+				<div class="titulo-form">
+				<h3>Ordenar por: <small>(podría ser filtrar por?)</small></h3>
+				</div>
+				
+				
+
+				<div class="form-block busqueda-categoria">
+					<div class="label">
+						Categoría:
+					</div>
+					<div class="input_field">
+						<select>
+							<option value="">Psicologos</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-block busqueda-tema">
+					<div class="label">
+						Tema:
+					</div>
+					<div class="input_field">
+						<select>
+							<option value="">Todos</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-block busqueda-palabra-clave">
+					<div class="label">
+						Palabra Clave
+					</div>
+					<div class="input_field">
+						<input type="text" />
+					</div>
+				</div>
+				<div class="form-block busqueda-button">
+					<div class="label">
+						&nbsp;
+					</div>
+					<div class="input_field">
+						<input type="button" value="Buscar" class="boton-morado" />
+					</div>
+				</div>
+			</div>
+			
+		
+			<p class="busqueda-mensaje-resultado">
+				Últimos artículos
+			</p>
+			
+			<% @articulos.each do |articulo| %>
+			<div class="ficha-articulo">
+				<div class="contenido-ficha">
+					<div class="foto"><%= image_tag articulo.imagen_url.medium_thumb.url.to_s %></div>
+					<div class="encabezado">
+						<h3><Acupuntura><%= articulo.titulo %></h3>
+						<p><%= articulo.created_at.strftime('%B %e, %Y')%>. Escrito por <%= articulo.autor %>, <%= articulo.especialidad %>.</p>
+					</div>
+					<p>
+						<%= articulo.contenido[1,170 ]%>								 
+						... <%= link_to 'Continuar leyendo', articulo_path(articulo) %>.</a>
+					</p>						
+				</div><!--contenido ficha-->
+			</div><!--ficha articulo-->
+			<% end %>
+			
+			<div class="pagination">
+			
+				<ul>
+					<li><a href="#">1</a></li>
+					<li class="current"><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">25</a></li>
+					<li class="siguiente"><a href="#">Siguiente</a></li>
+				</ul>
+			
+			</div>
+		</div><!--form-box-center-->
+	</div><!--columna-670-left-->
+	
+	
+	<div class="columna-335-right sidebar-noticias">
+		<h2>Noticias</h2>
+		
+		<div class="ficha-noticia">
+			
+			<div class="contenido-ficha">
+					<div class="encabezado">
+						<h3>Pracsis recibe reconocimiento nacional por los talleres con niños de riesgo social.</h3>
+						<p>15 Diciembre, 2011</p>
+					</div>
+					<div class="foto"><img src="http://fpoimg.com/280x100" alt="Esteban Soto" width="280" height="100" border="0" /></div>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+						... <a href="articulos-y-noticias-dentro-noticia.html">Continuar leyendo.</a>
+					</p>						
+			</div><!--contenido ficha-->
+			
+		</div><!--ficha noticia-->
+	</div><!--columna-335-right-->
+	
+	</div><!-- #content -->
+</div><!-- block-content -->

@@ -8,7 +8,7 @@ class TerapeutasController < ApplicationController
   def index
     @search = Terapeuta.search(params[:search])
     @terapeutas = @search.order("plan_tipo desc, created_at desc")
-    @terapeutas = @terapeutas.page(params[:page]).per_page(15)
+    @terapeutas = @terapeutas.page(params[:page]).per_page(15).select {|i| i.estado == "validado" }
     # @terapeutas.order("plan").desc
 
     respond_to do |format|

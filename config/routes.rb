@@ -1,4 +1,6 @@
 BuscoTerapia::Application.routes.draw do
+  resources :articulos
+
   get "validar_terapeuta/index"
 
   get "validar_terapeuta/show"

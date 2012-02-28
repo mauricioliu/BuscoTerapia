@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120219152945) do
+ActiveRecord::Schema.define(:version => 20120227222214) do
+
+  create_table "articulos", :force => true do |t|
+    t.string   "titulo"
+    t.string   "autor"
+    t.string   "especialidad"
+    t.text     "contenido",    :limit => 2147483647
+    t.string   "imagen_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "asesoria", :force => true do |t|
     t.text     "necesidad_1",       :limit => 16777215
@@ -28,7 +38,6 @@ ActiveRecord::Schema.define(:version => 20120219152945) do
     t.datetime "fecha_desde_est"
     t.datetime "fecha_hasta_est"
     t.string   "rango_horario"
-    t.string   "terapeuta_sexo"
     t.string   "terapeuta_otro"
     t.datetime "created_at"
     t.datetime "updated_at"

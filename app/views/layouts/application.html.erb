@@ -4,61 +4,90 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-  <title>Busco Terapia</title>
-  <%= stylesheet_link_tag "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css", 
-  						  "application",
-  						  "osv.css" %>
-  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", 
-  							 "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", 
-  							 "application",
-  							 "osv" %>
-  <%= csrf_meta_tag %>
+  	<title>Buscoterapia</title>
+	 	<%= stylesheet_link_tag "main.css" %>
+  		<%= javascript_include_tag "application",
+  							 	"main.js" %>
+  		<%= csrf_meta_tag %>
 </head>
-<body class="<%= params[:controller] %>">
+<body>
 	<div id="header">
 		<div class="wrapper">
 		<div id="branding">
-			<h1><%= link_to '', root_url, :class => "buscoterapia" %></h1>
+			<h1><%= link_to 'Buscoterapia', root_url, :class => "buscoterapia", :title => "Buscoterapia" %></h1>
 		</div><!-- branding -->
-		<div id="login">
 		<% if session[:terapeuta] == nil %>
-			<p><%= link_to "Quieres Iniciar tu sesión?", new_session_path %></p>
-		<% else %>
-			<p>Bienvenido <%= session[:terapeuta].nombre %> <%= link_to 'Cerrar sesión', logout_path %><br />
-			<%= link_to "Mi cuenta", edit_terapeuta_path(session[:terapeuta]) %></p>
-		<% end %>
+		<div id="login">
+			<p><a href="#">Quieres Iniciar tu sesión?</a></p>
 		</div><!-- login -->
+		<div id="unfocus-bg-login-form"></div>
+		<div id="loginForm">
+		<%= form_tag sessions_path, :validate => true do %>
+			<div class="form-block">
+				<div class="label">Correo electronico</div>
+				<div class="input_field">
+					<%= text_field_tag :email, params[:email], :id => "user_field" %>
+					<p class="aviso">Complete este campo</p>
+				</div>
+			</div>
+			<div class="form-block alerta"><!-- en este caso con clase alerta aparece el aviso -->
+				<div class="label">Password</div>
+				<div class="input_field">
+					<%= password_field_tag :password %>
+					<p class="aviso">Complete este campo</p>
+				</div>
+			</div>
+			<p id="password-incorrecto">Tus datos no coinciden</p><!-- tiene display none, necesita display block para aparecer-->
+			<span class="texto-recordar"><input type="checkbox" name="recordar" value="recordar"> <span>recordar</span></span>
+			
+			<%= submit_tag "Ingresar", :class => "boton-azul" %>
+			<hr class="login-separador"/>
+			<br/>
+			<%= link_to "¿Olvidaste tu contraseña?", forgot_password_url %>
+		<% end %>
+		</div><!-- #loginForm -->
+		<% else %>
+		<div id="logged-in">
+			<p>
+				Bienvenido <strong><%= session[:terapeuta].nombre %></strong> <%= link_to 'Cerrar sesión', logout_path %><br />
+				<%= link_to "Mi cuenta", edit_terapeuta_path(session[:terapeuta]) %>
+			</p>
+		</div><!-- login -->
+		<% end %>
 		</div><!-- wrapper	 -->
 	</div><!-- header -->
 	
-	<div id="nav" class="wrapper">
-		<ul class="main">
-			<li><%= link_to 'Inicio', root_url %></li>
-			<li><%= link_to 'Solicitar asesoría terapeutica', new_asesorium_path %></li>
-			<li><%= link_to 'Buscar terapeutas', terapeutas_path %></li>
-			<li><%= link_to 'Tipo de Terapias', terapias_path %></li>
-			<li><a href="#">Noticias y artículos</a></li>
-		</ul>
-		<ul class="acceso">
-			<li><%= link_to 'Acceso terapeutas', acceso_terapeutas_path %></li>
-		</ul>	
-	</div><!-- nav -->
-   <div class="wrapper">
-   <%= yield %>
-   </div>
-   
-   	<div id="footer" class="wrapper">
-		<ul class="left">
-			<li><a href="#">Busco Terapia © 2012</a></li>
-		</ul>
-		<ul class="right">
-			<li><a href="#">Quienes somos</a></li>
-			<li><a href="#">Contacto</a></li>
-			<li><a href="#">Preguntas frecuentes</a></li>
-			<li><a href="#">Mapa del sitio</a></li>
-			<li><a href="#">Condiciones de uso</a></li>
-			<li><a href="#">Políticas de privacidad</a></li>
-		</ul>
-	</div><!-- footer -->
+	<div id="block-nav" class="block-wrapper">
+		<div id="nav" class="wrapper">
+			<ul class="main">
+				<li class="current"><%= link_to 'Inicio', root_url %></li>
+				<li><%= link_to 'Solicitar asesoría terapeutica', new_asesorium_path %></li>
+				<li><%= link_to 'Buscar terapeutas', terapeutas_path %></li>
+				<li><%= link_to 'Tipo de Terapias', terapias_path %></li>
+				<li><%= link_to 'Noticias y artículos', articulos_path %></li>
+			</ul>
+			<ul class="acceso">
+				<li><%= link_to 'Acceso terapeutas', acceso_terapeutas_path %></li>
+			</ul>					
+		</div><!-- nav -->
+	</div><!-- block-nav -->
+	
+	<%= yield %>
+	
+	<div id="block-footer" class="block-wrapper">
+		<div id="footer" class="wrapper">
+			<ul class="left">
+				<li><a href="#">Buscoterapia © 2012</a></li>
+			</ul>
+			<ul class="right">
+				<li><a href="#">Quienes somos</a></li>
+				<li><a href="#">Mapa del sitio</a></li>
+				<li><a href="#">Contacto</a></li>
+				<li><a href="#">Condiciones de uso</a></li>
+				<li><a href="#">Preguntas frecuentes</a></li>
+				<li><a href="#">Políticas de privacidad</a></li>
+			</ul>
+		</div><!-- footer -->
+	</div><!-- block-wrapper -->
 </body>
 </html>

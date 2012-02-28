@@ -36,9 +36,9 @@ gem "nested_form"
 
 gem "gibberish"
 
-group :development do
-  gem 'active_reload'
-end
+#group :development do
+#  gem 'active_reload'
+#end
 # gem 'rake', '0.8.7'
 
 # gem "execjs"

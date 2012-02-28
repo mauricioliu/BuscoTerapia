@@ -1,73 +1,73 @@
-<div id="busca_tu_terapeuta" class="col_4">
-	<h2>Busca tu terapeuta</h2>
-	<ul class="tabs">
-		<li class="active"><a href="#tab1" class="psicologos">Psicólogos</a></li>
-	    <li><a href="#tab2" class="terapia_alternativa">Terapia Alternativa</a></li>
-	    <li><a href="#tab3" class="psiquiatras">Psiquiatras</a></li>
-	</ul>
-	<div class="tab_container">
-		<div id="tab1" class="tab_content" style="display: block; ">
-		  <%= form_for @search, :action => "index", :controller => "terapeuta" do |f| %>
-		  <%= f.hidden_field :tipo_terapias_nombre_contains, :value => "Psicologo" %>
-		  <fieldset>
-		  <dl>
-			<dt><%= f.label "Tipos de terapia:" %></dt>
-		    <dd><%= f.collection_select :especialidades_valor_contains, RefDatum.where(:nombre => "Especialidad"), :valor, :valor, :prompt => "No lo tengo claro" %></dd>
-		  
-		    <dt><%= f.label "Region:" %></dt>
-		    <dd><%= f.collection_select :region_contains, Region.order(:nombre), :id, :nombre, {include_blank: true}, :class => "psicologo_region" %></dd>
-		  
-		    <dt><%= f.label "Comuna:" %></dt>
-		    <dd><%= f.grouped_collection_select :comuna_contains, Region.order(:nombre), :comunas, :nombre, :id, :nombre, {include_blank: true}, :class => "psicologo_comuna" %></dd>
-		    
-		    <dt><%= f.label "Palabras claves:" %></dt>
-		    <dd><%= f.text_field :nombre_contains %></dd>
-		  </dl>
-		  <%= f.submit "Buscar", :class => "button" %>
-		  </fieldset>
-		<% end %>
-		</div><!-- tab 1 -->
-
-	    <div id="tab2" class="tab_content" style="display: none; ">
-			  <%= form_for @search, :action => "index", :controller => "terapeuta" do |f| %>
-			  <%= f.hidden_field :tipo_terapias_nombre_contains, :value => "Medicos Alternativos" %>
-			  <fieldset>
-			  <dl>
-			  <dt><%= f.label "Especialidad?" %></dt>
-			  <dd><%= f.collection_select :especialidades_valor_contains, RefDatum.where(:nombre => "Especialidad"), :valor, :valor, :prompt => "No lo tengo claro" %></dd>
-			  
-			  <dt><%= f.label "Región de atención:" %></dt>
-			  <dd><%= f.collection_select :region_contains, Region.order(:nombre), :id, :nombre, {include_blank: true}, :class => "alternativo_region" %></dd>
-			  
-			  <dt><%= f.label "Comuna:" %></dt>
-			  <dd><%= f.grouped_collection_select :comuna_contains, Region.order(:nombre), :comunas, :nombre, :id, :nombre, {include_blank: true}, :class => "alternativo_comuna" %></dd>
-			  </dl>
-			  <%= f.submit "Buscar", :class => "button" %>
-			  </fieldset>
-			<% end %>
-		</div><!-- tab 2 -->
+		<div id="busca_tu_terapeuta">
+			<h2>Busca tu terapeuta</h2>
+			
+			<ul class="tabs">
+				<li class="active tab1"><a href="#tab1" class="psicologos">Terapias Psicológicas</a></li>
+				<li class="tab2"><a href="#tab2" class="terapia_alternativa">Terapias Alternativas / Complementarias</a></li>
+			</ul>
+			<div class="tab_container">
+				<div id="tab1" class="tab_content" style="display: block; ">
+					<%= form_for @search, :action => "index", :controller => "terapeuta" do |f| %>
+						<div class="form-block">
+							<div class="label">Tipos de terapia:</div>
+							<div class="input_field">
+								<%= f.collection_select :especialidades_valor_contains, RefDatum.where(:nombre => "Especialidad"), :valor, :valor, :prompt => "No lo tengo claro" %>
+							</div>
+						</div>
+						<div class="form-block">
+							<div class="buscador-columna-left">
+								<div class="label">Región:</div>
+								<div class="input_field">
+									<%= f.collection_select :region_contains, Region.order(:nombre), :id, :nombre, {include_blank: true}, :class => "psicologo_region" %>
+								</div>
+							</div>
+							<div class="buscador-columna-right">
+								<div class="label">Comuna:</div>
+								<div class="input_field">
+									<%= f.grouped_collection_select :comuna_contains, Region.order(:nombre), :comunas, :nombre, :id, :nombre, {include_blank: true}, :class => "psicologo_comuna" %>
+								</div>
+							</div>
+						</div>
+						<div class="form-block">
+							<div class="label">Palabras claves:<br/><small>Ejemplo: separación, duelo, ansiedad, crisis de pánico</small></div>
+							<div class="input_field">
+								<%= f.text_field :nombre_contains %>
+							</div>
+						</div>
+						<div class="form-block">
+							<%= f.submit "Buscar", :class => "boton-morado" %>
+						</div>
+					<% end %>
+				</div><!-- tab 1 -->
+	
+				<div id="tab2" class="tab_content" style="display: none; ">
+					<%= form_for @search, :action => "index", :controller => "terapeuta" do |f| %>
+			  		<%= f.hidden_field :tipo_terapias_nombre_contains, :value => "Medicos Alternativos" %>
+						<div class="form-block">
+							<div class="label">Palabras claves:</div>
+							<div class="input_field">
+								<%= f.text_field :nombre_contains %>
+							</div>
+						</div>
+						<div class="form-block">
+							<div class="label">Ciudad de Atención:</div>
+							<div class="input_field">
+								<%= f.collection_select :region_contains, Region.order(:nombre), :id, :nombre, {include_blank: true}, :class => "alternativo_region" %>
+							</div>
+						</div>
+						<div class="form-block">
+							<div class="label">Comuna:</div>
+							<div class="input_field">
+								<%= f.grouped_collection_select :comuna_contains, Region.order(:nombre), :comunas, :nombre, :id, :nombre, {include_blank: true}, :class => "alternativo_comuna" %>
+							</div>
+						</div>
+						<div class="form-block">
+							<%= f.submit "Buscar terapia", :class => "boton-morado" %>
+						</div>
+					<% end %>
+				</div><!-- tab 2 -->
 				
-	    <div id="tab3" class="tab_content" style="display: none; ">
-	      <%= form_for @search, :action => "index", :controller => "terapeuta" do |f| %>
-		  <%= f.hidden_field :tipo_terapias_nombre_contains, :value => "Psiquiatra" %>
-		  <fieldset>
-		  	<dl>
-			  <dt><%= f.label "Tipo de Psiquiatra" %></dt>
-			  <dd><%= f.collection_select :especialidades_valor_contains, RefDatum.where(:nombre => "Especialidad"), :valor, :valor, :prompt => "No lo tengo claro" %></dd>
-			  
-			  <dt><%= f.label "Región de atención:" %></dt>
-			  <dd><%= f.collection_select :region_contains, Region.order(:nombre), :id, :nombre, {include_blank: true}, :class => "psiquiatra_region" %></dd>
-			  
-			  <dt><%= f.label "Comuna:" %></dt>
-			  <dd><%= f.grouped_collection_select :comuna_contains, Region.order(:nombre), :comunas, :nombre, :id, :nombre, {include_blank: true}, :class => "psiquiatra_comuna" %></dd>
-			  
-			  <dt><%= f.label "Palabras clave:" %></dt>
-			  <dd><%= f.text_field :nombre_contains %></dd>
-		  	</dl>
-		  <%= f.submit "Buscar", :class => "button" %>
-		  </fieldset>
-		<% end %>
-		</div><!-- tab 3 -->
-	</div><!-- tab_container -->
-</div><!-- busca_tu_terapeuta -->
-<div class="clear"></div>
+
+			</div><!-- tab_container -->
+			
+		</div><!-- busca_tu_terapeuta -->

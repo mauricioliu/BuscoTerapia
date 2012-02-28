@@ -21,5 +21,6 @@ class ValidarTerapeutaController < ApplicationController
       terapeuta.plan_expira = 3.month.from_now
     end
     terapeuta.save 
+    redirect_to validar_terapeuta_path
   end
 end

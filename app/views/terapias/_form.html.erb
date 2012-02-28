@@ -11,27 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="input_field">
     <%= f.label :nombre_corto %><br />
     <%= f.text_field :nombre_corto %>
   </div>
-  <div class="field">
+  <div class="input_field">
     <%= f.label :descripcion_corta %><br />
-    <%= f.text_field :descripcion_corta %>
+    <%= f.text_area :descripcion_corta, :class => "area_small" %>
   </div>
-  <div class="field">
+  <div class="input_field">
     <%= f.label :descripcion %><br />
-    <%= f.text_field :descripcion %>
+    <%= f.text_area :descripcion, :class => "area_big" %>
   </div>
-  <div class="field">
+  <div class="input_field">
   	<%= f.label :categoria %><br />
   	<%= f.collection_select :categoria, RefDatum.where(:nombre => "Categoria Terapia"), :valor, :valor %>
   </div>
-  <div class="field">
+  <div class="input_field">
   	<%= f.label :caracteristica %><br />
 	<%= f.collection_select :caracteristica, RefDatum.where(:nombre => "Caracteristica Tratamiento"), :valor, :valor %>
   </div>
-  <div class="field">
+  <div class="input_field">
     <%= f.label :imagen_url %><br />
     <%= f.file_field :imagen_url %>
   </div>

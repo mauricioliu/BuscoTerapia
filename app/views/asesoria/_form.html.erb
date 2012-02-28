@@ -1,19 +1,87 @@
-<%= form_for(@asesorium) do |f| %>
-  <% if @asesorium.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@asesorium.errors.count, "error") %> prohibited this asesorium from being saved:</h2>
+<%= form_for(@asesorium) do |f| %>	
+	<div id="block-content" class="block-wrapper">
+		<div class="wrapper" id="content">
 
-      <ul>
-      <% @asesorium.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
-  <%= render "#{@asesorium.current_step}_step", :f => f %>
-  <div class="actions">
-    <%= f.submit @asesorium.current_step == "miproblema" ? "Continuar" : "Finalizar" %>
-    <p><%= f.submit "Volver", :name => "previous_button" unless @asesorium.first_step? %></p>
-  </div>
+		<div class="columna-670-left">
+			<h2>Ingresa los siguientes datos para soliticar aseroría terpéutica</h2>
+			<div class="etapas etapa_1"> <!-- varia entre clases: etapa_1, etapa_2, etapa_3 -->
+				<hr class="linea_etapas"/>
+				<div class="etapa icon_etapa_1">
+						<span class="number">1</span>
+						<span class="label">Mi problema</span>
+				</div>
+				<div class="etapa icon_etapa_2">
+					<span class="number">2</span>
+					<span class="label">Datos de contacto</span>
+				</div>
+				<div class="etapa icon_etapa_3">
+					<span class="number">3</span>
+					<span class="label">Comprobante</span>
+				</div>
+			</div>
+			
+			
+			<%= render "#{@asesorium.current_step}_step", :f => f %>
+			
+					<div class="form-block">
+						<%= f.submit @asesorium.current_step == "miproblema" ? "Siguiente paso" : "Enviar", :class => "boton-morado" %>
+					</div>
+				</div>
+			</div>
+		</div>
 <% end %>
+		<div class="columna-335-right">
+			<h2>Preguntas frecuentes</h2>
+		
+			<div class="acordeon-lista">
+				<ul>
+					<li>
+						<div class="acordeon-header">
+							<p>¿Cuándo tendré respuesta a mi solicitud?</p>
+						</div>
+						<div class="acordeon-content">
+							<div class="acordeon-text">
+								<p>Tu solicitud será respondida dentro de los próximo 90 minutos. Contamos con un grupo de profesionales especializados y capacitados para resolver tus dudas con respecto a qué debes realizar con tu problema.</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="acordeon-header">
+							<p>pregunta 2</p>
+						</div>
+						<div class="acordeon-content">
+							<div class="acordeon-text">
+								<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="acordeon-header">
+							<p>pregunta 3</p>
+						</div>
+						<div class="acordeon-content">
+							<div class="acordeon-text">
+								<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="acordeon-header">
+							<p>pregunta 1</p>
+						</div>
+						<div class="acordeon-content">
+							<div class="acordeon-text">
+								<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<p class="right"><small><a href="#">Ver más preguntas frecuentes</a></small></p>		
+		
+		</div><!--columna-335-right-->
+		
+		
+		
+		</div><!-- #content -->
+	</div><!-- block-content -->

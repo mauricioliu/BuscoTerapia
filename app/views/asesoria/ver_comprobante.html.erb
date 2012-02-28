@@ -1,11 +1,56 @@
-  <h2>Comprobante</h2>
+	<div id="block-content" class="block-wrapper">
+		<div class="wrapper" id="content">
 
-<div>Tu mensaje fue enviado con éxito a nuestro equipo de profesionales, a partir de este momento tenemos 90 minutos para resolver tu solicitud.</div>
+		<div class="columna-670-left">
+			<h2>Ingresa los siguientes datos para soliticar aseroría terpéutica</h2>
+			<div class="etapas etapa_3"> <!-- varia entre clases: etapa_1, etapa_2, etapa_3 -->
+				<hr class="linea_etapas"/>
+				<div class="etapa icon_etapa_1">
+						<span class="number">1</span>
+						<span class="label">Mi problema</span>
+				</div>
+				<div class="etapa icon_etapa_2">
+					<span class="number">2</span>
+					<span class="label">Datos de contacto</span>
+				</div>
+				<div class="etapa icon_etapa_3">
+					<span class="number">3</span>
+					<span class="label">Comprobante</span>
+				</div>
+			</div>
+			
+			<div id="print_area">
+			
+			<h1>Comprobante.</h1>
+			<p class="numero-solicitud right">Tu N° de solicitud es: <strong><%= @asesorium.id %></strong></p>
+				
+			<div class="form-box-center">
+			
+<!-- Datos principales de quienes asistirán a terapia -->
 
-<div>Nos contactaremos al teléfono que nos indicaste en el Paso 1, en caso de no tener éxito contactándonos por esta vía te enviaremos un mail a <%= @asesorium.paciente_email %> y un mensaje de texto avisando que revises tu correo.</div>
-
-<div>Si tienes cualquier duda o necesidad puedes contactarnos vía mail a contacto@buscoterapia.cl</div>
-
-<div>Nuestro equipo se está haciendo cargo de tu problema, estás en buenas manos!</div>
-
-<div>Tu N° de solicitud es <%= @asesorium.id %></div>
+				<div class="form-box form-comprobante">
+					<p>Tu mensaje ha sido enviado con éxito a nuestro equipo 
+					de profesionales, <strong>a partir de este momento tenemos 90 
+					minutos para resolver tu solicitud.</strong></p>
+					<p>Nos contactaremos al teléfono que nos indicaste como 
+					contacto, en caso de no tener éxito contactándonos por 
+					esta vía te enviaremos un mail a <strong>mail@example.com</strong> 
+					y un mensaje de texto avisando que revises tu correo.</p>
+					<p>Si tienes cualquier duda o necesidad puedes contactarnos vía 
+					mail a <a href="mailto:contacto@buscoterapia.cl">contacto@buscoterapia.cl</a></p>
+					<p>A nombre del equipo de buscoterapia agradecemos la confianza en nosotros. </p>
+					<p class="destacado"><strong>Nos estamos haciendo cargo de tu problema, estás en buenas manos!</strong></p>
+					<div class="no-print">
+					<hr/>
+						<a href="#" class="bt-email">Enviar por correo</a> <a href="javascript:printContent('print_area', 'Buscoterapia - Comprobante Solicitud')" class="bt-print">Imprimir</a> <a href="#" class="bt-volver-inicio">Volver a la página de Inicio</a>
+					</div><!--no-print-->
+				</div>
+				
+			
+				
+			</div><!--form-box-center-->
+			
+			</div><!--print-area-->
+			
+		</div><!--columna-670-left-->
+	</div>

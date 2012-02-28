@@ -1,31 +1,91 @@
-<div id="asesoria_terapeutas" class="col_8">
-	<h2>Asesoría Terapeutica</h2>
-	<h1>Encuentra la ayuda que necesitas</h1>
-	<p>Ingresa en dos pasos el problema que te aqueja o la solución que buscas y serás asesorado por nuestro equipo de especialistas en terapias. Ellos te entregarán las mejores alternativas de nuestra red de especialistas para que en menos de 90 minutos tengas agendada una cita con un terapeuta que se ajuste a tus necesidades y expectativas.</p>
-	<p>Este proceso es absolutamente confidencial y gratuito</p>
-	<%= button_to "Ingresar mi problema", new_asesorium_path, :method => 'get', :class => "button"%>
-</div><!-- asesoria_terapeutas -->
+<div id="block-mensaje" class="block-wrapper">
+	<div class="wrapper">
+		<div id="mensaje-top">
+			<div class="boton-cerrar-mensaje" obj="#block-mensaje">cerrar X</div>
+			<div class="mensaje-titulo">
+			<p>Buscoterapia te ofrece de manera gratuita el más amplio y completo servicio de búsqueda de terapias y terapeutas a nivel nacional.</p>
+			</div>
+			<div class="mensaje-texto">
+			<p>Para ello brindamos sin costo el servicio de <strong>Asesoría Terapéutica</strong>, donde un equipo de <strong>profesionales de la Salud Mental</strong> te <strong>ayudará en línea</strong> a encontrar la terapia y el terapeuta que más se ajuste a tus necesidades, de manera <strong>confiable</strong> y <strong>estrictamente confidencial</strong>. </p>
+			<p>No te preocupes más, <strong>estás en buenas manos</strong>. </p>
+			</div>
+		</div>
+	</div>
+</div><!-- block-mensaje -->
 
+<div id="block-content" class="block-wrapper">
+	<div class="wrapper" id="content">
+		<div id="asesoria_terapeutas" class="col_8">
+			<div class="texto-asesoria">
+				<h2>Asesoría Terapéutica</h2>
+				<h1>Encuentra la ayuda que necesitas</h1>
+				<p>Ingresa en <strong>dos pasos el problema que te aqueja</strong> o la solución que buscas y serás asesorado por nuestro equipo de especialistas en terapias. Ellos te entregarán las mejores alternativas de nuestra red de especialistas para que <strong>en menos de 90 minutos tengas agendada una cita con un terapeuta</strong> que se ajuste a tus necesidades y expectativas.</p>
+				<p>Este proceso es absolutamente confidencial y gratuito.</p>
+				<%= button_to "Solicitar Asesoría", new_asesorium_path, :method => 'get', :id => "boton-solicita-home",:class => "boton-morado"%>
+			</div>
+		</div><!-- asesoria_terapeutas -->
+		
+		<%= render 'search_form' %>
+		<div class="clear"></div>
+	</div><!-- #content -->
+</div><!-- block-content -->
 
-<%= render 'search_form' %>
+<div id="block-destacados_del_dia" class="block-wrapper">
+	<div class="wrapper">
+	
+	<div id="destacados_del_dia" class="col_12 infiniteCarousel">
+		<h2>Destacados del día</h2>
+	
+		<div class="wrapper_carousel">
+		<ul>
+			<li>
+				<div class="bg-color">
+				<img src="http://fpoimg.com/138x168" alt="Fotografía relacionada" width="138" height="168" border="0" />
+				<h3><a href="#">Título del artículo 1</a></h3>
+				<p>Consectetur adipisicing aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.<br /><a href="#">Ver más</a></p>
+				</div>
+			</li><!-- noticias -->
+			<li>
+				<div class="bg-color">
+				<img src="http://fpoimg.com/138x168" alt="Fotografía relacionada" width="138" height="168" border="0" />
+				<h3><a href="#">Título del artículo 2</a></h3>
+				<p>Consectetur adipisicing aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.<br /><a href="#">Ver más</a></p>
+				</div>
+			</li><!-- noticias -->
+			<li>
+				<div class="bg-color">
+				<img src="http://fpoimg.com/138x168" alt="Fotografía relacionada" width="138" height="168" border="0" />
+				<h3><a href="#">Título del artículo 3</a></h3>
+				<p>Consectetur adipisicing aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.<br /><a href="#">Ver más</a></p>
+				</div>
+			</li><!-- noticias -->
+			<li>
+				<div class="bg-color">
+				<img src="http://fpoimg.com/138x168" alt="Fotografía relacionada" width="138" height="168" border="0" />
+				<h3><a href="#">Título del artículo 4 con doble linea</a></h3>
+				<p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br /><a href="#">Ver más</a></p>
+				</div>
+			</li><!-- noticias -->
+			<li>
+				<div class="bg-color">
+				<img src="http://fpoimg.com/138x168" alt="Fotografía relacionada" width="138" height="168" border="0" />
+				<h3><a href="#">Título del artículo 5</a></h3>
+				<p>Consectetur adipisicing elit, sed do eiusmod. Ut enim ad minim veniam, quis nostrud exercitation ullamco.<br /><a href="#">Ver más</a></p>
+				</div>
+			</li><!-- noticias -->
+			<li>
+				<div class="bg-color">
+				<img src="http://fpoimg.com/138x168" alt="Fotografía relacionada" width="138" height="168" border="0" />
+				<h3><a href="#">Título del artículo 6</a></h3>
+				<p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.<br /><a href="#">Ver más</a></p>
+				</div>
+			</li><!-- noticias -->
+		</ul>
+		</div><!-- wrapper_carrousel -->
+		<!-- <a class="arrow back">&lt;</a>
+		<a class="arrow forward">&gt;</a>	-->	
+		</div><!-- destacados_del_dia -->
+	<div class="clear"></div>
+	</div><!-- wrapper - destacados_del_dia -->
 
-<div id="destacados_del_dia" class="col_12">
-	<h2>Destacados del día</h2>
-		<div class="noticias">
-			<img src="http://fpoimg.com/138x168" alt="Fotografía relacionada" width="138" height="168" border="0" />
-			<h3><a href="#">Título del artículo</a></h3>
-			<p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.<br /><a href="#">Ver más</a></p>
-		</div><!-- noticias -->
-		<div class="noticias">
-			<img src="http://fpoimg.com/138x168" alt="Fotografía relacionada" width="138" height="168" border="0" />
-			<h3><a href="#">Título del artículo</a></h3>
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam<br /><a href="#">Ver más</a></p>
-		</div><!-- noticias -->
-		<div class="noticias">
-			<img src="http://fpoimg.com/138x168" alt="Fotografía relacionada" width="138" height="168" border="0" />
-			<h3><a href="#">Título del artículo</a></h3>
-			<p>Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.<br /><a href="#">Ver más</a></p>
-		</div><!-- noticias -->
-	</div><!-- destacados_del_dia -->
-<div class="clear"></div>
-
+</div><!-- block-wrapper -->

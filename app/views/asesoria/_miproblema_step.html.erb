@@ -1,14 +1,22 @@
-  <h3>Mi problema</h3>
-  <p>En solo dos pasos puedes contarnos la situación para que te ayudemos</p>
-  <fieldset style="width:450px">
-  	  <%= hidden_field_tag :step, "miproblema" %>
-	  <legend>Necesidades</legend>
-	  <div class="field">
-	    <%= f.label "*1. ¿Por qué necesitas una terapia?" %><br />
-	    <%= f.text_area :necesidad_1, :size => "50x10" %>
-	  </div>
-	  <div class="field">
-	    <%= f.label "*2. ¿Cómo te imaginas tu terapia?" %><br />
-	    <%= f.text_area :necesidad_2, :size => "50x10" %>
-	  </div>
-  </fieldset>
+<%= hidden_field_tag :step, "miproblema" %>
+<h1>En solo dos pasos simples pasos haznos llegar tu 
+	inquietud o necesidad y nosotros te asesoramos.</h1>
+	<div class="form-box-center">
+		<div class="form-box">
+			<div class="titulo-form">
+			<h3>Necesidades y expectativas:</h3>
+			<p class="aviso">(* respuesta necesaria)</p>
+			</div>
+			<div class="form-block"> <!-- clase alerta destaca el campo cuando no completó -->
+				<div class="label">1. ¿Por qué necesitas una terapia? <span class="aviso">*</span></div>
+				<div class="input_field">
+					<%= f.text_area :necesidad_1, :class => "area_big" %>
+					<!-- mensaje aparece solo cuando no completó -->
+				</div>
+			</div>
+			<div class="form-block">
+				<div class="label">2. ¿Cómo te imaginas tu terapia?</div>
+				<div class="input_field">
+					<%= f.text_area :necesidad_2, :class => "area_med" %>
+				</div>
+			</div>

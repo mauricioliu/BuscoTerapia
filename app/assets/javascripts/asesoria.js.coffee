@@ -7,14 +7,14 @@ jQuery ->
                                     minDate: -0, 
                                     maxDate: "+1M +90D",
                                     showOn: "button",
-                                    buttonImage: "/assets/calendar.gif",
+                                    buttonImage: "/assets/img/icon-calendar.png",
                                     buttonImageOnly: true 
                                     });
   $("#asesorium_fecha_hasta_est").datepicker({ 
                                     minDate: -0, 
                                     maxDate: "+1M +90D",
                                     showOn: "button",
-                                    buttonImage: "/assets/calendar.gif",
+                                    buttonImage: "/assets/img/icon-calendar.png",
                                     buttonImageOnly: true 
                                     });
   $("#asesorium_fecha_desde_est").attr('readonly', true)

@@ -1,0 +1,109 @@
+<div id="block-content" class="block-wrapper">
+	<div class="wrapper" id="content">
+
+	<div class="columna-670-left">
+		<h2>Artículos</h2>
+		<div class="busqueda-box-center sec-articulos-y-noticias">
+			<div class="articulo-volver">
+				<%= link_to '<< Volver', articulos_path %>
+			</div>
+			
+			<div class="ficha-articulo">
+				
+				<div class="contenido-ficha">
+						<div class="foto"><%= image_tag @articulo.imagen_url.medium_thumb.url.to_s %></div>
+						<div class="encabezado">
+							<h3><%= @articulo.titulo %>.</h3>
+							<p><%= @articulo.created_at.strftime('%B %e, %Y')%>. Escrito por <%= @articulo.autor %>, <%= @articulo.especialidad %>.</p>
+		
+						</div>
+						<p>
+							<%= simple_format(@articulo.contenido) %> 
+						</p>
+						<hr/>	
+						<div class="bottom-social no-print">
+							<a href="#" class="bt-email">Enviar por correo</a> 
+							<a href="#" class="bt-print">Imprimir</a> 
+							<div class="social-icons">
+		
+								<div class="share-facebook">
+									<div class="fb-like" data-href="http://www.uchile.cl" data-send="true" data-layout="button_count" data-width="100" data-show-faces="true" data-action="recommend"></div>
+								</div>
+								<div class="share-twitter">
+									<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.uchile.cl/">Tweet</a>
+								</div>
+							</div><!-- social-icons -->
+						</div><!-- bottom-social -->
+		
+					
+				</div><!--contenido ficha-->
+				
+			</div><!--ficha articulo-->
+		
+		
+			<div class="articulo-volver">
+				<%= link_to '<< Volver', articulos_path %>
+			</div>
+		
+		</div><!--form-box-center-->
+		
+		</div><!--columna-670-left-->
+		
+		
+		<div class="columna-335-right sidebar-noticias">
+			<h2>Noticias</h2>
+			
+			<div class="ficha-noticia">
+				
+				<div class="contenido-ficha">
+						<div class="encabezado">
+							<h3>Pracsis recibe reconocimiento nacional por los talleres con niños de riesgo social.</h3>
+							<p>15 Diciembre, 2011</p>
+
+						</div>
+						<div class="foto"><img src="http://fpoimg.com/280x100" alt="Esteban Soto" width="280" height="100" border="0" /></div>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+							... <a href="articulos-y-noticias-dentro-noticia.html">Continuar leyendo.</a>
+						</p>						
+				</div><!--contenido ficha-->
+				
+			</div><!--ficha noticia-->
+			
+			<div class="ficha-noticia">
+
+				
+				<div class="contenido-ficha">
+						<div class="encabezado">
+							<h3>Pracsis recibe reconocimiento nacional por los talleres con niños de riesgo social.</h3>
+							<p>15 Diciembre, 2011</p>
+						</div>
+						<div class="foto"><img src="http://fpoimg.com/280x100" alt="Esteban Soto" width="280" height="100" border="0" /></div>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+							... <a href="articulos-y-noticias-dentro-noticia.html">Continuar leyendo.</a>
+
+						</p>						
+				</div><!--contenido ficha-->
+				
+			</div><!--ficha noticia-->
+				
+			<div class="ficha-noticia">
+				
+				<div class="contenido-ficha">
+						<div class="encabezado">
+							<h3>Pracsis recibe reconocimiento nacional por los talleres con niños de riesgo social.</h3>
+							<p>15 Diciembre, 2011</p>
+
+						</div>
+						<div class="foto"><img src="http://fpoimg.com/280x100" alt="Esteban Soto" width="280" height="100" border="0" /></div>
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+							... <a href="articulos-y-noticias-dentro-noticia.html">Continuar leyendo.</a>
+						</p>						
+				</div><!--contenido ficha-->
+			</div><!--ficha noticia-->
+		</div><!--columna-335-right-->
+		</div><!-- #content -->
+	</div><!-- block-content -->
+

@@ -1,69 +1,150 @@
-  <h3>Datos Principales</h3>
-  <fieldset style="width:520px">
-  	  <%= hidden_field_tag :step, "misdatos" %>
-	  <legend>Datos principales de quienes asistirán a terapia</legend>
-	  <div class="field">
-	    <%= f.label "*Nombre:" %>  
-	    <%= f.text_field :paciente_nombre %>
-	  </div>
-	  <div class="field">
-	    <%= f.label "Edad:" %>
-	    <%= f.number_field :paciente_edad, :size => 5 %> años
-	  </div>
-	  <div class="field">
-	    <%= f.label "*Esta terapia es para:" %>
-	    <%= f.collection_select :terapia_para, RefDatum.where(:nombre => "Terapia es para"), :valor, :valor %>
-	  </div>
-	  <div class="field">
-	    <%= f.label "Tipo de terapia:" %>
-	    <%= f.collection_select :terapia_tipo, RefDatum.where(:nombre => "Tipo Terapeuta"), :valor, :valor %>
-	  </div>
-  </fieldset>
+<%= hidden_field_tag :step, "misdatos" %>
+<h1>Ahora danos tus datos de contacto para comunicarnos 
+contigo. </h1>
+<h2><small>También puedes darnos algunos datos extras 
+para facilitar la búsqueda de tu terapeuta.</small></h2>
+<h2>&nbsp;</h2>
 
-  <fieldset style="width:520px">
-	  <legend>Datos de contacto</legend>
-	  <div class="field">
-	    <%= f.label "*Teléfono de contacto:" %>
-	    <%= f.text_field :paciente_telefono %>
-	  </div>
-	  <div class="field">
-	    <%= f.label "*E-mail:" %>
-	    <%= f.text_field :paciente_email %>
-	  </div>
-	  <div class="field">
-	    <%= f.label "*Región:" %>
-	    <%= f.collection_select :paciente_region, Region.order(:nombre), :id, :nombre, include_blank: true %>
-	  </div>
-	  <div class="field">
-	    <%= f.label "Comuna:" %>
-	    <%= f.grouped_collection_select :paciente_comuna, Region.all, :comunas, :nombre, :id, :nombre, include_blank: true %>
-	  </div>
-  </fieldset>
-  
-  <fieldset style="width:520px">
-	  <legend>Preferencia de atencion</legend>
-	  <div class="field">
-	    <%= f.label "Dia preferente de atencion"%>
-	    <%= f.collection_select :dia_preferencia, RefDatum.where(:nombre => "Dia preferente"), :valor, :valor %>
-	  </div>
-	  <div class="field">
-	  	Fecha estimativa: <br />
-	    <%= f.label "Desde" %>
-	    <%= f.text_field :fecha_desde_est, :size => 15 %>
-	    <%= f.label "Hasta" %>
-	    <%= f.text_field :fecha_hasta_est, :size => 15 %>
-	  </div>
-	  <div class="field">
-	    <%= f.label :rango_horario %>
-	    <%= f.collection_select :rango_horario, RefDatum.where(:nombre => "Rango horario"), :valor, :valor, :prompt => "Cualquier horario" %>
-	  </div>
-	  <p><b>Perfil de terapeuta</b></p>
-	  <div class="field">
-	    <%= f.label "Sexo" %>
-	    <%= f.collection_select :terapeuta_sexo, RefDatum.where(:nombre => "Sexo"), :valor, :valor, :prompt => "Indiferente" %>
-	  </div>
-	  <div class="field">
-	    <%= f.label "Otro" %>
-	    <%= f.text_area :terapeuta_otro, :size => "30x10" %>
-	  </div>
-  </fieldset>
+<div class="form-box-center">
+
+<!-- Datos principales de quienes asistirán a terapia -->
+
+<div class="form-box">
+	<div class="titulo-form">
+	<h3>Datos principales de quienes asistirán a terapia</h3>
+	<p class="aviso">(* respuesta necesaria)</p>
+	</div>
+	<div class="form-block one-line">
+		<div class="label"><span class="aviso">*</span> Nombre</div>
+		<div class="input_field">
+			<%= f.text_field :paciente_nombre %>
+			<!-- mensaje aparece solo cuando no completó -->
+		</div>
+	</div>
+	<div class="form-block one-line">
+		<div class="label">Edad</div>
+		<div class="input_field">
+			<%= f.number_field :paciente_edad %>
+
+		</div>
+	</div>
+	<div class="form-block one-line">
+		<div class="label"><span class="aviso">*</span> Esta terapia es para:</div>
+		<div class="input_field">
+			<%= f.collection_select :terapia_para, RefDatum.where(:nombre => "Terapia es para"), :valor, :valor %>
+			<!-- mensaje aparece solo cuando no completó -->
+			<!-- / -->
+		</div>
+	</div>
+	<div class="form-block one-line">
+		<div class="label">Tipo de terapia</div>
+		<div class="input_field">
+			<%= f.collection_select :terapia_tipo, RefDatum.where(:nombre => "Tipo Terapeuta"), :valor, :valor %>
+		</div>
+	</div>
+
+</div>
+
+<!-- Datos de contacto -->
+
+<div class="form-box">
+	<div class="titulo-form">
+	<h3>Datos de contacto</h3>
+	</div>
+	<div class="form-block one-line ">
+		<div class="label"><span class="aviso">*</span> Teléfono de contacto:</div>
+		<div class="input_field">
+			<%= f.text_field :paciente_telefono %>
+		</div>
+	</div>
+	
+	<div class="form-block one-line">
+		<div class="label"><span class="aviso">*</span> E-mail</div>
+		<div class="input_field">
+			<%= f.text_field :paciente_email %>
+			<!-- acá mensaje alerta -->
+		</div>
+	</div>
+	<div class="form-block one-line">
+		<div class="label"><span class="aviso">*</span> Región:</div>
+		<div class="input_field">
+			<%= f.collection_select :paciente_region, Region.order(:nombre), :id, :nombre, include_blank: true %>
+			<!-- acá mensaje alerta -->
+		</div>
+	</div>
+	<div class="form-block one-line">
+		<div class="label"><span class="aviso">*</span> Comuna:</div>
+		<div class="input_field">
+			<%= f.grouped_collection_select :paciente_comuna, Region.all, :comunas, :nombre, :id, :nombre, include_blank: true %>
+			<!-- acá mensaje alerta -->
+		</div>
+	</div>
+</div>
+
+<!-- Preferencias de atención -->
+
+<div class="form-box">
+	<div class="titulo-form">
+	<h3>Preferencias de atención</h3>
+	</div>
+	<div class="form-block">
+		<div class="label">
+			Lugar preferente de atención<br/>
+			<small>Se lo mas específico/a posible para recomendarte terapeutas que te sean cercanos.</small>
+		</div>
+		<div class="input_field">
+			<input type="text" />
+		</div>
+	</div>
+	<div class="form-block horarios-form">
+		<div class="label">
+			Día preferente de atención:
+		</div>
+		<div class="form-block one-line">
+			<div class="label"></div>
+			<div class="input_field">
+				<%= f.collection_select :dia_preferencia, RefDatum.where(:nombre => "Dia preferente"), :valor, :valor, :prompt => "Seleccione" %>
+			</div>
+		</div>
+	</div>	
+	<div class="form-block horarios-form">
+
+	
+		<div class="label">
+			Fecha estimativa:
+		</div>
+		
+
+
+
+		<div class="form-block one-line">
+			<div class="label">Desde: </div>
+			<div class="input_field">
+				<%= f.text_field :fecha_desde_est %>
+
+			</div>
+		</div>
+		<div class="form-block one-line">
+			<div class="label">Hasta: </div>
+			<div class="input_field">
+				<%= f.text_field :fecha_hasta_est %>
+
+			</div>
+		</div>
+		<div class="form-block one-line">
+			<div class="label">Rango horario: </div>
+			<div class="input_field">
+				<%= f.collection_select :rango_horario, RefDatum.where(:nombre => "Rango horario"), :valor, :valor, :prompt => "Cualquier horario" %>
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-block">
+		<div class="label">
+			Otro:<br/>
+			<small>Puedes escribir algún otro aspecto que te parezca relevante mencionar</small>
+		</div>
+		<div class="input_field">
+			<%= f.text_area :terapeuta_otro, :class => "area_small" %>
+		</div>
+	</div>

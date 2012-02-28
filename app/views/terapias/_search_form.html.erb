@@ -1,19 +1,41 @@
+<div class="form-box">
 <%= form_for @search do |f| %>
-<fieldset style="width:650px">
-<div>Buscar por:</div>
-<table>
-	<tr>
-		<td>Categoria de terapia:</td>
-		<td>Característica del tratamiento</td>
-		<td>Palabra clave:</td>
-		<td></td>
-	</tr>
-	<tr>
-		<td><%= f.collection_select :categoria_contains, RefDatum.where(:nombre => "Categoria Terapia"), :valor, :valor %></td>
-		<td><%= f.collection_select :caracteristica_contains, RefDatum.where(:nombre => "Caracteristica Tratamiento"), :valor, :valor, include_blank: true %></td>
-		<td><%= f.text_field :nombre_corto_or_descripcion_corta_or_descripcion_contains %></td>
-		<td><%= f.submit "Buscar" %></td>
-	</tr>
-</table>
-</fieldset>
+	<div class="titulo-form">
+	<h3>Tipos y modalidades de terapia.<br/>
+	Buscar por:</h3>
+	</div>
+	<div class="form-block busqueda-disciplina-asociada">
+		<div class="label">
+			Disciplina asociada:
+		</div>
+		<div class="input_field">
+			<%= f.collection_select :categoria_contains, RefDatum.where(:nombre => "Categoria Terapia"), :valor, :valor %>
+		</div>
+	</div>
+	<div class="form-block busqueda-especificaciones-tratamiento">
+		<div class="label">
+			Especificaciones del tratamiento:
+		</div>
+		<div class="input_field">
+			<%= f.collection_select :caracteristica_contains, RefDatum.where(:nombre => "Caracteristica Tratamiento"), :valor, :valor, include_blank: true %>
+		</div>
+	</div>
+	<div class="form-block busqueda-palabra-clave">
+		<div class="label">
+			Palabra Clave
+		</div>
+		<div class="input_field">
+			<%= f.text_field :nombre_corto_or_descripcion_corta_or_descripcion_contains %>
+		</div>
+	</div>
+	<div class="form-block busqueda-button">
+		<div class="label">
+			&nbsp;
+		</div>
+		<div class="input_field">
+			<%= f.submit "Encontrar terapia", :class => "boton-morado" %>
+		</div>
+	</div>
 <% end %>
+</div>
+

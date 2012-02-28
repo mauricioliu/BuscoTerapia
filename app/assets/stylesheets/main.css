@@ -54,11 +54,11 @@ table {
 
 @font-face {
     font-family: 'Webfont';
-    src: url('../fonts/webfont-webfont.eot');
-    src: url('../fonts/webfont-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/webfont-webfont.woff') format('woff'),
-         url('../fonts/webfont-webfont.ttf') format('truetype'),
-         url('../fonts/webfont-webfont.svg#WebfontRegular') format('svg');
+    src: url('fonts/webfont-webfont.eot');
+    src: url('fonts/webfont-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/webfont-webfont.woff') format('woff'),
+         url('fonts/webfont-webfont.ttf') format('truetype'),
+         url('fonts/webfont-webfont.svg#WebfontRegular') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -66,13 +66,13 @@ table {
 
 @font-face {
     font-family: 'Webfont';
-/*	src: url('../fonts/webfont_bold-webfont.eot');
-	src: local('?'), url('../fonts/webfont_bold-webfont.woff') format('woff'), url('../fonts/webfont_bold-webfont.eot') format('truetype'), url('../fonts/webfont_bold-webfont.svg') format('svg');
+/*	src: url('fonts/webfont_bold-webfont.eot');
+	src: local('?'), url('fonts/webfont_bold-webfont.woff') format('woff'), url('fonts/webfont_bold-webfont.eot') format('truetype'), url('fonts/webfont_bold-webfont.svg') format('svg');
 */	
-    src: url('../fonts/webfont_bold-webfont.eot');
-    src: url('../fonts/webfont_bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/webfont_bold-webfont.ttf') format('truetype'),
-         url('../fonts/webfont_bold-webfont.svg#Webfont') format('svg');
+    src: url('fonts/webfont_bold-webfont.eot');
+    src: url('fonts/webfont_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/webfont_bold-webfont.ttf') format('truetype'),
+         url('fonts/webfont_bold-webfont.svg#Webfont') format('svg');
 	 
     font-weight: bold;
     font-style: normal;
@@ -81,11 +81,11 @@ table {
 
 @font-face {
     font-family: 'Webfont';
-    src: url('../fonts/webfont_italic-webfont.eot');
-    src: url('../fonts/webfont_italic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/webfont_italic-webfont.woff') format('woff'),
-         url('../fonts/webfont_italic-webfont.ttf') format('truetype'),
-         url('../fonts/webfont_italic-webfont.svg#WebfontItalic') format('svg');
+    src: url('fonts/webfont_italic-webfont.eot');
+    src: url('fonts/webfont_italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/webfont_italic-webfont.woff') format('woff'),
+         url('fonts/webfont_italic-webfont.ttf') format('truetype'),
+         url('fonts/webfont_italic-webfont.svg#WebfontItalic') format('svg');
     font-weight: normal;
     font-style: italic;
 
@@ -97,7 +97,7 @@ body{
 	margin: 4px 0 0;
 	font-size: 62.5%;
 	font-family: 'Webfont',"Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
-	background: #f5f5f5 url(../img/top.jpg) repeat-x;
+	background: #f5f5f5 url(img/top.jpg) repeat-x;
 }
 
 
@@ -168,7 +168,7 @@ a:hover{
 }
 a.buscoterapia{
 	display: block;
-	background: url(../img/buscoterapia.jpg) no-repeat center bottom;
+	background: url(img/buscoterapia.jpg) no-repeat center bottom;
 	height: 79px;
 	width: 250px;
 	text-indent: -9000%;
@@ -180,7 +180,7 @@ a.buscoterapia{
 	right:10px;
 	top:10px;
 	padding-right:13px;
-	background: url(../img/arrow-down.png) no-repeat right center;
+	background: url(img/arrow-down.png) no-repeat right center;
 	cursor:pointer;
 }
 #login p{
@@ -192,6 +192,7 @@ a.buscoterapia{
 	text-decoration: none;
 	color: #a9a9a9;
 }
+
 
 /** login form **/
 #loginForm {
@@ -219,16 +220,13 @@ a.buscoterapia{
 #loginForm label{
 	width:100%;
 	float:left;
-
-	
-	
 }
 #loginForm a{
 	color:#7c7c7c;	
 	text-decoration:none;
 }
 
-input[type="text"],input[type="password"]{
+input[type="text"],input[type="password"],input[type="number"]{
 	padding:4px;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
@@ -251,11 +249,7 @@ input[type="text"],input[type="password"]{
 		color-stop(1, #F1F1F1)
 	);
 }
-#loginForm input[type="text"],#loginForm input[type="password"]{
-	margin-bottom:15px;
-	margin-top:5px;
 
-}
 .texto-recordar{
 	width:100px;
 	font-size:13px;
@@ -292,7 +286,6 @@ input[type="text"],input[type="password"]{
 }
 #loginForm input[type="button"]{
 	float:right;
-	
 }
 
 .login-separador{
@@ -304,7 +297,20 @@ input[type="text"],input[type="password"]{
 	width:325px;
 	margin:20px -20px;
 }
-
+#loginForm .aviso{
+	display:none;
+}
+#loginForm .alerta .aviso{
+	display:block;
+}
+#password-incorrecto{
+	color:#F00;
+	font-size:13px;
+	text-align:center;
+	line-height:100%;
+	display:none;
+	
+}
 #unfocus-bg-login-form{
 		width:100%;
 		height:100%;
@@ -314,6 +320,40 @@ input[type="text"],input[type="password"]{
 		z-index:400;
 		display:none;
 }
+
+/* display bienvenido */
+#logged-in{
+	position:absolute;
+	right:10px;
+	top:10px;
+	display:none;
+}
+#logged-in p{
+	margin: 0;
+	font-size: 14px;
+}
+#logged-in strong{
+	color:#7E75BB;
+}
+#logged-in p a{
+	color:#4584B9;
+	margin-left:10px;
+	display:inline-block;
+	font-size: 12px;
+}
+.loggedIn #logged-in{
+	display:block;
+}
+.loggedIn #unfocus-bg-login-form{
+	display:none;
+}
+.loggedIn #loginForm{
+	display:none;
+}
+.loggedIn #login{
+	display:none;
+}
+
 /* -- */
 
 #branding {
@@ -472,7 +512,7 @@ input[type="text"],input[type="password"]{
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 	height: 400px;
-	background: #fff url(../img/steps.jpg) no-repeat 90% 60%;
+	background: #fff url(img/steps.jpg) no-repeat 90% 60%;
 	position:relative;
 }
 #asesoria_terapeutas p{
@@ -630,7 +670,7 @@ select {
 	width: 292px;
 }
 .boton-morado {
-	background: url("../img/boton_bg.jpg") repeat-x scroll 0 center transparent;
+	background: url(img/boton_bg.jpg) repeat-x scroll 0 center transparent;
 	border: 1px solid #544a9a;
 	padding: 4px 20px;
 	font-size: 13px;
@@ -750,7 +790,7 @@ select {
 	cursor: pointer;
 	background-color: #fff;
 	margin-left: -30px;
-	background: url("../img/arrows-destacado-home.png") no-repeat scroll 0 0 transparent;
+	background: url(img/arrows-destacado-home.png) no-repeat scroll 0 0 transparent;
 
 }
 
@@ -1039,7 +1079,7 @@ textarea{
 	height:55px;
 }
 /** destacado para alertar **/
-.form-block.alerta textarea, .form-block.alerta input[type="text"], .form-block.alerta select{
+.form-block.alerta textarea, .form-block.alerta input[type="text"], .form-block.alerta input[type="password"], .form-block.alerta input[type="number"], .form-block.alerta select{
 	border-color:#ff7a00;
 }
 
@@ -1119,13 +1159,13 @@ textarea{
 	line-height:21px;
 }
 .bt-email{
-	background:url(../img/bt-mail.png) no-repeat scroll 0 center transparent;
+	background:url(img/bt-mail.png) no-repeat scroll 0 center transparent;
 	padding-left: 35px;
 	line-height:21px;
 	display:inline-block;
 }
 .bt-print{
-	background:url(../img/bt-print.png) no-repeat scroll 0 center transparent;
+	background:url(img/bt-print.png) no-repeat scroll 0 center transparent;
 	padding-left: 31px;
 	line-height:21px;
 	display:inline-block;
@@ -1134,7 +1174,7 @@ textarea{
 	margin-left:35px;
 }
 .icon-calendar{
-	background:url(../img/icon-calendar.png) no-repeat scroll 0 center transparent;
+	background:url(img/icon-calendar.png) no-repeat scroll 0 center transparent;
 	position:relative;
 	width:30px;
 	height:30px;
@@ -1221,7 +1261,7 @@ textarea{
 	width:20px;
 	margin-right:5px;
 	text-align:center;
-	background:url("../img/acordeon-flechas.png") no-repeat scroll 0 center transparent;
+	background:url(img/acordeon-flechas.png) no-repeat scroll 0 center transparent;
 }
 .active .acordeon-boton{
 	
@@ -1256,7 +1296,7 @@ textarea{
 
 /******** BUSCAR TERAPEUTAS *********/
 .necesita-ayuda{
-	background:url("../img/necesitas-ayuda-terapeuta.png") no-repeat -20px 25px #fffaf5;
+	background:url(img/necesitas-ayuda-terapeuta.png) no-repeat -20px 25px #fffaf5;
 	
 }
 .necesita-ayuda h2{
@@ -1272,7 +1312,7 @@ textarea{
 	width:220px;
 }
 .necesita-ayuda-gente{
-	background:url("../img/necesitas-ayuda-pareja-decide.png") no-repeat 0 0 transparent;
+	background:url(img/necesitas-ayuda-pareja-decide.png) no-repeat 0 0 transparent;
 	width:260px;
 	height:210px;
 	position:absolute;
@@ -1283,16 +1323,18 @@ textarea{
 
 
 .busqueda-box-center{
-	width:93%;
+	width:649px;
 	margin:0 auto;
 	display:block;
 	position:relative;
-	margin-left:-.5%;
+	margin-left:-5px;
 	margin-top:20px;
 }
 
 .busqueda-box-center .form-box{
 	margin-left:0%;
+    padding: 10px 12px 12px;
+    width: 619px;
 }
 .busqueda-box-center .form-block .label{
 	font-weight:normal;
@@ -1306,7 +1348,7 @@ textarea{
 	margin-right:30px;
 }
 .busqueda-palabra-clave{
-	width:295px;
+	width: 319px;
 }
 .busqueda-region{
 	width:190px;
@@ -1317,7 +1359,7 @@ textarea{
 	margin-right:30px;
 }
 .busqueda-button{
-	width:195px;
+	width: 219px;
 }
 .busqueda-button input{
 	width:100% !important;
@@ -1327,7 +1369,633 @@ textarea{
 	font-size:24px;
 	font-weight:bold;
 	color:#067ab8;
+	margin:20px 5px;
 }
 .busqueda-mensaje-resultado strong{
 	color:#7d74c1;
+}
+
+/* ficha: */
+
+.ficha-persona{
+	color:#6f6f6f;
+	position:relative;
+    padding: 15px;
+    width: 613px;
+	border:3px solid #ceecd6;
+	background-color:#f0fcf3;
+	-webkit-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border-radius: 10px;
+	float:left;
+	margin-bottom:7px;
+	font-size:13px;
+}
+.ficha-persona .foto{
+	overflow:hidden;
+	width:42px;
+	height:42px;
+	-webkit-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border-radius: 5px;
+	float:left;
+}
+.ficha-persona p{
+	font-size: 13px;
+}
+.contenido-ficha{
+	width:560px;
+	float:right;
+}
+.nombre-ficha{
+	font-size: 18px !important;
+	color: #6a63a4;
+	font-weight:bold;
+	margin: -5px 0 0;
+}
+.contenido-ficha h3{
+	color:#4483be;
+	font-size:16px;
+	margin: 0 0 15px;
+}
+.ficha-columna{
+	width:350px;
+	float:left;
+}
+.ficha-sidebar{
+	width:151px;
+	float:right;
+}
+.ficha-sidebar h3{
+	color:#919592;
+}
+.ficha-persona ul,.ficha-terapias ul{
+
+	line-height:140%;
+	list-style:disc;
+	margin-left:15px;
+	color:#4483be;
+	margin-bottom:18px;
+}
+.ficha-persona ul li ,.ficha-terapias ul li {
+	margin-bottom:2px;
+}
+.ficha-persona ul li span,.ficha-terapias ul li span{
+	color:#6f6f6f;
+}
+.ficha-persona .boton-morado{
+	float:left;
+	padding-left:40px;
+	padding-right:40px;
+	margin: 20px 0;
+}
+
+.ficha-simple{
+	border:3px solid #ffede1;
+	background-color:#fffaf5;
+}
+
+.box{
+	margin-bottom:30px;
+	float:left;
+	position:relative;
+}
+.box-mapa .link-mapa-google{
+	float:right;
+	margin-top:10px;
+}
+.box-entrevista a{
+	font-size:16px;
+	font-weight:bold;
+}
+.box-mapa .map-container{
+	width:151px;
+	/*height:182px;*/
+	position:relative;
+	
+}
+.box-mapa iframe{
+	position:relative;
+	width:151px;
+	height:182px;
+}
+.map-container.abierto{
+	/*left:-464px;*/
+}
+
+.map-container.abierto iframe{
+	border:2px solid #ccc;
+	/*width:615px;
+	height:300px;*/
+	-webkit-box-shadow: 0px 1px 3px 0px #000000;
+	-moz-box-shadow: 0px 1px 3px 0px #000000;
+	box-shadow: 0px 1px 3px 0px #000000; 
+}
+.bt-descr-completa{
+	position:absolute;
+	right:10px;
+	top:10px;
+	width:75px;
+	height:30px;
+	padding-top:8px;
+	padding-right:40px;
+	font-size:11px;
+	color:#8f8f8f;
+	text-align:right;
+	cursor:pointer;
+	background:url(img/btn-mas-ficha.png) no-repeat scroll 100% 0  transparent;
+}
+.abierta .bt-descr-completa{
+	background-position: 100% -37px;
+}
+.bt-descr-completa span{
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+
+}
+.abierta .bt-descr-completa span{
+	display:none;
+}
+.descripcion-full{
+	display:none;
+	float:left;
+}
+
+
+/* Paginación busqueda: */
+
+.pagination{
+	color:#6f6f6f;
+	position:relative;
+    padding: 15px;
+    width: 613px;
+	border:3px solid #eaebf6;
+	background-color:#e1cef3;
+	-webkit-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border-radius: 10px;
+	float:left;
+	margin-bottom:7px;
+	margin-top:15px;
+	font-size:16px;
+}
+.pagination ul li{
+	color:#4483be;
+	min-width:28px;
+	min-height:28px;
+	padding:0px;
+	background-color:#fff;
+	display:inline-block;
+	text-align:center;
+	font-size:16px;
+	font-weight:bold;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	line-height:28px;
+	cursor:pointer;
+	float:left;
+	margin-right:5px;
+}
+.pagination ul li a{
+	color:#4483be;
+	margin:0 8px;
+}
+.pagination ul li.current{
+	color:#9ab5db;
+	background-color:#f0e7f9;
+	border-color: #9ab5db;
+}
+.pagination ul li.current a{
+	color:#9ab5db;
+
+}
+
+.pagination ul li:hover {
+	border: 2px #4483be solid;
+	margin: -2px;
+	margin-right: 3px;
+}
+.pagination ul li.current:hover {
+	border-color: #9ab5db;
+}
+
+
+.ordenar-por{
+	font-size:15px;
+	color:#6b6b6b;
+}
+.ordenar-por select{
+	width:25%;
+}
+
+/**TIPOS DE TERAPIA**/
+
+
+.busqueda-disciplina-asociada{
+	width:208px;
+	margin-right:30px;
+}
+.busqueda-especificaciones-tratamiento{
+	width:303px;
+}
+.busqueda-especificaciones-tratamiento{
+	width:303px;
+}
+
+.sec-tipos-de-terapia .busqueda-palabra-clave{
+	width:290px;
+	margin-right:30px;
+}
+
+.sec-tipos-de-terapia .busqueda-button{
+	width:221px;
+}
+
+.letra-alfabetico{
+	float:left;
+	width:100%;
+	margin:5px 0 10px;
+}
+.letra-alfabetico span{
+	color:#fff;
+	min-width:25px;
+	min-height:25px;
+	padding:0px;
+	background-color:#e1cef3;
+	display:inline-block;
+	text-align:center;
+	font-weight:bold;
+	-webkit-border-radius: 17px;
+	-moz-border-radius: 17px;
+	border-radius: 17px;
+	line-height:24px;
+	float:left;
+	margin-right:5px;
+	font-size:18px;
+	text-transform:uppercase;
+	border:solid 3px #c3c1e6;
+}
+
+
+
+
+.ficha-terapias{
+	color:#6f6f6f;
+	position:relative;
+    padding: 15px;
+    width: 613px;
+	border:3px solid #ffede1;
+	background-color:#fffaf5;
+	-webkit-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border-radius: 10px;
+	float:left;
+	margin-bottom:7px;
+	font-size:13px;
+}
+.ficha-terapias hr{
+	color:#ffede1;
+	border:none;
+	border-top:3px solid #ffede1;
+	width:643px;
+	margin: 10px -15px;
+	float:left;
+}
+.ficha-terapias .foto{
+	overflow:hidden;
+	width:140px;
+	height:100px;
+	-webkit-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border-radius: 5px;
+	float:left;
+	margin-right:12px;
+	margin-bottom: 12px;
+}
+.ficha-terapias .contenido-ficha{
+	float:left;
+	width:615px;
+}
+.ficha-terapias p{
+	font-size: 13px;
+}
+.ficha-terapias .ficha-columna{
+	width: 380px;
+}
+.ficha-terapias .ficha-sidebar{
+	margin-top:29px;
+	width:210px;
+}
+.ficha-terapias p{
+	margin: 5px 0 15px;
+	line-height:130%;
+}
+.descripcion-resumen p{
+	line-height:110%;
+	margin: 5px 0;
+}
+.ficha-terapias .nombre-ficha{
+	margin: -4px 0 8px;
+}
+.ficha-terapias .descripcion-full{
+	float: none;
+}
+
+.bt-ver-mas{
+	display:inline-block;
+	position:relative;
+	width:80px;
+	height:20px;
+	padding-left:22px;
+	font-size:11px;
+	color:#9a9a9a;
+	cursor:pointer;
+	line-height:22px;
+	background:url(img/bt-mas-mini.png) no-repeat scroll 0 center  transparent;
+}
+.box-terapeutas ul li a,.box-articulos-relacionados ul li a{
+	font-weight:bold;
+	color:#6c42c3;
+}
+.ficha-terapias .box h3{
+	color:#4483be;
+}
+.bottom-social{
+	float:left;
+	width:100%;
+	padding-top:5px;
+}
+.bottom-social .bt-email{
+	margin-right:40px;
+}
+.bottom-social .social-icons{
+	float:right;
+	width:350px;
+}
+.share-twitter{
+	float:right;
+	/*width:105px;*/
+	display:inline-block;
+	margin-right:5px;
+}
+.share-facebook{
+	float:right;
+	/*width:200px;*/
+	text-align: right;
+	display:inline-block;
+}
+
+.forzar-abierta .descripcion-resumen{
+	display:none;
+}
+.forzar-abierta .descripcion-full{
+	display:block;
+}
+
+
+/**ARTICULOS Y NOTICIAS**/
+
+.busqueda-categoria{
+	width:208px;
+	margin-right:30px;
+}
+.busqueda-tema{
+	width:175px;
+}
+.busqueda-especificaciones-tratamiento{
+	width:303px;
+}
+
+.sec-articulos-y-noticias .busqueda-palabra-clave{
+	width:208px;
+	margin-right:30px;
+}
+
+.sec-articulos-y-noticias .busqueda-button{
+	width:175px;
+}
+
+
+
+
+
+.ficha-articulo{
+	color:#6f6f6f;
+	position:relative;
+    padding: 15px;
+    width: 613px;
+	border:3px solid #ffede1;
+	background-color:#fffaf5;
+	-webkit-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border-radius: 10px;
+	float:left;
+	margin-bottom:7px;
+	font-size:13px;
+}
+.ficha-articulo hr{
+	color:#ffede1;
+	border:none;
+	border-top:3px solid #ffede1;
+	width:643px;
+	margin: 10px -15px;
+	float:left;
+}
+.ficha-articulo .foto{
+	overflow:hidden;
+	width:203px;
+	height:140px;
+	-webkit-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border-radius: 5px;
+	float:left;
+	margin-right:12px;
+	/*margin-bottom: 12px;*/
+}
+.ficha-articulo .contenido-ficha{
+	float:left;
+	width:615px;
+}
+.ficha-articulo p{
+	font-size: 13px;
+}
+.ficha-articulo .encabezado{
+	margin: -4px 0 12px;
+}
+.encabezado h3{
+	color:#6a63a4;
+	font-size:18px;
+	margin-bottom:0;
+}
+.encabezado p{
+	color:#067ab8;
+	position:relative;
+}
+.articulo-volver{
+	margin: 10px 0 20px;
+	text-align:right;
+	width:100%;
+	float:left;
+}
+.articulo-volver a{
+	font-size:15px;
+}
+
+
+/**NOTICIAS **/
+
+
+.sidebar-noticias h2{
+	margin-bottom:20px;
+}
+.ficha-noticia{
+	color:#6f6f6f;
+	position:relative;
+    padding: 15px;
+    width: 280px;
+	border:3px solid #ceecd6;
+	background-color:#f0fcf3;
+	-webkit-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border-radius: 10px;
+	float:left;
+	margin-left:10px;
+	margin-bottom:7px;
+	font-size:13px;
+}
+.ficha-noticia hr{
+	color:#ceecd6;
+	border:none;
+	border-top:3px solid #ceecd6;
+	width:310px;
+	margin: 10px -15px;
+	float:left;
+}
+.ficha-noticia .foto{
+	overflow:hidden;
+	width:280px;
+	height:100px;
+	-webkit-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	border-radius: 5px;
+	float:left;
+	margin-right:0px;
+	margin-bottom: 10px;
+}
+.ficha-noticia .encabezado{
+	width:100%;
+}
+.ficha-noticia .encabezado h3{
+	font-size:14px;
+	
+}
+.ficha-noticia .contenido-ficha{
+	float:left;
+	width:280px;
+}
+.ficha-noticia p{
+	font-size: 13px;
+	margin:8px 0;
+}
+.sidebar-noticias{
+	padding-bottom:20px;
+}
+.busqueda-box-center .ficha-noticia{
+	width: 613px;
+}
+.busqueda-box-center .ficha-noticia .contenido-ficha{
+	width: 613px;
+}
+.busqueda-box-center .ficha-noticia .foto{
+	margin-right:15px;
+}
+.busqueda-box-center .ficha-noticia hr{
+	width:643px;
+	margin: 10px -15px;
+}
+.busqueda-box-center .ficha-noticia .encabezado h3{
+	font-size:18px;
+}
+
+#mjs-alert{
+	position:fixed;
+	width:100%;
+	height:100%;
+	top:0px;
+	left:0px;
+	z-index:5000;
+	display:none;
+}
+#bg-mjs-alert{
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	background-color:#FFF;
+	/* IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	/* IE 5-7 */
+	filter: alpha(opacity=50);
+	/* Netscape */
+	-moz-opacity: 0.5;
+	/* Safari 1.x */
+	-khtml-opacity: 0.5;
+	/* Good browsers */
+	opacity: 0.5;
+}
+#box-mjs-alert{
+	position:relative;
+	width:300px;
+	margin:auto;
+	top:30%;
+	border:3px solid #ceecd6;
+	background-color:#f0fcf3;
+	-webkit-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	border-radius: 10px;
+	padding:15px;
+	text-align:center;
+	-webkit-box-shadow: 0px 1px 3px 0px #000000;
+	-moz-box-shadow: 0px 1px 3px 0px #000000;
+	box-shadow: 0px 1px 3px 0px #000000; 
+}
+#box-mjs-alert p{
+	font-size:16px;
 }
