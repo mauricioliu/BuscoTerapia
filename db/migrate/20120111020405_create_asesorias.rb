@@ -1,6 +1,6 @@
-class CreateAsesoria < ActiveRecord::Migration
+class CreateAsesorias < ActiveRecord::Migration
   def change
-    create_table :asesoria do |t|
+    create_table :asesorias do |t|
       t.text :necesidad_1, :limit => 65535
       t.text :necesidad_2, :limit => 65535
       
@@ -12,10 +12,8 @@ class CreateAsesoria < ActiveRecord::Migration
       t.string :paciente_telefono
       t.string :paciente_email
       
-      t.string :dia_preferencia
-      t.datetime :fecha_desde_est
-      t.datetime :fecha_hasta_est
-      t.string :rango_horario
+      t.datetime :hora_desde
+      t.datetime :hora_hasta
       
       # t.string :terapeuta_sexo
       t.string :terapeuta_otro

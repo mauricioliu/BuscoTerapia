@@ -89,7 +89,14 @@ para facilitar la búsqueda de tu terapeuta.</small></h2>
 		<div class="form-block one-line">
 			<div class="label"></div>
 			<div class="input_field">
-				<%= f.collection_select :dia_preferencia, RefDatum.where(:nombre => "Dia preferente"), :valor, :valor, :prompt => "Seleccione" %>
+				<% for dia_atencion in @dias_atencion %>
+					<% if params[:tipo_terapia_ids] != nil %>
+						<%= check_box_tag "dia_atencion_ids[]", dia_atencion.valor, params[:tipo_terapia_ids].include?(dia_atencion.valor) %>
+					<% else %>
+						<%= check_box_tag "dia_atencion_ids[]", dia_atencion.valor, contains_dia_atencion(@asesoria.id, dia_atencion) %>
+					<% end %>
+					<%= dia_atencion.valor %><br />
+				<% end %><br />
 			</div>
 		</div>
 	</div>	
@@ -102,25 +109,18 @@ para facilitar la búsqueda de tu terapeuta.</small></h2>
 		
 
 
-
 		<div class="form-block one-line">
 			<div class="label">Desde: </div>
 			<div class="input_field">
-				<%= f.text_field :fecha_desde_est %>
+				<%= f.text_field :hora_desde %>
 
 			</div>
 		</div>
 		<div class="form-block one-line">
 			<div class="label">Hasta: </div>
 			<div class="input_field">
-				<%= f.text_field :fecha_hasta_est %>
+				<%= f.text_field :hora_hasta %>
 
-			</div>
-		</div>
-		<div class="form-block one-line">
-			<div class="label">Rango horario: </div>
-			<div class="input_field">
-				<%= f.collection_select :rango_horario, RefDatum.where(:nombre => "Rango horario"), :valor, :valor, :prompt => "Cualquier horario" %>
 			</div>
 		</div>
 	</div>

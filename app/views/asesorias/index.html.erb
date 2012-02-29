@@ -24,16 +24,16 @@
     <th></th>
   </tr>
 
-<% @asesoria.each do |asesorium| %>
+<% @asesorias.each do |asesoria| %>
   <tr>
-    <td><%= asesorium.id %></td>
-    <td><%= link_to 'Show', asesorium %></td>
-    <td><%= link_to 'Edit', edit_asesorium_path(asesorium) %></td>
-    <td><%= link_to 'Destroy', asesorium, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= asesoria.id %></td>
+    <td><%= link_to 'Show', asesoria %></td>
+    <td><%= link_to 'Edit', edit_asesoria_path(asesoria) %></td>
+    <td><%= link_to 'Destroy', asesoria, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Asesorium', new_asesorium_path %>
+<%= link_to 'New Asesorium', new_asesoria_path %>

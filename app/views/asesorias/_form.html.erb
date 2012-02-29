@@ -1,10 +1,10 @@
-<%= form_for(@asesorium) do |f| %>	
+<%= form_for(@asesoria) do |f| %>	
 	<div id="block-content" class="block-wrapper">
 		<div class="wrapper" id="content">
 
 		<div class="columna-670-left">
 			<h2>Ingresa los siguientes datos para soliticar aseroría terpéutica</h2>
-			<div class="etapas etapa_1"> <!-- varia entre clases: etapa_1, etapa_2, etapa_3 -->
+			<div class="etapas <%= @asesoria.current_step == "miproblema" ? "etapa_1" : "etapa_2" %>"> <!-- varia entre clases: etapa_1, etapa_2, etapa_3 -->
 				<hr class="linea_etapas"/>
 				<div class="etapa icon_etapa_1">
 						<span class="number">1</span>
@@ -21,10 +21,10 @@
 			</div>
 			
 			
-			<%= render "#{@asesorium.current_step}_step", :f => f %>
+			<%= render "#{@asesoria.current_step}_step", :f => f %>
 			
 					<div class="form-block">
-						<%= f.submit @asesorium.current_step == "miproblema" ? "Siguiente paso" : "Enviar", :class => "boton-morado" %>
+						<%= f.submit @asesoria.current_step == "miproblema" ? "Siguiente paso" : "Enviar", :class => "boton-morado" %>
 					</div>
 				</div>
 			</div>

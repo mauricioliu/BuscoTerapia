@@ -18,4 +18,5 @@ inflect.irregular "forma_pago", "forma_pagos"
 inflect.irregular "pago", "pagos"
 inflect.irregular "articulo", "articulos"
 inflect.irregular "dia_atencion", "dias_atencion"
+inflect.irregular "asesoria", "asesorias"
 end

@@ -15,7 +15,7 @@ BuscoTerapia::Application.routes.draw do
 
   get "buscar_terapeuta/find"
 
-  resources :asesoria
+  resources :asesorias
   resources :terapeutas
   resources :sessions
   get "home/index"
@@ -30,7 +30,7 @@ BuscoTerapia::Application.routes.draw do
   # match "submit_payment" => "terapeutas#submit_payment"
   match "payment_success" => "terapeutas#payment_success"
   
-  match '/ver_comprobante/:id' => 'asesoria#ver_comprobante', :as => 'ver_comprobante'
+  match '/ver_comprobante/:id' => 'asesorias#ver_comprobante', :as => 'ver_comprobante'
   
   match '/validar_terapeuta/:id' => 'validar_terapeuta#show', :as => 'revisar_terapeuta'
   match '/validar_terapeuta/' => 'validar_terapeuta#index'

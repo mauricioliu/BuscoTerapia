@@ -20,12 +20,9 @@ Telefono: <%= @asesoria.paciente_telefono %>
 Email: <%= @asesoria.paciente_email %>
 
 Preferencia de atención
-Día preferente de atención: <%= @asesoria.dia_preferencia %>
+Día preferente de atención: <% @asesoria.dias_atencion.each do |dia_atencion| %> <%= dia_atencion.dia %>, <% end %>
 Fecha estimativa
-Desde: <%= @asesoria.fecha_desde_est %>
-Hasta: <%= @asesoria.fecha_hasta_est %>
-Rango de horario: <%= @asesoria.rango_horario %>
+Rango de horario: <%= @asesoria.hora_desde %> - <%= @asesoria.hora_hasta %>
 
 Perfil de terapeuta
-Sexo: <%= @asesoria.terapeuta_sexo %>
 Otro: <%= @asesoria.terapeuta_otro %>

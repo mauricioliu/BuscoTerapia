@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class Asesorium < ActiveRecord::Base
+class Asesoria < ActiveRecord::Base
   
   has_many :dias_atencion, :dependent => :destroy
   

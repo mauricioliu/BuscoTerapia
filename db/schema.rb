@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20120229033952) do
     t.datetime "updated_at"
   end
 
-  create_table "asesoria", :force => true do |t|
+  create_table "asesorias", :force => true do |t|
     t.text     "necesidad_1",       :limit => 16777215
     t.text     "necesidad_2",       :limit => 16777215
     t.string   "paciente_nombre"
@@ -32,12 +32,8 @@ ActiveRecord::Schema.define(:version => 20120229033952) do
     t.string   "terapia_tipo"
     t.string   "paciente_telefono"
     t.string   "paciente_email"
-    t.string   "paciente_region"
-    t.string   "paciente_comuna"
-    t.string   "dia_preferencia"
-    t.datetime "fecha_desde_est"
-    t.datetime "fecha_hasta_est"
-    t.string   "rango_horario"
+    t.datetime "hora_desde"
+    t.datetime "hora_hasta"
     t.string   "terapeuta_otro"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -51,7 +47,7 @@ ActiveRecord::Schema.define(:version => 20120229033952) do
   end
 
   create_table "dias_atencion", :force => true do |t|
-    t.integer  "terapeuta_id"
+    t.integer  "asesoria_id"
     t.string   "dia"
     t.datetime "created_at"
     t.datetime "updated_at"
