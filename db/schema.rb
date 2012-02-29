@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120227222214) do
+ActiveRecord::Schema.define(:version => 20120229033952) do
 
   create_table "articulos", :force => true do |t|
     t.string   "titulo"
@@ -46,6 +46,13 @@ ActiveRecord::Schema.define(:version => 20120227222214) do
   create_table "comunas", :force => true do |t|
     t.integer  "region_id"
     t.string   "nombre"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "dias_atencion", :force => true do |t|
+    t.integer  "terapeuta_id"
+    t.string   "dia"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -127,6 +134,8 @@ ActiveRecord::Schema.define(:version => 20120227222214) do
     t.datetime "last_logged_in"
     t.string   "reset"
     t.string   "estado"
+    t.float    "latitude"
+    t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

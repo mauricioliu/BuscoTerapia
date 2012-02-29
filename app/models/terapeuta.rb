@@ -5,6 +5,9 @@ require 'bcrypt'
 class Terapeuta < ActiveRecord::Base
   include BCrypt
   
+  geocoded_by :direccion_completa
+  after_validation :geocode
+  
   has_many :tipo_terapias, :dependent => :destroy
   has_many :especialidades, :dependent => :destroy
   has_many :estudios, :dependent => :destroy
@@ -37,6 +40,10 @@ class Terapeuta < ActiveRecord::Base
   attr_unsearchable :email, :password_hash, :created_at, :updated_at, :last_logged_in, :telefono, :movil, :direccion
   #before_create { generate_token(:auth_token) }
   # nombre, direccion, region, comuna, ptelefono, telefono, pmovil, movil, email, tipo, especialidad
+  
+  def direccion_completa
+    direccion + ', ' + Comuna.find(comuna).nombre + ', ' + Region.find(region).nombre
+  end
   
   def password
     @password ||= Password.new(password_hash)

@@ -35,7 +35,7 @@ gem 'therubyracer', :platforms => :ruby
 gem "nested_form"
 
 gem "gibberish"
-
+gem 'geocoder'
 #group :development do
 #  gem 'active_reload'
 #end

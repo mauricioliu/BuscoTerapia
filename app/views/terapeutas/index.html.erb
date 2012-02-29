@@ -106,9 +106,9 @@
 								<div class="box box-mapa">
 									<h3>Mapa de Ubicación</h3>
 									<div class="map-container">
-										<iframe width="151" height="182" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.cl/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=&amp;q=Isidora+Goyenechea,+Santiago&amp;aq=0&amp;oq=isidora+&amp;sll=-35.675147,-71.542969&amp;sspn=80.816499,137.988281&amp;ie=UTF8&amp;hq=&amp;hnear=Isidora+Goyenechea,+Las+Condes,+Santiago,+Regi%C3%B3n+Metropolitana&amp;t=m&amp;ll=-33.414249,-70.599003&amp;spn=0.013039,0.012875&amp;z=14&amp;output=embed"></iframe>
+										<%= image_tag "http://maps.google.com/maps/api/staticmap?size=151x182&sensor=true&zoom=16&markers=#{terapeuta.latitude}%2C#{terapeuta.longitude}", :class => "link-mapa-google" %>
 									</div>
-									<a target="_blank" href="http://maps.google.cl/maps?f=q&amp;source=embed&amp;hl=es&amp;geocode=&amp;q=Isidora+Goyenechea,+Santiago&amp;aq=0&amp;oq=isidora+&amp;sll=-35.675147,-71.542969&amp;sspn=80.816499,137.988281&amp;ie=UTF8&amp;hq=&amp;hnear=Isidora+Goyenechea,+Las+Condes,+Santiago,+Regi%C3%B3n+Metropolitana&amp;t=m&amp;ll=-33.414249,-70.599003&amp;spn=0.013039,0.012875&amp;z=14" class="link-mapa-google">Ver mapa en grande</a>
+									
 								</div>
 								<div class="box box-entrevista">
 									<a href="#">Ver entrevista.</a>

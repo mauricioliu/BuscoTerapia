@@ -54,11 +54,11 @@ table {
 
 @font-face {
     font-family: 'Webfont';
-    src: url('fonts/webfont-webfont.eot');
-    src: url('fonts/webfont-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/webfont-webfont.woff') format('woff'),
-         url('fonts/webfont-webfont.ttf') format('truetype'),
-         url('fonts/webfont-webfont.svg#WebfontRegular') format('svg');
+    src: url('/assets/webfont-webfont.eot');
+    src: url('/assets/webfont-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/webfont-webfont.woff') format('woff'),
+         url('/assets/webfont-webfont.ttf') format('truetype'),
+         url('/assets/webfont-webfont.svg#WebfontRegular') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -69,10 +69,10 @@ table {
 /*	src: url('fonts/webfont_bold-webfont.eot');
 	src: local('?'), url('fonts/webfont_bold-webfont.woff') format('woff'), url('fonts/webfont_bold-webfont.eot') format('truetype'), url('fonts/webfont_bold-webfont.svg') format('svg');
 */	
-    src: url('fonts/webfont_bold-webfont.eot');
-    src: url('fonts/webfont_bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/webfont_bold-webfont.ttf') format('truetype'),
-         url('fonts/webfont_bold-webfont.svg#Webfont') format('svg');
+    src: url('/assets/webfont_bold-webfont.eot');
+    src: url('/assets/webfont_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/webfont_bold-webfont.ttf') format('truetype'),
+         url('/assets/webfont_bold-webfont.svg#Webfont') format('svg');
 	 
     font-weight: bold;
     font-style: normal;
@@ -81,11 +81,11 @@ table {
 
 @font-face {
     font-family: 'Webfont';
-    src: url('fonts/webfont_italic-webfont.eot');
-    src: url('fonts/webfont_italic-webfont.eot?#iefix') format('embedded-opentype'),
-         url('fonts/webfont_italic-webfont.woff') format('woff'),
-         url('fonts/webfont_italic-webfont.ttf') format('truetype'),
-         url('fonts/webfont_italic-webfont.svg#WebfontItalic') format('svg');
+    src: url('/assets/webfont_italic-webfont.eot');
+    src: url('/assets/webfont_italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/webfont_italic-webfont.woff') format('woff'),
+         url('/assets/webfont_italic-webfont.ttf') format('truetype'),
+         url('/assets/webfont_italic-webfont.svg#WebfontItalic') format('svg');
     font-weight: normal;
     font-style: italic;
 

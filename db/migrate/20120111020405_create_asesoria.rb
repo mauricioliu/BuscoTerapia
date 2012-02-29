@@ -11,8 +11,6 @@ class CreateAsesoria < ActiveRecord::Migration
       
       t.string :paciente_telefono
       t.string :paciente_email
-      t.string :paciente_region
-      t.string :paciente_comuna
       
       t.string :dia_preferencia
       t.datetime :fecha_desde_est

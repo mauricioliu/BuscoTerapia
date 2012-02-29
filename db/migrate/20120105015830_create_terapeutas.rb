@@ -26,6 +26,9 @@ class CreateTerapeutas < ActiveRecord::Migration
       t.string :reset
       
       t.string :estado
+      
+      t.float :latitude
+      t.float :longitude
 
       t.timestamps
     end
