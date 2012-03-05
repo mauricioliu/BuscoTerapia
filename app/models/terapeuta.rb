@@ -27,10 +27,10 @@ class Terapeuta < ActiveRecord::Base
   validates_presence_of :nombre, :direccion, :region, :comuna, :telefono, :movil, :rut
   validates_numericality_of :telefono, :if => :telefono?
   validates_numericality_of :movil, :if => :movil?
-  #validates :email,   
-  #          :presence => true,
-  #          :uniqueness => true,
-  #          :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
+  validates :email,   
+            :presence => true,
+            :uniqueness => true,
+            :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
 
   validate :especialidades_no_duplicate, :especialidades_size, :tipo_terapias_size
   validates_format_of :rut, :with => /^0*(\d{1,3}(\.?\d{3})*)\-?([\dkK])$/i, :if => :rut?

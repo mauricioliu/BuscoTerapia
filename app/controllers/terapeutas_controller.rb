@@ -108,8 +108,8 @@ class TerapeutasController < ApplicationController
     
     respond_to do |format|
       if @terapeuta.save
-        #TerapeutaMailer.send_password(@terapeuta,random_password).deliver
-        #TerapeutaMailer.notify_new_terapeuta(@terapeuta).deliver
+        TerapeutaMailer.send_password(@terapeuta,random_password).deliver
+        TerapeutaMailer.notify_new_terapeuta(@terapeuta).deliver
         if @terapeuta.plan_ciclo != "Gratis"
           @pago = @terapeuta.pagos.create(:tipo => "Suscripcion Completa "+@terapeuta.plan_ciclo, 
                                           :monto => RefDatum.where(:nombre => "Plan "+@terapeuta.plan_ciclo).first().valor, 
