@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 class TerapeutaMailer < ActionMailer::Base
-  default from: "do-not-reply@buscoterapia.com"
+  default from: "no-reply@buscoterapia.cl"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
