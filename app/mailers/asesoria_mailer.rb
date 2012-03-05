@@ -1,5 +1,5 @@
 class AsesoriaMailer < ActionMailer::Base
-  default from: "do-not-reply@buscoterapia.com"
+  default from: "no-reply@buscoterapia.cl"
   
   def send_confirmation(asesoria)
     @asesoria = asesoria
