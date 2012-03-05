@@ -5,32 +5,24 @@
 		<h2>Buscar terapeutas</h2>
 		
 		<div class="busqueda-box-center">
-		<%= render "search_form"%>			
+		<%= render "search_form"%>
+		<% if @sepa%>			
 			<p class="busqueda-mensaje-resultado">
 				Se han encontrado <strong><%=@terapeutas.count%></strong> 
-				de <strong>Psicólogos</strong> 
-				en <strong>Santiago</strong> 
-				que contiene sus palabras clave.
+				de <strong><%= @sepa["tipo_terapias_nombre_contains"] %></strong>
+				<% if @sepa["region_contains"] != "" %> 
+				en <strong><%= Region.find(@sepa["region_contains"]).nombre %></strong> 
+				<% end %>
+				<% if @sepa["nombre_or_especialidades_valor_contains"] != "" %> 
+				relacionados con <strong><%= @sepa["nombre_or_especialidades_valor_contains"] %></strong>
+				<% end %>
 			</p>
-			
-			<div class="form-block ordenar-por">
-				<div class="label">
-					Ordenar por:
-				</div>
-				<div class="input_field">
-					<select>
-						<option value="">Pertinencia</option>
-						<option value="">Cercanía</option>
-						<option value="">precio</option>
-					</select>
-				</div>
-			</div>
-			
+		<% end %>
+		<% if @sepa %>
+		
 			<% @terapeutas.each do |terapeuta| %>
-			
 				<% if terapeuta.plan_tipo == "Gratis" %>
-				
-				<div class="ficha-persona ficha-simple">
+					<div class="ficha-persona ficha-simple">
 					<div class="foto"><img src="http://fpoimg.com/42x42" alt="Esteban Soto" width="42" height="42" border="0" /></div>
 					<div class="contenido-ficha">
 						<p class="nombre-ficha"><%= terapeuta.nombre %></p>
@@ -43,17 +35,16 @@
 								<%= especialidad.valor %>,
 							<% end %>
 							</br>
-							<%= terapeuta.direccion %>, <%= terapeuta.comuna %>, <%= terapeuta.region %> 
 						</p>
 						<div class="descripcion-full">
-							<p><strong>Dirección:</strong> José Tomás Rider #974, Providencia, Región Metropolitana</p>
+							<p><strong>Dirección:</strong> <%= terapeuta.direccion %>, <%= Comuna.find(terapeuta.comuna).nombre %>, <%= Region.find(terapeuta.region).nombre %></p>
 							<input type="button" value="Contactar al Terapeuta" class="boton-morado" />
 						</div><!--descirpcion full-->
 					</div><!--contenido ficha-->
 					
 				</div><!--ficha persona-->
 				<% else %>
-				<div class="ficha-persona">
+					<div class="ficha-persona">
 					<div class="foto"><img src="http://fpoimg.com/42x42" alt="Esteban Soto" width="42" height="42" border="0" /></div>
 					<div class="contenido-ficha">
 						
@@ -64,7 +55,7 @@
 							<% end %>
 							Especialista en 
 							</br>
-							<%= terapeuta.direccion %>, <%= terapeuta.comuna %>, <%= terapeuta.region %> 
+							<%= terapeuta.direccion %>, <%= Comuna.find(terapeuta.comuna).nombre %>, <%= Region.find(terapeuta.region).nombre %> 
 						</p>
 						<div class="descripcion-full">
 							<h3>Descripción del psicologo como en los nuevos cv’s consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</h3>
@@ -120,24 +111,11 @@
 					
 				</div><!--ficha persona-->
 				<% end %>
-			
+				<%= will_paginate @terapeutas, previous_label: h("<"), next_label: h(">") %>
 			<% end %>
+		<% end %>
 				
 				
-				
-
-			
-				<div class="pagination">
-				
-					<ul>
-						<li><a href="#">1</a></li>
-						<li class="current"><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">25</a></li>
-						<li class="siguiente"><a href="#">Siguiente</a></li>
-					</ul>
-				
-				</div>
 			
 			</div><!--form-box-center-->
 		</div><!--columna-670-left-->

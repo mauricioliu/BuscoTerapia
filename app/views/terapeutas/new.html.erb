@@ -1,4 +1,299 @@
-<h3>Formulario de registro gratuito</h3>
-<p>Ingresa los siguientes datos para crear tu cuenta y formar parte de la red de terapeutas más grande del país.</p>
-<p>Todos los datos son obligatorios</p>
-<%= render 'form' %>
+<div id="block-content" class="block-wrapper">
+	<div class="wrapper" id="content">
+
+	<div class="columna-670-left">
+		<h2>Mi ficha:</h2>
+		<p class="destacado">Tu cuenta es una cuenta gratuita, por lo que cuentas con algunos de los privilegios de pertenecer a 
+buscoterapia.cl</p>
+
+
+		<div class="busqueda-box-center">
+		
+			<div class="form-box form-perfil">
+			
+			<%= nested_form_for(@terapeuta) do |f| %>
+				<div class="mi-perfil">
+					<h3>Mi perfil</h3>
+					<div class="form-block one-line">
+						<div class="label"><span class="aviso">*</span>Mi nombre:</div>
+						<div class="input_field">
+							<%= f.text_field :nombre %>
+							<!-- mensaje aparece solo cuando no completó -->
+							<!-- <p class="aviso">*por favor complete este campo</p>-->
+							<!-- / -->
+						</div>
+					</div>
+					<div class="form-block one-line">
+						<div class="label"><span class="aviso">*</span>Rut:</div>
+						<div class="input_field">
+							<%= f.text_field :rut %>
+							<!-- mensaje aparece solo cuando no completó -->
+							<!-- <p class="aviso">*por favor complete este campo</p>-->
+							<!-- / -->
+						</div>
+					</div>
+					
+					
+					<div class="form-block one-line">
+						<div class="label"><span class="aviso">*</span>Correo electrónico:</div>
+						<div class="input_field">
+							<%= f.text_field :email %>
+							<!-- mensaje aparece solo cuando no completó -->
+							<!-- <p class="aviso">*por favor complete este campo</p>-->
+							<!-- / -->
+						</div>
+					</div>
+					
+					<div class="form-block one-line listaDias">
+						<div class="label"><span class="aviso">*</span>Profesión:</div>
+						<div class="columna30">
+						<% for terapia in @tipo_terapias %>
+							<% if params[:tipo_terapia_ids] != nil %>
+								<%= check_box_tag "tipo_terapia_ids[]", terapia.valor, params[:tipo_terapia_ids].include?(terapia.valor) %>
+							<% else %>
+								<%= check_box_tag "tipo_terapia_ids[]", terapia.valor, contains_tipo_terapia(@terapeuta.id, terapia) %>
+							<% end %>
+							<%= terapia.valor %>
+							<br/>
+						<% end %>
+						</div>
+					</div>
+					
+					<%= f.fields_for :especialidades do |especialidad_form| %>
+					<div class="form-block one-line">
+						<div class="label">Especialidad:</div>
+						<div class="input_field">
+							<%= especialidad_form.text_field :valor %>
+							<%= especialidad_form.link_to_remove " X ", :class => "borrar" %>
+							<!-- mensaje aparece solo cuando no completó -->
+							<!-- <p class="aviso">*por favor complete este campo</p>-->
+							<!-- / -->
+						</div>
+					</div>
+					<% end %>
+					<%= f.link_to_add "Añadir Especialidad", :especialidades, :class => "multiples-campos-boton-añadir" %>
+				
+					<div id="foto-perfil">
+						<div class="foto">
+						<img src="http://fpoimg.com/170x130" alt="Esteban Soto" width="170" height="130 border="0" />
+						</div>
+						<a href="#">Cambiar imagen</a>
+					</div>
+				</div>
+				
+				<div class="mis-datos">
+					<h3>Estudios:</h3>
+					<%= f.fields_for :estudios do |estudio_form| %>
+					<div class="form-block one-line">
+						<div class="label">Título:</div>
+						<div class="input_field">
+							<%= estudio_form.text_field :titulo %>
+							<!-- mensaje aparece solo cuando no completó -->
+							<!-- <p class="aviso">*por favor complete este campo</p>-->
+							<!-- / -->
+						</div>
+						<div class="label">Establecimiento:</div>
+						<div class="input_field">
+						<%= estudio_form.text_field :establecimiento %>
+						  	<%= estudio_form.link_to_remove " X ", :class => "borrar" %>
+						</div>
+					</div>
+					<% end %>
+					<%= f.link_to_add "Añadir Estudio", :estudios, :class => "multiples-campos-boton-añadir" %>
+				</div>
+				
+				<div class="mis-datos">
+					<h3>Mis datos de contacto:</h3>
+					<div class="form-block one-line">
+						<div class="label"><span class="aviso">*</span>Dirección:</div>
+						<div class="input_field">
+							<%= f.text_field :direccion %>
+							<!-- mensaje aparece solo cuando no completó -->
+							<!-- <p class="aviso">*por favor complete este campo</p>-->
+							<!-- / -->
+						</div>
+					</div>
+					<div class="form-block one-line">
+						<div class="label"><span class="aviso">*</span>Region:</div>
+						<div class="input_field">
+							<%= f.collection_select :region, Region.order(:nombre), :id, :nombre, {include_blank: true} %>
+							<!-- mensaje aparece solo cuando no completó -->
+							<!-- <p class="aviso">*por favor complete este campo</p>-->
+							<!-- / -->
+						</div>
+					</div>
+					<div class="form-block one-line">
+						<div class="label"><span class="aviso">*</span>Comuna:</div>
+						<div class="input_field">
+							<%= f.grouped_collection_select :comuna, Region.order(:nombre), :comunas, :nombre, :id, :nombre, {include_blank: true} %>
+							<!-- mensaje aparece solo cuando no completó -->
+							<!-- <p class="aviso">*por favor complete este campo</p>-->
+							<!-- / -->
+						</div>
+					</div>
+					<div class="form-block one-line">
+						<div class="label">Codigo postal:</div>
+						<div class="input_field">
+							<%= f.text_field :codigo_postal %>
+							<!-- mensaje aparece solo cuando no completó -->
+							<!-- <p class="aviso">*por favor complete este campo</p>-->
+							<!-- / -->
+						</div>
+					</div>
+					
+					<div class="form-block one-line">
+						<div class="label">Teléfono de contacto <strong>fijo</strong>:</div>
+						<div class="input_field">
+							<%= f.number_field :telefono %>
+						</div>
+					</div>
+					
+					<div class="form-block one-line">
+						<div class="label">Teléfono de contacto <strong>móvil</strong>:</div>
+						<div class="input_field">
+							<%= f.number_field :movil %>
+						</div>
+					</div>
+					
+					<div class="form-block one-line ">
+						<div class="label">Mail de contacto:</div>
+						<div class="input_field">
+							<p class="display-text"><%= @terapeuta.email %></p>
+						</div>
+					</div>
+					
+					<div class="form-block one-line">
+						<div class="label">Sitio web:</div>
+						<div class="input_field">
+							<%= f.text_field :sitio_web %>
+						</div>
+					</div>
+				</div><!--MIS DATOS-->
+				
+				<div class="mis-datos">
+					<h3>Formas de pago, aranceles y descuentos:</h3>
+					<div class="form-block one-line">
+						<div class="label">Arancel:</div>
+						<div class="input_field">
+							<%= f.text_field :arancel %>
+							<!-- mensaje aparece solo cuando no completó -->
+							<!-- <p class="aviso">*por favor complete este campo</p>-->
+							<!-- / -->
+						</div>
+					</div>
+					<div class="form-block one-line">
+						<div class="label">Descuentos:</div>
+						<div class="input_field">
+							<%= f.text_field :descuentos %>
+							<!-- mensaje aparece solo cuando no completó -->
+							<!-- <p class="aviso">*por favor complete este campo</p>-->
+							<!-- / -->
+						</div>
+					</div>
+					<div class="form-block one-line listaDias">
+						<div class="label">Formas de pago: </div>
+						<div class="columna30">
+						<% for forma_pago in @forma_pagos %>
+							<% if params[:forma_pago_ids] != nil %>
+								<%= check_box_tag "forma_pago_ids[]", forma_pago.valor, params[:forma_pago_ids].include?(forma_pago.valor) %>
+							<% else %>
+								<%= check_box_tag "forma_pago_ids[]", forma_pago.valor, contains_forma_pago(@terapeuta.id, forma_pago) %>
+							<% end %>
+							<%= forma_pago.valor %>
+							<br/>
+						<% end %>
+						</div>
+					</div>
+				</div><!--MIS DATOS-->
+				
+				<% if @terapeuta.plan_tipo != "Gratis" %>				
+				<div class="mis-datos">
+					<h3>Tipo de suscripción:</h3>
+					<div class="form-block one-line radio-button">
+						<div class="label"><%= f.radio_button :plan_ciclo, "Anual", :checked => true %></div>
+						<div class="columna30">
+				  	  		Suscripción completa <strong>anual</strong>. <br/><%= number_to_currency @plan_anual %> por mes. Total <%= number_to_currency(@plan_anual.to_i*12) %> 
+						</div>
+					</div>
+					<div class="form-block one-line radio-button">
+						<div class="label"><%= f.radio_button :plan_ciclo, "Semestral" %></div>
+						<div class="columna30">
+				  	  		Suscripción <strong>semestral</strong>. <br/> <%= number_to_currency @plan_semestral %> por mes. Total <%= number_to_currency(@plan_semestral.to_i*6) %>
+						</div>
+					</div>
+					<div class="form-block one-line radio-button">
+						<div class="label"><%= f.radio_button :plan_ciclo, "Trimestral" %></div>
+						<div class="columna30">
+				  	  		Suscripción <strong>mensual</strong>. <br/><%= number_to_currency @plan_mensual %> por mes.  
+						</div>
+					</div>
+				</div>
+				<% else %>
+					<%= f.hidden_field :plan_ciclo, :value => "Gratis" %>
+					<%= f.hidden_field :plan_tipo, :value => "Gratis" %>
+				<% end %>
+				  	  		
+				<div class="previsualizar-ficha"><a href="#">Previsualizar ficha</a></div>
+
+			</div><!-- form-perfil -->
+			
+			<div class="guardar-cambios">
+				<%= f.submit "Guardar cambios", :class => "boton-morado centrado" %>
+			</div>
+			<% end %>			
+		</div><!-- form-center -->
+
+
+	</div><!--columna-670-left-->
+	
+			<div class="columna-335-right">
+			<h2>Preguntas frecuentes</h2>
+		
+			<div class="acordeon-lista">
+				<ul>
+					<li>
+						<div class="acordeon-header">
+							<p>¿Cuándo tendré respuesta a mi solicitud?</p>
+						</div>
+						<div class="acordeon-content">
+							<div class="acordeon-text">
+								<p>Tu solicitud será respondida dentro de los próximo 90 minutos. Contamos con un grupo de profesionales especializados y capacitados para resolver tus dudas con respecto a qué debes realizar con tu problema.</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="acordeon-header">
+							<p>pregunta 2</p>
+						</div>
+						<div class="acordeon-content">
+							<div class="acordeon-text">
+								<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="acordeon-header">
+							<p>pregunta 3</p>
+						</div>
+						<div class="acordeon-content">
+							<div class="acordeon-text">
+								<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="acordeon-header">
+							<p>pregunta 1</p>
+						</div>
+						<div class="acordeon-content">
+							<div class="acordeon-text">
+								<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<p class="right"><small><a href="#">Ver más preguntas frecuentes</a></small></p>		
+		</div><!--columna-335-right-->
+	<div class="clear"></div>
+</div><!-- block-wrapper -->

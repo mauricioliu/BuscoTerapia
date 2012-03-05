@@ -3,5 +3,8 @@ class HomeController < ApplicationController
     @search = Terapeuta.search(params[:search])
     @terapeutas = @search.all
   end
-
+  
+  def preguntas_frecuentes
+    
+  end
 end

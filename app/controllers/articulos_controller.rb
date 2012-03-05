@@ -1,8 +1,10 @@
 class ArticulosController < ApplicationController
+  http_basic_authenticate_with :name => "btp", :password => "btp.123!", :only => :new
   # GET /articulos
   # GET /articulos.json
   def index
-    @articulos = Articulo.all
+    @articulos = Articulo.order("created_at desc")
+    @articulos = @articulos.page(params[:page]).per_page(5)
 
     respond_to do |format|
       format.html # index.html.erb

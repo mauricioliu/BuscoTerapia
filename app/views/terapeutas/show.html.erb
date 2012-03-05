@@ -1,44 +1,74 @@
-<p id="notice"><%= notice %></p>
+<div id="block-content" class="block-wrapper">
+	<div class="wrapper" id="content">
 
-<p>
-  <b>Nombre:</b>
-  <%= @terapeuta.nombre %>
-</p>
-
-<p>
-  <b>Direccion:</b>
-  <%= @terapeuta.direccion %>
-</p>
-
-<p>
-  <b>Region:</b>
-  <%= @terapeuta.region %>
-</p>
-
-<p>
-  <b>Comuna:</b>
-  <%= @terapeuta.comuna %>
-</p>
-
-<p>
-  <b>Ptelefono:</b>
-  <%= @terapeuta.ptelefono %>
-</p>
-
-<p>
-  <b>Telefono:</b>
-  <%= @terapeuta.telefono %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @terapeuta.email %>
-</p>
-
-<p>
-	<ul>
-	<% for tipo in @terapeuta.tipo_terapias %>
-  		<li><%= tipo.nombre %></li>
-  	<% end %>
-	</ul>
-</p>
+	<div class="columna-670-left">
+		<div class="busqueda-box-center">
+			<div class="ver-ficha-persona">
+			<div class="foto"><img src="http://fpoimg.com/42x42" alt="Esteban Soto" width="42" height="42" border="0" /></div>
+			<div class="contenido-ficha">
+				
+				<p class="nombre-ficha"><%= @terapeuta.nombre %></p>
+				<p>
+					<% @terapeuta.estudios.each do |estudio| %>
+						<strong><%= estudio.titulo %>, <%= estudio.establecimiento %></strong><br/>
+					<% end %>
+					Especialista en 
+					</br>
+					<%= @terapeuta.direccion %>, <%= Comuna.find(@terapeuta.comuna).nombre %>, <%= Region.find(@terapeuta.region).nombre %> 
+				</p>
+				<div class="contenido-ficha">
+					<h3>Descripción del psicologo como en los nuevos cv’s consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</h3>
+					<div class="ficha-columna">
+						<h3>Información de experiencia y formación académica:</h3>
+						<ul>
+							<li><span><strong>Especialidades:</strong> 
+									<% @terapeuta.especialidades.each do |especialidad| %>
+										<%= especialidad.valor %>,
+									<% end %>
+								</span></li>
+							<li><span><strong>Experiencia:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>
+							<li><span><strong>Formación y Estudios Acreditados:</strong> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure.</span></li>
+						</ul>
+						
+						<h3>Costo y formas de pago:</h3>
+						<ul>
+							<li><span><strong>Arancel por sesión:</strong> $25.000.-</span></li>
+							<li><span><strong>Formas de Pago:</strong> Cheque, Transferencia, Recompra.</span></li>
+							<li><span><strong>Convenios: </strong> Ut enim ad minim veniam, quis nostrud exercitation ullamco.</span></li>
+						</ul>
+						
+						<h3>Datos de Contacto:</h3>
+						<ul>
+							<li><span><strong>Dirección:</strong> Patagonia 12345, La Pintana.</span></li>
+							<li><span><strong>Teléfonos de contacto:</strong> +56 9 8675 4323</span></li>
+							<li><span><strong>Correo electrónico:</strong> huaqui@huaqui.cl</span></li> 
+							<li><span><strong>Sitio web:</strong> <a href="http://www.huaiqui.cl">huaiqui.cl</a></span></li>
+						</ul>
+						
+						<input type="button" value="Contactar al @terapeuta" class="boton-morado" />
+					</div><!-- ficha-columna -->
+					<div class="ficha-sidebar">
+						<div class="box box-descuentos">
+						<h3>Descuentos</h3>
+						<img src="http://fpoimg.com/151x126" alt="Esteban Soto" width="151" height="126" border="0" />
+						</div>
+						
+						<div class="box box-mapa">
+							<h3>Mapa de Ubicación</h3>
+							<div class="map-container">
+								<%= image_tag "http://maps.google.com/maps/api/staticmap?size=151x182&sensor=true&zoom=16&markers=#{@terapeuta.latitude}%2C#{@terapeuta.longitude}", :class => "link-mapa-google" %>
+							</div>
+							
+						</div>
+						<div class="box box-entrevista">
+							<a href="#">Ver entrevista.</a>
+						</div>
+			
+					</div><!-- ficha-sidebar -->
+					</div><!--descirpcion full-->
+					</div><!--contenido ficha-->
+				</div><!--ficha persona-->
+			</div>
+		</div>
+	</div>
+</div>

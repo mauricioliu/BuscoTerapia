@@ -1,10 +1,11 @@
 class TerapiasController < ApplicationController
+  http_basic_authenticate_with :name => "btp", :password => "btp.123!", :only => :new
   # GET /terapias
   # GET /terapias.json
   def index
     @search = Terapia.search(params[:search])
     @terapias = @search.order("nombre_corto asc")
-    @terapias = @terapias.page(params[:page]).per_page(5)
+    @terapias = @terapias.page(params[:page]).per_page(10)
 
     respond_to do |format|
       format.html # index.html.erb

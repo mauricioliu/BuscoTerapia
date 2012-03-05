@@ -1,22 +1,111 @@
-<h1>Log in</h1>
 
-  <table>
-  	<tr>
-  		<td colspan="2">
-		    <% flash.each do |name, msg| %>
-		      <%= content_tag :div, msg, :id => "flash_#{name}" %>
-		    <% end %>
-  		</td>
-  	</tr>
-  	<tr>
-  		<td></td>
-  		<td>
-  			<% if session[:terapeuta] == nil %>
-			  	<%= render 'sessions/login'%>
-	  	    <% else %>
-				Bienvenido <%= session[:terapeuta].nombre %> <%= link_to 'Cerrar sesión', logout_path %><br />
-				<%= link_to "Mi cuenta", edit_terapeuta_path(session[:terapeuta]) %>
-			<% end %>
-  		</td>
-  	</tr>
-  </table>
+<div id="block-content" class="block-wrapper">
+	<div class="wrapper" id="content">
+
+	<div class="columna-670-left">
+		<div class="busqueda-box-center">
+		<div class="form-box">
+		
+			<div class="titulo-form">
+			<% if flash[:notice] -%>
+				<h2 style="color: red"><%= flash[:notice] %></h2>
+			<% end -%>
+			
+			</div>
+			
+			
+		
+			<div class="form-block busqueda-palabra-clave">
+				<%= form_tag sessions_path do %>
+				<div class="label">
+					Correo electronico
+				</div>
+				<div class="input_field">
+					<%= text_field_tag :email, params[:email], :id => "user_field" %>
+				</div>
+				<div class="label">
+					Contraseña
+				</div>
+				<div class="input_field">
+					<%= password_field_tag :password %>
+				</div>
+				<div class="form-block busqueda-button">
+					<div class="label">
+						<!--&nbsp;-->
+					</div>
+					<div class="input_field">
+						<%= submit_tag "Ingresar", :class => "boton-morado" %>
+					</div>
+				</div>
+				<div class="form-block busqueda-button">
+					<div class="label">
+						<!--&nbsp;-->
+					</div>
+					<div class="input_field">
+						<%= link_to "¿Olvidaste tu contraseña?", forgot_password_url %>
+					</div>
+				</div>
+				<% end %>
+			</div>
+		</div><!--box form-->		
+	</div><!--form-box-center-->
+</div><!--columna-670-left-->
+		<div class="columna-335-right necesita-ayuda">
+			<h2>¿Necesitas ayuda?</h2>
+			<div class="necesita-ayuda-gente"></div>
+			<p>Si tienes problemas y no tienes claro dónde acudir, escríbenos y nosotros te asesoraremos y te recomendaremos el terapeuta ideal.<br/>
+<a href="#">Solicitar Asesoría</a></p>
+		
+		</div><!--columna-335-right-->
+		
+		<div class="columna-335-right">
+			<h2>Preguntas frecuentes</h2>
+		
+			<div class="acordeon-lista">
+				<ul>
+					<li>
+						<div class="acordeon-header">
+							<p>¿Cuándo tendré respuesta a mi solicitud?</p>
+						</div>
+						<div class="acordeon-content">
+							<div class="acordeon-text">
+								<p>Tu solicitud será respondida dentro de los próximo 90 minutos. Contamos con un grupo de profesionales especializados y capacitados para resolver tus dudas con respecto a qué debes realizar con tu problema.</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="acordeon-header">
+							<p>pregunta 2</p>
+						</div>
+						<div class="acordeon-content">
+							<div class="acordeon-text">
+								<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="acordeon-header">
+							<p>pregunta 3</p>
+						</div>
+						<div class="acordeon-content">
+							<div class="acordeon-text">
+								<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="acordeon-header">
+							<p>pregunta 1</p>
+						</div>
+						<div class="acordeon-content">
+							<div class="acordeon-text">
+								<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<p class="right"><small><a href="#">Ver más preguntas frecuentes</a></small></p>
+		
+		</div><!--columna-335-right-->
+		

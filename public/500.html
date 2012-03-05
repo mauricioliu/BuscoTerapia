@@ -1,26 +1,115 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>We're sorry, but something went wrong (500)</title>
-  <style type="text/css">
-    body { background-color: #fff; color: #666; text-align: center; font-family: arial, sans-serif; }
-    div.dialog {
-      width: 25em;
-      padding: 0 4em;
-      margin: 4em auto 0 auto;
-      border: 1px solid #ccc;
-      border-right-color: #999;
-      border-bottom-color: #999;
-    }
-    h1 { font-size: 100%; color: #f00; line-height: 1.5em; }
-  </style>
-</head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-<body>
-  <!-- This file lives in public/500.html -->
-  <div class="dialog">
-    <h1>We're sorry, but something went wrong.</h1>
-    <p>We've been notified about this issue and we'll take a look at it shortly.</p>
-  </div>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+	
+	<title>Buscoterapia</title>
+	
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  	<title>Buscoterapia</title>
+	<link href="/assets/main.css?body=1" media="screen" rel="stylesheet" type="text/css" />
+	
+</head>
+<body class="loggedIn" ><!-- <body class="loggedIn" > -->
+
+	<div id="header">
+		<div class="wrapper">
+		<div id="branding">
+			<h1><a href="http://www.buscoterapia.cl" class="buscoterapia" title="Buscoterapia" >Buscoterapia</a></h1>
+		</div><!-- branding -->
+		
+		<div id="logged-in">
+		</div><!-- login -->
+		
+		<div id="login">
+			<p><a href="#">Quieres Iniciar tu sesión?</a></p>
+		</div><!-- login -->
+		<div id="unfocus-bg-login-form"></div>
+		<div id="loginForm">
+		
+			<div class="form-block">
+				<div class="label">Nombre de usuario o email</div>
+				<div class="input_field">
+					<input value="" type="text" id="user_field"/>
+					<p class="aviso">Complete este campo</p>
+				</div>
+			</div>
+			<div class="form-block alerta"><!-- en este caso con clase alerta aparece el aviso -->
+				<div class="label">Password</div>
+				<div class="input_field">
+					<input value="" type="password" />
+					<p class="aviso">Complete este campo</p>
+				</div>
+			</div>
+			<p id="password-incorrecto">Tus datos no coinciden</p><!-- tiene display none, necesita display block para aparecer-->
+			<span class="texto-recordar"><input type="checkbox" name="recordar" value="recordar"> <span>recordar</span></span>
+			
+			<input type="button" class="boton-azul" value="Ingresar" />
+			<hr class="login-separador"/>
+			<br/>
+			<a href="#">¿Olvidaste tu contraseña?</a>
+		</div><!-- #loginForm -->
+		</div><!-- wrapper	 -->
+	</div><!-- header -->
+	
+	<div id="block-nav" class="block-wrapper">
+		<div id="nav" class="wrapper">
+			<ul class="main">
+				<li><a href="http://www.buscoterapia.cl/">Inicio</a></li>
+				<li><a href="/asesorias/new">Solicitar asesoría terapeutica</a></li>
+				<li><a href="/terapeutas">Buscar terapeutas</a></li>
+				<li><a href="/terapias">Tipo de Terapias</a></li>
+				<li><a href="/articulos">Noticias y artículos</a></li>
+			</ul>
+			<ul class="acceso">
+				<li><a href="/acceso_terapeutas">Acceso terapeutas</a></li>
+			</ul>					
+		</div><!-- nav -->
+	</div><!-- block-nav -->
+	
+
+	
+	
+	
+	<div id="block-content" class="block-wrapper">
+		<div class="wrapper" id="content">
+
+		
+		
+		
+		<div class="columna-one-full content404">
+			<div class="text-box">
+			<h2>Error 500.</h2>
+			<p class="busqueda-mensaje-resultado">
+				Error interno del servidor, por favor <a href="#">contáctate</a> con nuestro Equipo de Soporte o vuelve a intentar de nuevo en un rato.
+			</p>
+			
+			</div>
+		</div><!--columna-one-full-->
+		
+		
+		
+		
+		</div><!-- #content -->
+	</div><!-- block-content -->
+	
+	<div id="block-footer" class="block-wrapper">
+		<div id="footer" class="wrapper">
+			<ul class="left">
+				<li><a href="#">Buscoterapia © 2012</a></li>
+			</ul>
+			<ul class="right">
+				<li><a href="#">Quienes somos</a></li>
+				<li><a href="#">Mapa del sitio</a></li>
+				<li><a href="#">Contacto</a></li>
+				<li><a href="#">Condiciones de uso</a></li>
+				<li><a href="#">Preguntas frecuentes</a></li>
+				<li><a href="#">Políticas de privacidad</a></li>
+			</ul>
+		</div><!-- footer -->
+	</div><!-- block-wrapper -->
+
 </body>
 </html>

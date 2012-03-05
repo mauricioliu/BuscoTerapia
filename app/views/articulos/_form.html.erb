@@ -1,3 +1,4 @@
+
 <%= form_for(@articulo) do |f| %>
   <% if @articulo.errors.any? %>
     <div id="error_explanation">
@@ -11,6 +12,10 @@
     </div>
   <% end %>
 
+  <div class="field">
+  	<%= f.label :tipo %><br />
+	<%= f.select :tipo, Articulo::TIPO_DOCUMENTOS, {} %>
+  </div>
   <div class="field">
     <%= f.label :titulo %><br />
     <%= f.text_field :titulo %>
@@ -35,3 +40,4 @@
     <%= f.submit %>
   </div>
 <% end %>
+

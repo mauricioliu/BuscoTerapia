@@ -5,5 +5,6 @@
 // the compiled file.
 //
 //= require jquery
-//= require_tree .
-
+//= require jquery-ujs
+//= require_tree
+//= require rails.validations

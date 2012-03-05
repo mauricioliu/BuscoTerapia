@@ -36,9 +36,13 @@ jQuery ->
 
 
 jQuery ->
-  #$("#busca_tu_terapeuta").tabs()
-  $('.search_comuna').attr('disabled', true)
+  region = $('#search_region_contains :selected').text().replace /^\s+|\s+$/g, ""
   comunas = $('.search_comuna').html()
+  if region.length == 0
+    $('.search_comuna').attr('disabled', true)
+  else
+    options = $(comunas).filter("optgroup[label='#{region}']").html()
+    $('.search_comuna').html(options)
   $('.search_region').change ->
     region = $('.search_region :selected').text().replace /^\s+|\s+$/g, ""
     escaped_region = region.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')

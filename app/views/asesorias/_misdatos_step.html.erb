@@ -82,22 +82,30 @@ para facilitar la búsqueda de tu terapeuta.</small></h2>
 			<input type="text" />
 		</div>
 	</div>
+	
 	<div class="form-block horarios-form">
 		<div class="label">
 			Día preferente de atención:
 		</div>
-		<div class="form-block one-line">
-			<div class="label"></div>
-			<div class="input_field">
-				<% for dia_atencion in @dias_atencion %>
-					<% if params[:tipo_terapia_ids] != nil %>
-						<%= check_box_tag "dia_atencion_ids[]", dia_atencion.valor, params[:tipo_terapia_ids].include?(dia_atencion.valor) %>
-					<% else %>
-						<%= check_box_tag "dia_atencion_ids[]", dia_atencion.valor, contains_dia_atencion(@asesoria.id, dia_atencion) %>
-					<% end %>
-					<%= dia_atencion.valor %><br />
-				<% end %><br />
-			</div>
+	</div>
+	
+	<div class="form-block one-line listaDias">
+		<div class="columna30">
+		<% for dia_atencion in @dias_atencion %>
+			<% if params[:tipo_terapia_ids] != nil %>
+				<%= check_box_tag "dia_atencion_ids[]", dia_atencion.valor, params[:tipo_terapia_ids].include?(dia_atencion.valor) %>
+			<% else %>
+				<%= check_box_tag "dia_atencion_ids[]", dia_atencion.valor, contains_dia_atencion(@asesoria.id, dia_atencion) %>
+			<% end %>
+			<span><%= dia_atencion.valor %></span><br />
+			<% if dia_atencion.valor == "Miércoles" %>
+				</div>
+				<div class="columna30">
+			<% elsif dia_atencion.valor == "Viernes" %>
+				</div>
+				<div class="columna30 lastChild">
+			<% end %>
+		<% end %>
 		</div>
 	</div>	
 	<div class="form-block horarios-form">
@@ -124,10 +132,11 @@ para facilitar la búsqueda de tu terapeuta.</small></h2>
 			</div>
 		</div>
 	</div>
-	
+	<p>&nbsp;</p>
 	<div class="form-block">
-		<div class="label">
-			Otro:<br/>
+		<h3>
+			Otro:
+		</h3>
 			<small>Puedes escribir algún otro aspecto que te parezca relevante mencionar</small>
 		</div>
 		<div class="input_field">

@@ -6,7 +6,7 @@
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   	<title>Buscoterapia</title>
 	 	<%= stylesheet_link_tag "main.css" %>
-  		<%= javascript_include_tag "application" %>
+  		<%= javascript_include_tag 'application' %>
   		<%= csrf_meta_tag %>
 </head>
 <body>
@@ -21,23 +21,22 @@
 		</div><!-- login -->
 		<div id="unfocus-bg-login-form"></div>
 		<div id="loginForm">
-		<%= form_tag sessions_path, :validate => true do %>
+		<%= form_tag sessions_path, :remote => true, :validate => true do %>
 			<div class="form-block">
 				<div class="label">Correo electronico</div>
 				<div class="input_field">
 					<%= text_field_tag :email, params[:email], :id => "user_field" %>
-					<p class="aviso">Complete este campo</p>
+					<p class="message">Complete este campo</p>
 				</div>
 			</div>
-			<div class="form-block alerta"><!-- en este caso con clase alerta aparece el aviso -->
-				<div class="label">Password</div>
+			<div class="form-block "><!-- en este caso con clase alerta aparece el aviso -->
+				<div class="label">Contraseña</div>
 				<div class="input_field">
 					<%= password_field_tag :password %>
-					<p class="aviso">Complete este campo</p>
+					<p class="message">Complete este campo</p>
 				</div>
 			</div>
 			<p id="password-incorrecto">Tus datos no coinciden</p><!-- tiene display none, necesita display block para aparecer-->
-			<span class="texto-recordar"><input type="checkbox" name="recordar" value="recordar"> <span>recordar</span></span>
 			
 			<%= submit_tag "Ingresar", :class => "boton-azul" %>
 			<hr class="login-separador"/>
@@ -83,7 +82,7 @@
 				<li><a href="#">Mapa del sitio</a></li>
 				<li><a href="#">Contacto</a></li>
 				<li><a href="#">Condiciones de uso</a></li>
-				<li><a href="#">Preguntas frecuentes</a></li>
+				<li><%= link_to "Preguntas frecuentes", preguntas_frecuentes_url %></li>
 				<li><a href="#">Políticas de privacidad</a></li>
 			</ul>
 		</div><!-- footer -->

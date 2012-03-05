@@ -2,13 +2,18 @@
 require 'date'
 
 class TerapeutasController < ApplicationController
+  layout :resolve_layout 
+  
+  
   before_filter :authenticate, :only => :edit
   # GET /terapeuta
   # GET /terapeuta.json
   def index
+    @sepa = params[:search]
     @search = Terapeuta.search(params[:search])
     @terapeutas = @search.order("plan_tipo desc, created_at desc")
-    @terapeutas = @terapeutas.page(params[:page]).per_page(15).select {|i| i.estado == "validado" }
+    @terapeutas = @terapeutas.where("estado = 'validado'")
+    @terapeutas = @terapeutas.page(params[:page]).per_page(15)
     # @terapeutas.order("plan").desc
 
     respond_to do |format|
@@ -45,8 +50,22 @@ class TerapeutasController < ApplicationController
   # GET /terapeuta/new
   # GET /terapeuta/new.json
   def new
+    @tipo_suscripcion = params[:tipo]
+    #tipo de pago
     @terapeuta = Terapeuta.new
+    
+    if @tipo_suscripcion == "gratuito"
+      @terapeuta.plan_tipo = "Gratis"
+      @terapeuta.plan_ciclo = "Gratis"
+    else
+      @plan_mensual = RefDatum.find_by_nombre("Plan Mensual").valor
+      @plan_semestral = RefDatum.find_by_nombre("Plan Semestral").valor
+      @plan_anual = RefDatum.find_by_nombre("Plan Anual").valor
+    end
+    
     @terapeuta.especialidades.build
+    @terapeuta.estudios.build
+    
     @tipo_terapias = RefDatum.where(:nombre => "Tipo Terapeuta")
     @especialidades = RefDatum.where(:nombre => "Especialidad")
     @forma_pagos = RefDatum.where(:nombre => "Formas de Pago")
@@ -71,7 +90,6 @@ class TerapeutasController < ApplicationController
     @terapeuta = Terapeuta.new(params[:terapeuta])
     @terapeuta.estado = "pendiente de validar"
     
-    logger.debug "New terapeuta #{@terapeuta.attributes.inspect}"
     random_password = Array.new(10).map { (65 + rand(58)).chr }.join
     @terapeuta.password=random_password
     tipo_terapias = params[:tipo_terapia_ids]
@@ -90,8 +108,8 @@ class TerapeutasController < ApplicationController
     
     respond_to do |format|
       if @terapeuta.save
-        TerapeutaMailer.send_password(@terapeuta,random_password).deliver
-        TerapeutaMailer.notify_new_terapeuta(@terapeuta).deliver
+        #TerapeutaMailer.send_password(@terapeuta,random_password).deliver
+        #TerapeutaMailer.notify_new_terapeuta(@terapeuta).deliver
         if @terapeuta.plan_ciclo != "Gratis"
           @pago = @terapeuta.pagos.create(:tipo => "Suscripcion Completa "+@terapeuta.plan_ciclo, 
                                           :monto => RefDatum.where(:nombre => "Plan "+@terapeuta.plan_ciclo).first().valor, 
@@ -108,6 +126,9 @@ class TerapeutasController < ApplicationController
       else
         @tipo_terapias = RefDatum.where(:nombre => "Tipo Terapeuta")
         @forma_pagos = RefDatum.where(:nombre => "Formas de Pago")
+        @plan_mensual = RefDatum.find_by_nombre("Plan Mensual").valor
+        @plan_semestral = RefDatum.find_by_nombre("Plan Semestral").valor
+        @plan_anual = RefDatum.find_by_nombre("Plan Anual").valor
         format.html { render action: "new" }
         format.json { render json: @terapeuta.errors, status: :unprocessable_entity }
       end
@@ -133,18 +154,6 @@ class TerapeutasController < ApplicationController
     end
   end
 
-  # DELETE /terapeuta/1
-  # DELETE /terapeuta/1.json
-  def destroy
-    @terapeuta = Terapeuta.find(params[:id])
-    @terapeuta.destroy
-
-    respond_to do |format|
-      format.html { redirect_to terapeuta_url }
-      format.json { head :ok }
-    end
-  end
-  
   def change_password
     email = decrypt_url(params[:email])
     terapeuta = Terapeuta.find_by_email(email)
@@ -217,5 +226,18 @@ class TerapeutasController < ApplicationController
       logger.error e.message  
     end
   end
+  
+  def contactar_terapeuta
+    
+  end
 
+private 
+  def resolve_layout
+    case action_name
+    when "edit","show"
+      "portal_terapeuta"
+    else
+      "application"
+    end
+  end
 end

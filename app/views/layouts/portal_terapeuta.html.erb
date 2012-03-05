@@ -4,96 +4,71 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-	
-	<title>Buscoterapia</title>
-	
-	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
   	<title>Buscoterapia</title>
-	<link href="/assets/main.css?body=1" media="screen" rel="stylesheet" type="text/css" />
-	
+	 	<%= stylesheet_link_tag "main.css" %>
+  		<%= javascript_include_tag "application" %>
+  		<%= csrf_meta_tag %>
 </head>
-<body class="loggedIn" ><!-- <body class="loggedIn" > -->
-
+<body class="loggedIn homePrivado" ><!-- <body class="loggedIn" > -->
 	<div id="header">
 		<div class="wrapper">
 		<div id="branding">
-			<h1><a href="http://www.buscoterapia.cl" class="buscoterapia" title="Buscoterapia" >Buscoterapia</a></h1>
+			<h1><%= link_to 'Buscoterapia', root_url, :class => "buscoterapia", :title => "Buscoterapia" %></h1>
 		</div><!-- branding -->
-		
-		<div id="logged-in">
-		</div><!-- login -->
-		
+		<% if session[:terapeuta] == nil %>
 		<div id="login">
 			<p><a href="#">Quieres Iniciar tu sesión?</a></p>
 		</div><!-- login -->
 		<div id="unfocus-bg-login-form"></div>
 		<div id="loginForm">
-		
+		<%= form_tag sessions_path, :remote => true, :validate => true do %>
 			<div class="form-block">
-				<div class="label">Nombre de usuario o email</div>
+				<div class="label">Correo electronico</div>
 				<div class="input_field">
-					<input value="" type="text" id="user_field"/>
+					<%= text_field_tag :email, params[:email], :id => "user_field" %>
 					<p class="aviso">Complete este campo</p>
 				</div>
 			</div>
 			<div class="form-block alerta"><!-- en este caso con clase alerta aparece el aviso -->
 				<div class="label">Password</div>
 				<div class="input_field">
-					<input value="" type="password" />
+					<%= password_field_tag :password %>
 					<p class="aviso">Complete este campo</p>
 				</div>
 			</div>
 			<p id="password-incorrecto">Tus datos no coinciden</p><!-- tiene display none, necesita display block para aparecer-->
 			<span class="texto-recordar"><input type="checkbox" name="recordar" value="recordar"> <span>recordar</span></span>
 			
-			<input type="button" class="boton-azul" value="Ingresar" />
+			<%= submit_tag "Ingresar", :class => "boton-azul" %>
 			<hr class="login-separador"/>
 			<br/>
-			<a href="#">¿Olvidaste tu contraseña?</a>
+			<%= link_to "¿Olvidaste tu contraseña?", forgot_password_url %>
+		<% end %>
 		</div><!-- #loginForm -->
+		<% else %>
+		<div id="logged-in">
+			<p>
+				Bienvenido <strong><%= session[:terapeuta].nombre %></strong> <%= link_to 'Cerrar sesión', logout_path %><br />
+				<%= link_to "Mi cuenta", edit_terapeuta_path(session[:terapeuta]) %>
+			</p>
+		</div><!-- login -->
+		<% end %>
 		</div><!-- wrapper	 -->
 	</div><!-- header -->
 	
 	<div id="block-nav" class="block-wrapper">
 		<div id="nav" class="wrapper">
 			<ul class="main">
-				<li><a href="http://www.buscoterapia.cl/">Inicio</a></li>
-				<li><a href="/asesorias/new">Solicitar asesoría terapeutica</a></li>
-				<li><a href="/terapeutas">Buscar terapeutas</a></li>
-				<li><a href="/terapias">Tipo de Terapias</a></li>
-				<li><a href="/articulos">Noticias y artículos</a></li>
+				<li class="current"><a href="#"><%= link_to "Mi ficha", edit_terapeuta_path(session[:terapeuta]) %></a></li>
+				<li><a href="#">Mi plan y beneficios</a></li>
+				<li><a href="#">Estadísticas</a></li>
+				<li><a href="#">Mi comunidad</a></li>
+				<li class="bt-nav-faq"><a href="#">Preguntas frecuentes</a></li>
 			</ul>
-			<ul class="acceso">
-				<li><a href="/acceso_terapeutas">Acceso terapeutas</a></li>
-			</ul>					
 		</div><!-- nav -->
 	</div><!-- block-nav -->
 	
-
-	
-	
-	
-	<div id="block-content" class="block-wrapper">
-		<div class="wrapper" id="content">
-
-		
-		
-		
-		<div class="columna-one-full content404">
-			<div class="text-box">
-			<h2>Error 500.</h2>
-			<p class="busqueda-mensaje-resultado">
-				Error interno del servidor, por favor <a href="#">contáctate</a> con nuestro Equipo de Soporte o vuelve a intentar de nuevo en un rato.
-			</p>
-			
-			</div>
-		</div><!--columna-one-full-->
-		
-		
-		
-		
-		</div><!-- #content -->
-	</div><!-- block-content -->
+	<%= yield %>
 	
 	<div id="block-footer" class="block-wrapper">
 		<div id="footer" class="wrapper">
@@ -105,11 +80,10 @@
 				<li><a href="#">Mapa del sitio</a></li>
 				<li><a href="#">Contacto</a></li>
 				<li><a href="#">Condiciones de uso</a></li>
-				<li><a href="#">Preguntas frecuentes</a></li>
+				<li><%= link_to "Preguntas frecuentes", preguntas_frecuentes_url %></li>
 				<li><a href="#">Políticas de privacidad</a></li>
 			</ul>
 		</div><!-- footer -->
 	</div><!-- block-wrapper -->
-
 </body>
 </html>

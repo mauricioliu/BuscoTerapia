@@ -5,6 +5,7 @@ class CreateArticulos < ActiveRecord::Migration
       t.string :autor
       t.string :especialidad
       t.text :contenido, :limit => 4294967295
+      t.string :tipo
       t.string :imagen_url
 
       t.timestamps

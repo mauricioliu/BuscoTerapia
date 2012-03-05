@@ -1,4 +1,6 @@
 BuscoTerapia::Application.routes.draw do
+  get "admin/index"
+
   resources :articulos
 
   get "validar_terapeuta/index"
@@ -22,6 +24,8 @@ BuscoTerapia::Application.routes.draw do
   get "logout" => "sessions#destroy", :as => "logout"
   get "login" => "sessions#new", :as => "login"
   
+  match "preguntas_frecuentes" => "home#preguntas_frecuentes"
+  
   match "change_password" => "terapeutas#change_password"
   match "forgot_password" => "terapeutas#forgot_password", :as => "forgot_password"
   match "reset_password" => "terapeutas#reset_password", :as => "reset_password"
@@ -35,6 +39,8 @@ BuscoTerapia::Application.routes.draw do
   match '/validar_terapeuta/:id' => 'validar_terapeuta#show', :as => 'revisar_terapeuta'
   match '/validar_terapeuta/' => 'validar_terapeuta#index'
   match '/validar_terapeuta/:id/validar' => 'validar_terapeuta#validar', :as => 'validar'
+  
+  match '/admin' => 'admin#index', :as => 'admin'
 
   # map.connect "/sessions/change_password", :controller => "sessions", :action => "change_password"
   # get "signup" => "users#new", :as => "signup"

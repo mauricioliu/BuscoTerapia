@@ -31,33 +31,29 @@
 			Palabra Clave
 		</div>
 		<div class="input_field">
-			<input type="text" />
+			<%= f.text_field :nombre_or_especialidades_valor_contains %>
 		</div>
 	</div>
 	<div class="form-block">
 		<div class="form-block busqueda-region">
 			<div class="label">
-				<!--Región de atención:-->
+				Región de atención:
 			</div>
 			<div class="input_field">
-				<select>
-					<option value="">Region</option>
-				</select>
+				<%= f.collection_select :region_contains, Region.order(:nombre), :id, :nombre, {include_blank: true}, :class => "search_region" %>
 			</div>
 		</div>
 		<div class="form-block busqueda-comuna">
 			<div class="label">
-				<!--Comuna de atención:-->
+				Comuna de atención:
 			</div>
 			<div class="input_field">
-				<select>
-					<option value="">Comuna</option>
-				</select>
+				<%= f.grouped_collection_select :comuna_contains, Region.order(:nombre), :comunas, :nombre, :id, :nombre, {include_blank: true}, :class => "search_comuna" %>
 			</div>
 		</div>
 		<div class="form-block busqueda-button">
 			<div class="label">
-				<!--&nbsp;-->
+				&nbsp;
 			</div>
 			<div class="input_field">
 				<%= f.submit "Encontrar terapeuta", :class => "boton-morado" %>

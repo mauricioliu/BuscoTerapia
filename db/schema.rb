@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(:version => 20120229033952) do
     t.string   "autor"
     t.string   "especialidad"
     t.text     "contenido",    :limit => 2147483647
+    t.string   "tipo"
     t.string   "imagen_url"
     t.datetime "created_at"
     t.datetime "updated_at"

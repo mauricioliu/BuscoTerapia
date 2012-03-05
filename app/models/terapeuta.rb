@@ -24,15 +24,16 @@ class Terapeuta < ActiveRecord::Base
   # validates :email, presence: true, uniqueness: true
   validates_associated :especialidades, :estudios
   
-  validates_presence_of :nombre, :direccion, :region, :comuna, :ptelefono, :telefono, :movil
-  validates_numericality_of :ptelefono, :telefono, :movil
-  validates :email,   
-            :presence => true,
-            :uniqueness => true,
-            :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
+  validates_presence_of :nombre, :direccion, :region, :comuna, :telefono, :movil, :rut
+  validates_numericality_of :telefono, :if => :telefono?
+  validates_numericality_of :movil, :if => :movil?
+  #validates :email,   
+  #          :presence => true,
+  #          :uniqueness => true,
+  #          :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
 
   validate :especialidades_no_duplicate, :especialidades_size, :tipo_terapias_size
-  validates_format_of :rut, :with => /^0*(\d{1,3}(\.?\d{3})*)\-?([\dkK])$/i
+  validates_format_of :rut, :with => /^0*(\d{1,3}(\.?\d{3})*)\-?([\dkK])$/i, :if => :rut?
   
   # attr_accessible :especialidades_attributes
   # attr_accessible :email_recovery
@@ -42,7 +43,9 @@ class Terapeuta < ActiveRecord::Base
   # nombre, direccion, region, comuna, ptelefono, telefono, pmovil, movil, email, tipo, especialidad
   
   def direccion_completa
-    direccion + ', ' + Comuna.find(comuna).nombre + ', ' + Region.find(region).nombre
+    if comuna != nil && region != nil
+      direccion + ', ' + Comuna.find(comuna).nombre + ', ' + Region.find(region).nombre
+    end
   end
   
   def password

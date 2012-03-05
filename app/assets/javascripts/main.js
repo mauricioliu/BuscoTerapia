@@ -28,6 +28,8 @@ $(document).ready(function(e) {
 	// MENSAJE ALERT div
 	$('body').append('<div id="mjs-alert"></div>');
 	
+	$("#nav ul li:last-child").addClass("lastChild")
+	
 	// Click boton cerrar mensaje home
 	$('.boton-cerrar-mensaje').click(function(e) {
 		$($(this).attr("obj")).animate({opacity: 'toggle', height: 'toggle'}, "slow")
@@ -56,22 +58,53 @@ $(document).ready(function(e) {
 	var _marginTopContent = $('#block-nav').height() + parseInt($('#block-nav').css('margin-bottom'));
 	var _navMarginTop = $("#block-nav").css('margin-top');
 	var _navMarginBottom = $("#block-nav").css('margin-bottom');
+
+	/*Preguntas frecuentes vars*/
+	if($('#scrollDownFaq').length != 0){
+		var _faqPosY = $('#scrollDownFaq').offset().top;
+		var _faqPosX = $('#scrollDownFaq').offset().left;
+	}
+
 	
-	$(window).scroll(function(e) {
+	//alert(_faqPosY)
+	//var _faqMarginLeft = $('#scrollDownFaq').css("margin-left");
+	function moverPreguntas(){
+		if($('#scrollDownFaq').length != 0){
+			/*Preguntas frecuentes mover*/
+			if($('#scrollDownFaq').offset().top >= $('#block-content').offset().top+$('#block-content').height()-$('#scrollDownFaq').height() && $(window).scrollTop() > $('#scrollDownFaq').offset().top - 45){
+				$('#scrollDownFaq').css({position:"absolute",right:"0px",top:($('#block-content').height()-$('#scrollDownFaq').height())+'px',zIndex:100});
+			}else if ( _faqPosY <= $(window).scrollTop() + 45) {
+				//$('#scrollDownFaq').css('position', 'fixed').css({top:45+'px',left:_faqPosX+'px',marginLeft:'0px',zIndex:100});
+				$('#scrollDownFaq').css({position:"absolute",right:"0px",top:($(window).scrollTop()+45-$('#block-content').offset().top)+'px',zIndex:100});
+			} else {
+				//$('#scrollDownFaq').css('position', 'relative').css({top:'0px',left:'0px',marginLeft:_faqMarginLeft,zIndex:0});
+				$('#scrollDownFaq').css({position:"relative",right:"none",top:'0px',zIndex:0});
+			}
+			//alert("mover")
+		}
+	}
+	moverPreguntas()
+	
+	function moverMenu(){
 		if ( _menuPosY <= $(window).scrollTop() ) {
 			$("#block-nav").css('position', 'fixed');
 			$("#block-nav").css('top', '0px');
 			$("#header").css("margin-bottom", $("#block-nav").height()+"px")
-			/*$("#nav").css('left', '50%');*/
-			/*$("#nav").css('margin-left', _marginMenu);*/
-			/*$("#content").css('margin-top', _marginTopContent);*/
 		} else {
 			$("#block-nav").css('position', 'relative');
 			$("#header").css("margin-bottom", "0px")
-			/*$("#nav").css('margin', _navMarginTop + ' auto ' + _navMarginBottom + ' auto');*/
-			/*$("#content").css('margin-top', '0');*/
 		}
+	}
+	moverMenu()
+	$(window).scroll(function(e) {
+		moverMenu()
+		moverPreguntas()
+		
 	});
+	
+	
+	
+	
 	
 	// Selector de terapias
 	
@@ -89,14 +122,8 @@ $(document).ready(function(e) {
 	});
 	
 	
-
-	
-});
-
-
 // ACORDEON PREGUNTAS FRECUENTES
 
-$(document).ready(function(){
 	acordeonActual = ""
 	strBotonesAcordeon='<div class="acordeon-boton acordeon-menos"></div>'
 	strBotonesAcordeon+='<div class="acordeon-boton acordeon-mas"></div>'
@@ -122,10 +149,13 @@ $(document).ready(function(){
 			acordeonActual = $(this).attr("id")
 			$(this).addClass("active")
 			$(this).find(".acordeon-content").slideToggle("fast")
+			
 		}
 	})
 	$(".acordeon-lista ul li:first-child").trigger("click")
+	
 });
+
 
 
 function printContent(id, title){
@@ -245,7 +275,7 @@ function printContent(id, title){
 		
 
 //RESULTADOS DE BUSQUEDA DE TERAPEUTAS
-	
+idGenericoUnico = 0
 	
 $(document).ready(function () {
 	//ver mapa grande on roll over
@@ -361,7 +391,7 @@ $(document).ready(function () {
 		
 	});
 	
-	/** ARTICULOS **/
+	/** Noticias **/
 	$(".ficha-noticia").each(function(index){
 		titulo_ficha = $(this).find(".encabezado h3").html();
 		if( $(this).attr("id") == 'undefined' || $(this).attr("id") == "" || $(this).attr("id") == undefined ){
@@ -380,9 +410,280 @@ $(document).ready(function () {
 	
 	//codigo twitter (botoncitos de twitiar)
 	!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+	
+	
+	
+	
+	
+	/**** MI FICHA home privado ****/
+	
+	$(".dinamic-swich").each(function(index){
+		input_value = $(this).find(".dinamic-value").val();
+		$(this).find(".input_field").append("<p class='display-text'>"+input_value+"</p><div class='edit-icon'></div>")
+		.find(".display-text").click(function(){
+			$(this).parent().addClass("editando")
+			$(this).parent().find(".dinamic-value").focus();
+		}).parent().find('.edit-icon').click(function(){
+			if($(this).parent().hasClass("editando")){
+				input_value_move = $(this).parent().find(".dinamic-value").val();
+				$(this).parent().find(".display-text").html(input_value_move)
+				$(this).parent().removeClass("editando")
+				if($(this).parent().find(".dinamic-value").val() == "" && $(this).parent().parent().parent().hasClass("multiples-campos-container")){
+					objetoPadre = $(this).parent().parent().parent()
+					$(this).parent().parent().remove();
+					repasarNamesInput(objetoPadre);
+				}
+			}else{
+				$(this).parent().addClass("editando")
+				$(this).parent().find(".dinamic-value").focus();
+			}
+		}).parent().find('.dinamic-value').blur(function(){
+			if($(this).val() == "" && $(this).parent().parent().parent().hasClass("multiples-campos-container")){
+				objetoPadre = $(this).parent().parent().parent()
+				$(this).parent().parent().remove();
+				repasarNamesInput(objetoPadre);
+			}
+			
+		})
+		/*.parent().find('.dinamic-value').blur(function(){
+			
+			if($(this).parent().hasClass("editando")){
+				$(this).parent().find('.edit-icon').trigger("click");
+				input_value_move = $(this).parent().find(".dinamic-value").val();
+				$(this).parent().find(".display-text").html(input_value_move)
+				$(this).parent().removeClass('editando')
+			}
+			
+			
+		}).bind('focus', function(){
+			$(this).attr("rel","editando")
+		});*/
+	});
+
+	
+	
+	$(".multiples-campos-boton-agregar").click(function(){
+		labelToPut = $(this).parent().find(".multiples-campos-container").attr("label")
+		htmlInput = $(this).parent().find(".multiples-campos-plantilla-input").html()
+		strNuevoCampo  = '			<div id="nuevo-campo-'+idGenericoUnico+'" class="form-block one-line dinamic-swich">'
+		strNuevoCampo += '				<div class="label">'+labelToPut+'</div>'
+		strNuevoCampo += '				<div class="input_field">'
+		strNuevoCampo += htmlInput
+		strNuevoCampo += '				</div>'
+		strNuevoCampo += '			</div>'
+		input_value = "";
+		$(this).parent().find(".multiples-campos-container").append(strNuevoCampo)
+		$('#nuevo-campo-'+idGenericoUnico).find(".input_field").append("<p class='display-text'>"+input_value+"</p><div class='edit-icon'></div>")
+		.find(".display-text").click(function(){
+			$(this).parent().addClass("editando")
+			$(this).parent().find(".dinamic-value").focus();
+		}).parent().find('.edit-icon').click(function(){
+			if($(this).parent().hasClass("editando")){
+				input_value_move = $(this).parent().find(".dinamic-value").val();
+				$(this).parent().find(".display-text").html(input_value_move)
+				$(this).parent().removeClass("editando")
+				if($(this).parent().find(".dinamic-value").val() == "" && $(this).parent().parent().parent().hasClass("multiples-campos-container")){
+					objetoPadre = $(this).parent().parent().parent()
+					$(this).parent().parent().remove();
+					repasarNamesInput(objetoPadre);
+				}
+			}else{
+				$(this).parent().addClass("editando")
+				$(this).parent().find(".dinamic-value").focus();
+			}
+
+		}).parent().find('.dinamic-value').blur(function(){
+			if($(this).val() == "" && $(this).parent().parent().parent().hasClass("multiples-campos-container")){
+				objetoPadre = $(this).parent().parent().parent()
+				$(this).parent().parent().remove();
+				repasarNamesInput(objetoPadre);
+			}
+			
+		})
+		repasarNamesInput($(this).parent().find(".multiples-campos-container"));
+		$('#nuevo-campo-'+idGenericoUnico+' .edit-icon').trigger("click")
+		idGenericoUnico++
+	})
+	function repasarNamesInput(divEditar){
+		nombreArray = divEditar.attr("name")
+		divEditar.find(".dinamic-value").each(function(index){
+			$(this).attr("name", nombreArray+'['+index+']')
+		})
+	}
+	$(".multiples-campos").each(function(){
+		repasarNamesInput($(this).find(".multiples-campos-container"));
+	})
+
 });
 
 
+	/** MENSAJE PREVIEW FICHA **/
+
+function previewFicha(strHtml){
+	
+	$('#box-mjs-preview').html("")
+	$('#box-mjs-preview').html("<div id='bt-cerrar-mjs-preview'>cerrar X</div>"+strHtml)
+	$("#bt-cerrar-mjs-preview").click(function(e){
+		cerrarPreviewFicha()
+	})
+	$('#mjs-preview').fadeIn("slow")
+	$('html,body').animate({scrollTop: 0},'slow');
+}
+function cerrarPreviewFicha(){
+	$('#mjs-preview').fadeOut("fast", function(){
+		$('#box-mjs-preview').html("")
+	})
+}	
+$(document).ready(function () {
+	// MENSAJE preview div base
+	$('body').append('<div id="mjs-preview"><div id="bg-mjs-preview"></div><div id="box-mjs-preview"><div id="bt-cerrar-mjs-preview"></div></div></div>');
+	//fondo negro:	
+	$("#bg-mjs-preview").click(function(e){
+		cerrarPreviewFicha()
+	})
+	
+	//boton para previsualizar la ficha actual:	
+	
+	$(".previsualizar-ficha a").click(function(e){
+		e.preventDefault();
+		previewFicha(generarFichaPersona())
+	})
+
+	//boton (derecha) para previsualizar la ficha más bakan:
+	
+	$("#previsualizar-otra-ficha").click(function(e){
+		e.preventDefault();
+		previewFicha(generarFichaPersona())
+	
+	})
+	
+	
+	
+});
+//aca creamos el div de una ficha tipo, con todos los tags html iguales a los de antes...
+//hay que insertarle los valores reales, se pueden obtener de los inputs cuando tengan id o nombre
+function generarFichaPersona(){
+	fichaPersona = '			<div class="busqueda-box-center">'
+	fichaPersona += '				<div class="ficha-persona">'
+	fichaPersona += '					<div class="foto"><img src="http://fpoimg.com/42x42" alt="Esteban Soto" width="42" height="42" border="0" /></div>'
+	fichaPersona += '					<div class="contenido-ficha">'
+	fichaPersona += '						'
+	fichaPersona += '						<p class="nombre-ficha">Esteban Encina Zúñiga</p>'
+	fichaPersona += '						<p>'
+	fichaPersona += '							<strong>Psicólogo. Universidad de Chile</strong><br/>'
+	fichaPersona += '							Centro de Medicinas Alternativas La Legua<br/>'
+	fichaPersona += '							29 años'
+	fichaPersona += '						</p>'
+	fichaPersona += '						<div class="descripcion-full">'
+	fichaPersona += '							<h3>Descripción del psicologo como en los nuevos cv’s consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</h3>'
+	fichaPersona += '							<div class="ficha-columna">'
+	fichaPersona += '								<h3>Información de experiencia y formación académica:</h3>'
+	fichaPersona += '								<ul>'
+	fichaPersona += '									<li><span><strong>Especialidades:</strong> Lorem ipsum dolor si amet consecuteur.</span></li>'
+	fichaPersona += '									<li><span><strong>Experiencia:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></li>'
+	fichaPersona += '									<li><span><strong>Formación y Estudios Acreditados:</strong> Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure.</span></li>'
+	fichaPersona += '								</ul>'
+	fichaPersona += '								'
+	fichaPersona += '								<h3>Costo y formas de pago:</h3>'
+	fichaPersona += '								<ul>'
+	fichaPersona += '									<li><span><strong>Arancel por sesión:</strong> $25.000.-</span></li>'
+	fichaPersona += '									<li><span><strong>Formas de Pago:</strong> Cheque, Transferencia, Recompra.</span></li>'
+	fichaPersona += '									<li><span><strong>Convenios: </strong> Ut enim ad minim veniam, quis nostrud exercitation ullamco.</span></li>'
+	fichaPersona += '								</ul>'
+	fichaPersona += '								'
+	fichaPersona += '								<h3>Datos de Contacto:</h3>'
+	fichaPersona += '								<ul>'
+	fichaPersona += '									<li><span><strong>Dirección:</strong> Patagonia 12345, La Pintana.</span></li>'
+	fichaPersona += '									<li><span><strong>Teléfonos de contacto:</strong> +56 9 8675 4323</span></li>'
+	fichaPersona += '									<li><span><strong>Correo electrónico:</strong> huaqui@huaqui.cl</span></li> '
+	fichaPersona += '									<li><span><strong>Sitio web:</strong> <a href="http://www.huaiqui.cl">huaiqui.cl</a></span></li>'
+	fichaPersona += '								</ul>'
+	fichaPersona += '								'
+	fichaPersona += '								<input type="button" value="Contactar al Terapeuta" class="boton-morado" />'
+	fichaPersona += '							</div><!-- ficha-columna -->'
+	fichaPersona += '							<div class="ficha-sidebar">'
+	fichaPersona += '								<div class="box box-descuentos">'
+	fichaPersona += '								<h3>Descuentos</h3>'
+	fichaPersona += '								<img src="http://fpoimg.com/151x126" alt="Esteban Soto" width="151" height="126" border="0" />'
+	fichaPersona += '								</div>'
+	fichaPersona += '								'
+	fichaPersona += '								<div class="box box-mapa">'
+	fichaPersona += '									<h3>Mapa de Ubicación</h3>'
+	fichaPersona += '									<div class="map-container">'
+	fichaPersona += '										<iframe width="151" height="182" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.cl/maps?f=q&amp;source=s_q&amp;hl=es&amp;geocode=&amp;q=Isidora+Goyenechea,+Santiago&amp;aq=0&amp;oq=isidora+&amp;sll=-35.675147,-71.542969&amp;sspn=80.816499,137.988281&amp;ie=UTF8&amp;hq=&amp;hnear=Isidora+Goyenechea,+Las+Condes,+Santiago,+Regi%C3%B3n+Metropolitana&amp;t=m&amp;ll=-33.414249,-70.599003&amp;spn=0.013039,0.012875&amp;z=14&amp;output=embed"></iframe>'
+	fichaPersona += '									</div>'
+	fichaPersona += '									<a target="_blank" href="http://maps.google.cl/maps?f=q&amp;source=embed&amp;hl=es&amp;geocode=&amp;q=Isidora+Goyenechea,+Santiago&amp;aq=0&amp;oq=isidora+&amp;sll=-35.675147,-71.542969&amp;sspn=80.816499,137.988281&amp;ie=UTF8&amp;hq=&amp;hnear=Isidora+Goyenechea,+Las+Condes,+Santiago,+Regi%C3%B3n+Metropolitana&amp;t=m&amp;ll=-33.414249,-70.599003&amp;spn=0.013039,0.012875&amp;z=14" class="link-mapa-google">Ver mapa en grande</a>'
+	fichaPersona += '								</div>'
+	fichaPersona += '								<div class="box box-entrevista">'
+	fichaPersona += '									<a href="#">Ver entrevista.</a>'
+	fichaPersona += '								</div>'
+	fichaPersona += ''
+	fichaPersona += '							</div><!-- ficha-sidebar -->'
+	fichaPersona += '						</div><!--descirpcion full-->'
+	fichaPersona += '					</div><!--contenido ficha-->'
+	fichaPersona += '					'
+	fichaPersona += '				</div><!--ficha persona-->'
+	fichaPersona += '			</div><!--box center-->'
+	return fichaPersona;
+}
 
 
 
+$(document).ready(function () {
+	$("#bt-comenzar-ahora").click(function(){
+		
+		$('html,body').animate({scrollTop: $(".columna-planes").offset().top-45},'slow');
+	})
+
+	
+	
+	
+	$(".ficha-persona").each(function(){
+	
+		$(this).find(".boton-contactar-terapeuta").click(function(){
+			rootFicha = $(this)
+			while(!rootFicha.hasClass("ficha-persona")){
+				rootFicha = rootFicha.parent()
+			}
+			fichaContacto = '			<div class="busqueda-box-center">'
+			fichaContacto += '				<div class="ficha-persona">'
+			fichaContacto += '				<div class="foto"><img src="'+rootFicha.find(".foto img").attr("src")+'" width="42" height="42" border="0" /></div>'
+			fichaContacto += '					<div class="contenido-ficha">'
+			fichaContacto += '						<p class="nombre-ficha">'+rootFicha.find(".nombre-ficha").html()+'</p>'
+			fichaContacto += '					<div class="contactarTerapeutaForm">'
+			fichaContacto += '					<div class="columna50">'
+			fichaContacto += '						<div class="form-block">'
+			fichaContacto += '							<div class="label">Tu nombre</div>'
+			fichaContacto += '							<div class="input_field">'
+			fichaContacto += '								<input type="text" />'
+			fichaContacto += '							</div>'
+			fichaContacto += '						</div>'
+			fichaContacto += '					</div>'
+			fichaContacto += '					<div class="columna50 last">'
+			fichaContacto += '						<div class="form-block">'
+			fichaContacto += '							<div class="label">Tu apellido</div>'
+			fichaContacto += '							<div class="input_field">'
+			fichaContacto += '								<input type="text" />'
+			fichaContacto += '							</div>'
+			fichaContacto += '						</div>'
+			fichaContacto += '					</div>'
+			fichaContacto += '					<div class="form-block">'
+			fichaContacto += '						<div class="label">Mensaje</div>'
+			fichaContacto += '						<div class="input_field">'
+			fichaContacto += '							<textarea class="area_med"></textarea>'
+			fichaContacto += '						</div>'
+			fichaContacto += '					</div>'
+			fichaContacto += '					<div class="form-block">'
+			fichaContacto += '						<input type="hidden" name="identificador_unico_para_accionar" value="'+$(this).attr("rel")+'"/>'
+			fichaContacto += '						<input type="button" value="Enviar mensaje" class="boton-morado" />'
+			fichaContacto += '					</div>'
+			fichaContacto += '					</div><!--contactarTerapeutaForm-->'
+			fichaContacto += '					</div><!--contenido ficha-->'
+			fichaContacto += '				</div>'
+			fichaContacto += '			</div>'
+			previewFicha(fichaContacto)
+		
+		})
+	})
+	
+})

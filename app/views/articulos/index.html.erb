@@ -52,10 +52,11 @@
 				</div>
 			</div>
 			
-		
+			<% if @articulos.count > 0%>
 			<p class="busqueda-mensaje-resultado">
 				Últimos artículos
 			</p>
+			<% end %>
 			
 			<% @articulos.each do |articulo| %>
 			<div class="ficha-articulo">
@@ -73,17 +74,7 @@
 			</div><!--ficha articulo-->
 			<% end %>
 			
-			<div class="pagination">
-			
-				<ul>
-					<li><a href="#">1</a></li>
-					<li class="current"><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">25</a></li>
-					<li class="siguiente"><a href="#">Siguiente</a></li>
-				</ul>
-			
-			</div>
+			<%= will_paginate @articulos, previous_label: h("<"), next_label: h(">") %>
 		</div><!--form-box-center-->
 	</div><!--columna-670-left-->
 	
