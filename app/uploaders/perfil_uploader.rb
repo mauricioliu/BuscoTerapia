@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-class ImageUploader < CarrierWave::Uploader::Base
+class PerfilUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   include CarrierWave::RMagick
@@ -15,7 +15,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
-  
+ 
   def cache_dir
     "#{Rails.root}/tmp/uploads"
   end
@@ -31,15 +31,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   def scale(width, height)
     # do something
   end
-
-  # Create different versions of your uploaded files:
-  version :thumb do
-    process :resize_to_limit => [140, 100]
-  end
-  
-  version :medium_thumb do
-    process :resize_to_limit => [203, 140]
-  end
   
   version :terapeuta_img do
     process :resize_to_limit => [170, 130]
@@ -48,6 +39,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :terapeuta_thumb do
     process :resize_to_limit => [42, 42]
   end
+
+  # Create different versions of your uploaded files:
+  # version :thumb do
+  #   process :scale => [50, 50]
+  # end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

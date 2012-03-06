@@ -23,7 +23,7 @@
 			<% @terapeutas.each do |terapeuta| %>
 				<% if terapeuta.plan_tipo == "Gratis" %>
 					<div class="ficha-persona ficha-simple">
-					<div class="foto"><img src="http://fpoimg.com/42x42" alt="Esteban Soto" width="42" height="42" border="0" /></div>
+					<div class="foto"><%= image_tag 'img/terapeuta_thumb_perfil-default.png'%></div>
 					<div class="contenido-ficha">
 						<p class="nombre-ficha"><%= terapeuta.nombre %></p>
 						<p>
@@ -45,15 +45,19 @@
 				</div><!--ficha persona-->
 				<% else %>
 					<div class="ficha-persona">
-					<div class="foto"><img src="http://fpoimg.com/42x42" alt="Esteban Soto" width="42" height="42" border="0" /></div>
+					<% if @terapeuta != nil %>
+						<div class="foto"><%= image_tag @terapeuta.imagen_url.terapeuta_thumb.url.to_s %></div>
+					<% else %>
+						<div class="foto"><%= image_tag 'img/terapeuta_thumb_perfil-default.png'%></div>
+					<% end %>
 					<div class="contenido-ficha">
 						
 						<p class="nombre-ficha"><%= terapeuta.nombre %></p>
 						<p>
-							<% terapeuta.estudios.each do |estudio| %>
-								<strong><%= estudio.titulo %>, <%= estudio.establecimiento %></strong><br/>
-							<% end %>
-							Especialista en 
+							Especialista en
+							<% terapeuta.especialidades.each do |especialidad| %>
+								<%= especialidad.valor %>,
+							<% end %> 
 							</br>
 							<%= terapeuta.direccion %>, <%= Comuna.find(terapeuta.comuna).nombre %>, <%= Region.find(terapeuta.region).nombre %> 
 						</p>
@@ -61,14 +65,14 @@
 							<div class="ficha-columna">
 								<h3>Información de experiencia y formación académica:</h3>
 								<ul>
-									<li><span><strong>Especialidades:</strong> 
+									<li><span><strong>Especialidades:</strong> <br />
 											<% terapeuta.especialidades.each do |especialidad| %>
-												<%= especialidad.valor %>,
+												&nbsp;&nbsp;&nbsp;- <%= especialidad.valor %><br />
 											<% end %>
 										</span></li>
 									<li><span><strong>Formación y Estudios Acreditados:</strong><br />
 											<% terapeuta.estudios.each do |estudio| %>
-											&nbsp;&nbsp;&nbsp;- <%= estudio.titulo %>, <%= estudio.establecimiento %>
+											&nbsp;&nbsp;&nbsp;- <%= estudio.titulo %>, <%= estudio.establecimiento %><br />
 											<% end %>
 										</span></li>
 								</ul>
@@ -103,14 +107,9 @@
 								<div class="box box-mapa">
 									<h3>Mapa de Ubicación</h3>
 									<div class="map-container">
-										<%= image_tag "http://maps.google.com/maps/api/staticmap?size=151x182&sensor=true&zoom=16&markers=#{terapeuta.latitude}%2C#{terapeuta.longitude}", :class => "link-mapa-google" %>
+										<%= image_tag "http://maps.google.com/maps/api/staticmap?size=151x182&sensor=true&zoom=15&markers=#{terapeuta.latitude}%2C#{terapeuta.longitude}", :class => "link-mapa-google" %>
 									</div>
-									
 								</div>
-								<div class="box box-entrevista">
-									<a href="#">Ver entrevista.</a>
-								</div>
-
 							</div><!-- ficha-sidebar -->
 						</div><!--descirpcion full-->
 					</div><!--contenido ficha-->

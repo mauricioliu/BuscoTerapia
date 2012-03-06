@@ -4,6 +4,7 @@ require 'bcrypt'
 
 class Terapeuta < ActiveRecord::Base
   include BCrypt
+  mount_uploader :imagen_url, PerfilUploader
   
   geocoded_by :direccion_completa
   after_validation :geocode

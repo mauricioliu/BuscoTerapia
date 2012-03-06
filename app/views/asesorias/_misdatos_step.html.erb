@@ -12,10 +12,10 @@ para facilitar la búsqueda de tu terapeuta.</small></h2>
 <div class="form-box">
 	<div class="titulo-form">
 	<h3>Datos principales de quienes asistirán a terapia</h3>
-	<p class="aviso">(* respuesta necesaria)</p>
+	<p class="message">(* respuesta necesaria)</p>
 	</div>
 	<div class="form-block one-line">
-		<div class="label"><span class="aviso">*</span> Nombre</div>
+		<div class="label"><span class="message">*</span> Nombre</div>
 		<div class="input_field">
 			<%= f.text_field :paciente_nombre %>
 			<!-- mensaje aparece solo cuando no completó -->
@@ -29,7 +29,7 @@ para facilitar la búsqueda de tu terapeuta.</small></h2>
 		</div>
 	</div>
 	<div class="form-block one-line">
-		<div class="label"><span class="aviso">*</span> Esta terapia es para:</div>
+		<div class="label"><span class="message">*</span> Esta terapia es para:</div>
 		<div class="input_field">
 			<%= f.collection_select :terapia_para, RefDatum.where(:nombre => "Terapia es para"), :valor, :valor %>
 			<!-- mensaje aparece solo cuando no completó -->
@@ -52,14 +52,14 @@ para facilitar la búsqueda de tu terapeuta.</small></h2>
 	<h3>Datos de contacto</h3>
 	</div>
 	<div class="form-block one-line ">
-		<div class="label"><span class="aviso">*</span> Teléfono de contacto:</div>
+		<div class="label"><span class="message">*</span> Teléfono de contacto:</div>
 		<div class="input_field">
 			<%= f.text_field :paciente_telefono %>
 		</div>
 	</div>
 	
 	<div class="form-block one-line">
-		<div class="label"><span class="aviso">*</span> E-mail</div>
+		<div class="label"><span class="message">*</span> E-mail</div>
 		<div class="input_field">
 			<%= f.text_field :paciente_email %>
 			<!-- acá mensaje alerta -->
@@ -112,7 +112,7 @@ para facilitar la búsqueda de tu terapeuta.</small></h2>
 
 	
 		<div class="label">
-			Fecha estimativa:
+			Horario preferente:
 		</div>
 		
 

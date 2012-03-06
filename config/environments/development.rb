@@ -31,3 +31,14 @@ BuscoTerapia::Application.configure do
 
 end
 
+
+ActionMailer::Base.smtp_settings = {
+  :enable_starttls_auto => true,  
+  :address => 'smtp.gmail.com',
+  :port => 587,
+  :domain => 'www.buscoterapia.cl',
+  :user_name => 'no-reply@buscoterapia.cl',
+  :password => 'Abc.123!',
+  :authentication => 'plain',
+  :enable_starttls_auto => true
+} 

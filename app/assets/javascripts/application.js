@@ -6,5 +6,5 @@
 //
 //= require jquery
 //= require jquery-ujs
-//= require_tree
+//= require_tree .
 //= require rails.validations

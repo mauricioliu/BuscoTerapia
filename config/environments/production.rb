@@ -58,3 +58,14 @@ BuscoTerapia::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 end
+
+ActionMailer::Base.smtp_settings = {
+  :enable_starttls_auto => true,  
+  :address => 'smtp.gmail.com',
+  :port => 25,
+  :domain => 'www.buscoterapia.cl',
+  :user_name => 'no-reply@buscoterapia.cl',
+  :password => 'Abc.123!',
+  :authentication => 'plain',
+  :enable_starttls_auto => true
+} 

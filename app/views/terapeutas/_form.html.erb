@@ -14,38 +14,49 @@ buscoterapia.cl</p>
 			<%= nested_form_for(@terapeuta) do |f| %>
 				<div class="mi-perfil">
 					<h3>Mi perfil</h3>
+					<% if @terapeuta.plan_tipo != "Gratis" %>
 					<div class="form-block one-line">
-						<div class="label"><span class="aviso">*</span>Mi nombre:</div>
+						<div class="label">Foto:</div>
+						<div class="input_field">
+							<%= f.file_field :imagen_url %>
+							<!-- mensaje aparece solo cuando no completó -->
+							<!-- <p class="message">*por favor complete este campo</p>-->
+							<!-- / -->
+						</div>
+					</div>
+					<% end %>
+					<div class="form-block one-line">
+						<div class="label"><span class="message">*</span>Mi nombre:</div>
 						<div class="input_field">
 							<%= f.text_field :nombre %>
 							<!-- mensaje aparece solo cuando no completó -->
-							<!-- <p class="aviso">*por favor complete este campo</p>-->
+							<!-- <p class="message">*por favor complete este campo</p>-->
 							<!-- / -->
 						</div>
 					</div>
 					<div class="form-block one-line">
-						<div class="label"><span class="aviso">*</span>Rut:</div>
+						<div class="label"><span class="message">*</span>Rut:</div>
 						<div class="input_field">
 							<%= f.text_field :rut %>
 							<!-- mensaje aparece solo cuando no completó -->
-							<!-- <p class="aviso">*por favor complete este campo</p>-->
+							<!-- <p class="message">*por favor complete este campo</p>-->
 							<!-- / -->
 						</div>
 					</div>
 					
 					
 					<div class="form-block one-line">
-						<div class="label"><span class="aviso">*</span>Correo electrónico:</div>
+						<div class="label"><span class="message">*</span>Correo electrónico:</div>
 						<div class="input_field">
-							<%= f.text_field :email %>
+							<%= @terapeuta.email %>
 							<!-- mensaje aparece solo cuando no completó -->
-							<!-- <p class="aviso">*por favor complete este campo</p>-->
+							<!-- <p class="message">*por favor complete este campo</p>-->
 							<!-- / -->
 						</div>
 					</div>
 					
 					<div class="form-block one-line listaDias">
-						<div class="label"><span class="aviso">*</span>Profesión:</div>
+						<div class="label"><span class="message">*</span>Profesión:</div>
 						<div class="columna30">
 						<% for terapia in @tipo_terapias %>
 							<% if params[:tipo_terapia_ids] != nil %>
@@ -66,7 +77,7 @@ buscoterapia.cl</p>
 							<%= especialidad_form.text_field :valor %>
 							<%= especialidad_form.link_to_remove " X ", :class => "borrar" %>
 							<!-- mensaje aparece solo cuando no completó -->
-							<!-- <p class="aviso">*por favor complete este campo</p>-->
+							<!-- <p class="message">*por favor complete este campo</p>-->
 							<!-- / -->
 						</div>
 					</div>
@@ -75,9 +86,12 @@ buscoterapia.cl</p>
 				
 					<div id="foto-perfil">
 						<div class="foto">
-						<img src="http://fpoimg.com/170x130" alt="Esteban Soto" width="170" height="130 border="0" />
+							<% if @terapeuta != nil %>
+								<%= image_tag @terapeuta.imagen_url.terapeuta_img.url.to_s %>
+							<% else %>
+								<img src="http://fpoimg.com/170x130" alt="Esteban Soto" width="170" height="130 border="0" />
+							<% end %>
 						</div>
-						<a href="#">Cambiar imagen</a>
 					</div>
 				</div>
 				
@@ -89,7 +103,7 @@ buscoterapia.cl</p>
 						<div class="input_field">
 							<%= estudio_form.text_field :titulo %>
 							<!-- mensaje aparece solo cuando no completó -->
-							<!-- <p class="aviso">*por favor complete este campo</p>-->
+							<!-- <p class="message">*por favor complete este campo</p>-->
 							<!-- / -->
 						</div>
 						<div class="label">Establecimiento:</div>
@@ -105,29 +119,29 @@ buscoterapia.cl</p>
 				<div class="mis-datos">
 					<h3>Mis datos de contacto:</h3>
 					<div class="form-block one-line">
-						<div class="label"><span class="aviso">*</span>Dirección:</div>
+						<div class="label"><span class="message">*</span>Dirección:</div>
 						<div class="input_field">
 							<%= f.text_field :direccion %>
 							<!-- mensaje aparece solo cuando no completó -->
-							<!-- <p class="aviso">*por favor complete este campo</p>-->
+							<!-- <p class="message">*por favor complete este campo</p>-->
 							<!-- / -->
 						</div>
 					</div>
 					<div class="form-block one-line">
-						<div class="label"><span class="aviso">*</span>Region:</div>
+						<div class="label"><span class="message">*</span>Region:</div>
 						<div class="input_field">
 							<%= f.collection_select :region, Region.order(:nombre), :id, :nombre, {include_blank: true} %>
 							<!-- mensaje aparece solo cuando no completó -->
-							<!-- <p class="aviso">*por favor complete este campo</p>-->
+							<!-- <p class="message">*por favor complete este campo</p>-->
 							<!-- / -->
 						</div>
 					</div>
 					<div class="form-block one-line">
-						<div class="label"><span class="aviso">*</span>Comuna:</div>
+						<div class="label"><span class="message">*</span>Comuna:</div>
 						<div class="input_field">
 							<%= f.grouped_collection_select :comuna, Region.order(:nombre), :comunas, :nombre, :id, :nombre, {include_blank: true} %>
 							<!-- mensaje aparece solo cuando no completó -->
-							<!-- <p class="aviso">*por favor complete este campo</p>-->
+							<!-- <p class="message">*por favor complete este campo</p>-->
 							<!-- / -->
 						</div>
 					</div>
@@ -136,7 +150,7 @@ buscoterapia.cl</p>
 						<div class="input_field">
 							<%= f.text_field :codigo_postal %>
 							<!-- mensaje aparece solo cuando no completó -->
-							<!-- <p class="aviso">*por favor complete este campo</p>-->
+							<!-- <p class="message">*por favor complete este campo</p>-->
 							<!-- / -->
 						</div>
 					</div>
@@ -155,13 +169,6 @@ buscoterapia.cl</p>
 						</div>
 					</div>
 					
-					<div class="form-block one-line ">
-						<div class="label">Mail de contacto:</div>
-						<div class="input_field">
-							<p class="display-text"><%= @terapeuta.email %></p>
-						</div>
-					</div>
-					
 					<div class="form-block one-line">
 						<div class="label">Sitio web:</div>
 						<div class="input_field">
@@ -177,7 +184,7 @@ buscoterapia.cl</p>
 						<div class="input_field">
 							<%= f.text_field :arancel %>
 							<!-- mensaje aparece solo cuando no completó -->
-							<!-- <p class="aviso">*por favor complete este campo</p>-->
+							<!-- <p class="message">*por favor complete este campo</p>-->
 							<!-- / -->
 						</div>
 					</div>
@@ -186,7 +193,7 @@ buscoterapia.cl</p>
 						<div class="input_field">
 							<%= f.text_field :descuentos %>
 							<!-- mensaje aparece solo cuando no completó -->
-							<!-- <p class="aviso">*por favor complete este campo</p>-->
+							<!-- <p class="message">*por favor complete este campo</p>-->
 							<!-- / -->
 						</div>
 					</div>
@@ -206,8 +213,6 @@ buscoterapia.cl</p>
 					</div>
 				</div><!--MIS DATOS-->
 				
-				<div class="previsualizar-ficha"><a href="#">Previsualizar ficha</a></div>
-
 			</div><!-- form-perfil -->
 			
 			<div class="guardar-cambios">
