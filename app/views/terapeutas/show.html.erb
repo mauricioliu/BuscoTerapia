@@ -7,7 +7,7 @@
 			<% if @terapeuta.imagen_url.length != 0 %>
 				<div class="foto"><%= image_tag @terapeuta.imagen_url.terapeuta_thumb.url.to_s %></div>
 			<% else %>
-				<%= image_tag 'terapeuta_thumb_perfil-default.png'%>
+				<img src="http://fpoimg.com/42x42" alt="Esteban Soto" width="42" height="42" border="0" 
 			<% end %>
 			
 			<div class="contenido-ficha">
@@ -49,11 +49,6 @@
 											<% @terapeuta.forma_pagos.each do |forma_pago| %>
 												<%= forma_pago.valor %>, 
 											<% end %> 
-										</span></li>
-									<li><span><strong>Convenios:</strong><br />
-											<% @terapeuta.convenios.each do |convenio| %>
-											&nbsp;&nbsp;&nbsp;- <%= convenio.valor %><br />
-											<% end %>
 										</span></li>
 								</ul>
 								
