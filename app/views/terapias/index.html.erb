@@ -34,7 +34,7 @@
 					<div class="descripcion-full">
 						<div class="ficha-columna">
 								<div class="foto"><%= image_tag terapia.imagen_url.thumb.url.to_s %></div>
-								<p class="nombre-ficha"><%= terapia.nombre_corto %></p>
+								<p class="nombre-ficha"><%= link_to terapia.nombre_corto, terapia_path(terapia) %></p>
 								<%= simple_format(terapia.descripcion) %>								
 						</div><!-- ficha-columna -->
 							

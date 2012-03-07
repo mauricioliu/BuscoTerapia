@@ -11,7 +11,7 @@ class TerapeutasController < ApplicationController
   def index
     @sepa = params[:search]
     @search = Terapeuta.search(params[:search])
-    @terapeutas = @search.order("plan_tipo desc, created_at desc")
+    @terapeutas = @search.order("plan_tipo asc, created_at desc")
     @terapeutas = @terapeutas.where("estado = 'validado'")
     @terapeutas = @terapeutas.page(params[:page]).per_page(10)
     # @terapeutas.order("plan").desc
