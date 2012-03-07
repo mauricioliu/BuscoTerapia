@@ -4,7 +4,7 @@
 	<div class="columna-670-left">
 		<div class="busqueda-box-center">
 			<div class="ver-ficha-persona">
-			<% if @terapeuta != nil %>
+			<% if @terapeuta.imagen_url.length != 0 %>
 				<div class="foto"><%= image_tag @terapeuta.imagen_url.terapeuta_thumb.url.to_s %></div>
 			<% else %>
 				<%= image_tag 'terapeuta_thumb_perfil-default.png'%>
