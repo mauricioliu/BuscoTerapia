@@ -11,8 +11,6 @@
 				<div class="titulo-form">
 				<h3>Ordenar por: <small>(podría ser filtrar por?)</small></h3>
 				</div>
-				
-				
 
 				<div class="form-block busqueda-categoria">
 					<div class="label">
@@ -61,7 +59,11 @@
 			<% @articulos.each do |articulo| %>
 				<div class="ficha-articulo">
 					<div class="contenido-ficha">
-						<div class="foto"><%= image_tag articulo.imagen_url.medium_thumb.url.to_s %></div>
+						<% if articulo.imagen_url.size != 0 %>
+							<div class="foto"><%= image_tag articulo.imagen_url.medium_thumb.url.to_s %></div>
+						<% else %>
+							<div class="foto"><img src="http://fpoimg.com/203x140" alt="Esteban Soto" width="203" height="140" border="0" /></div>
+						<% end %>
 						<div class="encabezado">
 							<h3><Acupuntura><%= articulo.titulo %></h3>
 							<p><%= articulo.created_at.strftime('%B %e, %Y')%>. Escrito por <%= articulo.autor %>, <%= articulo.especialidad %>.</p>
@@ -87,7 +89,11 @@
 							<h3><%= noticia.titulo %></h3>
 							<p><%= noticia.created_at.strftime('%B %e, %Y')%></p>
 						</div>
-						<div class="foto"><%= image_tag noticia.imagen_url.horizontal_thumb.url.to_s %></div>
+						<% if noticia.imagen_url.size != 0 %>
+							<div class="foto"><%= image_tag noticia.imagen_url.horizontal_thumb.url.to_s %></div>
+						<% else %>
+							<div class="foto"><img src="http://fpoimg.com/280x100" alt="Esteban Soto" width="280" height="100" border="0" /></div>
+						<% end %>
 						<p>
 							<%= noticia.contenido[1,170 ]%>								 
 							... <%= link_to 'Continuar leyendo', articulo_path(noticia) %>.</a>
