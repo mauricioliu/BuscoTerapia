@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
   layout :resolve_layout 
-  http_basic_authenticate_with :name => "btp", :password => "btp.123!"
   
   def index
     @search = Terapeuta.search(params[:search])
