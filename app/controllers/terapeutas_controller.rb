@@ -13,7 +13,7 @@ class TerapeutasController < ApplicationController
     @search = Terapeuta.search(params[:search])
     @terapeutas = @search.order("plan_tipo desc, created_at desc")
     @terapeutas = @terapeutas.where("estado = 'validado'")
-    @terapeutas = @terapeutas.page(params[:page]).per_page(15)
+    @terapeutas = @terapeutas.page(params[:page]).per_page(10)
     # @terapeutas.order("plan").desc
 
     respond_to do |format|
