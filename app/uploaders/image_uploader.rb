@@ -41,14 +41,6 @@ class ImageUploader < CarrierWave::Uploader::Base
     process :resize_to_limit => [203, 140]
   end
   
-  version :terapeuta_img do
-    process :resize_to_limit => [170, 130]
-  end
-  
-  version :terapeuta_thumb do
-    process :resize_to_limit => [42, 42]
-  end
-
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   # def extension_white_list

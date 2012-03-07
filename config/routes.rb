@@ -25,6 +25,9 @@ BuscoTerapia::Application.routes.draw do
   get "login" => "sessions#new", :as => "login"
   
   match "preguntas_frecuentes" => "home#preguntas_frecuentes"
+  match "condiciones_de_uso" => "home#condiciones_de_uso"
+  match "privacidad" => "home#privacidad"
+  
   
   match "change_password" => "terapeutas#change_password"
   match "forgot_password" => "terapeutas#forgot_password", :as => "forgot_password"

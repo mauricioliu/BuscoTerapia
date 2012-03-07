@@ -45,8 +45,8 @@
 				</div><!--ficha persona-->
 				<% else %>
 					<div class="ficha-persona">
-					<% if @terapeuta != nil %>
-						<div class="foto"><%= image_tag @terapeuta.imagen_url.terapeuta_thumb.url.to_s %></div>
+					<% if terapeuta.imagen_url.size != 0 %>
+						<div class="foto"><%= image_tag terapeuta.imagen_url.terapeuta_thumb.url.to_s %></div>
 					<% else %>
 						<div class="foto"><%= image_tag 'img/terapeuta_thumb_perfil-default.png'%></div>
 					<% end %>

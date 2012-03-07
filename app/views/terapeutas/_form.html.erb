@@ -86,7 +86,7 @@ buscoterapia.cl</p>
 				
 					<div id="foto-perfil">
 						<div class="foto">
-							<% if @terapeuta != nil %>
+							<% if @terapeuta.imagen_url.length != 0 %>
 								<%= image_tag @terapeuta.imagen_url.terapeuta_img.url.to_s %>
 							<% else %>
 								<img src="http://fpoimg.com/170x130" alt="Esteban Soto" width="170" height="130 border="0" />
