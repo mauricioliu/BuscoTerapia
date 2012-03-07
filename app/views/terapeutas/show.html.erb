@@ -50,7 +50,11 @@
 												<%= forma_pago.valor %>, 
 											<% end %> 
 										</span></li>
-									<li><span><strong>Convenios: </strong> Ut enim ad minim veniam, quis nostrud exercitation ullamco.</span></li>
+									<li><span><strong>Convenios:</strong><br />
+											<% @terapeuta.convenios.each do |convenio| %>
+											&nbsp;&nbsp;&nbsp;- <%= convenio.valor %><br />
+											<% end %>
+										</span></li>
 								</ul>
 								
 								<h3>Datos de Contacto:</h3>
@@ -67,7 +71,7 @@
 								<div class="box box-mapa">
 									<h3>Mapa de Ubicación</h3>
 									<div class="map-container">
-										<%= image_tag "http://maps.google.com/maps/api/staticmap?size=151x182&sensor=true&zoom=16&markers=#{@terapeuta.latitude}%2C#{@terapeuta.longitude}", :class => "link-mapa-google" %>
+										<%= image_tag "http://maps.google.com/maps/api/staticmap?size=151x182&sensor=true&zoom=15&markers=#{@terapeuta.latitude}%2C#{@terapeuta.longitude}", :class => "link-mapa-google" %>
 									</div>
 									
 								</div>
