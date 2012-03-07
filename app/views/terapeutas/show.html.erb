@@ -7,7 +7,7 @@
 			<% if @terapeuta.imagen_url.length != 0 %>
 				<div class="foto"><%= image_tag @terapeuta.imagen_url.terapeuta_thumb.url.to_s %></div>
 			<% else %>
-				<img src="http://fpoimg.com/42x42" alt="Esteban Soto" width="42" height="42" border="0" 
+				<div class="foto"><img src="http://fpoimg.com/42x42" alt="Esteban Soto" width="42" height="42" border="0" /></div> 
 			<% end %>
 			
 			<div class="contenido-ficha">
