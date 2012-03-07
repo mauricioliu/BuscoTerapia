@@ -72,20 +72,6 @@
 	
 	<%= yield %>
 	
-	<div id="block-footer" class="block-wrapper">
-		<div id="footer" class="wrapper">
-			<ul class="left">
-				<li><a href="#">Buscoterapia © 2012</a></li>
-			</ul>
-			<ul class="right">
-				<li><a href="#">Quienes somos</a></li>
-				<li><a href="#">Mapa del sitio</a></li>
-				<li><a href="#">Contacto</a></li>
-				<li><%= link_to "Condiciones de uso", condiciones_de_uso_url %></li>
-				<li><%= link_to "Preguntas frecuentes", preguntas_frecuentes_url %></li>
-				<li><%= link_to "Políticas de Privacidad", privacidad_url %></li>
-			</ul>
-		</div><!-- footer -->
-	</div><!-- block-wrapper -->
+	<%= render "home/footer" %>
 </body>
 </html>

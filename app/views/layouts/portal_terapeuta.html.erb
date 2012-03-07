@@ -60,9 +60,9 @@
 		<div id="nav" class="wrapper">
 			<ul class="main">
 				<li class="current"><a href="#"><%= link_to "Mi ficha", edit_terapeuta_path(session[:terapeuta]) %></a></li>
-				<li><a href="#">Mi plan y beneficios</a></li>
-				<li><a href="#">Estadísticas</a></li>
-				<li><a href="#">Mi comunidad</a></li>
+				<li><%= link_to "Mi plan y beneficios", plan_beneficios_path %></li>
+				<li><%= link_to "Estadísticas", estadisticas_path %></li>
+				<li><a href="#">&nbsp;</a></li>
 				<li class="bt-nav-faq"><a href="#">Preguntas frecuentes</a></li>
 			</ul>
 		</div><!-- nav -->
@@ -70,20 +70,6 @@
 	
 	<%= yield %>
 	
-	<div id="block-footer" class="block-wrapper">
-		<div id="footer" class="wrapper">
-			<ul class="left">
-				<li><a href="#">Buscoterapia © 2012</a></li>
-			</ul>
-			<ul class="right">
-				<li><a href="#">Quienes somos</a></li>
-				<li><a href="#">Mapa del sitio</a></li>
-				<li><a href="#">Contacto</a></li>
-				<li><a href="#">Condiciones de uso</a></li>
-				<li><%= link_to "Preguntas frecuentes", preguntas_frecuentes_url %></li>
-				<li><a href="#">Políticas de privacidad</a></li>
-			</ul>
-		</div><!-- footer -->
-	</div><!-- block-wrapper -->
+	<%= render "home/footer" %>
 </body>
 </html>

@@ -58,13 +58,14 @@ class TerapeutasController < ApplicationController
       @terapeuta.plan_tipo = "Gratis"
       @terapeuta.plan_ciclo = "Gratis"
     else
-      @plan_mensual = RefDatum.find_by_nombre("Plan Mensual").valor
+      @plan_trimestral = RefDatum.find_by_nombre("Plan Trimestral").valor
       @plan_semestral = RefDatum.find_by_nombre("Plan Semestral").valor
       @plan_anual = RefDatum.find_by_nombre("Plan Anual").valor
     end
     
     @terapeuta.especialidades.build
     @terapeuta.estudios.build
+    @terapeuta.convenios.build
     
     @tipo_terapias = RefDatum.where(:nombre => "Tipo Terapeuta")
     @especialidades = RefDatum.where(:nombre => "Especialidad")
@@ -130,7 +131,7 @@ class TerapeutasController < ApplicationController
       else
         @tipo_terapias = RefDatum.where(:nombre => "Tipo Terapeuta")
         @forma_pagos = RefDatum.where(:nombre => "Formas de Pago")
-        @plan_mensual = RefDatum.find_by_nombre("Plan Mensual").valor
+        @plan_trimestral = RefDatum.find_by_nombre("Plan Trimestral").valor
         @plan_semestral = RefDatum.find_by_nombre("Plan Semestral").valor
         @plan_anual = RefDatum.find_by_nombre("Plan Anual").valor
         format.html { render action: "new" }
@@ -234,11 +235,19 @@ class TerapeutasController < ApplicationController
   def contactar_terapeuta
     
   end
+  
+  def estadisticas
+    
+  end
+  
+  def plan_beneficios
+    
+  end
 
 private 
   def resolve_layout
     case action_name
-    when "edit","show"
+    when "edit","show","estadisticas","plan_beneficios"
       "portal_terapeuta"
     else
       "application"

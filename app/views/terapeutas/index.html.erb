@@ -6,7 +6,7 @@
 		
 		<div class="busqueda-box-center">
 		<%= render "search_form"%>
-		<% if @sepa%>			
+		<% if @sepa %>			
 			<p class="busqueda-mensaje-resultado">
 				Se han encontrado <strong><%=@terapeutas.count%></strong> 
 				de <strong><%= @sepa["tipo_terapias_nombre_contains"] %></strong>
@@ -85,7 +85,11 @@
 												<%= forma_pago.valor %>, 
 											<% end %> 
 										</span></li>
-									<li><span><strong>Convenios: </strong> Ut enim ad minim veniam, quis nostrud exercitation ullamco.</span></li>
+									<li><span><strong>Convenios:</strong><br />
+											<% @terapeuta.convenios.each do |convenio| %>
+											&nbsp;&nbsp;&nbsp;- <%= convenio.valor %><br />
+											<% end %>
+										</span></li>
 								</ul>
 								
 								<h3>Datos de Contacto:</h3>

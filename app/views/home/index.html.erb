@@ -38,48 +38,18 @@
 	
 		<div class="wrapper_carousel">
 		<ul>
+			<% @articulos.each do |articulo| %>
 			<li>
 				<div class="bg-color">
-				<img src="http://fpoimg.com/138x168" alt="Fotografía relacionada" width="138" height="168" border="0" />
-				<h3><a href="#">Título del artículo 1</a></h3>
-				<p>Consectetur adipisicing aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.<br /><a href="#">Ver más</a></p>
+				<%= image_tag articulo.imagen_url.carusel_thumb.url.to_s %>
+				<h3><a href="#"><%= articulo.titulo %></a></h3>
+				<p>
+					<%= articulo.contenido[1,170 ]%>								 
+					... <%= link_to 'Ver más', articulo_path(articulo) %>.</a>
+				</p>
 				</div>
 			</li><!-- noticias -->
-			<li>
-				<div class="bg-color">
-				<img src="http://fpoimg.com/138x168" alt="Fotografía relacionada" width="138" height="168" border="0" />
-				<h3><a href="#">Título del artículo 2</a></h3>
-				<p>Consectetur adipisicing aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.<br /><a href="#">Ver más</a></p>
-				</div>
-			</li><!-- noticias -->
-			<li>
-				<div class="bg-color">
-				<img src="http://fpoimg.com/138x168" alt="Fotografía relacionada" width="138" height="168" border="0" />
-				<h3><a href="#">Título del artículo 3</a></h3>
-				<p>Consectetur adipisicing aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.<br /><a href="#">Ver más</a></p>
-				</div>
-			</li><!-- noticias -->
-			<li>
-				<div class="bg-color">
-				<img src="http://fpoimg.com/138x168" alt="Fotografía relacionada" width="138" height="168" border="0" />
-				<h3><a href="#">Título del artículo 4 con doble linea</a></h3>
-				<p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br /><a href="#">Ver más</a></p>
-				</div>
-			</li><!-- noticias -->
-			<li>
-				<div class="bg-color">
-				<img src="http://fpoimg.com/138x168" alt="Fotografía relacionada" width="138" height="168" border="0" />
-				<h3><a href="#">Título del artículo 5</a></h3>
-				<p>Consectetur adipisicing elit, sed do eiusmod. Ut enim ad minim veniam, quis nostrud exercitation ullamco.<br /><a href="#">Ver más</a></p>
-				</div>
-			</li><!-- noticias -->
-			<li>
-				<div class="bg-color">
-				<img src="http://fpoimg.com/138x168" alt="Fotografía relacionada" width="138" height="168" border="0" />
-				<h3><a href="#">Título del artículo 6</a></h3>
-				<p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.<br /><a href="#">Ver más</a></p>
-				</div>
-			</li><!-- noticias -->
+			<% end %>
 		</ul>
 		</div><!-- wrapper_carrousel -->
 		<!-- <a class="arrow back">&lt;</a>

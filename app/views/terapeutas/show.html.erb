@@ -39,6 +39,12 @@
 								<h3>Costo y formas de pago:</h3>
 								<ul>
 									<li><span><strong>Arancel por sesión:</strong> <%= @terapeuta.arancel %>.-</span></li>
+									<li><span><strong>Convenios:</strong><br />
+											<% @terapeuta.convenios.each do |convenio| %>
+											&nbsp;&nbsp;&nbsp;- <%= convenio.valor %><br />
+											<% end %>
+										</span></li>
+									<li><span><strong>Descuentos:</strong> <%= @terapeuta.descuentos %>.-</span></li>
 									<li><span><strong>Formas de Pago:</strong> 
 											<% @terapeuta.forma_pagos.each do |forma_pago| %>
 												<%= forma_pago.valor %>, 
@@ -52,26 +58,18 @@
 									<li><span><strong>Dirección:</strong> <%= @terapeuta.direccion %>, <%= Comuna.find(@terapeuta.comuna).nombre %>, <%= Region.find(@terapeuta.region).nombre %>.</span></li>
 									<li><span><strong>Teléfonos de contacto:</strong> <%= @terapeuta.telefono %></span></li>
 									<li><span><strong>Correo electrónico:</strong> <%= @terapeuta.email %></span></li> 
-									<li><span><strong>Sitio web:</strong> <a href="<%= @terapeuta.sitio_web %>"><%= @terapeuta.sitio_web %></a></span></li>
+									<li><span><strong>Sitio web:</strong> <%= link_to @terapeuta.sitio_web, "http://"+@terapeuta.sitio_web, :target => "_blank" %></span></li>
 								</ul>
 								
-								<input type="button" value="Contactar al @terapeuta" class="boton-morado" />
 							</div><!-- ficha-columna -->
 							<div class="ficha-sidebar">
 								<div class="box box-descuentos">
-								<h3>Descuentos</h3>
-								<img src="http://fpoimg.com/151x126" alt="Esteban Soto" width="151" height="126" border="0" />
-								</div>
-								
 								<div class="box box-mapa">
 									<h3>Mapa de Ubicación</h3>
 									<div class="map-container">
 										<%= image_tag "http://maps.google.com/maps/api/staticmap?size=151x182&sensor=true&zoom=16&markers=#{@terapeuta.latitude}%2C#{@terapeuta.longitude}", :class => "link-mapa-google" %>
 									</div>
 									
-								</div>
-								<div class="box box-entrevista">
-									<a href="#">Ver entrevista.</a>
 								</div>
 
 							</div><!-- ficha-sidebar -->

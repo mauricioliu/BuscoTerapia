@@ -5,6 +5,7 @@ class HomeController < ApplicationController
   def index
     @search = Terapeuta.search(params[:search])
     @terapeutas = @search.all
+    @articulos = Articulo.where("tipo = 'articulo'").order("created_at desc") 
   end
   
   def preguntas_frecuentes

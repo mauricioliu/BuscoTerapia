@@ -28,7 +28,7 @@ BuscoTerapia::Application.routes.draw do
   match "condiciones_de_uso" => "home#condiciones_de_uso"
   match "privacidad" => "home#privacidad"
   
-  
+  # rutas terapeutas
   match "change_password" => "terapeutas#change_password"
   match "forgot_password" => "terapeutas#forgot_password", :as => "forgot_password"
   match "reset_password" => "terapeutas#reset_password", :as => "reset_password"
@@ -36,6 +36,8 @@ BuscoTerapia::Application.routes.draw do
   match "validate_email" => "terapeutas#validate_email", :as => "validate_email"
   # match "submit_payment" => "terapeutas#submit_payment"
   match "payment_success" => "terapeutas#payment_success"
+  match "plan_beneficios" => "terapeutas#plan_beneficios"
+  match "estadisticas" => "terapeutas#estadisticas"
   
   match '/ver_comprobante/:id' => 'asesorias#ver_comprobante', :as => 'ver_comprobante'
   
