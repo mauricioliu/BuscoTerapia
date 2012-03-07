@@ -17,7 +17,9 @@ class TerapiasController < ApplicationController
   # GET /terapias/1.json
   def show
     @terapia = Terapia.find(params[:id])
+    @terapias = Terapia.all(:order => "created_at desc", :limit => 5)
 
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @terapia }

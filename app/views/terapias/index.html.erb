@@ -24,7 +24,7 @@
 							<% else %>
 								<div class="foto"><img src="http://fpoimg.com/140x100" alt="Esteban Soto" width="140" height="100" border="0" /></div>
 							<% end %>
-							<p class="nombre-ficha"><%= terapia.nombre_corto %></p>
+							<p class="nombre-ficha"><%= link_to terapia.nombre_corto, terapia_path(terapia) %></p>
 							<p>
 								<%= terapia.descripcion_corta %>
 							</p>
@@ -55,7 +55,6 @@
 						
 					</div><!--descirpcion full-->
 				</div><!--contenido ficha-->
-
 			</div><!--ficha terapias-->
 			
 			<% end %>

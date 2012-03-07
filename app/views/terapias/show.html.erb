@@ -1,25 +1,70 @@
-<p id="notice"><%= notice %></p>
+<div id="block-content" class="block-wrapper">
+	<div class="wrapper" id="content">
 
-<p>
-  <b>Nombre corto:</b>
-  <%= @terapia.nombre_corto %>
-</p>
+	<div class="columna-670-left">
+		<div class="busqueda-box-center sec-articulos-y-noticias">
+			<div class="articulo-volver">
+				<%= link_to '<< Volver', terapias_path %>
+			</div>
+			
+	
+			<div class="ficha-terapias">
+				
+				<div class="contenido-ficha">
+					<div class="ficha-columna">
+							<div class="foto"><%= image_tag @terapia.imagen_url.thumb.url.to_s %></div>
+							<p class="nombre-ficha"><%= @terapia.nombre_corto %></p>
+							<%= simple_format(@terapia.descripcion) %>								
+					</div><!-- ficha-columna -->
+						
+					<hr/>	
+					<div class="bottom-social">
+						<a href="#" class="bt-email">Enviar por correo</a> 
+						<a href="#" class="bt-print">Imprimir</a> 
+						<div class="social-icons">
+							<div class="share-facebook">
+								<div class="fb-like" data-href="http://www.google.com" data-send="true" data-layout="button_count" data-width="220" data-show-faces="true" data-action="recommend"></div>
+							</div>
+							<div class="share-twitter">
+								<a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.google.com/">Tweet</a>
+							</div>
+						</div><!-- social-icons -->
+					</div><!-- bottom-social -->
+				</div><!--contenido ficha-->
 
-<p>
-  <b>Descripcion_corta:</b>
-  <%= @terapia.descripcion_corta %>
-</p>
+			</div><!--ficha terapias-->
+			
+			
+		
+			<div class="articulo-volver">
+				<%= link_to '<< Volver', terapias_path %>
+			</div>
+		
+		</div><!--form-box-center-->
+		
+		</div><!--columna-670-left-->
+		
+		
+		<div class="columna-335-right sidebar-noticias">
+			<h2>Otras terapias</h2>
+			<% @terapias.each do |terapia| %>
+				<% if terapia.id != @terapia.id %>
+				<div class="ficha-noticia">
+					<div class="contenido-ficha">
+							<div class="encabezado">
+								<h3><%= terapia.nombre_corto %></h3>
+							</div>
+							<div class="foto"><%= image_tag terapia.imagen_url.horizontal_thumb.url.to_s %></div>
+							<p>
+								<%= terapia.descripcion[1,170 ]%>								 
+								... <%= link_to 'Continuar leyendo', terapia_path(terapia) %>.</a>
+							</p>						
+					</div><!--contenido ficha-->
+					
+				</div><!--ficha noticia-->
+				<% end %>
+			<% end %>
+			</div><!--columna-335-right-->
+		</div><!-- #content -->
+	</div><!-- block-content -->
 
-<p>
-  <b>Descripcion:</b>
-  <%= @terapia.descripcion %>
-</p>
-
-<p>
-  <b>Imagen url:</b>
-  <%= @terapia.imagen_url %>
-</p>
-
-
-<%= link_to 'Modificar', edit_terapia_path(@terapia) %> |
-<%= link_to 'Volver', terapias_path %>

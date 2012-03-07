@@ -20,7 +20,7 @@
 							<div class="foto"><img src="http://fpoimg.com/203x140" alt="Esteban Soto" width="203" height="140" border="0" /></div>
 						<% end %>
 						<div class="encabezado">
-							<h3><Acupuntura><%= articulo.titulo %></h3>
+							<h3><Acupuntura><%= link_to articulo.titulo, articulo_path(articulo) %></h3>
 							<p><%= articulo.created_at.strftime('%B %e, %Y')%>. Escrito por <%= articulo.autor %>, <%= articulo.especialidad %>.</p>
 						</div>
 						<p>
@@ -41,7 +41,7 @@
 			<div class="ficha-noticia">
 				<div class="contenido-ficha">
 						<div class="encabezado">
-							<h3><%= noticia.titulo %></h3>
+							<h3><%= link_to noticia.titulo, articulo_path(noticia) %></h3>
 							<p><%= noticia.created_at.strftime('%B %e, %Y')%></p>
 						</div>
 						<% if noticia.imagen_url.size != 0 %>
