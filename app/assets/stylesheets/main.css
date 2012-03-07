@@ -1246,7 +1246,7 @@ textarea{
 }
 .acordeon-header{
 	cursor:pointer;
-	font-size:13px;
+	font-size:11px;
 	color:#fff;
 	display:block;
 	float:left;
@@ -1261,7 +1261,7 @@ textarea{
 	border-radius: 5px;
 }
 .acordeon-header p{
-	font-size:13px;
+	font-size:11px;
 	width:80%;
 	line-height:30px;
 	margin:0;

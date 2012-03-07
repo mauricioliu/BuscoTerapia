@@ -79,9 +79,13 @@ class TerapeutasController < ApplicationController
   # GET /terapeuta/1/edit
   def edit
     @terapeuta = Terapeuta.find(params[:id])
-    @tipo_terapias = RefDatum.where(:nombre => "Tipo Terapeuta")
-    @especialidades = RefDatum.where(:nombre => "Especialidad")
-    @forma_pagos = RefDatum.where(:nombre => "Formas de Pago")
+    if @terapeuta.id != session[:terapeuta].id
+      redirect_to root_url
+    else
+      @tipo_terapias = RefDatum.where(:nombre => "Tipo Terapeuta")
+      @especialidades = RefDatum.where(:nombre => "Especialidad")
+      @forma_pagos = RefDatum.where(:nombre => "Formas de Pago")      
+    end
   end
 
   # POST /terapeuta

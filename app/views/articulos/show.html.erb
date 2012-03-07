@@ -52,58 +52,26 @@
 		
 		<div class="columna-335-right sidebar-noticias">
 			<h2>Noticias</h2>
-			
-			<div class="ficha-noticia">
-				
-				<div class="contenido-ficha">
-						<div class="encabezado">
-							<h3>Pracsis recibe reconocimiento nacional por los talleres con niños de riesgo social.</h3>
-							<p>15 Diciembre, 2011</p>
-
-						</div>
-						<div class="foto"><img src="http://fpoimg.com/280x100" alt="Esteban Soto" width="280" height="100" border="0" /></div>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-							... <a href="articulos-y-noticias-dentro-noticia.html">Continuar leyendo.</a>
-						</p>						
-				</div><!--contenido ficha-->
-				
-			</div><!--ficha noticia-->
-			
-			<div class="ficha-noticia">
-
-				
-				<div class="contenido-ficha">
-						<div class="encabezado">
-							<h3>Pracsis recibe reconocimiento nacional por los talleres con niños de riesgo social.</h3>
-							<p>15 Diciembre, 2011</p>
-						</div>
-						<div class="foto"><img src="http://fpoimg.com/280x100" alt="Esteban Soto" width="280" height="100" border="0" /></div>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-							... <a href="articulos-y-noticias-dentro-noticia.html">Continuar leyendo.</a>
-
-						</p>						
-				</div><!--contenido ficha-->
-				
-			</div><!--ficha noticia-->
-				
-			<div class="ficha-noticia">
-				
-				<div class="contenido-ficha">
-						<div class="encabezado">
-							<h3>Pracsis recibe reconocimiento nacional por los talleres con niños de riesgo social.</h3>
-							<p>15 Diciembre, 2011</p>
-
-						</div>
-						<div class="foto"><img src="http://fpoimg.com/280x100" alt="Esteban Soto" width="280" height="100" border="0" /></div>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-							... <a href="articulos-y-noticias-dentro-noticia.html">Continuar leyendo.</a>
-						</p>						
-				</div><!--contenido ficha-->
-			</div><!--ficha noticia-->
-		</div><!--columna-335-right-->
+			<% @noticias.each do |noticia| %>
+				<% if noticia.id != @articulo.id %>
+				<div class="ficha-noticia">
+					<div class="contenido-ficha">
+							<div class="encabezado">
+								<h3><%= noticia.titulo %></h3>
+								<p><%= noticia.created_at.strftime('%B %e, %Y')%></p>
+							</div>
+							<div class="foto"><%= image_tag noticia.imagen_url.horizontal_thumb.url.to_s %></div>
+							<p>
+								<%= noticia.contenido[1,170 ]%>								 
+								... <%= link_to 'Continuar leyendo', articulo_path(noticia) %>.</a>
+							</p>						
+					</div><!--contenido ficha-->
+					
+				</div><!--ficha noticia-->
+				<% end %>
+			<% end %>
+					
+			</div><!--columna-335-right-->
 		</div><!-- #content -->
 	</div><!-- block-content -->
 

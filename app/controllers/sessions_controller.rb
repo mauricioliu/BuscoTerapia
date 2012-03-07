@@ -13,8 +13,7 @@ class SessionsController < ApplicationController
       if terapeuta.last_logged_in == nil || terapeuta.reset == 'y'
         render "terapeutas/change_password"
       else
-        terapeuta.last_logged_in = Time.now
-        terapeuta.save!
+        Terapeuta.update(terapeuta.id, { :last_logged_in => Time.now })
         redirect_to root_url, :notice => "Logged in!"
       end
     else

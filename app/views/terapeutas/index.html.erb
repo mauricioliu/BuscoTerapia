@@ -93,7 +93,7 @@
 									<li><span><strong>Dirección:</strong> <%= terapeuta.direccion %>, <%= Comuna.find(terapeuta.comuna).nombre %>, <%= Region.find(terapeuta.region).nombre %>.</span></li>
 									<li><span><strong>Teléfonos de contacto:</strong> <%= terapeuta.telefono %></span></li>
 									<li><span><strong>Correo electrónico:</strong> <%= terapeuta.email %></span></li> 
-									<li><span><strong>Sitio web:</strong> <a href="<%= terapeuta.sitio_web %>"><%= terapeuta.sitio_web %></a></span></li>
+									<li><span><strong>Sitio web:</strong> <%= link_to terapeuta.sitio_web, "http://"+terapeuta.sitio_web, :target => "_blank" %></span></li>
 								</ul>
 								
 								<input type="button" value="Contactar al Terapeuta" class="boton-morado" />
@@ -135,57 +135,7 @@
 		
 		</div><!--columna-335-right-->
 		
-		<div class="columna-335-right">
-			<h2>Preguntas frecuentes</h2>
-		
-			<div class="acordeon-lista">
-				<ul>
-					<li>
-						<div class="acordeon-header">
-							<p>¿Cuándo tendré respuesta a mi solicitud?</p>
-						</div>
-						<div class="acordeon-content">
-							<div class="acordeon-text">
-								<p>Tu solicitud será respondida dentro de los próximo 90 minutos. Contamos con un grupo de profesionales especializados y capacitados para resolver tus dudas con respecto a qué debes realizar con tu problema.</p>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="acordeon-header">
-							<p>pregunta 2</p>
-						</div>
-						<div class="acordeon-content">
-							<div class="acordeon-text">
-								<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="acordeon-header">
-							<p>pregunta 3</p>
-						</div>
-						<div class="acordeon-content">
-							<div class="acordeon-text">
-								<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="acordeon-header">
-							<p>pregunta 1</p>
-						</div>
-						<div class="acordeon-content">
-							<div class="acordeon-text">
-								<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. </p>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-			<p class="right"><small><a href="#">Ver más preguntas frecuentes</a></small></p>
-		
-		</div><!--columna-335-right-->
-		
+		<%= render "home/preguntas_frecuentes" %>		
 		</div><!-- #content -->
 	</div><!-- block-content -->
 	

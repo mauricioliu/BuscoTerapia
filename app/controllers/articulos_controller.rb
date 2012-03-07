@@ -3,7 +3,8 @@ class ArticulosController < ApplicationController
   # GET /articulos
   # GET /articulos.json
   def index
-    @articulos = Articulo.order("created_at desc")
+    @articulos = Articulo.where("tipo = 'articulo'").order("created_at desc") 
+    @noticias = Articulo.where("tipo = 'noticia'").order("created_at desc")
     @articulos = @articulos.page(params[:page]).per_page(5)
 
     respond_to do |format|
@@ -16,7 +17,7 @@ class ArticulosController < ApplicationController
   # GET /articulos/1.json
   def show
     @articulo = Articulo.find(params[:id])
-
+    @noticias = Articulo.where("tipo = 'noticia'").order("created_at desc")
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @articulo }
