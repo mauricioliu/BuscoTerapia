@@ -1,5 +1,5 @@
 class ArticulosController < ApplicationController
-  http_basic_authenticate_with :name => "btp", :password => "btp.123!", :only => :new, :edit
+  http_basic_authenticate_with :name => "btp", :password => "btp.123!", :only => [:new, :edit]
   # GET /articulos
   # GET /articulos.json
   def index
