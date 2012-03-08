@@ -11,8 +11,9 @@ class TerapeutaMailer < ActionMailer::Base
   def send_password(terapeuta, password)
     @password = password
     @terapeuta = terapeuta
-
-     mail(:to => @terapeuta.email, :subject => "Bienvenido a BuscoTerapia.cl")
+     mail(:to => @terapeuta.email, :subject => "Bienvenido a BuscoTerapia.cl") do |format|
+       format.html
+     end
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml

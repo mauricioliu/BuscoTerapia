@@ -1,83 +1,132 @@
-	  <table>
-	  	<tr>
-	  		<td>Nombre del terapeuta o centro</td>
-	  		<td><%= @terapeuta.nombre %></td>
-	  	</tr>
-	  	<tr>
-	  		<td>Rut del terapeuta o centro:</td>
-	  		<td><%= @terapeuta.rut %></td>
-	  	</tr>
-	  	<tr>
-	  		<td>Correo electrónico</td>
-	  		<td><%= @terapeuta.email %></td>
-	  	</tr>
-	  	<tr>
-	  		<td>Teléfono fijo:</td>
-	  		<td><%= @terapeuta.ptelefono %> - 
-	  			<%= @terapeuta.telefono %></td>
-	  	</tr>
-	  	<tr>
-	  		<td> Teléfono móvil:</td>
-	  		<td><%= @terapeuta.movil %></td>
-	  	</tr>
-	  	<tr>
-	  		<td>Direccion de la consulta o del centro</td>
-	  		<td><%= @terapeuta.direccion %></td>
-	  	</tr>
-	  	<tr>
-	  		<td>Region</td>
-	  		<td><%= @terapeuta.region %></td>
-	  	</tr>
-	  	<tr>
-	  		<td>Comuna</td>
-	  		<td><%= @terapeuta.comuna %></td>
-	  	</tr>
-	  	<tr>
-	  		<td>Codigo postal de la consulta o centro</td>
-	  		<td><%= @terapeuta.codigo_postal %></td>
-	  	</tr>
-	  	<tr>
-	  		<td>Sitio web propio o del centro</td>
-	  		<td><%= @terapeuta.sitio_web %></td>
-	  	</tr>
-	  </table>
-	  
-	  <div>Tipo Terapias</div>
-	  <ul>
-	  	<% @terapeuta.tipo_terapias.each do |tt| %>
-	  		<li><%= tt.nombre %></li>
-	  	<% end %>
-	  </ul>
-	  <div>Tipo Terapias</div>
-	  <ul>
-	  	<% @terapeuta.especialidades.each do |especialidad| %>
-	  		<li><%= especialidad.valor %></li>
-	  	<% end %>
-	  </ul>
-	  <table>
-	  	<% @terapeuta.estudios.each do |estudio| %>
-	  	<tr>
-	  		<td><%= estudio.titulo %></td>
-	  		<td><%= estudio.establecimiento %></td>
-	  	</tr>
-	  	<% end %>
-	  </table>
-	  <table>
-	  	<tr>
-	  		<td>Fecha Creación</td>
-	  		<td>Tipo</td>
-	  		<td>Monto</td>
-	  		<td>Estado</td>
-	  		<td>Fecha Pago</td>
-	  	</tr>
-	  	<% @terapeuta.pagos.each do |pago| %>
-	  	<tr>
-	  		<td><%= pago.created_at %></td>
-	  		<td><%= pago.tipo %></td>
-	  		<td><%= pago.monto %></td>
-	  		<td><%= pago.estado %></td>
-	  		<td><%= pago.fecha_pago %></td>
-	  	</tr>
-	  	<% end %>
-	  </table>
-	<div><%= button_to 'Validar', validar_path(@terapeuta) %></div>
+<div id="block-content" class="block-wrapper">
+	<div class="wrapper" id="content">
+
+	<div class="columna-670-left">
+		<div class="busqueda-box-center">
+		
+			<div class="form-box form-perfil">
+				<div class="mi-perfil">
+				
+				<div class="form-block one-line">
+				<div class="label">Tipo de Plan:</div>
+				<div class="input_field">
+	  				<%= @terapeuta.plan_ciclo %>
+	  			</div>
+	  			</div>
+									
+				<div class="form-block one-line">
+				<div class="label">Nombre del terapeuta o centro:</div>
+				<div class="input_field">
+	  				<%= @terapeuta.nombre %>
+	  			</div>
+	  			
+	  			<div class="form-block one-line">
+				<div class="label">Rut del terapeuta o centro:</div>
+				<div class="input_field">
+	  				<%= @terapeuta.rut %>
+	  			</div>
+	  			
+	  			<div class="form-block one-line">
+				<div class="label">Correo electrónico:</div>
+				<div class="input_field">
+	  				<%= @terapeuta.email %>
+	  			</div>
+	  			
+	  			<div class="form-block one-line">
+				<div class="label">Correo electrónico:</div>
+				<div class="input_field">
+	  				<%= @terapeuta.email %>
+	  			</div>
+	  			
+	  			<div class="form-block one-line">
+				<div class="label">Teléfono fijo:</div>
+				<div class="input_field">
+	  				<%= @terapeuta.telefono %>
+	  			</div>
+	  			
+	  			<div class="form-block one-line">
+				<div class="label">Teléfono móvil:</div>
+				<div class="input_field">
+	  				<%= @terapeuta.movil %>
+	  			</div>
+	  			
+	  			<div class="form-block one-line">
+				<div class="label">Direccion de la consulta o del centro:</div>
+				<div class="input_field">
+	  				<%= @terapeuta.direccion %>
+	  			</div>
+	  			
+	  			<div class="form-block one-line">
+				<div class="label">Region:</div>
+				<div class="input_field">
+	  				<%= @terapeuta.region %>
+	  			</div>
+	  			
+	  			<div class="form-block one-line">
+				<div class="label">Comuna:</div>
+				<div class="input_field">
+	  				<%= @terapeuta.comuna %>
+	  			</div>
+	  			
+	  			<div class="form-block one-line">
+				<div class="label">Codigo postal de la consulta o centro:</div>
+				<div class="input_field">
+	  				<%= @terapeuta.codigo_postal %>
+	  			</div>
+	  			
+	  			<div class="form-block one-line">
+				<div class="label">Sitio web propio o del centro:</div>
+				<div class="input_field">
+	  				<%= @terapeuta.sitio_web %>
+	  			</div>
+	  			
+	  			<div class="form-block one-line">
+				<div class="label">Tipo Terapias:</div>
+				<div class="input_field">
+					<% @terapeuta.tipo_terapias.each do |tt| %>
+						<%= tt.nombre %><br />
+	  				<% end %>
+	  			</div>
+	  			
+	  			<div class="form-block one-line">
+				<div class="label">Especialidades:</div>
+				<div class="input_field">
+					<% @terapeuta.especialidades.each do |especialidad| %>
+						<%= especialidad.valor %><br />
+	  				<% end %>
+	  			</div>
+	  			
+	  			<div class="form-block one-line">
+				<div class="label">Estudios:</div>
+				<div class="input_field">
+					<% @terapeuta.estudios.each do |estudio| %>
+						<%= estudio.titulo %>, 
+	  					<%= estudio.establecimiento %><br />
+	  				<% end %>
+	  			</div>
+	  			
+			  <table>
+			  	<tr>
+			  		<td>Fecha Creación</td>
+			  		<td>Tipo</td>
+			  		<td>Monto</td>
+			  		<td>Estado</td>
+			  		<td>Fecha Pago</td>
+			  	</tr>
+			  	<% @terapeuta.pagos.each do |pago| %>
+			  	<tr>
+			  		<td><%= pago.created_at %></td>
+			  		<td><%= pago.tipo %></td>
+			  		<td><%= pago.monto %></td>
+			  		<td><%= pago.estado %></td>
+			  		<td><%= pago.fecha_pago %></td>
+			  	</tr>
+			  	<% end %>
+			  </table>
+			<div><%= button_to 'Validar', validar_path(@terapeuta), :class => "boton-morado" %></div>
+		</div>
+		</div>
+		</div>
+	</div>
+	</div>
+</div>
