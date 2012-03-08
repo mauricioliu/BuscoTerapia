@@ -1919,7 +1919,7 @@ textarea{
 .ficha-articulo p{
 	font-size: 13px;
 }
-.ficha-articulo .encabezado{
+.ficha-articulo {
 	margin: -4px 0 12px;
 }
 .encabezado h3{
