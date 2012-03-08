@@ -5,6 +5,10 @@ class ValidarTerapeutaController < ApplicationController
   def index
     @terapeutas = Terapeuta.where(:estado => "pendiente de validar")
   end
+  
+  def todos
+    @terapeutas = Terapeuta.all
+  end
 
   def show
     @terapeuta = Terapeuta.find(params[:id])

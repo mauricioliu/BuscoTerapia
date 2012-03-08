@@ -13,25 +13,16 @@
 			Terapeuta
 		</div>
 		<div class="input_field">
-			<%= f.collection_select :tipo_terapias_nombre_contains, RefDatum.where(:nombre => "Tipo Terapeuta"), :valor, :valor %>
+			<%= f.collection_select :tipo_terapias_nombre_contains, RefDatum.where(:nombre => "Tipo Terapeuta"), :valor, :valor, {}, {"style" => "width:190px"} %>
 		</div>
 	</div>
-	<div class="form-block busqueda-especializacion">
-		<div class="label">
-			Tipo de Terapia
-		</div>
-		<div class="input_field">
-			<select>
-				<option value="">Todas</option>
-			</select>
-		</div>
-	</div>
+
 	<div class="form-block busqueda-palabra-clave">
 		<div class="label">
 			Palabra Clave
 		</div>
 		<div class="input_field">
-			<%= f.text_field :nombre_or_especialidades_valor_contains %>
+			<%= f.text_field :tipo_terapias_nombre_or_especialidades_valor_contains %>
 		</div>
 	</div>
 	<div class="form-block">
@@ -40,7 +31,7 @@
 				Región de atención:
 			</div>
 			<div class="input_field">
-				<%= f.collection_select :region_contains, Region.order(:nombre), :id, :nombre, {include_blank: true}, :class => "search_region" %>
+				<%= f.collection_select :region_contains, Region.order(:id), :id, :nombre, {include_blank: true}, :class => "search_region" %>
 			</div>
 		</div>
 		<div class="form-block busqueda-comuna">
@@ -48,7 +39,7 @@
 				Comuna de atención:
 			</div>
 			<div class="input_field">
-				<%= f.grouped_collection_select :comuna_contains, Region.order(:nombre), :comunas, :nombre, :id, :nombre, {include_blank: true}, :class => "search_comuna" %>
+				<%= f.grouped_collection_select :comuna_contains, Region.order(:id), :comunas, :nombre, :id, :nombre, {include_blank: true}, :class => "search_comuna" %>
 			</div>
 		</div>
 		<div class="form-block busqueda-button">
