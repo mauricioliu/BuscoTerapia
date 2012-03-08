@@ -22,7 +22,7 @@ para facilitar la búsqueda de tu terapeuta.</small></h2>
 		</div>
 	</div>
 	<div class="form-block one-line">
-		<div class="label">Edad</div>
+		<div class="label"><span class="message">*</span> Edad</div>
 		<div class="input_field">
 			<%= f.number_field :paciente_edad %>
 
@@ -120,15 +120,13 @@ para facilitar la búsqueda de tu terapeuta.</small></h2>
 		<div class="form-block one-line">
 			<div class="label">Desde: </div>
 			<div class="input_field">
-				<%= f.text_field :hora_desde %>
-
+				<%= f.collection_select :hora_desde, RefDatum.where(:nombre => "Hora Asesoria"), :valor, :valor %>
 			</div>
 		</div>
 		<div class="form-block one-line">
 			<div class="label">Hasta: </div>
 			<div class="input_field">
-				<%= f.text_field :hora_hasta %>
-
+				<%= f.collection_select :hora_hasta, RefDatum.where(:nombre => "Hora Asesoria"), :valor, :valor %>
 			</div>
 		</div>
 	</div>

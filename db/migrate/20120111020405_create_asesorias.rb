@@ -12,8 +12,8 @@ class CreateAsesorias < ActiveRecord::Migration
       t.string :paciente_telefono
       t.string :paciente_email
       
-      t.datetime :hora_desde
-      t.datetime :hora_hasta
+      t.string :hora_desde
+      t.string :hora_hasta
       
       # t.string :terapeuta_sexo
       t.string :terapeuta_otro
