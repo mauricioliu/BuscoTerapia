@@ -124,6 +124,15 @@ buscoterapia.cl</p>
 						</div>
 					</div>
 					<div class="form-block one-line">
+						<div class="label">Casa/Depto:</div>
+						<div class="input_field">
+							<%= f.text_field :anexo_direccion %>
+							<!-- mensaje aparece solo cuando no completó -->
+							<!-- <p class="message">*por favor complete este campo</p>-->
+							<!-- / -->
+						</div>
+					</div>
+					<div class="form-block one-line">
 						<div class="label"><span class="message">*</span>Region:</div>
 						<div class="input_field">
 							<%= f.collection_select :region, Region.order(:nombre), :id, :nombre, {include_blank: true} %>
