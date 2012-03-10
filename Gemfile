@@ -36,6 +36,8 @@ gem "nested_form"
 
 gem "gibberish"
 gem 'geocoder'
+
+gem 'friendly_id'
 #group :development do
 #  gem 'active_reload'
 #end

@@ -3,6 +3,9 @@
 require 'bcrypt'
 
 class Terapeuta < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :nombre, use: [:slugged, :history]
+  
   include BCrypt
   mount_uploader :imagen_url, PerfilUploader
   

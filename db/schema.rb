@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120309002307) do
+ActiveRecord::Schema.define(:version => 20120310024342) do
 
   create_table "articulos", :force => true do |t|
     t.string   "titulo"
@@ -22,7 +22,10 @@ ActiveRecord::Schema.define(:version => 20120309002307) do
     t.string   "imagen_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
+
+  add_index "articulos", ["slug"], :name => "index_articulos_on_slug"
 
   create_table "asesorias", :force => true do |t|
     t.text     "necesidad_1",       :limit => 16777215
@@ -82,6 +85,17 @@ ActiveRecord::Schema.define(:version => 20120309002307) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "friendly_id_slugs", :force => true do |t|
+    t.string   "slug",                         :null => false
+    t.integer  "sluggable_id",                 :null => false
+    t.string   "sluggable_type", :limit => 40
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], :name => "index_friendly_id_slugs_on_slug_and_sluggable_type", :unique => true
+  add_index "friendly_id_slugs", ["sluggable_id"], :name => "index_friendly_id_slugs_on_sluggable_id"
+  add_index "friendly_id_slugs", ["sluggable_type"], :name => "index_friendly_id_slugs_on_sluggable_type"
 
   create_table "pagos", :force => true do |t|
     t.integer  "terapeuta_id"
@@ -144,7 +158,10 @@ ActiveRecord::Schema.define(:version => 20120309002307) do
     t.datetime "updated_at"
     t.string   "imagen_url"
     t.string   "anexo_direccion"
+    t.string   "slug"
   end
+
+  add_index "terapeutas", ["slug"], :name => "index_terapeutas_on_slug"
 
   create_table "terapias", :force => true do |t|
     t.string   "nombre_corto"
@@ -155,7 +172,10 @@ ActiveRecord::Schema.define(:version => 20120309002307) do
     t.string   "imagen_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
+
+  add_index "terapias", ["slug"], :name => "index_terapias_on_slug"
 
   create_table "tipo_terapias", :force => true do |t|
     t.integer  "terapeuta_id"
