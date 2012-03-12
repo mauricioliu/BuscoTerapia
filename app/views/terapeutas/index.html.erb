@@ -43,7 +43,7 @@
 							</br>
 						</p>
 						<div class="descripcion-full">
-							<p><strong>Dirección:</strong> <%= terapeuta.direccion %>, <%= Comuna.find(terapeuta.comuna).nombre %>, <%= Region.find(terapeuta.region).nombre %></p>
+							<p><strong>Dirección:</strong> <%= terapeuta.direccion %>, <%= terapeuta.comuna %>, <%= terapeuta.region %></p>
 							<input type="button" value="Contactar al Terapeuta" class="boton-morado" />
 						</div><!--descirpcion full-->
 					</div><!--contenido ficha-->
@@ -113,7 +113,7 @@
 									<% if terapeuta.sitio_web.length > 0 %><li><span><strong>Sitio web:</strong> <%= link_to terapeuta.sitio_web, "http://"+terapeuta.sitio_web, :target => "_blank" %></span></li><% end %>
 								</ul>
 								
-								<input type="button" value="Contactar al Terapeuta" class="boton-morado" />
+								<input type="button" value="Contactar al Terapeuta" class="boton-morado" id="boton-contactar-terapeuta" />
 							</div><!-- ficha-columna -->
 							<div class="ficha-sidebar">
 								<div class="box box-descuentos">

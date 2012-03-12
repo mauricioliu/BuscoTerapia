@@ -36,6 +36,7 @@ BuscoTerapia::Application.routes.draw do
   # match "submit_payment" => "terapeutas#submit_payment"
   match "payment_success" => "terapeutas#payment_success"
   match "plan_beneficios" => "terapeutas#plan_beneficios"
+  match "contactar_terapeuta" => "terapeutas#contactar_terapeuta"
   match "estadisticas" => "terapeutas#estadisticas"
   
   match '/ver_comprobante/:id' => 'asesorias#ver_comprobante', :as => 'ver_comprobante'
@@ -46,6 +47,7 @@ BuscoTerapia::Application.routes.draw do
   match '/validar_terapeuta/:id/validar' => 'validar_terapeuta#validar', :as => 'validar'
   match '/validar_terapeuta/:id/edit' => 'validar_terapeuta#edit', :as => 'editar_terapeuta'
   match '/validar_terapeuta/:id/destroy' => 'validar_terapeuta#destroy', :as => 'destroy_terapeuta'
+  match '/validar_terapeuta/:id/invalidar' => 'validar_terapeuta#invalidar', :as => 'invalidar_terapeuta'
   
   match '/admin' => 'admin#index', :as => 'admin'
 

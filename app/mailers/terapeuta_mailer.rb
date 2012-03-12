@@ -44,4 +44,15 @@ class TerapeutaMailer < ActionMailer::Base
       format.html
     end
   end
+  
+  def contactar_terapeuta(nombre)
+    recipients = RefDatum.where(:nombre => "Back Office Email")
+    email = Array.new
+    recipients.each do |recipient|
+      email << recipient.valor
+    end
+
+    # mail(:to => email, :subject => "Un nuevo terapeuta se ha registrado")
+    mail(:to => email, :subject => "Se ha intentado contactar al terapeuta "+nombre) 
+  end
 end

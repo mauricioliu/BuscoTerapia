@@ -50,10 +50,18 @@ class ValidarTerapeutaController < ApplicationController
     redirect_to validar_terapeuta_path
   end
   
+  def invalidar
+    @terapeuta = Terapeuta.find(params[:id])
+    @terapeuta.estado = 'invalidado'
+    @terapeuta.save!
+    
+    redirect_to validar_terapeuta_todos_path
+  end
+  
 private
   def authenticate
     case action_name
-    when "todos","edit","destroy"
+    when "todos","edit","destroy","invalidar"
       authenticate_or_request_with_http_basic do |username, password|
         username == "btpadmin" && password == "btp.123!admin"
       end 

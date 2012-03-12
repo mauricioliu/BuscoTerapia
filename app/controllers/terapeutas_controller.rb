@@ -237,6 +237,7 @@ class TerapeutasController < ApplicationController
   
   def contactar_terapeuta
     
+    TerapeutaMailer.contactar_terapeuta(@terapeuta).deliver
   end
   
   def estadisticas

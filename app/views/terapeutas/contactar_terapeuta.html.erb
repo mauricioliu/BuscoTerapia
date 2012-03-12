@@ -1,0 +1,49 @@
+<div id="block-content" class="block-wrapper">
+	<div class="wrapper" id="content">
+
+	<div class="columna-670-left">
+		<h2>Cambiar Contraseña</h2>
+		
+		<div class="busqueda-box-center">
+		<div class="form-box">
+		
+			<div class="titulo-form">
+			<h3>Por favor ingrese su su nueva contraseña</h3>
+			</div>
+			
+			<div class="form-block busqueda-palabra-clave">
+				<%= form_tag contactar_terapeuta_path do %>
+				<%= hidden_field_tag :terapeuta_nombre, "texto escondido" %>
+				<div class="label">
+					Tu nombre:
+				</div>
+				<div class="input_field">
+					<%= text_field_tag :nombre %>
+				</div>
+				<div class="label">
+					Tu apellido:
+				</div>
+				<div class="input_field">
+					<%= text_field_tag :apellido %>
+				</div>
+				<div class="label">
+					Mensaje:
+				</div>
+				<div class="input_field">
+					<%= text_area_tag :mensaje %>
+				</div>
+				
+				<div class="form-block busqueda-button">
+					<div class="label">
+						<!--&nbsp;-->
+					</div>
+					<div class="input_field">
+						<%= submit_tag "Enviar Mensaje", :class => "boton-morado" %>
+					</div>
+				</div>
+				<% end %>
+			</div>
+		</div><!--box form-->		
+	</div><!--form-box-center-->
+</div><!--columna-670-left-->
+
