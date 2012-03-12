@@ -7,7 +7,22 @@ class ValidarTerapeutaController < ApplicationController
   end
   
   def todos
-    @terapeutas = Terapeuta.all
+    search_params = params[:search]
+    if search_params
+      @terapeutas = Terapeuta.where("nombre like ?", '%'+params[:search]+'%')
+    else
+      @terapeutas = Terapeuta.all
+    end
+  end
+  
+  def edit
+    @terapeuta = Terapeuta.find(params[:id])
+    @tipo_terapias = RefDatum.where(:nombre => "Tipo Terapeuta")
+    @especialidades = RefDatum.where(:nombre => "Especialidad")
+    @forma_pagos = RefDatum.where(:nombre => "Formas de Pago") 
+    @plan_trimestral = RefDatum.find_by_nombre("Plan Trimestral").valor
+    @plan_semestral = RefDatum.find_by_nombre("Plan Semestral").valor
+    @plan_anual = RefDatum.find_by_nombre("Plan Anual").valor
   end
 
   def show

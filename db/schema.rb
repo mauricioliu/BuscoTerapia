@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120310024342) do
+ActiveRecord::Schema.define(:version => 20120312024252) do
 
   create_table "articulos", :force => true do |t|
     t.string   "titulo"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20120310024342) do
     t.string   "terapeuta_otro"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "lugar_preferencia"
   end
 
   create_table "comunas", :force => true do |t|
@@ -159,6 +160,7 @@ ActiveRecord::Schema.define(:version => 20120310024342) do
     t.string   "imagen_url"
     t.string   "anexo_direccion"
     t.string   "slug"
+    t.string   "enfoque"
   end
 
   add_index "terapeutas", ["slug"], :name => "index_terapeutas_on_slug"

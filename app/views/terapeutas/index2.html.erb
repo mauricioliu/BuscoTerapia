@@ -8,11 +8,11 @@
   </p>
   <p>
     <%= f.label "Ciudad de atención:" %><br />
-    <%= f.collection_select :region_contains, Region.order(:id), :id, :nombre, include_blank: true %>
+    <%= f.collection_select :region_equals, Region.order(:id), :nombre, :nombre, include_blank: true %>
   </p>
   <p>
   	 <%= f.label "Comuna:" %><br />
-  	<%= f.grouped_collection_select :comuna_contains, Region.order(:id), :comunas, :nombre, :id, :nombre, include_blank: true %>
+  	<%= f.grouped_collection_select :comuna_equals, Region.order(:id), :comunas, :nombre, :nombre, :nombre, include_blank: true %>
   </p>
   <p>
     <%= f.label :nombre_contains %>

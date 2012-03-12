@@ -1,10 +1,26 @@
-<h2>Terapeutas por validar</h2>
-<br />
+<div id="block-content" class="block-wrapper">
+	<div class="wrapper" id="content">
 
-<% @terapeutas.each do |terapeuta| %>
-	Nombre: <%= terapeuta.nombre %> <br />
-	Rut: <%= terapeuta.rut %> <br />
-	Email: <%= terapeuta.email %>
-	Telefono: <%= terapeuta.ptelefono %>-<%= terapeuta.telefono %>
-	<%= link_to 'validar', revisar_terapeuta_path(terapeuta) %><br />
-<% end %>
+	<div class="columna-670-left">
+		<div class="busqueda-box-center">
+		<h2>Terapeutas</h2>
+		<p>
+		<%= form_tag validar_terapeuta_todos_path, :method => 'get' do%>
+			<%= text_field_tag :search, params[:search] %>
+			<%= submit_tag "Buscar"  %>
+		<% end %>
+		</p>
+			<div class="form-box form-perfil">
+			
+			<% @terapeutas.each do |terapeuta| %>
+				Nombre: <%= terapeuta.nombre %> <br />
+				Rut: <%= terapeuta.rut %> <br />
+				Email: <%= terapeuta.email %>
+				Telefono: <%= terapeuta.ptelefono %>-<%= terapeuta.telefono %>
+				<%= link_to 'ver/modificar', editar_terapeuta_path(terapeuta) %><br /><br />
+			<% end %>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>

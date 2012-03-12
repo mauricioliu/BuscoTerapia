@@ -22,6 +22,7 @@ gem 'bcrypt-ruby'
 gem 'client_side_validations'
 
 gem "meta_search"
+# gem "meta_where"
 
 gem "rmagick"
 gem "carrierwave"

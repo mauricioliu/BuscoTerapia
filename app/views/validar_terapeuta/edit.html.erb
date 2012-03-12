@@ -2,11 +2,6 @@
 	<div class="wrapper" id="content">
 
 	<div class="columna-670-left">
-		<h2>Mi ficha:</h2>
-		<p class="destacado">Tu cuenta es una cuenta gratuita, por lo que cuentas con algunos de los privilegios de pertenecer a 
-buscoterapia.cl</p>
-
-
 		<div class="busqueda-box-center">
 		
 			<div class="form-box form-perfil">
@@ -48,7 +43,7 @@ buscoterapia.cl</p>
 					<div class="form-block one-line">
 						<div class="label"><span class="message">*</span>Correo electrónico:</div>
 						<div class="input_field">
-							<%= f.text_field :email %>
+							<%= @terapeuta.email %>
 							<!-- mensaje aparece solo cuando no completó -->
 							<!-- <p class="message">*por favor complete este campo</p>-->
 							<!-- / -->
@@ -71,9 +66,9 @@ buscoterapia.cl</p>
 					</div>
 					
 					<div class="form-block one-line">
-						<div class="label"><span class="message">*</span>Rut:</div>
+						<div class="label">Enfoque:</div>
 						<div class="input_field">
-							<%= f.text_field :rut %>
+							<%= f.text_field :enfoque %>
 							<!-- mensaje aparece solo cuando no completó -->
 							<!-- <p class="message">*por favor complete este campo</p>-->
 							<!-- / -->
@@ -96,7 +91,11 @@ buscoterapia.cl</p>
 				
 					<div id="foto-perfil">
 						<div class="foto">
-						<img src="http://fpoimg.com/170x130" alt="Esteban Soto" width="170" height="130 border="0" />
+							<% if @terapeuta.imagen_url.length != 0 %>
+								<%= image_tag @terapeuta.imagen_url.terapeuta_img.url.to_s %>
+							<% else %>
+								<img src="http://fpoimg.com/170x130" alt="Esteban Soto" width="170" height="130 border="0" />
+							<% end %>
 						</div>
 					</div>
 				</div>
@@ -171,14 +170,14 @@ buscoterapia.cl</p>
 					</div>
 					
 					<div class="form-block one-line">
-						<div class="label"><span class="message">*</span>Teléfono de contacto <strong>fijo</strong>:</div>
+						<div class="label">Teléfono de contacto <strong>fijo</strong>:</div>
 						<div class="input_field">
 							<%= f.number_field :telefono %>
 						</div>
 					</div>
 					
 					<div class="form-block one-line">
-						<div class="label"><span class="message">*</span>Teléfono de contacto <strong>móvil</strong>:</div>
+						<div class="label">Teléfono de contacto <strong>móvil</strong>:</div>
 						<div class="input_field">
 							<%= f.number_field :movil %>
 						</div>
@@ -241,11 +240,10 @@ buscoterapia.cl</p>
 					</div>
 				</div><!--MIS DATOS-->
 				
-				<% if @terapeuta.plan_tipo != "Gratis" %>				
 				<div class="mis-datos">
 					<h3>Tipo de suscripción:</h3>
 					<div class="form-block one-line radio-button">
-						<div class="label"><%= f.radio_button :plan_ciclo, "Anual", :checked => true %></div>
+						<div class="label"><%= f.radio_button :plan_ciclo, "Anual" %></div>
 						<div class="columna30">
 				  	  		Suscripción completa <strong>anual</strong>. <br/><%= number_to_currency(@plan_anual.to_i/12) %> por mes. Total <%= number_to_currency(@plan_anual.to_i) %> 
 						</div>
@@ -262,22 +260,26 @@ buscoterapia.cl</p>
 				  	  		Suscripción <strong>trimestral</strong>. <br/><%= number_to_currency(@plan_trimestral.to_i/3) %> por mes.  Total <%= number_to_currency(@plan_trimestral.to_i) %>
 						</div>
 					</div>
+					<div class="form-block one-line radio-button">
+						<div class="label"><%= f.radio_button :plan_ciclo, "Gratis" %></div>
+						<div class="columna30">
+				  	  		Suscripción <strong>Gratis</strong>. <br/><%= number_to_currency(@plan_trimestral.to_i/3) %> por mes.  Total <%= number_to_currency(@plan_trimestral.to_i) %>
+						</div>
+					</div>
 				</div>
-				<% else %>
-					<%= f.hidden_field :plan_ciclo, :value => "Gratis" %>
-					<%= f.hidden_field :plan_tipo, :value => "Gratis" %>
-				<% end %>
-				  	  		
+				
 			</div><!-- form-perfil -->
 			
 			<div class="guardar-cambios">
-				<%= f.submit "Registrarse", :class => "boton-morado centrado" %>
+				<%= f.submit "Guardar cambios", :class => "boton-morado centrado" %>
 			</div>
 			<% end %>			
 		</div><!-- form-center -->
 
 
 	</div><!--columna-670-left-->
+	
 	<%= render "home/preguntas_frecuentes" %>
+	
 	<div class="clear"></div>
 </div><!-- block-wrapper -->

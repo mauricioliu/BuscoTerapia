@@ -12,8 +12,8 @@
 				<% if @sepa["tipo_terapias_nombre_contains"].size != 0 %>
 				con <strong><%= @sepa["tipo_terapias_nombre_contains"] %></strong>
 				<% end %>
-				<% if @sepa["region_contains"] != "" %> 
-				en <strong><%= Region.find(@sepa["region_contains"]).nombre %></strong> 
+				<% if @sepa["region_equals"] != "" %> 
+				en <strong><%= @sepa["region_equals"] %></strong> 
 				<% end %>
 				<% if @sepa["tipo_terapias_nombre_or_especialidades_valor_contains"] != nil and @sepa["tipo_terapias_nombre_or_especialidades_valor_contains"].size != 0 %> 
 					relacionados con <strong><%= @sepa["tipo_terapias_nombre_or_especialidades_valor_contains"] %></strong>
@@ -30,6 +30,9 @@
 					<div class="contenido-ficha">
 						<p class="nombre-ficha"><%= terapeuta.nombre %></p>
 						<p>
+							<% terapeuta.tipo_terapias.each do |tt| %>
+								<%= tt.nombre %>, 
+							<% end %><br />
 							<% terapeuta.estudios.each do |estudio| %>
 								<strong><%= estudio.titulo %>, <%= estudio.establecimiento %></strong><br/>
 							<% end %>
@@ -57,17 +60,21 @@
 						
 						<p class="nombre-ficha"><%= terapeuta.nombre %></p>
 						<p>
+							<% terapeuta.tipo_terapias.each do |tt| %>
+								<%= tt.nombre %> - 
+							<% end %><br />
 							Especialista en
 							<% terapeuta.especialidades.each do |especialidad| %>
 								<%= especialidad.valor %>,
 							<% end %> 
 							</br>
-							<%= terapeuta.direccion %>, <%= Comuna.find(terapeuta.comuna).nombre %>, <%= Region.find(terapeuta.region).nombre %> 
+							<%= terapeuta.direccion %>, <%= terapeuta.comuna %>, <%= terapeuta.region %> 
 						</p>
 						<div class="descripcion-full">
 							<div class="ficha-columna">
 								<h3>Información de experiencia y formación académica:</h3>
 								<ul>
+									<% if terapeuta.enfoque.length > 0 %><li><span><strong>Enfoque:</strong> <%= terapeuta.enfoque %></span></li><% end %>
 									<li><span><strong>Especialidades:</strong> <br />
 											<% terapeuta.especialidades.each do |especialidad| %>
 												&nbsp;&nbsp;&nbsp;- <%= especialidad.valor %><br />
@@ -83,24 +90,27 @@
 								<h3>Costo y formas de pago:</h3>
 								<ul>
 									<li><span><strong>Arancel por sesión:</strong> <%= terapeuta.arancel %>.-</span></li>
+									<% if terapeuta.descuentos.length > 0 %><li><span><strong>Descuentos usuarios BuscoTerapia:</strong> <%= terapeuta.descuentos %>.-</span></li><% end %>
 									<li><span><strong>Formas de Pago:</strong> 
 											<% terapeuta.forma_pagos.each do |forma_pago| %>
 												<%= forma_pago.valor %>, 
 											<% end %> 
 										</span></li>
+									<% if terapeuta.convenios.size > 0 %>
 									<li><span><strong>Convenios:</strong><br />
 											<% terapeuta.convenios.each do |convenio| %>
 											&nbsp;&nbsp;&nbsp;- <%= convenio.valor %><br />
 											<% end %>
 										</span></li>
+									<% end %>
 								</ul>
 								
 								<h3>Datos de Contacto:</h3>
 								<ul>
-									<li><span><strong>Dirección:</strong> <%= terapeuta.direccion %>, <%= Comuna.find(terapeuta.comuna).nombre %>, <%= Region.find(terapeuta.region).nombre %>.</span></li>
+									<li><span><strong>Dirección:</strong> <%= terapeuta.direccion %>, <%= terapeuta.comuna %>, <%= terapeuta.region %>.</span></li>
 									<li><span><strong>Teléfonos de contacto:</strong> <%= terapeuta.telefono %></span></li>
 									<li><span><strong>Correo electrónico:</strong> <%= terapeuta.email %></span></li> 
-									<li><span><strong>Sitio web:</strong> <%= link_to terapeuta.sitio_web, "http://"+terapeuta.sitio_web, :target => "_blank" %></span></li>
+									<% if terapeuta.sitio_web.length > 0 %><li><span><strong>Sitio web:</strong> <%= link_to terapeuta.sitio_web, "http://"+terapeuta.sitio_web, :target => "_blank" %></span></li><% end %>
 								</ul>
 								
 								<input type="button" value="Contactar al Terapeuta" class="boton-morado" />

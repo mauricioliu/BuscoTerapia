@@ -24,7 +24,11 @@
 			<%= render "#{@asesoria.current_step}_step", :f => f %>
 			
 					<div class="form-block">
-						<%= f.submit @asesoria.current_step == "miproblema" ? "Siguiente paso" : "Enviar", :class => "boton-morado", remote: true %>
+						<% if @asesoria.current_step == "miproblema" %>
+							<%= f.submit "Siguiente paso", :class => "boton-morado" %>
+						<% else %>
+							<%= f.submit "Enviar", :class => "boton-morado", :disable_with => "Procesando..." %>
+						<% end %>
 					</div>
 				</div>
 			</div>

@@ -9,7 +9,7 @@
 				<div id="tab1" class="tab_content" style="display: block; ">
 					<%= form_for @search, :action => "index", :controller => "terapeuta" do |f| %>
 						<div class="form-block">
-							<div class="label">Terapeuta:</div>
+							<div class="label">Tipo de terapia:</div>
 							<div class="input_field">
 								<%= f.collection_select :tipo_terapias_nombre_contains, RefDatum.where(:nombre => "Tipo Terapeuta"), :valor, :valor, :prompt => "No lo tengo claro" %>
 							</div>
@@ -18,13 +18,13 @@
 							<div class="buscador-columna-left">
 								<div class="label">Región:</div>
 								<div class="input_field">
-									<%= f.collection_select :region_contains, Region.order(:id), :id, :nombre, {include_blank: true}, :class => "psicologo_region" %>
+									<%= f.collection_select :region_equals, Region.order(:id), :nombre, :nombre, {include_blank: true}, :class => "psicologo_region" %>
 								</div>
 							</div>
 							<div class="buscador-columna-right">
 								<div class="label">Comuna:</div>
 								<div class="input_field">
-									<%= f.grouped_collection_select :comuna_contains, Region.order(:id), :comunas, :nombre, :id, :nombre, {include_blank: true}, :class => "psicologo_comuna" %>
+									<%= f.grouped_collection_select :comuna_equals, Region.order(:id), :comunas, :nombre, :nombre, :nombre, {include_blank: true}, :class => "psicologo_comuna" %>
 								</div>
 							</div>
 						</div>
@@ -44,7 +44,7 @@
 					<%= form_for @search, :action => "index", :controller => "terapeuta" do |f| %>
 			  		<%= f.hidden_field :tipo_terapias_nombre_contains, :value => "Complementario / Alternativo" %>
 						<div class="form-block">
-							<div class="label">Palabras claves:</div>
+							<div class="label">Palabras claves:<br/><small>Ejemplo: energéticas, masajes, flores.</small></div>
 							<div class="input_field">
 								<%= f.text_field :tipo_terapias_nombre_or_especialidades_valor_contains %>
 							</div>
@@ -52,13 +52,13 @@
 						<div class="form-block">
 							<div class="label">Ciudad de Atención:</div>
 							<div class="input_field">
-								<%= f.collection_select :region_contains, Region.order(:id), :id, :nombre, {include_blank: true}, :class => "alternativo_region" %>
+								<%= f.collection_select :region_equals, Region.order(:id), :nombre, :nombre, {include_blank: true}, :class => "alternativo_region" %>
 							</div>
 						</div>
 						<div class="form-block">
 							<div class="label">Comuna:</div>
 							<div class="input_field">
-								<%= f.grouped_collection_select :comuna_contains, Region.order(:id), :comunas, :nombre, :id, :nombre, {include_blank: true}, :class => "alternativo_comuna" %>
+								<%= f.grouped_collection_select :comuna_equals, Region.order(:id), :comunas, :nombre, :nombre, :nombre, {include_blank: true}, :class => "alternativo_comuna" %>
 							</div>
 						</div>
 						<div class="form-block">

@@ -20,6 +20,7 @@ Telefono: <%= @asesoria.paciente_telefono %>
 Email: <%= @asesoria.paciente_email %>
 
 Preferencia de atención
+Lugar preferente de atención: <%= @asesoria.lugar_preferencia %>
 Día preferente de atención: <% @asesoria.dias_atencion.each do |dia_atencion| %> <%= dia_atencion.dia %>, <% end %>
 Fecha estimativa
 Rango de horario: <%= @asesoria.hora_desde %> - <%= @asesoria.hora_hasta %>

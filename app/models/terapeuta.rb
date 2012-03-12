@@ -30,7 +30,7 @@ class Terapeuta < ActiveRecord::Base
   # validates :email, presence: true, uniqueness: true
   validates_associated :especialidades, :estudios
   
-  validates_presence_of :nombre, :direccion, :region, :comuna, :telefono, :movil, :rut
+  validates_presence_of :nombre, :direccion, :region, :comuna, :rut
   validates_numericality_of :telefono, :if => :telefono?
   validates_numericality_of :movil, :if => :movil?
   validates :email,   
@@ -49,9 +49,7 @@ class Terapeuta < ActiveRecord::Base
   # nombre, direccion, region, comuna, ptelefono, telefono, pmovil, movil, email, tipo, especialidad
   
   def direccion_completa
-    if comuna != nil && region != nil
-      direccion + ', ' + Comuna.find(comuna).nombre + ', ' + Region.find(region).nombre
-    end
+    direccion + ', ' + comuna + ', ' + region
   end
   
   def password

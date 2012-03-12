@@ -31,7 +31,7 @@
 				Región de atención:
 			</div>
 			<div class="input_field">
-				<%= f.collection_select :region_contains, Region.order(:id), :id, :nombre, {include_blank: true}, :class => "search_region" %>
+				<%= f.collection_select :region_equals, Region.order(:id), :nombre, :nombre, {include_blank: true}, :class => "search_region" %>
 			</div>
 		</div>
 		<div class="form-block busqueda-comuna">
@@ -39,7 +39,7 @@
 				Comuna de atención:
 			</div>
 			<div class="input_field">
-				<%= f.grouped_collection_select :comuna_contains, Region.order(:id), :comunas, :nombre, :id, :nombre, {include_blank: true}, :class => "search_comuna" %>
+				<%= f.grouped_collection_select :comuna_equals, Region.order(:id), :comunas, :nombre, :nombre, :nombre, {include_blank: true}, :class => "search_comuna" %>
 			</div>
 		</div>
 		<div class="form-block busqueda-button">

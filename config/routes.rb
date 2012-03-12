@@ -4,9 +4,8 @@ BuscoTerapia::Application.routes.draw do
   resources :articulos
 
   get "validar_terapeuta/index"
-
+  get "validar_terapeuta/todos"
   get "validar_terapeuta/show"
-
   get "validar_terapeuta/validar"
 
   resources :pagos
@@ -42,8 +41,10 @@ BuscoTerapia::Application.routes.draw do
   match '/ver_comprobante/:id' => 'asesorias#ver_comprobante', :as => 'ver_comprobante'
   
   match '/validar_terapeuta/:id' => 'validar_terapeuta#show', :as => 'revisar_terapeuta'
+  
   match '/validar_terapeuta/' => 'validar_terapeuta#index'
   match '/validar_terapeuta/:id/validar' => 'validar_terapeuta#validar', :as => 'validar'
+  match '/validar_terapeuta/:id/edit' => 'validar_terapeuta#edit', :as => 'editar_terapeuta'
   
   match '/admin' => 'admin#index', :as => 'admin'
 

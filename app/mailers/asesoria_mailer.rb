@@ -15,6 +15,6 @@ class AsesoriaMailer < ActionMailer::Base
       email << recipient.valor
     end
 
-    mail(:to => email, :subject => "Se ha ingresado una nueva solicitud")
+    mail(:to => email, :subject => "Solicitud N#"+@asesoria.id.to_s+" "+@asesoria.paciente_nombre)
   end
 end

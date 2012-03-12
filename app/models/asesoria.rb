@@ -10,7 +10,8 @@ class Asesoria < ActiveRecord::Base
   
   #validates_presence_of :necesidad, :if => lambda { |o| o.current_step == "necesidades" }
   validates_presence_of :necesidad_1, :if => lambda { |o| o.current_step == "miproblema" }
-  validates_presence_of :paciente_nombre, :terapia_para, :paciente_telefono, :if => lambda { |o| o.current_step == "misdatos" }
+  validates_presence_of :necesidad_2, :if => lambda { |o| o.current_step == "miproblema" }
+  validates_presence_of :paciente_nombre, :terapia_para, :paciente_telefono, :lugar_preferencia, :if => lambda { |o| o.current_step == "misdatos" }
   validates :paciente_email,   
             :presence => true,   
             :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i },

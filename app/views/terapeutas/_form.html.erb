@@ -70,6 +70,16 @@ buscoterapia.cl</p>
 						</div>
 					</div>
 					
+					<div class="form-block one-line">
+						<div class="label">Enfoque:</div>
+						<div class="input_field">
+							<%= f.text_field :enfoque %>
+							<!-- mensaje aparece solo cuando no completó -->
+							<!-- <p class="message">*por favor complete este campo</p>-->
+							<!-- / -->
+						</div>
+					</div>
+					
 					<%= f.fields_for :especialidades do |especialidad_form| %>
 					<div class="form-block one-line">
 						<div class="label">Especialidad:</div>
@@ -139,7 +149,7 @@ buscoterapia.cl</p>
 					<div class="form-block one-line">
 						<div class="label"><span class="message">*</span>Region:</div>
 						<div class="input_field">
-							<%= f.collection_select :region, Region.order(:nombre), :id, :nombre, {include_blank: true} %>
+							<%= f.collection_select :region, Region.order(:nombre), :nombre, :nombre, {include_blank: true} %>
 							<!-- mensaje aparece solo cuando no completó -->
 							<!-- <p class="message">*por favor complete este campo</p>-->
 							<!-- / -->
@@ -148,7 +158,7 @@ buscoterapia.cl</p>
 					<div class="form-block one-line">
 						<div class="label"><span class="message">*</span>Comuna:</div>
 						<div class="input_field">
-							<%= f.grouped_collection_select :comuna, Region.order(:nombre), :comunas, :nombre, :id, :nombre, {include_blank: true} %>
+							<%= f.grouped_collection_select :comuna, Region.order(:nombre), :comunas, :nombre, :nombre, :nombre, {include_blank: true} %>
 							<!-- mensaje aparece solo cuando no completó -->
 							<!-- <p class="message">*por favor complete este campo</p>-->
 							<!-- / -->
