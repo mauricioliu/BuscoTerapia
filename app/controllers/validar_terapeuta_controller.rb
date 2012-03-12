@@ -1,6 +1,6 @@
 require 'date'
 class ValidarTerapeutaController < ApplicationController
-  http_basic_authenticate_with :name => "btp", :password => "btp.123!"
+  before_filter :authenticate
   
   def index
     @terapeutas = Terapeuta.where(:estado => "pendiente de validar")
@@ -28,6 +28,13 @@ class ValidarTerapeutaController < ApplicationController
   def show
     @terapeuta = Terapeuta.find(params[:id])
   end
+  
+  def destroy
+    @terapeuta = Terapeuta.find(params[:id])
+    @terapeuta.destroy
+    
+    redirect_to validar_terapeuta_todos_path
+  end
 
   def validar
     terapeuta = Terapeuta.find(params[:id])
@@ -41,5 +48,19 @@ class ValidarTerapeutaController < ApplicationController
     end
     terapeuta.save 
     redirect_to validar_terapeuta_path
+  end
+  
+private
+  def authenticate
+    case action_name
+    when "todos","edit","destroy"
+      authenticate_or_request_with_http_basic do |username, password|
+        username == "btpadmin" && password == "btp.123!admin"
+      end 
+    else
+      authenticate_or_request_with_http_basic do |username, password|
+        username == "btp" && password == "btp.123!"
+      end 
+    end
   end
 end

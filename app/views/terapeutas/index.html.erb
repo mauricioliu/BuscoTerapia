@@ -74,7 +74,7 @@
 							<div class="ficha-columna">
 								<h3>Información de experiencia y formación académica:</h3>
 								<ul>
-									<% if terapeuta.enfoque.length > 0 %><li><span><strong>Enfoque:</strong> <%= terapeuta.enfoque %></span></li><% end %>
+									<% if terapeuta.enfoque != nil and terapeuta.enfoque.length > 0 %><li><span><strong>Enfoque:</strong> <%= terapeuta.enfoque %></span></li><% end %>
 									<li><span><strong>Especialidades:</strong> <br />
 											<% terapeuta.especialidades.each do |especialidad| %>
 												&nbsp;&nbsp;&nbsp;- <%= especialidad.valor %><br />
@@ -90,13 +90,13 @@
 								<h3>Costo y formas de pago:</h3>
 								<ul>
 									<li><span><strong>Arancel por sesión:</strong> <%= terapeuta.arancel %>.-</span></li>
-									<% if terapeuta.descuentos.length > 0 %><li><span><strong>Descuentos usuarios BuscoTerapia:</strong> <%= terapeuta.descuentos %>.-</span></li><% end %>
+									<% if terapeuta.descuentos != nil and terapeuta.descuentos.length > 0 %><li><span><strong>Descuentos usuarios BuscoTerapia:</strong> <%= terapeuta.descuentos %>.-</span></li><% end %>
 									<li><span><strong>Formas de Pago:</strong> 
 											<% terapeuta.forma_pagos.each do |forma_pago| %>
 												<%= forma_pago.valor %>, 
 											<% end %> 
 										</span></li>
-									<% if terapeuta.convenios.size > 0 %>
+									<% if terapeuta.convenios != nil and terapeuta.convenios.size > 0 %>
 									<li><span><strong>Convenios:</strong><br />
 											<% terapeuta.convenios.each do |convenio| %>
 											&nbsp;&nbsp;&nbsp;- <%= convenio.valor %><br />

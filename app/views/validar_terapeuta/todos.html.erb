@@ -17,7 +17,9 @@
 				Rut: <%= terapeuta.rut %> <br />
 				Email: <%= terapeuta.email %>
 				Telefono: <%= terapeuta.ptelefono %>-<%= terapeuta.telefono %>
-				<%= link_to 'ver/modificar', editar_terapeuta_path(terapeuta) %><br /><br />
+				<%= link_to 'ver/modificar', editar_terapeuta_path(terapeuta) %> |
+				<%= link_to 'dar de baja', destroy_terapeuta_path(terapeuta), :confirm => "Esta acción dará de baja al terapeuta pero seguirá permaneciendo en la base de terapeutas sin poder ser encontrado por el buscador de la página.  ¿Seguro desea continuar?" %> 
+				<%= link_to 'eliminar', destroy_terapeuta_path(terapeuta), :confirm => "Esto eliminará terapeuta de manera permanente.  ¿Seguro desea continuar?" %><br /><br />
 			<% end %>
 			</div>
 		</div>
