@@ -47,6 +47,7 @@ class ValidarTerapeutaController < ApplicationController
       terapeuta.plan_expira = 3.month.from_now
     end
     terapeuta.save 
+    TerapeutaMailer.validation_done(terapeuta).deliver
     redirect_to validar_terapeuta_path
   end
   

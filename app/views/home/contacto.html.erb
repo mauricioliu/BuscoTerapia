@@ -12,7 +12,7 @@
 			</div>
 			
 			<div class="form-block busqueda-palabra-clave">
-				<%= form_tag contactar_terapeuta_path, :remote => true do %>
+				<%= form_tag contacto_path do %>
 				<div class="label">
 					Tu nombre:
 				</div>
@@ -20,10 +20,10 @@
 					<%= text_field_tag :nombre %>
 				</div>
 				<div class="label">
-					Tu apellido:
+					Tu email:
 				</div>
 				<div class="input_field">
-					<%= text_field_tag :apellido %>
+					<%= text_field_tag :email %>
 				</div>
 				<div class="label">
 					Mensaje:
@@ -37,7 +37,7 @@
 						<!--&nbsp;-->
 					</div>
 					<div class="input_field">
-						<%= submit_tag "Enviar Mensaje", :class => "boton-morado" %>
+						<%= submit_tag "Enviar Mensaje", :class => "boton-morado", :disable_with => "Enviando" %>
 					</div>
 				</div>
 				<% end %>

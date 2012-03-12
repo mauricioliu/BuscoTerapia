@@ -18,6 +18,17 @@ class HomeController < ApplicationController
   def privacidad
     
   end
+  
+  def contacto
+    if params[:nombre]
+      nombre = params[:nombre]
+      email = params[:email]
+      mensaje = params[:mensaje]
+      TerapeutaMailer.contacto(nombre,email,mensaje).deliver
+      
+      redirect_to root_url
+    end
+  end
 
 private 
   def resolve_layout

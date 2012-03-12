@@ -3,10 +3,6 @@
 
 	<div class="columna-670-left">
 		<h2>Mi ficha:</h2>
-		<p class="destacado">Tu cuenta es una cuenta gratuita, por lo que cuentas con algunos de los privilegios de pertenecer a 
-buscoterapia.cl</p>
-
-
 		<div class="busqueda-box-center">
 		
 			<div class="form-box form-perfil">
@@ -82,7 +78,7 @@ buscoterapia.cl</p>
 					
 					<%= f.fields_for :especialidades do |especialidad_form| %>
 					<div class="form-block one-line">
-						<div class="label">Especialidad:</div>
+						<div class="label">Especialidad:<br /><span class="message">(máximo 7)</span></div>
 						<div class="input_field">
 							<%= especialidad_form.text_field :valor %>
 							<%= especialidad_form.link_to_remove " X ", :class => "borrar" %>
@@ -171,14 +167,14 @@ buscoterapia.cl</p>
 					</div>
 					
 					<div class="form-block one-line">
-						<div class="label"><span class="message">*</span>Teléfono de contacto <strong>fijo</strong>:</div>
+						<div class="label">Teléfono de contacto <strong>fijo</strong>:</div>
 						<div class="input_field">
 							<%= f.number_field :telefono %>
 						</div>
 					</div>
 					
 					<div class="form-block one-line">
-						<div class="label"><span class="message">*</span>Teléfono de contacto <strong>móvil</strong>:</div>
+						<div class="label">Teléfono de contacto <strong>móvil</strong>:</div>
 						<div class="input_field">
 							<%= f.number_field :movil %>
 						</div>

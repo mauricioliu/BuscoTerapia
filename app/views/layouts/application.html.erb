@@ -67,7 +67,7 @@
 		<div id="logged-in">
 			<p>
 				Bienvenido <strong><%= session[:terapeuta].nombre %></strong> <%= link_to 'Cerrar sesión', logout_path %><br />
-				<%= link_to "Mi cuenta", edit_terapeuta_path(session[:terapeuta]) %>
+				<strong><%= link_to "Mi cuenta", edit_terapeuta_path(session[:terapeuta]) %></strong>
 			</p>
 		</div><!-- login -->
 		<% end %>

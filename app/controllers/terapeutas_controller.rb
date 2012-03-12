@@ -25,16 +25,6 @@ class TerapeutasController < ApplicationController
     end
   end
   
-  def index2
-    @search = Terapeuta.search(params[:search])
-    @terapeutas = @search.page(params[:page]).per_page(15)
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @terapeuta }
-    end
-  end
-  
   # GET /terapeuta/1
   # GET /terapeuta/1.json
   def show
@@ -236,8 +226,13 @@ class TerapeutasController < ApplicationController
   end
   
   def contactar_terapeuta
+    terapeuta = params[:terapeuta_nombre]
+    nombre = params[:nombre]
+    email = params[:email]
+    mensaje = params[:mensaje]
+    TerapeutaMailer.contactar_terapeuta(terapeuta,nombre,email,mensaje).deliver
     
-    TerapeutaMailer.contactar_terapeuta(@terapeuta).deliver
+    redirect_to terapeutas_path
   end
   
   def estadisticas
