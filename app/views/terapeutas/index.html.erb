@@ -6,29 +6,27 @@
 		
 		<div class="busqueda-box-center">
 		<%= render "search_form"%>
-		<% if @sepa %>			
+		<% if @h.size > 0 %>
 			<p class="busqueda-mensaje-resultado">
-				Se han encontrado <strong><%=@terapeutas.count%></strong> resultados
-				<% if @sepa["tipo_terapias_nombre_contains"].size != 0 %>
-				con <strong><%= @sepa["tipo_terapias_nombre_contains"] %></strong>
-				<% end %>
-				<% if @sepa["region_equals"] != "" %> 
-				en <strong><%= @sepa["region_equals"] %></strong> 
-				<% end %>
-				<% if @sepa["tipo_terapias_nombre_or_especialidades_valor_contains"] != nil and @sepa["tipo_terapias_nombre_or_especialidades_valor_contains"].size != 0 %> 
-					relacionados con <strong><%= @sepa["tipo_terapias_nombre_or_especialidades_valor_contains"] %></strong>
-				<% elsif @sepa["especialidades_valor_contains"] != nil and @sepa["especialidades_valor_contains"].size != 0%>
-					relacionados con <strong><%= @sepa["especialidades_valor_contains"] %></strong>
-				<% end %>
-			</p>
+			Se han encontrado <strong><%=@terapeutas.count%></strong> resultados
+		<% if @h.has_key?("tipo_terapias") %>
+			con <strong><%= @h["tipo_terapias"] %></strong>
 		<% end %>
-		<% if @sepa %>
+		<% if @h.has_key?("region") %>
+			en <strong><%= @h["region"] %></strong>
+		<% end %>
+		<% if @sepa["search"].length != 0 or @sepa["search"] != '' %>
+			relacionados con <strong><%= @sepa["search"] %></strong>
+		<% end %>
+		</p>
+		<% end %>
+		<% if @terapeutas != nil %>
 			<% @terapeutas.each do |terapeuta| %>
 				<% if terapeuta.plan_tipo == "Gratis" %>
 					<div class="ficha-persona ficha-simple">
 					<div class="foto"><%= image_tag 'img/terapeuta_thumb_perfil-default.png'%></div>
 					<div class="contenido-ficha">
-						<p class="nombre-ficha"><%= terapeuta.nombre %></p>
+						<p class="nombre-ficha"><%= terapeuta.nombre.titleize %></p>
 						<p>
 							<% terapeuta.tipo_terapias.each do |tt| %>
 								<%= tt.nombre %>, 
@@ -57,8 +55,7 @@
 						<div class="foto"><%= image_tag 'img/terapeuta_thumb_perfil-default.png'%></div>
 					<% end %>
 					<div class="contenido-ficha">
-						
-						<p class="nombre-ficha"><%= terapeuta.nombre %></p>
+						<p class="nombre-ficha"><%= terapeuta.nombre.titleize %></p>
 						<p>
 							<% terapeuta.tipo_terapias.each do |tt| %>
 								<%= tt.nombre %> - 
@@ -93,7 +90,7 @@
 									<% if terapeuta.descuentos != nil and terapeuta.descuentos.length > 0 %><li><span><strong>Descuentos usuarios BuscoTerapia:</strong> <%= terapeuta.descuentos %>.-</span></li><% end %>
 									<li><span><strong>Formas de Pago:</strong> 
 											<% terapeuta.forma_pagos.each do |forma_pago| %>
-												<%= forma_pago.valor %>, 
+												<%= forma_pago.valor %> -  
 											<% end %> 
 										</span></li>
 									<% if terapeuta.convenios != nil and terapeuta.convenios.size > 0 %>

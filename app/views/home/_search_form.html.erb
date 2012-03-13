@@ -7,62 +7,62 @@
 			</ul>
 			<div class="tab_container">
 				<div id="tab1" class="tab_content" style="display: block; ">
-					<%= form_for @search, :action => "index", :controller => "terapeuta" do |f| %>
+					<%= form_tag terapeutas_path, method: :get do %>
 						<div class="form-block">
 							<div class="label">Tipo de terapia:</div>
 							<div class="input_field">
-								<%= f.collection_select :tipo_terapias_nombre_contains, RefDatum.where(:nombre => "Tipo Terapeuta"), :valor, :valor, :prompt => "No lo tengo claro" %>
+								<%= collection_select :form, :tipo_terapeuta, RefDatum.where(:nombre => "Tipo Terapeuta"), :valor, :valor, :prompt => "No lo tengo claro" %>
 							</div>
 						</div>
 						<div class="form-block">
 							<div class="buscador-columna-left">
 								<div class="label">Región:</div>
 								<div class="input_field">
-									<%= f.collection_select :region_equals, Region.order(:id), :nombre, :nombre, {include_blank: true}, :class => "psicologo_region" %>
+									<%= collection_select :form, :region, Region.order(:id), :nombre, :nombre, {include_blank: true}, :class => "psicologo_region" %>
 								</div>
 							</div>
 							<div class="buscador-columna-right">
 								<div class="label">Comuna:</div>
 								<div class="input_field">
-									<%= f.grouped_collection_select :comuna_equals, Region.order(:id), :comunas, :nombre, :nombre, :nombre, {include_blank: true}, :class => "psicologo_comuna" %>
+									<%= grouped_collection_select :form, :comuna, Region.order(:id), :comunas, :nombre, :nombre, :nombre, {include_blank: true}, :class => "psicologo_comuna" %>
 								</div>
 							</div>
 						</div>
 						<div class="form-block">
 							<div class="label">Palabras claves:<br/><small>Ejemplo: separación, duelo, ansiedad, crisis de pánico</small></div>
 							<div class="input_field">
-								<%= f.text_field :especialidades_valor_contains %>
+								<%= text_field_tag :search, params[:search] %>
 							</div>
 						</div>
 						<div class="form-block">
-							<%= f.submit "Buscar", :class => "boton-morado" %>
+							<%= submit_tag "Buscar", :class => "boton-morado" %>
 						</div>
 					<% end %>
 				</div><!-- tab 1 -->
 	
 				<div id="tab2" class="tab_content" style="display: none; ">
-					<%= form_for @search, :action => "index", :controller => "terapeuta" do |f| %>
-			  		<%= f.hidden_field :tipo_terapias_nombre_contains, :value => "Complementario / Alternativo" %>
+					<%= form_tag terapeutas_path, method: :get do %>
+			  		<%= hidden_field_tag :alternativo, :value => "Complementario / Alternativo" %>
 						<div class="form-block">
 							<div class="label">Palabras claves:<br/><small>Ejemplo: energéticas, masajes, flores.</small></div>
 							<div class="input_field">
-								<%= f.text_field :tipo_terapias_nombre_or_especialidades_valor_contains %>
+								<%= text_field_tag :search, params[:search] %>
 							</div>
 						</div>
 						<div class="form-block">
 							<div class="label">Ciudad de Atención:</div>
 							<div class="input_field">
-								<%= f.collection_select :region_equals, Region.order(:id), :nombre, :nombre, {include_blank: true}, :class => "alternativo_region" %>
+								<%= collection_select :form, :region, Region.order(:id), :nombre, :nombre, {include_blank: true}, :class => "alternativo_region" %>
 							</div>
 						</div>
 						<div class="form-block">
 							<div class="label">Comuna:</div>
 							<div class="input_field">
-								<%= f.grouped_collection_select :comuna_equals, Region.order(:id), :comunas, :nombre, :nombre, :nombre, {include_blank: true}, :class => "alternativo_comuna" %>
+								<%= grouped_collection_select :form, :comuna, Region.order(:id), :comunas, :nombre, :nombre, :nombre, {include_blank: true}, :class => "alternativo_comuna" %>
 							</div>
 						</div>
 						<div class="form-block">
-							<%= f.submit "Buscar terapia", :class => "boton-morado" %>
+							<%= submit_tag "Buscar Terapia", :class => "boton-morado" %>
 						</div>
 					<% end %>
 				</div><!-- tab 2 -->

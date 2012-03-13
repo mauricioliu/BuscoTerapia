@@ -12,6 +12,19 @@ class Terapeuta < ActiveRecord::Base
   geocoded_by :direccion_completa
   after_validation :geocode
   
+  define_index do
+    indexes nombre
+    indexes enfoque
+    indexes arancel
+    indexes region
+    indexes comuna
+    indexes convenios.valor
+    indexes estudios.titulo, :as => :estudio_titulo
+    indexes estudios.establecimiento, :as => :estudio_establecimiento
+    indexes especialidades.valor, :as => :especialidades
+    indexes tipo_terapias.nombre, :as => :tipo_terapias
+  end
+  
   has_many :tipo_terapias, :dependent => :destroy
   has_many :especialidades, :dependent => :destroy
   has_many :estudios, :dependent => :destroy

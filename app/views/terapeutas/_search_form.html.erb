@@ -1,4 +1,4 @@
-<%= form_for @search do |f| %>			
+<%= form_tag terapeutas_path, method: :get do %>			
 <!-- Datos principales de quienes asistirán a terapia -->
 <div class="form-box">
 
@@ -13,7 +13,7 @@
 			Terapeuta
 		</div>
 		<div class="input_field">
-			<%= f.collection_select :tipo_terapias_nombre_contains, RefDatum.where(:nombre => "Tipo Terapeuta"), :valor, :valor, {}, {"style" => "width:190px"} %>
+			<%= collection_select :form, :tipo_terapeuta, RefDatum.where(:nombre => "Tipo Terapeuta"), :valor, :valor, {}, {"style" => "width:190px"} %>
 		</div>
 	</div>
 
@@ -22,7 +22,7 @@
 			Palabra Clave
 		</div>
 		<div class="input_field">
-			<%= f.text_field :tipo_terapias_nombre_or_especialidades_valor_contains %>
+			<%= text_field_tag :search, params[:search] %>
 		</div>
 	</div>
 	<div class="form-block">
@@ -31,7 +31,7 @@
 				Región de atención:
 			</div>
 			<div class="input_field">
-				<%= f.collection_select :region_equals, Region.order(:id), :nombre, :nombre, {include_blank: true}, :class => "search_region" %>
+				<%= collection_select :form, :region, Region.order(:id), :nombre, :nombre, {include_blank: true}, :class => "search_region" %>
 			</div>
 		</div>
 		<div class="form-block busqueda-comuna">
@@ -39,7 +39,7 @@
 				Comuna de atención:
 			</div>
 			<div class="input_field">
-				<%= f.grouped_collection_select :comuna_equals, Region.order(:id), :comunas, :nombre, :nombre, :nombre, {include_blank: true}, :class => "search_comuna" %>
+				<%= grouped_collection_select :form, :comuna, Region.order(:id), :comunas, :nombre, :nombre, :nombre, {include_blank: true}, :class => "search_comuna" %>
 			</div>
 		</div>
 		<div class="form-block busqueda-button">
@@ -47,7 +47,7 @@
 				&nbsp;
 			</div>
 			<div class="input_field">
-				<%= f.submit "Encontrar terapeuta", :class => "boton-morado" %>
+				<%= submit_tag "Encontrar terapeuta", :class => "boton-morado" %>
 			</div>
 		</div>
 	</div>
