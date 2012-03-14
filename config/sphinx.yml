@@ -1,2 +1,5 @@
 development:
   bin_path: C:\Sphinx\bin
+
+production:
+  bin_path: /usr/local/bin/
