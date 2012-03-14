@@ -51,15 +51,17 @@ class Terapeuta < ActiveRecord::Base
   validates_presence_of :nombre, :direccion, :region, :comuna, :rut
   validates_numericality_of :telefono, :if => :telefono?
   validates_numericality_of :movil, :if => :movil?
-  validates_presence_of :telefono, :if => :tiene_numero_contacto?, :message => "Debe ingresar al menos un numero de contacto"
-  validates_presence_of :movil, :if => :tiene_numero_contacto?, :message => "Debe ingresar al menos un numero de contacto"
+  # validates_presence_of :telefono, :if => :tiene_numero_contacto?, :message => "Debe ingresar al menos un numero de contacto"
+  # validates_presence_of :movil, :if => :tiene_numero_contacto?, :message => "Debe ingresar al menos un numero de contacto"
   
   validates :email,   
             :presence => true,
             :uniqueness => true,
             :format => { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i }
 
-  validate :especialidades_no_duplicate, :especialidades_size, :tipo_terapias_size
+  validate :especialidades_no_duplicate
+  validate :especialidades_size
+  validate :tipo_terapias_size
   validates_format_of :rut, :with => /^0*(\d{1,3}(\.?\d{3})*)\-?([\dkK])$/i, :if => :rut?
   
   # attr_accessible :especialidades_attributes
