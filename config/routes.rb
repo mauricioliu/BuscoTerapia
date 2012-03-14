@@ -34,6 +34,8 @@ BuscoTerapia::Application.routes.draw do
   match "reset_password" => "terapeutas#reset_password", :as => "reset_password"
   match "acceso_terapeutas" => "terapeutas#acceso_terapeutas", :as => "acceso_terapeutas"
   match "validate_email" => "terapeutas#validate_email", :as => "validate_email"
+  match "/terapeutas/ficha/:id" => "terapeutas#ver_ficha", :as => "ficha"
+  
   # match "submit_payment" => "terapeutas#submit_payment"
   match "payment_success" => "terapeutas#payment_success"
   match "plan_beneficios" => "terapeutas#plan_beneficios"

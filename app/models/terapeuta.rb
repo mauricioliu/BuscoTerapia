@@ -19,6 +19,7 @@ class Terapeuta < ActiveRecord::Base
     indexes region
     indexes comuna
     indexes plan_tipo
+    indexes estado
     indexes convenios.valor
     indexes estudios.titulo, :as => :estudio_titulo
     indexes estudios.establecimiento, :as => :estudio_establecimiento
@@ -32,12 +33,15 @@ class Terapeuta < ActiveRecord::Base
   has_many :forma_pagos, :dependent => :destroy
   has_many :pagos, :dependent => :destroy
   has_many :convenios, :dependent => :destroy
+  
+  has_many :terapia_terapeutas
+  has_many :terapias, :through => :terapia_terapeutas
 
   accepts_nested_attributes_for :tipo_terapias, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }, :allow_destroy => true
-  accepts_nested_attributes_for :especialidades, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }, :allow_destroy => true
-  accepts_nested_attributes_for :estudios, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }, :allow_destroy => true
+  accepts_nested_attributes_for :especialidades, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? or v == '' } }, :allow_destroy => true
+  accepts_nested_attributes_for :estudios, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? or v == '' } }, :allow_destroy => true
   accepts_nested_attributes_for :forma_pagos, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }, :allow_destroy => true
-  accepts_nested_attributes_for :convenios, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }, :allow_destroy => true
+  accepts_nested_attributes_for :convenios, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? or v == '' } }, :allow_destroy => true
   
   #accepts_nested_attributes_for :tipo_terapias, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }, :allow_destroy => true
   
@@ -47,6 +51,9 @@ class Terapeuta < ActiveRecord::Base
   validates_presence_of :nombre, :direccion, :region, :comuna, :rut
   validates_numericality_of :telefono, :if => :telefono?
   validates_numericality_of :movil, :if => :movil?
+  validates_presence_of :telefono, :if => :tiene_numero_contacto?, :message => "Debe ingresar al menos un numero de contacto"
+  validates_presence_of :movil, :if => :tiene_numero_contacto?, :message => "Debe ingresar al menos un numero de contacto"
+  
   validates :email,   
             :presence => true,
             :uniqueness => true,
@@ -111,5 +118,9 @@ class Terapeuta < ActiveRecord::Base
     if lista_tipos.size == 0
       errors[:base] << "Debes ingresar al menos un tipo de terapia"
     end
+  end
+  
+  def tiene_numero_contacto
+    telefono == '' and movil == ''
   end
 end

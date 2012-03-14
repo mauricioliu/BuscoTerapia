@@ -6,23 +6,24 @@
 		
 		<div class="busqueda-box-center">
 		<%= render "search_form"%>
+		<% if @terapeutas != nil %>
 		<% if @h.size > 0 %>
 			<p class="busqueda-mensaje-resultado">
-			Se han encontrado <strong><%=@terapeutas.count%></strong> resultados
+			Se han encontrado <strong><%= @terapeutas.total_entries %></strong> resultados
 		<% if @h.has_key?("tipo_terapias") %>
 			con <strong><%= @h["tipo_terapias"] %></strong>
 		<% end %>
 		<% if @h.has_key?("region") %>
 			en <strong><%= @h["region"] %></strong>
 		<% end %>
-		<% if @sepa["search"].length != 0 or @sepa["search"] != '' %>
+		<% if @sepa[:search] != nil and @sepa[:search] != '' %>
 			relacionados con <strong><%= @sepa["search"] %></strong>
 		<% end %>
 		</p>
 		<% end %>
 		<% if @terapeutas != nil %>
 			<% @terapeutas.each do |terapeuta| %>
-				<% if terapeuta.plan_tipo.downcase == "gratis" %>
+				<% if terapeuta.plan_tipo == "gratis" %>
 					<div class="ficha-persona ficha-simple">
 					<div class="foto"><%= image_tag 'img/terapeuta_thumb_perfil-default.png'%></div>
 					<div class="contenido-ficha">
@@ -130,6 +131,7 @@
 				<% end %>
 			<% end %>
 			<%= will_paginate @terapeutas, previous_label: h("<"), next_label: h(">") %>
+		<% end %>
 		<% end %>
 				
 				

@@ -21,7 +21,7 @@
 						<% end %>
 						<div class="encabezado">
 							<h3><%= link_to articulo.titulo, articulo_path(articulo) %></h3>
-							<p><%= articulo.created_at.strftime('%B %e, %Y')%>. Escrito por <%= articulo.autor %>, <%= articulo.especialidad %>.</p>
+							<p><%= I18n.localize(articulo.created_at, :format => "%e de %B, %Y")%>. Escrito por <%= articulo.autor %>, <%= articulo.especialidad %>.</p>
 						</div>
 						<p>
 							<%= articulo.contenido[1,170 ]%>								 
@@ -42,7 +42,7 @@
 				<div class="contenido-ficha">
 						<div class="encabezado">
 							<h3><%= link_to noticia.titulo, articulo_path(noticia) %></h3>
-							<p><%= noticia.created_at.strftime('%B %e, %Y')%></p>
+							<p><%= I18n.localize(noticia.created_at, :format => "%e de %B, %Y")%>. Escrito por <%= noticia.autor %>, <%= noticia.especialidad %>.</p>
 						</div>
 						<% if noticia.imagen_url.size != 0 %>
 							<div class="foto"><%= image_tag noticia.imagen_url.horizontal_thumb.url.to_s %></div>

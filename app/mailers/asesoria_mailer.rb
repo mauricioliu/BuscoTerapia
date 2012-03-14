@@ -4,7 +4,9 @@ class AsesoriaMailer < ActionMailer::Base
   def send_confirmation(asesoria)
     @asesoria = asesoria
 
-     mail(:to => @asesoria.paciente_email, :subject => "Recibimos su solicitud")
+     mail(:to => @asesoria.paciente_email, :subject => "Recibimos su solicitud") do |format|
+       format.html
+     end
   end
   
   def inform_request(asesoria)

@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  terapia_id: 1
+  terapeuta_id: 1
+
+two:
+  terapia_id: 1
+  terapeuta_id: 1

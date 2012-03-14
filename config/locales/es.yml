@@ -39,18 +39,18 @@ es:
       short: ! '%d de %b'
     month_names:
     -
-    - enero
-    - febrero
-    - marzo
-    - abril
-    - mayo
-    - junio
-    - julio
-    - agosto
-    - septiembre
-    - octubre
-    - noviembre
-    - diciembre
+    - Enero
+    - Febrero
+    - Marzo
+    - Abril
+    - Mayo
+    - Junio
+    - Julio
+    - Agosto
+    - Septiembre
+    - Octubre
+    - Noviembre
+    - Diciembre
     order:
     - :day
     - :month
@@ -193,3 +193,5 @@ es:
       long: ! '%A %d de %B de %Y %H:%M'
       short: ! '%d de %b %H:%M'
     pm: pm
+  will_paginate:
+    page_gap: "&hellip;"

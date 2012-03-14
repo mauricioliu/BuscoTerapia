@@ -10,21 +10,25 @@ class TerapeutasController < ApplicationController
   # GET /terapeuta.json
   def index
     @sepa = params
-    @h = Hash.new
-    if params[:form] != nil and params[:form][:tipo_terapeuta] != nil and params[:form][:tipo_terapeuta] != ''
-      @h["tipo_terapias"] = escape_characters_in_string(params[:form][:tipo_terapeuta])
+    if @sepa[:search] != nil
+      @h = Hash.new
+      @h["estado"] = "validado"
+      if params[:form] != nil and params[:form][:tipo_terapeuta] != nil and params[:form][:tipo_terapeuta] != ''
+        @h["tipo_terapias"] = escape_characters_in_string(params[:form][:tipo_terapeuta])
+      end
+      if params[:form] != nil and params[:form][:region] != nil and params[:form][:region] != '' 
+        @h["region"] = params[:form][:region]
+      end
+      if params[:form] != nil and params[:form][:comuna] != nil and params[:form][:comuna] != ''
+        @h["comuna"] = params[:form][:comuna]
+      end
+        @terapeutas = Terapeuta.search(params[:search].to_s, 
+                                     :page => params[:page], :per_page => 10,
+                                     :conditions => @h,
+                                     :sort_mode => :extended,
+                                     :order => "@random")
+        @total = @terapeutas.total_entries
     end
-    if params[:form] != nil and params[:form][:region] != nil and params[:form][:region] != '' 
-      @h["region"] = params[:form][:region]
-    end
-    if params[:form] != nil and params[:form][:comuna] != nil and params[:form][:comuna] != ''
-      @h["comuna"] = params[:form][:comuna]
-    end
-      @terapeutas = Terapeuta.search(params[:search].to_s, 
-                                   :page => params[:page], :per_page => 10,
-                                   :conditions => @h,
-                                   :sort_mode => :extended,
-                                   :order => "@random")
     # @search = Terapeuta.search(params[:search])
     # @terapeutas = @search.order("rand()")
     # @terapeutas = @terapeutas.where("estado = 'validado'")
@@ -49,6 +53,12 @@ class TerapeutasController < ApplicationController
       format.html # show.html.erb
       format.json { render json: @terapeuta }
     end
+  end
+  
+  def ver_ficha
+    @terapeuta = Terapeuta.find(params[:id])
+    
+    render "show"
   end
   
   def acceso_terapeutas
