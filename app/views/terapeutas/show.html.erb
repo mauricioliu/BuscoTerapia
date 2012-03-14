@@ -24,7 +24,7 @@
 							<div class="ficha-columna">
 								<h3>Información de experiencia y formación académica:</h3>
 								<ul>
-									<% if @terapeuta.enfoque.length > 0 %><li><span><strong>Enfoque:</strong> <%= @terapeuta.enfoque %></span></li><% end %>
+									<% if @terapeuta.enfoque != nil and @terapeuta.enfoque.length > 0 %><li><span><strong>Enfoque:</strong> <%= @terapeuta.enfoque %></span></li><% end %>
 									<li><span><strong>Especialidades:</strong><br />
 											<% @terapeuta.especialidades.each do |especialidad| %>
 											&nbsp;&nbsp;&nbsp;- <%= especialidad.valor %><br />

@@ -21,9 +21,10 @@ class TerapeutasController < ApplicationController
       @h["comuna"] = params[:form][:comuna]
     end
       @terapeutas = Terapeuta.search(params[:search].to_s, 
-                                   page: params[:page], per_page: 10,
-                                   conditions: @h)
-      
+                                   :page => params[:page], :per_page => 10,
+                                   :conditions => @h,
+                                   :sort_mode => :extended,
+                                   :order => "@random")
     # @search = Terapeuta.search(params[:search])
     # @terapeutas = @search.order("rand()")
     # @terapeutas = @terapeutas.where("estado = 'validado'")

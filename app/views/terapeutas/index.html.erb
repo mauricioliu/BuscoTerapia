@@ -22,7 +22,7 @@
 		<% end %>
 		<% if @terapeutas != nil %>
 			<% @terapeutas.each do |terapeuta| %>
-				<% if terapeuta.plan_tipo == "Gratis" %>
+				<% if terapeuta.plan_tipo.downcase == "gratis" %>
 					<div class="ficha-persona ficha-simple">
 					<div class="foto"><%= image_tag 'img/terapeuta_thumb_perfil-default.png'%></div>
 					<div class="contenido-ficha">

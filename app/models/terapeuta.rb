@@ -13,11 +13,12 @@ class Terapeuta < ActiveRecord::Base
   after_validation :geocode
   
   define_index do
-    indexes nombre
+    indexes nombre, :sortable => true
     indexes enfoque
     indexes arancel
     indexes region
     indexes comuna
+    indexes plan_tipo
     indexes convenios.valor
     indexes estudios.titulo, :as => :estudio_titulo
     indexes estudios.establecimiento, :as => :estudio_establecimiento
