@@ -9,9 +9,6 @@ class Terapeuta < ActiveRecord::Base
   include BCrypt
   mount_uploader :imagen_url, PerfilUploader
   
-  geocoded_by :direccion_completa
-  after_validation :geocode
-  
   define_index do
     indexes nombre, :sortable => true
     indexes enfoque
@@ -64,15 +61,20 @@ class Terapeuta < ActiveRecord::Base
   validate :tipo_terapias_size
   validates_format_of :rut, :with => /^0*(\d{1,3}(\.?\d{3})*)\-?([\dkK])$/i, :if => :rut?
   
+  geocoded_by :direccion_completa
+  after_validation :geocode
+  
   # attr_accessible :especialidades_attributes
   # attr_accessible :email_recovery
   
-  attr_unsearchable :email, :password_hash, :created_at, :updated_at, :last_logged_in, :telefono, :movil, :direccion
-  #before_create { generate_token(:auth_token) }
+  # attr_unsearchable :email, :password_hash, :created_at, :updated_at, :last_logged_in, :telefono, :movil, :direccion
+  # before_create { generate_token(:auth_token) }
   # nombre, direccion, region, comuna, ptelefono, telefono, pmovil, movil, email, tipo, especialidad
   
   def direccion_completa
-    direccion + ', ' + comuna + ', ' + region
+    if direccion? and comuna? and region?
+      direccion + ', ' + comuna + ', ' + region
+    end
   end
   
   def password

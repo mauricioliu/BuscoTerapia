@@ -16,7 +16,7 @@ class CreateAsesorias < ActiveRecord::Migration
       t.string :hora_hasta
       
       # t.string :terapeuta_sexo
-      t.string :terapeuta_otro
+      t.string :terapeuta_otro, :limit => 65535
       t.timestamps
     end
   end
