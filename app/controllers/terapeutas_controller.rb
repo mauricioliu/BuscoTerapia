@@ -27,7 +27,7 @@ class TerapeutasController < ApplicationController
                                      :page => params[:page], :per_page => 10,
                                      :conditions => @h,
                                      :sort_mode => :extended,
-                                     :order => "@random")
+                                     :order => "random_me desc")
         @total = @terapeutas.total_entries
     end
     # @search = Terapeuta.search(params[:search])

@@ -10,18 +10,24 @@ class Terapeuta < ActiveRecord::Base
   mount_uploader :imagen_url, PerfilUploader
   
   define_index do
-    indexes nombre, :sortable => true
+    indexes "rand(second(now()))", :as => :random_me, :sortable => true
+    indexes nombre
     indexes enfoque
     indexes arancel
     indexes region
     indexes comuna
     indexes plan_tipo
     indexes estado
+    indexes updated_at, :sortable => true
     indexes convenios.valor
     indexes estudios.titulo, :as => :estudio_titulo
     indexes estudios.establecimiento, :as => :estudio_establecimiento
     indexes especialidades.valor, :as => :especialidades
     indexes tipo_terapias.nombre, :as => :tipo_terapias
+  end
+  
+  def randomize
+    id * rand(100) * rand(100)
   end
   
   has_many :tipo_terapias, :dependent => :destroy
