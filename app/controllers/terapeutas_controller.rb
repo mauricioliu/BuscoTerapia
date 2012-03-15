@@ -14,7 +14,7 @@ class TerapeutasController < ApplicationController
       @h = Hash.new
       @h["estado"] = "validado"
       if params[:form] != nil and params[:form][:tipo_terapeuta] != nil and params[:form][:tipo_terapeuta] != ''
-        @h["tipo_terapias"] = escape_characters_in_string(params[:form][:tipo_terapeuta])
+        @search_me = escape_characters_in_string(params[:form][:tipo_terapeuta])
       end
       if params[:form] != nil and params[:form][:region] != nil and params[:form][:region] != '' 
         @h["region"] = params[:form][:region]
@@ -22,7 +22,8 @@ class TerapeutasController < ApplicationController
       if params[:form] != nil and params[:form][:comuna] != nil and params[:form][:comuna] != ''
         @h["comuna"] = params[:form][:comuna]
       end
-        @terapeutas = Terapeuta.search(params[:search].to_s, 
+        temp = @search_me == nil ? '' : @search_me 
+        @terapeutas = Terapeuta.search(params[:search].to_s + " " +temp, 
                                      :page => params[:page], :per_page => 10,
                                      :conditions => @h,
                                      :sort_mode => :extended,

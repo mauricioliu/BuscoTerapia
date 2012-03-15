@@ -11,7 +11,7 @@
 						<div class="form-block">
 							<div class="label">Tipo de terapia:</div>
 							<div class="input_field">
-								<%= collection_select :form, :tipo_terapeuta, RefDatum.where(:nombre => "Tipo Terapeuta"), :valor, :valor, :prompt => "No lo tengo claro" %>
+								<%= collection_select :form, :tipo_terapeuta, RefDatum.where(:nombre => "Especialidad"), :valor, :valor, :prompt => "No lo tengo claro" %>
 							</div>
 						</div>
 						<div class="form-block">

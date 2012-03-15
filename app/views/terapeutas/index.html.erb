@@ -10,8 +10,8 @@
 		<% if @h.size > 0 %>
 			<p class="busqueda-mensaje-resultado">
 			Se han encontrado <strong><%= @terapeutas.total_entries %></strong> resultados
-		<% if @h.has_key?("tipo_terapias") %>
-			con <strong><%= @h["tipo_terapias"] %></strong>
+		<% if @search_me %>
+			con <strong><%= @search_me %></strong>
 		<% end %>
 		<% if @h.has_key?("region") %>
 			en <strong><%= @h["region"] %></strong>
@@ -106,7 +106,8 @@
 								<h3>Datos de Contacto:</h3>
 								<ul>
 									<li><span><strong>Dirección:</strong> <%= terapeuta.direccion %>, <%= terapeuta.comuna %>, <%= terapeuta.region %>.</span></li>
-									<li><span><strong>Teléfonos de contacto:</strong> <%= terapeuta.telefono %></span></li>
+									<li><span><strong>Teléfonos fijo:</strong> <%= terapeuta.telefono %></span></li>
+									<li><span><strong>Teléfonos movil:</strong> <%= terapeuta.movil %></span></li>
 									<li><span><strong>Correo electrónico:</strong> <%= terapeuta.email %></span></li> 
 									<% if terapeuta.sitio_web.length > 0 %><li><span><strong>Sitio web:</strong> <%= link_to terapeuta.sitio_web, "http://"+terapeuta.sitio_web, :target => "_blank" %></span></li><% end %>
 								</ul>
