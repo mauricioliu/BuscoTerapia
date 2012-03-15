@@ -23,7 +23,7 @@
 		<% end %>
 		<% if @terapeutas != nil %>
 			<% @terapeutas.each do |terapeuta| %>
-				<% if terapeuta.plan_tipo == "gratis" %>
+				<% if terapeuta and terapeuta.plan_tipo == "Gratis" %>
 					<div class="ficha-persona ficha-simple">
 					<div class="foto"><%= image_tag 'img/terapeuta_thumb_perfil-default.png'%></div>
 					<div class="contenido-ficha">
@@ -48,7 +48,7 @@
 					</div><!--contenido ficha-->
 					
 				</div><!--ficha persona-->
-				<% else %>
+				<% elsif terapeuta %>
 					<div class="ficha-persona">
 					<% if terapeuta.imagen_url.size != 0 %>
 						<div class="foto"><%= image_tag terapeuta.imagen_url.terapeuta_thumb.url.to_s %></div>
@@ -56,7 +56,7 @@
 						<div class="foto"><%= image_tag 'img/terapeuta_thumb_perfil-default.png'%></div>
 					<% end %>
 					<div class="contenido-ficha">
-						<p class="nombre-ficha"><%= terapeuta.nombre.titleize %></p>
+						<p class="nombre-ficha"><%= link_to terapeuta.nombre.titleize, ficha_path(terapeuta) %></p>
 						<p>
 							<% terapeuta.tipo_terapias.each do |tt| %>
 								<%= tt.nombre %> - 
@@ -106,8 +106,8 @@
 								<h3>Datos de Contacto:</h3>
 								<ul>
 									<li><span><strong>Dirección:</strong> <%= terapeuta.direccion %>, <%= terapeuta.comuna %>, <%= terapeuta.region %>.</span></li>
-									<li><span><strong>Teléfonos fijo:</strong> <%= terapeuta.telefono %></span></li>
-									<li><span><strong>Teléfonos movil:</strong> <%= terapeuta.movil %></span></li>
+									<li><span><strong>Teléfono fijo:</strong> <%= terapeuta.telefono %></span></li>
+									<li><span><strong>Teléfono movil:</strong> <%= terapeuta.movil %></span></li>
 									<li><span><strong>Correo electrónico:</strong> <%= terapeuta.email %></span></li> 
 									<% if terapeuta.sitio_web.length > 0 %><li><span><strong>Sitio web:</strong> <%= link_to terapeuta.sitio_web, "http://"+terapeuta.sitio_web, :target => "_blank" %></span></li><% end %>
 								</ul>

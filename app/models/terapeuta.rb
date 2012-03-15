@@ -45,7 +45,7 @@ class Terapeuta < ActiveRecord::Base
   # validates :email, presence: true, uniqueness: true
   validates_associated :especialidades, :estudios
   
-  validates_presence_of :nombre, :direccion, :region, :comuna, :rut
+  validates_presence_of :nombre, :direccion, :region, :comuna, :rut, :arancel
   validates_numericality_of :telefono, :if => :telefono?
   validates_numericality_of :movil, :if => :movil?
   # validates_presence_of :telefono, :if => :tiene_numero_contacto?, :message => "Debe ingresar al menos un numero de contacto"

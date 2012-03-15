@@ -321,22 +321,6 @@ $(document).ready(function () {
 				
 			}
 		});
-		$(this).find(".contenido-ficha").click(function(){
-			if($(this).parent().hasClass("ficha-simple")){
-				this_speed = "fast"
-			}else{
-				this_speed = "slow"
-			}
-			if(!$(this).parent().hasClass("abierta")){
-				$('html,body').animate({scrollTop: $(this).parent().offset().top-45},'slow');
-				$(this).find(".descripcion-full").animate({opacity: 'show', height: 'show'}, this_speed,
-				function(){
-					$(this).parent().parent().addClass("abierta")
-					$(this).find(".map-container iframe").attr("src",$(this).find(".map-container iframe").attr("src"));
-				}
-				);
-			}
-		});
 	});
 		
 	$(".pagination ul li").each(function(){

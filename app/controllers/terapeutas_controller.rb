@@ -58,8 +58,6 @@ class TerapeutasController < ApplicationController
   
   def ver_ficha
     @terapeuta = Terapeuta.find(params[:id])
-    
-    render "show"
   end
   
   def acceso_terapeutas

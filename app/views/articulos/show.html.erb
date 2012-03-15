@@ -2,7 +2,7 @@
 	<div class="wrapper" id="content">
 
 	<div class="columna-670-left">
-		<h2>Artículos</h2>
+		<h2><%= @articulo.tipo == "noticia" ? "Noticias" : "Artículos" %></h2>
 		<div class="busqueda-box-center sec-articulos-y-noticias">
 			<div class="articulo-volver">
 				<%= link_to '<< Volver', articulos_path %>
@@ -57,7 +57,7 @@
 				<div class="ficha-noticia">
 					<div class="contenido-ficha">
 							<div class="encabezado">
-								<h3><%= noticia.titulo %></h3>
+								<h3><%= link_to noticia.titulo, articulo_path(noticia) %></h3>
 								<p><%= noticia.created_at.strftime('%B %e, %Y')%></p>
 							</div>
 							<div class="foto"><%= image_tag noticia.imagen_url.horizontal_thumb.url.to_s %></div>

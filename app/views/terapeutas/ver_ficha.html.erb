@@ -1,0 +1,157 @@
+<div id="block-content" class="block-wrapper">
+	<div class="wrapper" id="content">
+
+	<div class="columna-670-left">
+		<h2>Mi ficha:</h2>
+		<div class="busqueda-box-center">
+		
+			<div class="form-box form-perfil">
+			
+				<div class="mi-perfil">
+					<h3>Perfil</h3>
+					<div class="form-block one-line">
+						<div class="label">Nombre:</div>
+						<div class="input_field">
+							<strong><%= @terapeuta.nombre %></strong>
+						</div>
+					</div>
+					
+					<div class="form-block one-line">
+						<div class="label">Correo electrónico:</div>
+						<div class="input_field">
+							<%= @terapeuta.email %>
+							<!-- mensaje aparece solo cuando no completó -->
+							<!-- <p class="message">*por favor complete este campo</p>-->
+							<!-- / -->
+						</div>
+					</div>
+					
+					<div class="form-block one-line listaDias">
+						<div class="label">Profesión:</div>
+						<div class="columna30">
+							<% @terapeuta.tipo_terapias.each do |terapia| %>
+							- <%= terapia.nombre %><br />
+							<% end %>
+						</div>
+					</div>
+					
+					<div class="form-block one-line">
+						<div class="label">Enfoque:</div>
+						<div class="input_field">
+							<%= @terapeuta.enfoque %>
+						</div>
+					</div>
+					
+					<div class="form-block one-line">
+						<div class="label">Especialidad:</div>
+						<div class="input_field">
+							<% @terapeuta.especialidades.each do |especialidad| %>
+							- <%= especialidad.valor %><br />
+							<% end %>
+						</div>
+					</div>
+				
+					<div id="foto-perfil">
+						<div class="foto">
+							<% if @terapeuta.imagen_url.length != 0 %>
+								<%= image_tag @terapeuta.imagen_url.terapeuta_img.url.to_s %>
+							<% else %>
+								<img src="http://fpoimg.com/170x130" alt="Esteban Soto" width="170" height="130 border="0" />
+							<% end %>
+						</div>
+					</div>
+				</div>
+				
+				<div class="mis-datos">
+					<h3>Estudios:</h3>
+					<div class="form-block one-line">
+						<div class="label">Título:</div>
+						<div class="input_field">
+							<% @terapeuta.estudios.each do |estudio| %>
+							- <%= estudio.titulo %>, <%= estudio.establecimiento %><br />
+							<% end %>
+						</div>
+					</div>
+				</div>
+				
+				<div class="mis-datos">
+					<h3>Mis datos de contacto:</h3>
+					<div class="form-block one-line">
+						<div class="label">Dirección:</div>
+						<div class="input_field">
+							<%= @terapeuta.direccion_completa %>
+						</div>
+					</div>
+					<div class="form-block one-line">
+						<div class="label">Casa/Depto:</div>
+						<div class="input_field">
+							<%= @terapeuta.anexo_direccion %>
+							<!-- mensaje aparece solo cuando no completó -->
+							<!-- <p class="message">*por favor complete este campo</p>-->
+							<!-- / -->
+						</div>
+					</div>
+					
+					<div class="form-block one-line">
+						<div class="label">Teléfono de contacto <strong>fijo</strong>:</div>
+						<div class="input_field">
+							<%= @terapeuta.telefono %>
+						</div>
+					</div>
+					
+					<div class="form-block one-line">
+						<div class="label">Teléfono de contacto <strong>móvil</strong>:</div>
+						<div class="input_field">
+							<%= @terapeuta.movil %>
+						</div>
+					</div>
+					
+					<div class="form-block one-line">
+						<div class="label">Sitio web:</div>
+						<div class="input_field">
+							<%= @terapeuta.sitio_web %>
+						</div>
+					</div>
+				</div><!--MIS DATOS-->
+				
+				<div class="mis-datos">
+					<h3>Formas de pago, aranceles y descuentos:</h3>
+					<div class="form-block one-line">
+						<div class="label">Arancel:</div>
+						<div class="input_field">
+							<%= @terapeuta.arancel %>
+						</div>
+					</div>
+					<div class="form-block one-line">
+						<div class="label">Convenios:</div>
+						<div class="input_field">
+							<% @terapeuta.convenios.each do |convenio| %>
+							- <%= convenio.valor %><br />
+							<% end %>
+						</div>
+					</div>
+					<div class="form-block one-line">
+						<div class="label">Descuentos:</div>
+						<div class="input_field">
+							<%= @terapeuta.descuentos %>
+						</div>
+					</div>
+					<div class="form-block one-line listaDias">
+						<div class="label">Formas de pago: </div>
+						<div class="columna30">
+							<% @terapeuta.forma_pagos.each do |forma_pago| %>
+							- <%= forma_pago.valor %><br />
+							<% end %>
+						</div>
+					</div>
+				</div><!--MIS DATOS-->
+			</div><!-- form-perfil -->
+		</div><!-- form-center -->
+
+
+	</div><!--columna-670-left-->
+	
+	<%= render "home/preguntas_frecuentes" %>
+	
+	<div class="clear"></div>
+</div><!-- block-wrapper -->
