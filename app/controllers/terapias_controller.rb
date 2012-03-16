@@ -1,4 +1,5 @@
 class TerapiasController < ApplicationController
+  before_filter :set_title
   http_basic_authenticate_with :name => "btp", :password => "btp.123!", :only => [:new, :edit]
   # GET /terapias
   # GET /terapias.json
@@ -18,7 +19,7 @@ class TerapiasController < ApplicationController
   def show
     @terapia = Terapia.find(params[:id])
     @terapias = Terapia.all(:order => "created_at desc", :limit => 5)
-
+    @title = @terapia.nombre_corto
     
     respond_to do |format|
       format.html # show.html.erb
@@ -85,4 +86,9 @@ class TerapiasController < ApplicationController
       format.json { head :ok }
     end
   end
+
+private  
+  def set_title
+    @title = "Terapias"   
+  end  
 end

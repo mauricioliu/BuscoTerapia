@@ -1,4 +1,5 @@
 class ArticulosController < ApplicationController
+  before_filter :set_title
   http_basic_authenticate_with :name => "btp", :password => "btp.123!", :only => [:new, :edit]
   # GET /articulos
   # GET /articulos.json
@@ -18,6 +19,8 @@ class ArticulosController < ApplicationController
   def show
     @articulo = Articulo.find(params[:id])
     @noticias = Articulo.where("tipo = 'noticia'").order("created_at desc")
+    @title = @articulo.titulo
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @articulo }
@@ -83,4 +86,9 @@ class ArticulosController < ApplicationController
       format.json { head :ok }
     end
   end
+  
+private  
+  def set_title
+    @title = "Articulos y Noticias"   
+  end  
 end

@@ -4,12 +4,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-	<meta content="Mauricio Liu, liu.mauricio@gmail.com" name="Author">
-  	<title>Buscoterapia</title>
+	<meta name="Author" content="Mauricio Liu, liu.mauricio@gmail.com">
+	<% if @description %>
+		<meta name="description" content="<%= @description %>" />
+	<% elsif @title %>
+		<meta name="description" content="<%= @title %> - BuscoTerapia" />
+	<% else %>
+		<meta name="description" content="Buscoterapia te ofrece de manera gratuita el más amplio y completo servicio de búsqueda de terapias y terapeutas a nivel nacional." />
+	<% end %>
+	<meta name="keywords" content="<%= @title ? @title + " - BuscoTerapia" : "Busco Terapia, Psicologo, Psiquiatra, Medico Alternativo" %>" />
+  	<title><%= @title ? @title + " - BuscoTerapia" : "Buscoterapia" %></title>
 	 	<%= stylesheet_link_tag "main" %>
   		<%= javascript_include_tag 'application' %>
   		<%= csrf_meta_tag %>
-  		
         <script type="text/javascript">
 
           var _gaq = _gaq || [];

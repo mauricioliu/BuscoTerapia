@@ -1,4 +1,6 @@
+# encoding: utf-8
 class AsesoriasController < ApplicationController
+  before_filter :set_title
   # GET /asesoria
   # GET /asesoria.json
   def index
@@ -106,5 +108,11 @@ class AsesoriasController < ApplicationController
     @asesoria = Asesoria.find(params[:id])
     AsesoriaMailer.send_confirmation(@asesoria).deliver
     AsesoriaMailer.inform_request(@asesoria).deliver
+  end
+
+private
+  def set_title
+    @title = "Asesórate con nuestros profesionales"
+    @description = "Nuestro equipo de profesionales te ofrece sin costo y en menos de 90 minutos la información necesaria para que elijas la terapia que sea más beneficiosa"
   end
 end

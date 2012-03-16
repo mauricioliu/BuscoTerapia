@@ -2,6 +2,7 @@
 require 'date'
 
 class TerapeutasController < ApplicationController
+  before_filter :set_title
   layout :resolve_layout 
   
   
@@ -49,6 +50,7 @@ class TerapeutasController < ApplicationController
   # GET /terapeuta/1.json
   def show
     @terapeuta = Terapeuta.find(params[:id])
+    @title = @terapeuta.nombre
 
     respond_to do |format|
       format.html # show.html.erb
@@ -59,6 +61,7 @@ class TerapeutasController < ApplicationController
   def ver_ficha
     @terapeuta = Terapeuta.find(params[:id])
     @contacto = true
+    @title = @terapeuta.nombre
     
     render "show"
   end
@@ -100,6 +103,7 @@ class TerapeutasController < ApplicationController
   # GET /terapeuta/1/edit
   def edit
     @terapeuta = Terapeuta.find(params[:id])
+    @title = @terapeuta.nombre
     if @terapeuta.id != session[:terapeuta].id
       redirect_to root_url
     else
@@ -284,4 +288,8 @@ private
     pattern = /(\'|\"|\.|\*|\/|\-|\\)/
     string.gsub(pattern){|match|"\\"  + match} # <-- Trying to take the currently found match and add a \ before it I have no idea how to do that).
   end
+
+  def set_title
+    @title = "Terapeutas"   
+  end  
 end
