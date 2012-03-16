@@ -17,6 +17,8 @@
 							<%= simple_format(@terapia.descripcion) %>								
 					</div><!-- ficha-columna -->
 					
+					
+					<% if @terapia.terapeutas and @terapia.terapeutas.size > 0 %>
 					<div class="ficha-sidebar">
 						<div class="box box-terapeutas">
 							<h3>Terapéutas <%= @terapia.nombre_corto %>:</h3>
@@ -34,6 +36,7 @@
 							</ul>
 						</div>
 					</div><!-- ficha-sidebar -->
+					<% end %>
 						
 					<hr/>	
 					<div class="bottom-social">
