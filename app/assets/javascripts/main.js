@@ -672,4 +672,54 @@ $(document).ready(function () {
 		})
 	})
 	
+	$(".ver-ficha-persona").each(function(){
+	
+		$(this).find("#boton-contactar-terapeuta").click(function(){
+			rootFicha = $(this)
+			while(!rootFicha.hasClass("ver-ficha-persona")){
+				rootFicha = rootFicha.parent()
+			}
+			fichaContacto = '			<div class="busqueda-box-center">'
+			fichaContacto += '				<div class="ficha-persona">'
+			fichaContacto += '				<form method="post" action="/contactar_terapeuta" accept-charset="UTF-8">'
+			fichaContacto += '				<input type="hidden" value="'+rootFicha.find(".nombre-ficha").html()+'" name="terapeuta_nombre" id="terapeuta_nombre">'
+			fichaContacto += '				<div class="foto"><img src="'+rootFicha.find(".foto img").attr("src")+'" width="42" height="42" border="0" /></div>'
+			fichaContacto += '					<div class="contenido-ficha">'
+			fichaContacto += '						<p class="nombre-ficha">'+rootFicha.find(".nombre-ficha").html()+'</p>'
+			fichaContacto += '					<div class="contactarTerapeutaForm">'
+			fichaContacto += '					<div class="columna50">'
+			fichaContacto += '						<div class="form-block">'
+			fichaContacto += '							<div class="label">Tu nombre</div>'
+			fichaContacto += '							<div class="input_field">'
+			fichaContacto += '								<input type="text" name="nombre" id="nombre">'
+			fichaContacto += '							</div>'
+			fichaContacto += '						</div>'
+			fichaContacto += '					</div>'
+			fichaContacto += '					<div class="columna50 last">'
+			fichaContacto += '						<div class="form-block">'
+			fichaContacto += '							<div class="label">Tu email</div>'
+			fichaContacto += '							<div class="input_field">'
+			fichaContacto += '								<input type="text" name="email" id="email">'
+			fichaContacto += '							</div>'
+			fichaContacto += '						</div>'
+			fichaContacto += '					</div>'
+			fichaContacto += '					<div class="form-block">'
+			fichaContacto += '						<div class="label">Mensaje</div>'
+			fichaContacto += '						<div class="input_field">'
+			fichaContacto += '							<textarea name="mensaje" id="mensaje" class="area_med"></textarea>'
+			fichaContacto += '						</div>'
+			fichaContacto += '					</div>'
+			fichaContacto += '					<div class="form-block">'
+			fichaContacto += '						<input type="hidden" name="identificador_unico_para_accionar" value="'+$(this).attr("rel")+'"/>'
+			fichaContacto += '						<input type="submit" value="Enviar mensaje" name="commit" class="boton-morado" data-disable-with="Enviando">'
+			fichaContacto += '					</div>'
+			fichaContacto += '					</div><!--contactarTerapeutaForm-->'
+			fichaContacto += '					</div><!--contenido ficha-->'
+			fichaContacto += '					</form>'
+			fichaContacto += '				</div>'
+			fichaContacto += '			</div>'
+			previewFicha(fichaContacto)
+		})
+	})
+	
 })

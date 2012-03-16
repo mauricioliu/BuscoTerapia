@@ -1,4 +1,4 @@
-<%= form_for @terapia, :html => {:multipart => true} do |f| %>
+<%= nested_form_for(@terapia) do |f| %>
   <% if @terapia.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@terapia.errors.count, "error") %> prohibited this terapia from being saved:</h2>
@@ -35,6 +35,19 @@
     <%= f.label :imagen_url %><br />
     <%= f.file_field :imagen_url %>
   </div>
+  
+  <%= f.fields_for :terapia_terapeutas do |tt| %>
+  <div class="input_field">
+	<%= tt.collection_select :terapeuta_id, Terapeuta.order(:nombre), :id, :nombre, {include_blank: true} %>
+	<%= tt.link_to_remove " X ", :class => "borrar" %>
+  </div>
+  <% end %>
+  <div class="input_field">
+  <%= f.link_to_add "Añadir Terapia", :terapia_terapeutas %>
+  </div>
+ 
+  <br />
+  <br />
   <div class="actions">
     <%= f.submit %>
   </div>

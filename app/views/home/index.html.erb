@@ -42,7 +42,7 @@
 			<li>
 				<div class="bg-color">
 				<%= image_tag articulo.imagen_url.carusel_thumb.url.to_s %>
-				<h3><a href="#"><%= articulo.titulo %></a></h3>
+				<h3><%= link_to articulo.titulo, articulo_path(articulo) %></h3>
 				<p>
 					<%= articulo.contenido[1,170 ]%>								 
 					... <%= link_to 'Ver más', articulo_path(articulo) %>.</a>

@@ -16,6 +16,24 @@
 							<p class="nombre-ficha"><%= @terapia.nombre_corto %></p>
 							<%= simple_format(@terapia.descripcion) %>								
 					</div><!-- ficha-columna -->
+					
+					<div class="ficha-sidebar">
+						<div class="box box-terapeutas">
+							<h3>Terapéutas <%= @terapia.nombre_corto %>:</h3>
+							<ul>
+								<% @terapia.terapeutas.each do |terapeuta| %>
+								<li><span>
+									<%= link_to terapeuta.nombre, ficha_path(terapeuta) %><br/>
+									<% terapeuta.tipo_terapias.each do |tt| %>
+										<%= tt.nombre %> - 
+									<% end %><br />
+									<%= terapeuta.comuna.titleize %>, <%= terapeuta.region.titleize %>
+									</span>
+								</li>
+								<% end %>
+							</ul>
+						</div>
+					</div><!-- ficha-sidebar -->
 						
 					<hr/>	
 					<div class="bottom-social">
