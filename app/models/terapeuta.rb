@@ -10,7 +10,7 @@ class Terapeuta < ActiveRecord::Base
   mount_uploader :imagen_url, PerfilUploader
   
   define_index do
-    indexes "rand(second(now()))", :as => :random_me, :sortable => true
+    # indexes "rand(second(now()))", :as => :random_me, :sortable => true
     indexes nombre
     indexes enfoque
     indexes arancel
