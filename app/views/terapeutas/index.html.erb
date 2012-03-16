@@ -56,7 +56,7 @@
 						<div class="foto"><%= image_tag 'img/terapeuta_thumb_perfil-default.png'%></div>
 					<% end %>
 					<div class="contenido-ficha">
-						<p class="nombre-ficha"><%= link_to terapeuta.nombre.titleize, ficha_path(terapeuta) %></p>
+						<p class="nombre-ficha"><%= link_to terapeuta.nombre.titleize, ficha_path(terapeuta), :class => "nombre-ficha-link" %></p>
 						<p>
 							<% terapeuta.tipo_terapias.each do |tt| %>
 								<%= tt.nombre %> - 
