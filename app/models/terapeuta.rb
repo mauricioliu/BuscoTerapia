@@ -9,23 +9,6 @@ class Terapeuta < ActiveRecord::Base
   include BCrypt
   mount_uploader :imagen_url, PerfilUploader
   
-  define_index do
-    indexes "rand(second(now()))", :as => :random_me, :sortable => true
-    indexes nombre
-    indexes enfoque
-    indexes arancel
-    indexes region
-    indexes comuna
-    indexes plan_tipo
-    indexes estado
-    indexes updated_at, :sortable => true
-    indexes convenios.valor
-    indexes estudios.titulo, :as => :estudio_titulo
-    indexes estudios.establecimiento, :as => :estudio_establecimiento
-    indexes especialidades.valor, :as => :especialidades
-    indexes tipo_terapias.nombre, :as => :tipo_terapias
-  end
-  
   has_many :tipo_terapias, :dependent => :destroy
   has_many :especialidades, :dependent => :destroy
   has_many :estudios, :dependent => :destroy
@@ -72,6 +55,23 @@ class Terapeuta < ActiveRecord::Base
   # attr_unsearchable :email, :password_hash, :created_at, :updated_at, :last_logged_in, :telefono, :movil, :direccion
   # before_create { generate_token(:auth_token) }
   # nombre, direccion, region, comuna, ptelefono, telefono, pmovil, movil, email, tipo, especialidad
+  
+  define_index do
+    indexes "rand(second(now()))", :as => :random_me, :sortable => true
+    indexes nombre
+    indexes enfoque
+    indexes arancel
+    indexes region
+    indexes comuna
+    indexes plan_tipo
+    indexes estado
+    indexes updated_at, :sortable => true
+    indexes convenios.valor
+    indexes estudios.titulo, :as => :estudio_titulo
+    indexes estudios.establecimiento, :as => :estudio_establecimiento
+    indexes especialidades.valor, :as => :especialidades
+    indexes tipo_terapias.nombre, :as => :tipo_terapias
+  end
   
   def direccion_completa
     if direccion? and comuna? and region?
