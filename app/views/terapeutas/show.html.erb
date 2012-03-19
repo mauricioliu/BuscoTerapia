@@ -60,7 +60,7 @@
 									<li><span><strong>Dirección:</strong> <%= @terapeuta.direccion %>, <%= @terapeuta.comuna %>, <%= @terapeuta.region %>.</span></li>
 									<li><span><strong>Teléfonos de contacto:</strong> <%= @terapeuta.telefono %></span></li>
 									<li><span><strong>Correo electrónico:</strong> <%= @terapeuta.email %></span></li> 
-									<% if @terapeuta.sitio_web.length > 0 %><li><span><strong>Sitio web:</strong> <%= link_to @terapeuta.sitio_web, "http://"+@terapeuta.sitio_web, :target => "_blank" %></span></li><% end %>
+									<% if @terapeuta.sitio_web.length > 0 %><li><span><strong>Sitio web:</strong> <%= link_to @terapeuta.sitio_web, "http://"+@terapeuta.sitio_web, :rel => "nofollow", :target => "_blank" %></span></li><% end %>
 								</ul>
 								
 								<% if @contacto %>

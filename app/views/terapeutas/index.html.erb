@@ -109,7 +109,7 @@
 									<li><span><strong>Teléfono fijo:</strong> <%= terapeuta.telefono %></span></li>
 									<li><span><strong>Teléfono movil:</strong> <%= terapeuta.movil %></span></li>
 									<li><span><strong>Correo electrónico:</strong> <%= terapeuta.email %></span></li> 
-									<% if terapeuta.sitio_web.length > 0 %><li><span><strong>Sitio web:</strong> <%= link_to terapeuta.sitio_web, "http://"+terapeuta.sitio_web, :target => "_blank" %></span></li><% end %>
+									<% if terapeuta.sitio_web.length > 0 %><li><span><strong>Sitio web:</strong> <%= link_to terapeuta.sitio_web, "http://"+terapeuta.sitio_web, :target => "_blank", :rel => "nofollow" %></span></li><% end %>
 								</ul>
 								
 								<input type="button" value="Contactar al Terapeuta" class="boton-morado" id="boton-contactar-terapeuta" />
