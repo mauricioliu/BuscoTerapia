@@ -14,7 +14,7 @@
 						<div class="foto"><%= image_tag @articulo.imagen_url.medium_thumb.url.to_s %></div>
 						<div class="encabezado">
 							<h3><%= @articulo.titulo %>.</h3>
-							<p><%= @articulo.created_at.strftime('%B %e, %Y')%>. Escrito por <%= @articulo.autor %>, <%= @articulo.especialidad %>.</p>
+							<p><%= I18n.localize(@articulo.created_at, :format => "%e de %B, %Y")%>. Escrito por <%= @articulo.autor %>, <%= @articulo.especialidad %>.</p>
 		
 						</div>
 						<p>

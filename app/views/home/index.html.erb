@@ -44,7 +44,7 @@
 				<%= image_tag articulo.imagen_url.carusel_thumb.url.to_s %>
 				<h3><%= link_to articulo.titulo, articulo_path(articulo) %></h3>
 				<p>
-					<%= articulo.contenido[1,170 ]%>								 
+					<%= articulo.contenido[0,170 ]%>								 
 					... <%= link_to 'Ver más', articulo_path(articulo) %>.</a>
 				</p>
 				</div>
