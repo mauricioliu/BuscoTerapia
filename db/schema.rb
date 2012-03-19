@@ -11,18 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120314020025) do
+ActiveRecord::Schema.define(:version => 20120318165850) do
 
   create_table "articulos", :force => true do |t|
     t.string   "titulo"
     t.string   "autor"
     t.string   "especialidad"
-    t.text     "contenido",    :limit => 2147483647
+    t.text     "contenido",        :limit => 2147483647
     t.string   "tipo"
     t.string   "imagen_url"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
+    t.string   "mostrar_carrusel"
   end
 
   add_index "articulos", ["slug"], :name => "index_articulos_on_slug"

@@ -114,5 +114,6 @@ private
   def set_title
     @title = "Asesórate con nuestros profesionales"
     @description = "Nuestro equipo de profesionales te ofrece sin costo y en menos de 90 minutos la información necesaria para que elijas la terapia que sea más beneficiosa"
+    @menu = "asesoria"
   end
 end

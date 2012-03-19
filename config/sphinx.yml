@@ -1,5 +1,7 @@
 development:
+  mem_limit: 128M
   bin_path: C:\Sphinx\bin
 
 production:
+  mem_limit: 128M
   bin_path: /usr/local/bin/

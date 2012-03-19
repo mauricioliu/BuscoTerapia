@@ -5,7 +5,7 @@ class ArticulosController < ApplicationController
   # GET /articulos.json
   def index
     @articulos = Articulo.where("tipo = 'articulo'").order("created_at desc") 
-    @noticias = Articulo.where("tipo = 'noticia'").order("created_at desc")
+    @noticias = Articulo.where("tipo = 'noticia' and mostrar_carrusel='1'").order("created_at desc").limit(3)
     @articulos = @articulos.page(params[:page]).per_page(5)
 
     respond_to do |format|
@@ -89,6 +89,7 @@ class ArticulosController < ApplicationController
   
 private  
   def set_title
-    @title = "Articulos y Noticias"   
+    @title = "Articulos y Noticias"
+    @menu = "articulos"
   end  
 end

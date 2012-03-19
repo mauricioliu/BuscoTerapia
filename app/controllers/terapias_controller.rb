@@ -89,6 +89,7 @@ class TerapiasController < ApplicationController
 
 private  
   def set_title
-    @title = "Terapias"   
+    @title = "Terapias"
+    @menu = "terapias"   
   end  
 end

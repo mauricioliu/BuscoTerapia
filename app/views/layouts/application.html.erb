@@ -81,14 +81,38 @@
 	<div id="block-nav" class="block-wrapper">
 		<div id="nav" class="wrapper">
 			<ul class="main">
-				<li class="current"><%= link_to 'Inicio', root_url %></li>
-				<li><%= link_to 'Solicitar asesoría terapeutica', new_asesoria_path %></li>
-				<li><%= link_to 'Buscar terapeutas', terapeutas_path %></li>
-				<li><%= link_to 'Tipo de Terapias', terapias_path %></li>
-				<li><%= link_to 'Noticias y artículos', articulos_path %></li>
+				<% if @menu=="inicio" %>
+					<li class="current"><%= link_to 'Inicio', root_url %></li>
+				<% else %>
+					<li><%= link_to 'Inicio', root_url %></li>
+				<% end %>
+				<% if @menu=="asesoria" %>
+					<li class="current"><%= link_to 'Solicitar asesoría terapeutica', new_asesoria_path %></li>
+				<% else %>
+					<li><%= link_to 'Solicitar asesoría terapeutica', new_asesoria_path %></li>
+				<% end %>
+				<% if @menu=="buscar terapeuta"%>
+					<li class="current"><%= link_to 'Buscar terapeutas', terapeutas_path %></li>
+				<% else %>
+					<li><%= link_to 'Buscar terapeutas', terapeutas_path %></li>
+				<% end %>
+				<% if @menu=="terapias"%>
+					<li class="current"><%= link_to 'Tipo de Terapias', terapias_path %></li>
+				<% else %>
+					<li><%= link_to 'Tipo de Terapias', terapias_path %></li>
+				<% end %>
+				<% if @menu=="articulos"%>
+					<li class="current"><%= link_to 'Noticias y artículos', articulos_path %></li>
+				<% else %>
+					<li><%= link_to 'Noticias y artículos', articulos_path %></li>
+				<% end %>
 			</ul>
 			<ul class="acceso">
-				<li><%= link_to 'Acceso terapeutas', acceso_terapeutas_path %></li>
+				<% if @menu=="acceso terapeuta"%>
+					<li class="current"><%= link_to 'Acceso terapeutas', acceso_terapeutas_path %></li>
+				<% else %>
+					<li><%= link_to 'Acceso terapeutas', acceso_terapeutas_path %></li>
+				<% end %>
 			</ul>					
 		</div><!-- nav -->
 	</div><!-- block-nav -->

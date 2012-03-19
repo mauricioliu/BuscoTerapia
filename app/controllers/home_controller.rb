@@ -1,10 +1,11 @@
 class HomeController < ApplicationController
+  before_filter :set_title
   layout :resolve_layout 
   
   def index
     @search = Terapeuta.search(params[:search])
     @terapeutas = @search.all
-    @articulos = Articulo.where("tipo = 'articulo'").order("created_at desc") 
+    @articulos = Articulo.where("tipo = 'articulo' and mostrar_carrusel='1'").order("created_at desc") 
   end
   
   def preguntas_frecuentes
@@ -38,5 +39,9 @@ private
     else
       "application"
     end
+  end
+
+  def set_title
+    @menu = "inicio"
   end
 end

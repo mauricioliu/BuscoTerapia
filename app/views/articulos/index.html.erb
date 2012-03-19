@@ -24,7 +24,7 @@
 							<p><%= I18n.localize(articulo.created_at, :format => "%e de %B, %Y")%>. Escrito por <%= articulo.autor %>, <%= articulo.especialidad %>.</p>
 						</div>
 						<p>
-							<%= articulo.contenido[1,170 ]%>								 
+							<%= articulo.contenido[0,170 ]%>								 
 							... <%= link_to 'Continuar leyendo', articulo_path(articulo) %>.</a>
 						</p>						
 					</div><!--contenido ficha-->

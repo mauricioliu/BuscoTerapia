@@ -62,7 +62,7 @@
 							</div>
 							<div class="foto"><%= image_tag noticia.imagen_url.horizontal_thumb.url.to_s %></div>
 							<p>
-								<%= noticia.contenido[1,170 ]%>								 
+								<%= noticia.contenido[0,170 ]%>								 
 								... <%= link_to 'Continuar leyendo', articulo_path(noticia) %>.</a>
 							</p>						
 					</div><!--contenido ficha-->

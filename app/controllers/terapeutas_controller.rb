@@ -67,7 +67,7 @@ class TerapeutasController < ApplicationController
   end
   
   def acceso_terapeutas
-    
+    @menu = "acceso terapeuta"
   end
 
   # GET /terapeuta/new
@@ -290,6 +290,7 @@ private
   end
 
   def set_title
-    @title = "Terapeutas"   
+    @title = "Terapeutas"
+    @menu = "buscar terapeuta"   
   end  
 end

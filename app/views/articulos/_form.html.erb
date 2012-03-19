@@ -14,7 +14,7 @@
 
   <div class="field">
   	<%= f.label :tipo %><br />
-	<%= f.select :tipo, Articulo::TIPO_DOCUMENTOS, {} %>
+	<%= f.select :tipo, Articulo::TIPO_DOCUMENTOS, {}, :class => "tipo_articulo" %>
   </div>
   <div class="field">
     <%= f.label :titulo %><br />
@@ -35,6 +35,10 @@
   <div class="field">
     <%= f.label :imagen_url %><br />
     <%= f.file_field :imagen_url %>
+  </div>
+  <div class="mostrar_carrusel">
+    Mostrar en carrusel<br />
+    <%= f.check_box :mostrar_carrusel %>
   </div>
   <div class="actions">
     <%= f.submit %>
