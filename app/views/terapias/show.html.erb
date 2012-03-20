@@ -12,7 +12,7 @@
 				
 				<div class="contenido-ficha">
 					<div class="ficha-columna">
-							<div class="foto"><%= image_tag @terapia.imagen_url.thumb.url.to_s %></div>
+							<div class="foto"><%= image_tag @terapia.imagen_url.thumb.url.to_s, :alt => @terapia.nombre_corto %></div>
 							<p class="nombre-ficha"><%= @terapia.nombre_corto %></p>
 							<%= simple_format(@terapia.descripcion) %>								
 					</div><!-- ficha-columna -->
@@ -73,11 +73,11 @@
 				<div class="ficha-noticia">
 					<div class="contenido-ficha">
 							<div class="encabezado">
-								<h3><%= terapia.nombre_corto %></h3>
+								<h3><%= link_to terapia.nombre_corto, terapia_path(terapia) %></h3>
 							</div>
-							<div class="foto"><%= image_tag terapia.imagen_url.horizontal_thumb.url.to_s %></div>
+							<div class="foto"><%= image_tag terapia.imagen_url.horizontal_thumb.url.to_s, :alt => terapia.nombre_corto %></div>
 							<p>
-								<%= terapia.descripcion[1,170 ]%>								 
+								<%= terapia.descripcion[0,170 ]%>								 
 								... <%= link_to 'Continuar leyendo', terapia_path(terapia) %>.</a>
 							</p>						
 					</div><!--contenido ficha-->

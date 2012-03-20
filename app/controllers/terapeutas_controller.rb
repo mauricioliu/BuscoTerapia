@@ -171,7 +171,31 @@ class TerapeutasController < ApplicationController
     @tipo_terapias = RefDatum.where(:nombre => "Tipo Terapeuta")
     @especialidades = RefDatum.where(:nombre => "Especialidad")
     @forma_pagos = RefDatum.where(:nombre => "Formas de Pago")
-
+    
+    tipo_terapias = params[:tipo_terapia_ids]
+    if tipo_terapias
+      if @terapeuta.tipo_terapias.size != tipo_terapias.size
+        @terapeuta.tipo_terapias.delete_all
+        tipo_terapias.each do |tt|
+          @terapeuta.tipo_terapias.build(:nombre => tt )
+        end
+      end
+    elsif @terapeuta.tipo_terapias.size != 0
+      @terapeuta.tipo_terapias.delete_all
+    end
+    
+    forma_pagos = params[:forma_pago_ids]
+    if forma_pagos
+      if @terapeuta.forma_pagos.size != forma_pagos.size
+        @terapeuta.forma_pagos.delete_all
+        forma_pagos.each do |tt|
+          @terapeuta.forma_pagos.build(:valor => tt )
+        end
+      end
+    elsif @terapeuta.forma_pagos.size != 0
+      @terapeuta.forma_pagos.delete_all
+    end
+    
     respond_to do |format|
       if @terapeuta.update_attributes(params[:terapeuta])
         format.html { redirect_to @terapeuta, notice: 'Terapeuta fue modificado exitosamente.' }
