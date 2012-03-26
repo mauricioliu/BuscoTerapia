@@ -57,8 +57,7 @@ function updateEvent(the_event) {
       "/events/" + the_event.id,
       { event: { title: the_event.title,
                  starts_at: "" + the_event.start,
-                 ends_at: "" + the_event.end,
-                 description: the_event.description
+                 ends_at: "" + the_event.end
                }
       },
       function (reponse) { alert('successfully updated task.'); }

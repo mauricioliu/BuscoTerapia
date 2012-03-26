@@ -58,8 +58,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to calendario_path
     else
-      @event = Event.new(params[:event])
-      render "new"
+      redirect_to calendario_path
     end
   end
 
@@ -98,6 +97,12 @@ class EventsController < ApplicationController
   end
   
   def borrar_recurrente
+    @event = Event.find(params[:id])
+    @event.event_series.destroy
     
+    respond_to do |format|
+      format.html { redirect_to(calendario_path) }
+      format.xml  { head :ok }
+    end
   end
 end
