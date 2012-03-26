@@ -44,7 +44,7 @@ BuscoTerapia::Application.routes.draw do
   match "plan_beneficios" => "terapeutas#plan_beneficios"
   match "contactar_terapeuta" => "terapeutas#contactar_terapeuta"
   match "estadisticas" => "terapeutas#estadisticas"
-  match "/terapeutas/calendario" =>  "terapeutas#calendario", :as => 'calendario'
+  match "calendario" =>  "terapeutas#calendario"
   
   match '/ver_comprobante/:id' => 'asesorias#ver_comprobante', :as => 'ver_comprobante'
   
