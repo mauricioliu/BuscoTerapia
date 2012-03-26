@@ -1,0 +1,40 @@
+
+<div id="block-content" class="block-wrapper">
+	<div class="wrapper" id="content">
+
+		<div class="columna-670-left">
+			<div class="busqueda-box-center">
+				<div class="form-box">
+				<p id="notice"><%= notice %></p>
+				
+				<p>
+				  <b>Disponibilidad: </b>
+				  <%= @event.title %>
+				</p>
+				
+				<p>
+				  <b>Desde:</b>
+				  <%= I18n.localize(@event.starts_at, :format => "%H:%M hrs - %A %e de %B, %Y") %>
+				</p>
+				
+				<p>
+				  <b>Hasta:</b>
+				  <%= I18n.localize(@event.ends_at, :format => "%H:%M hrs - %A %e de %B, %Y") %>
+				</p>
+				
+				<p>
+					<b>¿Recurrente?</b>
+					<%= @event.event_series_id != nil ? "Si" : "No"%>
+				</p>
+				
+				<%= link_to 'Borrar esta disponibilidad', @event, confirm: '¿Seguro desea borrar disponibilidad?', method: :delete %> |
+				<% if @event.event_series_id != nil %>
+					<%= link_to 'Borrar todas las recurrencias',borrar_recurrente_path(@event), confirm: 'Esta accion borrara todas las recurrencias. ¿Seguro desea continuar?' %> | 
+				<% end %>
+				
+				<%= link_to 'Volver', calendario_path %>
+								</div>
+			</div>
+		</div>
+	</div>	
+</div>

@@ -21,4 +21,5 @@ inflect.irregular "dia_atencion", "dias_atencion"
 inflect.irregular "asesoria", "asesorias"
 inflect.irregular "convenio", "convenios"
 inflect.irregular "terapia_terapeuta", "terapia_terapeutas"
+inflect.irregular "event", "events"
 end

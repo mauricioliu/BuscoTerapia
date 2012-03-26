@@ -1,4 +1,6 @@
 BuscoTerapia::Application.routes.draw do
+  resources :events
+
   get "admin/index"
 
   resources :articulos
@@ -34,6 +36,7 @@ BuscoTerapia::Application.routes.draw do
   match "reset_password" => "terapeutas#reset_password", :as => "reset_password"
   match "acceso_terapeutas" => "terapeutas#acceso_terapeutas", :as => "acceso_terapeutas"
   match "validate_email" => "terapeutas#validate_email", :as => "validate_email"
+  match "/terapeutas/borrar_recurrente" => "terapeutas#borrar_recurrente", :as => "borrar_recurrente"
   match "/terapeutas/ficha/:id" => "terapeutas#ver_ficha", :as => "ficha"
   
   # match "submit_payment" => "terapeutas#submit_payment"
@@ -41,6 +44,7 @@ BuscoTerapia::Application.routes.draw do
   match "plan_beneficios" => "terapeutas#plan_beneficios"
   match "contactar_terapeuta" => "terapeutas#contactar_terapeuta"
   match "estadisticas" => "terapeutas#estadisticas"
+  match "/terapeutas/calendario" =>  "terapeutas#calendario", :as => calendario
   
   match '/ver_comprobante/:id' => 'asesorias#ver_comprobante', :as => 'ver_comprobante'
   

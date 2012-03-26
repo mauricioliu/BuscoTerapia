@@ -15,6 +15,8 @@ class Terapeuta < ActiveRecord::Base
   has_many :forma_pagos, :dependent => :destroy
   has_many :pagos, :dependent => :destroy
   has_many :convenios, :dependent => :destroy
+  has_many :events, :dependent => :destroy
+  has_many :event_series, :dependent => :destroy
   
   has_many :terapia_terapeutas
   has_many :terapias, :through => :terapia_terapeutas

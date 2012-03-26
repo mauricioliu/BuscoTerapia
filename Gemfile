@@ -41,9 +41,9 @@ gem 'geocoder'
 gem 'friendly_id'
 
 gem 'thinking-sphinx'
-#group :development do
-#  gem 'active_reload'
-#end
+group :development do
+  gem 'active_reload'
+end
 # gem 'rake', '0.8.7'
 
 # gem "execjs"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120318165850) do
+ActiveRecord::Schema.define(:version => 20120324140036) do
 
   create_table "articulos", :force => true do |t|
     t.string   "titulo"
@@ -77,6 +77,26 @@ ActiveRecord::Schema.define(:version => 20120318165850) do
     t.integer  "terapeuta_id"
     t.string   "titulo"
     t.string   "establecimiento"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "event_series", :force => true do |t|
+    t.integer  "terapeuta_id"
+    t.integer  "frequency"
+    t.string   "period",       :default => "monthly"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", :force => true do |t|
+    t.integer  "event_series_id"
+    t.integer  "terapeuta_id"
+    t.string   "title"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

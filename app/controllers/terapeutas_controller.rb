@@ -298,10 +298,13 @@ class TerapeutasController < ApplicationController
     
   end
 
+  def calendario
+    @event = Event.new
+  end
 private 
   def resolve_layout
     case action_name
-    when "edit","show","estadisticas","plan_beneficios"
+    when "edit","show","estadisticas","plan_beneficios", "calendario"
       "portal_terapeuta"
     else
       "application"

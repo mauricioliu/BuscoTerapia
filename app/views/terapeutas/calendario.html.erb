@@ -1,0 +1,44 @@
+
+<div id="block-content" class="block-wrapper">
+	<div class="wrapper" id="content">
+
+		<div class="columna-670-left">
+			<div class="busqueda-box-center">
+				<div id="event-form" class="form-box" style = "display:none;">
+					<%= form_for(@event) do |f| %>
+					<div id="close-event" class="link-cerrar-mensaje">
+						<p>x cerrar</p>
+					</div>
+					<div class="form-block event-field">
+					  <div class="label">Desde:</div> 
+					  <div class="input_field"><%= f.text_field :starts_at, :size => 12  %></div>
+					</div>  
+					<div class="form-block event-field">
+					  <div class="label">Hasta</div>
+					  <div class="input_field"><%= f.text_field :ends_at %></div>
+					</div>
+					<div class="form-block">
+					<div class="form-block recurrence-field">
+					  <div class="label">¿Se repite?</div>
+					  <div class="input_field"><%= f.select :period, Event::REPEATS,{}, { "style" => "width:200px" } %></div>
+					</div>
+					<div id="event_frequency" class="form-block recurrence-number-field" style = "display:none;">
+					  <div class="label">Cada:</div>
+					  <div class="input_field"><%= f.select :frequency, (1..30).to_a,{}, { "style" => "width:50px" } %> <span id = "period"></span></div>
+					</div>
+					</div>
+					  <div class="input_field">
+					    <%= f.submit "Registrar disponibilidad", :class => "boton-azul" %>
+					  </div>
+					<% end %>
+				</div>
+				<div id="create-event" class="boton-volver">
+					<p><a href="#"><strong>Registrar disponibilidad</strong></a></p>
+				</div><!-- login -->
+				<div class="form-box">
+					<div id='calendar'></div>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>

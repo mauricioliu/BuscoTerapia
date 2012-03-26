@@ -19,6 +19,7 @@ ActionMailer::Base.perform_deliveries = true
 ActionMailer::Base.raise_delivery_errors = true
 
 
+
 #ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
 #  errors = Array(instance.error_message).join(', ')
 #  %(<div class="form-block alerta">#{html_tag}</div><p class="aviso">&nbsp;#{errors}</span>).html_safe

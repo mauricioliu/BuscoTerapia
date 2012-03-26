@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  after_filter :set_xhr_flash
+
+  def set_xhr_flash
+    flash.discard if request.xhr?
+  end
   
   def authenticate
     unless session[:terapeuta]
