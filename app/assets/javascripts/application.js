@@ -8,11 +8,7 @@
 //= require jquery-ujs
 //= require_tree .
 //= require rails.validations
-//= require fullcalendar
-//= require calendar
-//= require jquery.rest
-//= require jquery-ui-1.8.18.custom.min
-//= require jquery-ui-timepicker-addon
+
 
 jQuery(function($){
 	  $('#event_starts_at').datetimepicker({
