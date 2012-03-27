@@ -4,7 +4,8 @@
 		<div class="columna-670-left">
 			<div class="busqueda-box-center">
 				<div id="event-form" class="form-box" style = "display:none;">
-					<%= form_for(@event) do |f| %>
+					<%= form_tag bo_crear_disponibilidad_path do |f| %>
+					<%= hidden_field_tag :terapeuta, @terapeuta %>
 					<div id="close-event" class="link-cerrar-mensaje">
 						<p>x cerrar</p>
 					</div>
@@ -25,7 +26,7 @@
 					  <div class="label check-recurrent"><%= check_box_tag "recurrente", 1, true %> Si</div>
 					</div>
 					<div class="input_field">
-					  <%= f.submit "Registrar disponibilidad", :class => "boton-azul" %>
+					  <%= submit_tag "Registrar disponibilidad", :class => "boton-azul" %>
 					</div>
 					<% end %>
 				</div>
@@ -33,11 +34,10 @@
 					<p><a href="#"><strong>Registrar disponibilidad</strong></a></p>
 				</div><!-- login -->
 				<div class="form-box">
-					<div id="terapeuta_id" style = "display:none;"><%= session[:terapeuta].id %></div>
+					<div id="terapeuta_id" style = "display:none;"><%= @terapeuta %></div>
 					<div id='calendar'></div>
 				</div>
 			</div>
 		</div>
-		<%= render "home/preguntas_frecuentes" %>
 	</div>	
 </div>

@@ -49,14 +49,18 @@ BuscoTerapia::Application.routes.draw do
   match '/ver_comprobante/:id' => 'asesorias#ver_comprobante', :as => 'ver_comprobante'
   
   match '/validar_terapeuta/:id' => 'validar_terapeuta#show', :as => 'revisar_terapeuta'
-  
   match '/validar_terapeuta/' => 'validar_terapeuta#index'
   match '/validar_terapeuta/:id/validar' => 'validar_terapeuta#validar', :as => 'validar'
   match '/validar_terapeuta/:id/edit' => 'validar_terapeuta#edit', :as => 'editar_terapeuta'
   match '/validar_terapeuta/:id/destroy' => 'validar_terapeuta#destroy', :as => 'destroy_terapeuta'
   match '/validar_terapeuta/:id/invalidar' => 'validar_terapeuta#invalidar', :as => 'invalidar_terapeuta'
+  match '/ver_terapeutas' => 'validar_terapeuta#ver_terapeutas', :as => 'ver_terapeutas'
+  match '/ver_disponibilidad/:id' => 'validar_terapeuta#ver_disponibilidad', :as => 'ver_disponibilidad'
+  match '/bo_crear_disponibilidad' => 'validar_terapeuta#bo_crear_disponibilidad', :as => 'bo_crear_disponibilidad'
   
   match '/admin' => 'admin#index', :as => 'admin'
+
+  match '/events/get/:id' => 'events#get_terapeuta_events', :as => 'get_terapeuta_events'
 
   # map.connect "/sessions/change_password", :controller => "sessions", :action => "change_password"
   # get "signup" => "users#new", :as => "signup"

@@ -2822,13 +2822,16 @@ h4{
 
 /* Mauricio */
 .event-field{
-	width: 200px;
+	width: 100px;
 	margin-right: 20px;
 }
 
-.recurrence-field{
-	width: 200px;
-	margin-right: 20px;
+.checkbox-field{
+	width: 40px;
+}
+
+.check-recurrent{
+	text-align:right;
 }
 
 .recurrence-number-field{

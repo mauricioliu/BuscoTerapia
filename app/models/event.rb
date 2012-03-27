@@ -4,12 +4,14 @@ class Event < ActiveRecord::Base
   belongs_to :terapeuta
   belongs_to :event_series
   
-  REPEATS = [
-              "No se repite",
-              "Diariamente"    ,
-              "Semanalmente"   ,
-              "Mensualmente"   ,
-              "Anualmente"         
+  DIAS = [
+              "Lunes",
+              "Martes",
+              "Miercoles",
+              "Jueves",
+              "Viernes",
+              "Sabado",
+              "Domingo"         
   ]
   
   scope :before, lambda {|end_time| {:conditions => ["ends_at < ?", Event.format_date(end_time)] }}

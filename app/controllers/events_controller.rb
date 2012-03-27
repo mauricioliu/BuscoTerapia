@@ -14,6 +14,19 @@ class EventsController < ApplicationController
       format.js  { render :json => @events }
     end
   end
+  
+  def get_terapeuta_events
+    @events = Event.scoped  
+    @events = @events.where(:terapeuta_id => params[:id])
+    @events = @events.after(params['start']) if (params['start'])
+    @events = @events.before(params['end']) if (params['end'])
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @events }
+      format.js  { render :json => @events }
+    end
+  end
 
   # GET /events/1
   # GET /events/1.xml
@@ -46,11 +59,16 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.xml
   def create
-    if params[:event][:period] == "No se repite"
-      @event = Event.new(params[:event])
+    if params[:recurrente]
+      @event = EventSeries.new
+      @event.period = "Semanalmente"
+      @event.frequency = 1
     else
-      @event = EventSeries.new(params[:event])
+      @event = Event.new
     end
+    @event.starts_at = params[:fecha_evento] + " " + params[:hora_desde]
+    @event.ends_at = params[:fecha_evento] + " " + params[:hora_hasta] 
+    
     @event.terapeuta_id = session[:terapeuta].id
     @event.title = session[:terapeuta].nombre
     

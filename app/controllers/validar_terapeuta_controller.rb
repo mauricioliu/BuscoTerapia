@@ -15,6 +15,40 @@ class ValidarTerapeutaController < ApplicationController
     end
   end
   
+  def ver_terapeutas
+    if params[:search]
+      @terapeutas = Terapeuta.search(params[:search].to_s)
+    end
+  end
+  
+  def ver_disponibilidad
+    @terapeuta = params[:id]
+    @event = Event.new
+  end
+  
+  def bo_crear_disponibilidad
+    if params[:recurrente]
+      @event = EventSeries.new
+      @event.period = "Semanalmente"
+      @event.frequency = 1
+    else
+      @event = Event.new
+    end
+    @event.starts_at = params[:fecha_evento] + " " + params[:hora_desde]
+    @event.ends_at = params[:fecha_evento] + " " + params[:hora_hasta] 
+    
+    @terapeuta = Terapeuta.find(params[:terapeuta])
+    @event.terapeuta_id = @terapeuta.id
+    @event.title = @terapeuta.nombre
+    
+
+    if @event.save
+      redirect_to ver_disponibilidad_path(@terapeuta.id)
+    else
+      redirect_to ver_disponibilidad_path(@terapeuta.id)
+    end
+  end
+  
   def edit
     @terapeuta = Terapeuta.find(params[:id])
     @tipo_terapias = RefDatum.where(:nombre => "Tipo Terapeuta")

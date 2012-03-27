@@ -1,0 +1,152 @@
+<div id="block-content" class="block-wrapper">
+	<div class="wrapper" id="content">
+
+	<div class="columna-670-left">
+		<%= form_tag ver_terapeutas_path, method: :get do %>			
+		<div class="form-box">
+			<div class="titulo-form">
+			<h3>Buscar Terapeuta</h3>
+			</div>
+		
+			<div class="form-block busqueda-palabra-clave">
+				<div class="label">
+					Palabra Clave
+				</div>
+				<div class="input_field">
+					<%= text_field_tag :search, params[:search] %>
+				</div>
+			</div>
+			<div class="form-block">
+				<div class="form-block busqueda-button">
+					<div class="label">
+						&nbsp;
+					</div>
+					<div class="input_field">
+						<%= submit_tag "Encontrar terapeuta", :class => "boton-morado" %>
+					</div>
+				</div>
+			</div>
+		
+		</div><!--box form-->
+		<% end %>
+		<div class="busqueda-box-center">
+		<% if @terapeutas != nil %>
+			<% @terapeutas.each do |terapeuta| %>
+				<% if terapeuta and terapeuta.plan_tipo == "Gratis" %>
+					<div class="ficha-persona ficha-simple">
+					<div class="foto"><%= image_tag 'img/terapeuta_thumb_perfil-default.png'%></div>
+					<div class="contenido-ficha">
+						<p class="nombre-ficha"><%= terapeuta.nombre.titleize %></p>
+						<p>
+							<% terapeuta.tipo_terapias.each do |tt| %>
+								<%= tt.nombre %>, 
+							<% end %><br />
+							<% terapeuta.estudios.each do |estudio| %>
+								<strong><%= estudio.titulo %>, <%= estudio.establecimiento %></strong><br/>
+							<% end %>
+							Especialista en 
+							<% terapeuta.especialidades.each do |especialidad| %>
+								<%= especialidad.valor %>,
+							<% end %>
+							</br>
+						</p>
+						<div class="descripcion-full">
+							<p><strong>Dirección:</strong> <%= terapeuta.direccion %>, <%= terapeuta.comuna %>, <%= terapeuta.region %></p>
+							<%= button_to "Ver Disponibilidad", ver_disponibilidad_path(terapeuta.id), :method => 'get', :class => "boton-morado"%>
+						</div><!--descirpcion full-->
+					</div><!--contenido ficha-->
+					
+				</div><!--ficha persona-->
+				<% elsif terapeuta %>
+					<div class="ficha-persona">
+					<% if terapeuta.imagen_url.size != 0 %>
+						<div class="foto"><%= image_tag terapeuta.imagen_url.terapeuta_thumb.url.to_s %></div>
+					<% else %>
+						<div class="foto"><%= image_tag 'img/terapeuta_thumb_perfil-default.png'%></div>
+					<% end %>
+					<div class="contenido-ficha">
+						<p class="nombre-ficha"><%= link_to terapeuta.nombre.titleize, ficha_path(terapeuta), :class => "nombre-ficha-link" %></p>
+						<p>
+							<% terapeuta.tipo_terapias.each do |tt| %>
+								<%= tt.nombre %> - 
+							<% end %><br />
+							Especialista en
+							<% terapeuta.especialidades.each do |especialidad| %>
+								<%= especialidad.valor %>,
+							<% end %> 
+							</br>
+							<%= terapeuta.direccion %>, <%= terapeuta.comuna %>, <%= terapeuta.region %> 
+						</p>
+						<div class="descripcion-full">
+							<div class="ficha-columna">
+								<h3>Información de experiencia y formación académica:</h3>
+								<ul>
+									<% if terapeuta.enfoque != nil and terapeuta.enfoque.length > 0 %><li><span><strong>Enfoque:</strong> <%= terapeuta.enfoque %></span></li><% end %>
+									<li><span><strong>Especialidades:</strong> <br />
+											<% terapeuta.especialidades.each do |especialidad| %>
+												&nbsp;&nbsp;&nbsp;- <%= especialidad.valor %><br />
+											<% end %>
+										</span></li>
+									<li><span><strong>Formación y Estudios Acreditados:</strong><br />
+											<% terapeuta.estudios.each do |estudio| %>
+											&nbsp;&nbsp;&nbsp;- <%= estudio.titulo %>, <%= estudio.establecimiento %><br />
+											<% end %>
+										</span></li>
+								</ul>
+								
+								<h3>Costo y formas de pago:</h3>
+								<ul>
+									<li><span><strong>Arancel por sesión:</strong> <%= terapeuta.arancel %>.-</span></li>
+									<% if terapeuta.descuentos != nil and terapeuta.descuentos.length > 0 %><li><span><strong>Descuentos usuarios BuscoTerapia:</strong> <%= terapeuta.descuentos %>.-</span></li><% end %>
+									<li><span><strong>Formas de Pago:</strong> 
+											<% terapeuta.forma_pagos.each do |forma_pago| %>
+												<%= forma_pago.valor %> -  
+											<% end %> 
+										</span></li>
+									<% if terapeuta.convenios != nil and terapeuta.convenios.size > 0 %>
+									<li><span><strong>Convenios:</strong><br />
+											<% terapeuta.convenios.each do |convenio| %>
+											&nbsp;&nbsp;&nbsp;- <%= convenio.valor %><br />
+											<% end %>
+										</span></li>
+									<% end %>
+								</ul>
+								
+								<h3>Datos de Contacto:</h3>
+								<ul>
+									<li><span><strong>Dirección:</strong> <%= terapeuta.direccion %>, <%= terapeuta.comuna %>, <%= terapeuta.region %>.</span></li>
+									<li><span><strong>Teléfono fijo:</strong> <%= terapeuta.telefono %></span></li>
+									<li><span><strong>Teléfono movil:</strong> <%= terapeuta.movil %></span></li>
+									<li><span><strong>Correo electrónico:</strong> <%= terapeuta.email %></span></li> 
+									<% if terapeuta.sitio_web.length > 0 %><li><span><strong>Sitio web:</strong> <%= link_to terapeuta.sitio_web, "http://"+terapeuta.sitio_web, :target => "_blank", :rel => "nofollow" %></span></li><% end %>
+								</ul>
+								
+								<%= button_to "Ver Disponibilidad", ver_disponibilidad_path(terapeuta.id), :method => 'get', :class => "boton-morado"%>
+							</div><!-- ficha-columna -->
+							<div class="ficha-sidebar">
+								<div class="box box-descuentos">
+								</div>
+								
+								<div class="box box-mapa">
+									<h3>Mapa de Ubicación</h3>
+									<div class="map-container">
+										<%= image_tag "http://maps.google.com/maps/api/staticmap?size=151x182&sensor=true&zoom=15&markers=#{terapeuta.latitude}%2C#{terapeuta.longitude}", :class => "link-mapa-google" %>
+									</div>
+								</div>
+							</div><!-- ficha-sidebar -->
+						</div><!--descirpcion full-->
+					</div><!--contenido ficha-->
+					
+				</div><!--ficha persona-->
+				<% end %>
+			<% end %>
+			<%= will_paginate @terapeutas, previous_label: h("<"), next_label: h(">") %>
+		<% end %>
+				
+				
+			
+			</div><!--form-box-center-->
+		</div><!--columna-670-left-->
+		</div><!-- #content -->
+	</div><!-- block-content -->
+	

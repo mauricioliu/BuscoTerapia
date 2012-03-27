@@ -6,7 +6,8 @@ $(document).ready(function() {
 	var y = date.getFullYear();
 	
 	$('#calendar').fullCalendar({
-		editable: true,        
+		editable: true,
+		firstDay: 1,        
 		header: {
             left: 'prev,next today',
             center: 'title',
@@ -26,7 +27,7 @@ $(document).ready(function() {
         
         // a future calendar might have many sources.        
         eventSources: [{
-            url: '/events',
+            url: '/events/get/'+ $('#terapeuta_id').html(),
             color: '#FF7A00',
             textColor: 'black',
             ignoreTimezone: false

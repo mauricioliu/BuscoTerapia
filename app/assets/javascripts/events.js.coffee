@@ -13,6 +13,22 @@ jQuery ->
     $('div#event-form').animate({opacity: 'toggle', height: 'toggle'}, "fast")
     $('#create-event').hide()
     
-   $('div#close-event').click ->
+  $('div#close-event').click ->
      $('div#event-form').animate({opacity: 'toggle', height: 'toggle'}, "fast")
      $('#create-event').show()
+     
+  $('#fecha_evento').datepicker()
+  
+  $('#hora_desde').timepicker({
+    stepHour: 1,
+    stepMinute: 30,
+    hourMin: 8,
+    hourMax: 23
+  });
+  
+  $('#hora_hasta').timepicker({
+    stepHour: 1,
+    stepMinute: 30,
+    hourMin: 8,
+    hourMax: 23
+  });
