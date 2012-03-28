@@ -49,14 +49,15 @@
 					
 				</div><!--ficha persona-->
 				<% elsif terapeuta %>
-					<div class="ficha-persona">
+				<div class="ficha-persona">
 					<% if terapeuta.imagen_url.size != 0 %>
 						<div class="foto"><%= image_tag terapeuta.imagen_url.terapeuta_thumb.url.to_s %></div>
 					<% else %>
 						<div class="foto"><%= image_tag 'img/terapeuta_thumb_perfil-default.png'%></div>
 					<% end %>
 					<div class="contenido-ficha">
-						<p class="nombre-ficha"><%= link_to terapeuta.nombre.titleize, ficha_path(terapeuta), :class => "nombre-ficha-link" %></p>
+						
+						<h2 class="nombre-ficha"><%= link_to terapeuta.nombre.titleize, ficha_path(terapeuta), :class => "nombre-ficha-link" %></h2>
 						<p>
 							<% terapeuta.tipo_terapias.each do |tt| %>
 								<%= tt.nombre %> - 
@@ -115,20 +116,28 @@
 								<input type="button" value="Contactar al Terapeuta" class="boton-morado" id="boton-contactar-terapeuta" />
 							</div><!-- ficha-columna -->
 							<div class="ficha-sidebar">
-								<div class="box box-descuentos">
-								</div>
-								
 								<div class="box box-mapa">
 									<h3>Mapa de Ubicación</h3>
 									<div class="map-container">
-										<%= image_tag "http://maps.google.com/maps/api/staticmap?size=151x182&sensor=true&zoom=15&markers=#{terapeuta.latitude}%2C#{terapeuta.longitude}", :class => "link-mapa-google" %>
+										<div class="map-box">
+											<%= image_tag "http://maps.google.com/maps/api/staticmap?size=615x350&sensor=true&zoom=15&markers=#{terapeuta.latitude}%2C#{terapeuta.longitude}", :class => "link-mapa-google" %>
+										</div>
 									</div>
 								</div>
+								
+								
+								<!--
+								<div class="box box-entrevista">
+									<a href="#">Ver entrevista.</a>
+								</div>
+								-->
+
 							</div><!-- ficha-sidebar -->
 						</div><!--descirpcion full-->
 					</div><!--contenido ficha-->
 					
 				</div><!--ficha persona-->
+
 				<% end %>
 			<% end %>
 			<%= will_paginate @terapeutas, previous_label: h("<"), next_label: h(">") %>
@@ -142,15 +151,61 @@
 		
 		
 		
-		<div class="columna-335-right necesita-ayuda">
+		<div class="columna-335-right necesita-ayuda" id="scrollDownFaq">
 			<h2>¿Necesitas ayuda?</h2>
 			<div class="necesita-ayuda-gente"></div>
 			<p>Si tienes problemas y no tienes claro dónde acudir, escríbenos y nosotros te asesoraremos y te recomendaremos el terapeuta ideal.<br/>
-			<%= link_to "Solicitar Asesoria", new_asesoria_path %>
+			<strong><%= link_to "Solicitar Asesoria", new_asesoria_path %></strong>
+			<br /><br /><br />
+			<h4>Preguntas frecuentes</h4>
+			<br />
+			<div class="acordeon-lista">
+				<ul>
+					<li>
+						<div class="acordeon-header">
+							<p>¿Qué es la asesoría terapéutica?</p>
+						</div>
+						<div class="acordeon-content">
+							<div class="acordeon-text">
+								<p>El servicio de asesoría terapéutica consta de dos partes: La primera es entregar información a los usuarios de los posibles caminos a seguir dado el problema relatado y sus expectativas. Segundo en gestionar la toma de horas con los terapeutas que los usuarios seleccionen.</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="acordeon-header">
+							<p>¿Cuál es el valor de la asesoría terapéutica?</p>
+						</div>
+						<div class="acordeon-content">
+							<div class="acordeon-text">
+								<p>Este proceso es completamente gratuito para el usuario.</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="acordeon-header">
+							<p>¿Quiénes componen el equipo de asesoría? </p>
+						</div>
+						<div class="acordeon-content">
+							<div class="acordeon-text">
+								<p>Actualmente el equipo de asesoría está compuesto por terapeutas alternativos, complementarios y psicólogos de distintos enfoques. Hoy son 8 profesionales quienes componen este equipo.</p>
+							</div>
+						</div>
+					</li>
+					<li>
+						<div class="acordeon-header">
+							<p>¿Cuál es el nivel de confidencialidad de los datos? </p>
+						</div>
+						<div class="acordeon-content">
+							<div class="acordeon-text">
+								<p>Existen políticas de confidencialidad de datos que están estipuladas en el siguiente link: <%= link_to "Políticas de Privacidad", privacidad_url %></p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<p class="right"><small><%= link_to "Ver más preguntas frecuentes", preguntas_frecuentes_url %></small></p>
 		
 		</div><!--columna-335-right-->
-		
-		<%= render "home/preguntas_frecuentes" %>		
 		</div><!-- #content -->
 	</div><!-- block-content -->
 	

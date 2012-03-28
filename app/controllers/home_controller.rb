@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   def index
     @search = Terapeuta.search(params[:search])
     @terapeutas = @search.all
-    @articulos = Articulo.where("tipo = 'articulo' and mostrar_carrusel='1'").order("created_at desc") 
+    @articulos = Articulo.where("tipo = 'articulo' and mostrar_carrusel='1'").order("created_at desc")
   end
   
   def preguntas_frecuentes

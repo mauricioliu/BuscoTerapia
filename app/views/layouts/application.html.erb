@@ -30,7 +30,13 @@
           })();
 
         </script>
-
+	<script>
+	<% if @notice %>
+	$(document).ready(function() {
+		alertMsj("<%= @notice %>")
+	});
+	<% end %>
+	</script>
 </head>
 <body>
 	<div id="header">

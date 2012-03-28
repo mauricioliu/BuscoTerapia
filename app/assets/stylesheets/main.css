@@ -282,6 +282,7 @@ input[type="text"],input[type="password"],input[type="number"]{
 	cursor: pointer;
 }
 .boton-azul:hover{
+	color:#fff;
 	background: #00a5d3; /* Old browsers */
 	background: -moz-linear-gradient(top,  #00a5d3 0%, #0687aa 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00a5d3), color-stop(100%,#0687aa)); /* Chrome,Safari4+ */
@@ -731,10 +732,10 @@ select {
 }
 
 .infiniteCarousel .wrapper_carousel {
-  width: 990px; /* .infiniteCarousel width - (.wrapper margin-left + .wrapper margin-right) */
+  width: 975px; /* .infiniteCarousel width - (.wrapper margin-left + .wrapper margin-right) */
 	overflow: auto;
 	min-height: 10em;
-	margin: 0px 0 0;
+	margin: 0px 0 0 15px;
 	position: relative;
 	top: 0;
 	float:left;
@@ -752,7 +753,7 @@ select {
 	list-style-image:none;
 	list-style-position:outside;
 	list-style-type:none;
-	margin:0;
+	margin:0 0 0 -15px;
 	padding:0;
 	display: block;
 	top: 0;
@@ -1246,7 +1247,7 @@ textarea{
 }
 .acordeon-header{
 	cursor:pointer;
-	font-size:11px;
+	font-size:13px;
 	color:#fff;
 	display:block;
 	float:left;
@@ -1261,7 +1262,7 @@ textarea{
 	border-radius: 5px;
 }
 .acordeon-header p{
-	font-size:11px;
+	font-size:13px;
 	width:80%;
 	line-height:30px;
 	margin:0;
@@ -1418,7 +1419,7 @@ textarea{
 	margin-bottom:7px;
 	font-size:13px;
 }
-.ficha-persona .foto .ver-ficha-persona {
+.ficha-persona .foto, .ver-ficha-persona .foto{
 	overflow:hidden;
 	width:42px;
 	height:42px;
@@ -1441,6 +1442,7 @@ textarea{
 	font-size: 18px !important;
 	color: #6a63a4;
 	font-weight:bold;
+	margin: -2px 0 0;
 }
 .contenido-ficha h3{
 	color:#4483be;
@@ -1472,7 +1474,7 @@ textarea{
 .ficha-persona ul li span,.ficha-terapias ul li span, .ver-ficha-persona ul li span{
 	color:#6f6f6f;
 }
-.ficha-persona .boton-morado, .ver-ficha-persona .boton-morado {
+.ficha-persona .boton-morado, .ver-ficha-persona .boton-morado{
 	float:left;
 	padding-left:40px;
 	padding-right:40px;
@@ -1503,23 +1505,29 @@ textarea{
 	position:relative;
 	
 }
-.box-mapa iframe{
+.box-mapa .map-box{
 	position:relative;
 	width:151px;
 	height:182px;
+	overflow:hidden;
+	background-repeat:no-repeat;
+	background-position:center center;
 }
 .map-container.abierto{
 	/*left:-464px;*/
 }
 
-.map-container.abierto iframe{
-	border:2px solid #ccc;
+.map-container.abierto .map-box{
+	
+	border:1px solid #ccc;
 	/*width:615px;
 	height:300px;*/
 	-webkit-box-shadow: 0px 1px 3px 0px #000000;
 	-moz-box-shadow: 0px 1px 3px 0px #000000;
 	box-shadow: 0px 1px 3px 0px #000000; 
 }
+
+
 .bt-descr-completa{
 	position:absolute;
 	right:10px;
@@ -1551,12 +1559,13 @@ textarea{
 	display:none;
 }
 .descripcion-full{
+	width:560px;
 	display:none;
 	float:left;
 }
 
 
-/* Paginación busqueda: */
+/* Paginaci�n busqueda: */
 
 .pagination{
 	color:#6f6f6f;
@@ -1576,7 +1585,7 @@ textarea{
 	margin-top:15px;
 	font-size:16px;
 }
-/* paginación antigua:
+/* paginaci�n antigua:
 .pagination ul li{
 	color:#4483be;
 	min-width:28px;
@@ -1788,7 +1797,7 @@ textarea{
 	line-height:110%;
 	margin: 5px 0;
 }
-.ficha-terapias {
+.ficha-terapias .nombre-ficha{
 	margin: -4px 0 8px;
 }
 .ficha-terapias .descripcion-full{
@@ -1919,7 +1928,7 @@ textarea{
 .ficha-articulo p{
 	font-size: 13px;
 }
-.ficha-articulo {
+.ficha-articulo .encabezado{
 	margin: -4px 0 12px;
 }
 .encabezado h3{
@@ -2172,10 +2181,6 @@ blockquote{
 	
 }
 
-.radio-button {
-	margin-bottom:10px;
-}
-
 .form-perfil .display-text{
 	font-weight:bold;
 	color:#6f6f6f;
@@ -2246,17 +2251,6 @@ blockquote{
 	float:left;
 	height:22px;
 }
-
-.multiples-campos-boton-añadir{
-	margin-left:305px;
-	color:#4483BE;
-	font-size:11px;
-	cursor:pointer;
-	display:block;
-	float:left;
-	height:22px;
-}
-
 .multiples-campos-plantilla-input{
 	display:none;
 }
@@ -2505,7 +2499,7 @@ min-height:100px;
 	float:left;
 	margin-bottom:7px;
 	font-size:13px;
-	min-height:430px;
+	min-height:455px;
 	margin-right:20px;
 	margin-top:20px;
 	
@@ -2557,7 +2551,7 @@ margin-right:-15px;
 	margin-top:20px;
 	margin-bottom:20px;
 	padding:10px 75px;
-	
+	display: inline-block;
 	
 }
 
@@ -2659,7 +2653,7 @@ margin-right:-15px;
 
 
 
-/** estadísticas **/
+/** estad�sticas **/
 .estadisticas{
 	
 }
@@ -2795,6 +2789,8 @@ h4{
 	padding-right:30px;
 	
 }
+
+
 
 /* formulario ligthbox contactar terapeuta */
 

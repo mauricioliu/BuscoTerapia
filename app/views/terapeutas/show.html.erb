@@ -14,10 +14,13 @@
 				
 				<p class="nombre-ficha"><%= @terapeuta.nombre %></p>
 				<p>
-					<% @terapeuta.estudios.each do |estudio| %>
-						<strong><%= estudio.titulo %>, <%= estudio.establecimiento %></strong><br/>
-					<% end %>
+					<% @terapeuta.tipo_terapias.each do |tt| %>
+						<%= tt.nombre %> - 
+					<% end %><br />
 					Especialista en 
+					<% @terapeuta.especialidades.each do |especialidad| %>
+						<%= especialidad.valor %>,
+					<% end %>
 					</br>
 					<%= @terapeuta.direccion %>, <%= @terapeuta.comuna %>, <%= @terapeuta.region %> 
 				</p>
@@ -69,15 +72,14 @@
 								
 							</div><!-- ficha-columna -->
 							<div class="ficha-sidebar">
-								<div class="box box-descuentos">
 								<div class="box box-mapa">
 									<h3>Mapa de Ubicación</h3>
 									<div class="map-container">
-										<%= image_tag "http://maps.google.com/maps/api/staticmap?size=151x182&sensor=true&zoom=15&markers=#{@terapeuta.latitude}%2C#{@terapeuta.longitude}", :class => "link-mapa-google" %>
+										<div class="map-box">
+											<%= image_tag "http://maps.google.com/maps/api/staticmap?size=615x350&sensor=true&zoom=15&markers=#{@terapeuta.latitude}%2C#{@terapeuta.longitude}", :class => "link-mapa-google" %>
+										</div>
 									</div>
-									
 								</div>
-
 							</div><!-- ficha-sidebar -->
 					</div><!--descirpcion full-->
 					</div><!--contenido ficha-->

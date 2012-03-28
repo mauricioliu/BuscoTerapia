@@ -1,9 +1,44 @@
 
 
+function doLogin(){
+	error = 0
+	if($("#login-field-name .input_field input").val()==""){
+		$("#login-field-name").addClass("alerta");
+		$("#login-field-name .aviso").css("display","none").fadeIn();
+		$("#login-field-name .input_field input").focus()
+		.keyup(function() {
+			if($(this).val() != ""){
+				$(this).parent().parent().removeClass("alerta")
+			}
+		});
+		error++
+	}
+	if($("#login-field-password .input_field input").val()==""){
+		if(error == 0){
+			$("#login-field-password").addClass("alerta")
+			$("#login-field-password .aviso").css("display","none").fadeIn();
+			
+			$("#login-field-password .input_field input").focus()
+			.keyup(function() {
+				if($(this).val() != ""){
+					$(this).parent().parent().removeClass("alerta")
+				}
+			});
+		}
+		error++
+	}
+	if(error > 0){
+		//don't make post login
+	}else{
+		//make post login
+	}
+
+}
+
 	/** MENSAJE ALERT **/
 
 function alertMsj(titulo,texto,duration){
-	if(duration == undefined) duration = 1000;
+	if(duration == undefined) duration = 2000;
 	$('#mjs-alert').html("")
 	strHtml = '<div id="bg-mjs-alert"></div><div id="box-mjs-alert">';
 	if(titulo != undefined && titulo != "")
@@ -279,19 +314,24 @@ idGenericoUnico = 0
 	
 $(document).ready(function () {
 	//ver mapa grande on roll over
-	$('.map-container iframe').mouseenter(function(){
+	$('.map-container .map-box').each(function(){
+		bgImage = $(this).find("img").attr("src");
+		$(this).css("background-image","url("+bgImage+")")
+		$(this).find("img").remove();
+	})
+	$('.map-container .map-box').mouseenter(function(){
 		if(!$(this).parent().hasClass("abierto")){
 			$(this).parent().addClass("abierto").stop().animate({left:-464}, 500);
 			$(this).stop().animate({width:615,height:350}, 500);
-			$(this).attr("src",$(this).attr("src"));
+			//$(this).attr("src",$(this).attr("src"));
 		}
 	});
-	$('.map-container iframe').mouseleave(function(){
+	$('.map-container .map-box').mouseleave(function(){
 		$(this).parent().stop().animate({left:0}, 500);
 		$(this).stop().animate({width:151,height:182}, 500,
 		function(){
 			$(this).parent().removeClass("abierto")
-			$(this).attr("src",$(this).attr("src"));
+			//$(this).attr("src",$(this).attr("src"));
 		}
 		);
 		

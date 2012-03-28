@@ -6,13 +6,10 @@
 			
 				<h2>Beneficios de pertenecer a buscoterapia.cl</h2>
 				<p class="grande">
-					Buscoterapia es la plataforma vinculada con temas de terapia <strong>más grande del país</strong>. En ella podrás publicar tu ficha como terapeuta y ofrecer tus servicios terapéuticos de manera simple y centralizada.
+					Buscoterapia es la <strong>red de terapeutas más grande del país</strong>, en donde todos los terapeutas que se tengan una cuenta, pueden mostrar datos de sus centros de atención.
 				</p>
 				<p class="grande">
-					Tenemos dos planes de suscripción, uno gratuito, que te permite presentar antecedentes básicos de tus servicios y uno pagado, que te permitirá, además de presentar toda la información que los usuarios necesitan conocer de ti, ser referenciado por nuestro equipo de profesionales de soporte y vincularte con consultantes que necesiten de tus experticias.
-				</p>
-				<p class="grande">
-					No te quedes fuera y se parte de nuestra propuesta.
+					Al registrarte gratuitamente podrás comenzar a utilizar algunos de estos beneficios. También tenemos planes destacados para que tu centro terapeutico se destaque y posea preferencias dentro de nuestro sitio.
 				</p>
 				<p>
 				<input id="bt-comenzar-ahora" type="button" class="boton-azul" value="¡Comenzar ahora!"/>
@@ -20,21 +17,21 @@
 				<div class="columna50">
 					<h2 class="titulo-testimonios">Para las personas:</h2>
 					<p>
-					<strong>Asesoría en línea:</strong> Todas las personas pueden solicitar de manera gratuita asesoría para que nuestro equipo de profesionales le sugiera los especialistas idóneos para abordar sus problemáticas.
+					<strong>Asesoría en línea:</strong> Todas las personas pueden solicitar de manera gratuita asesoría para que nuestro equipo de profesionales le sugiera los especialistas idóneos para abordar sus conflictos.
 					</p><p>
-					<strong>Información centralizada:</strong> El único y más grande directorio de terapeutas con estudios acreditados a nivel nacional.
+					<strong>Información centralizada:</strong> El único y más grande directorio de terapeutas acreditados a nivel nacional.
 					</p><p>
 					<strong>Un sitio web muy fácil de usar:</strong> Desarrollado por especialistas y testeado con usuarios para asegurar su eficiencia y eficacia.
 					</p><p>
 					<strong>Rapidez:</strong> toda solicitud al sitio tiene un tiempo máximo de 90 minutos para ser respondida.
 					</p><p>
-					<strong>Seriedad:</strong> Todo nuestro equipo de soporte cuenta con conocimientos en terapias tanto alternativas como psicológicas.
+					<strong>Seriedad:</strong> Todo nuestro equipo de soporte cuenta con conocimientos en terapias tanto alternativas como psicológicas, nada ha quedado al azar. Además, todos los terapeutas vinculados por el sito han certificado su formación con documentos oficiales.
 					</p>
 				</div>
 				<div class="columna50 last">
 					<h2 class="titulo-testimonios">Para los terapeutas:</h2>
 					<p>
-					<strong>Gestión de consultantes:</strong> Los terapeutas registrados en un plan de “Información Total“ podrán optar por recibir usuarios referenciados del sitio pagando solo un porcentaje de la primera atención.
+					<strong>Derivación de consultantes:</strong> Los terapeutas certificados en nuestros registros serán recomendados y referidos a las personas que nos soliciten asesoría.
 					</p><p>
 					<strong>Encontrabilidad:</strong> Este término tecnológico hace referencia a la posibilidad de ser encontrado por potenciales consultantes tanto dentro del sitio como en los principales buscadores de Internet.
 					</p><p>
@@ -44,7 +41,7 @@
 					</p><p>
 					<strong>Facilidad de uso:</strong> Actualización simple y rápida de datos.
 					</p><p>
-					<strong>Satisfacción garantizada:</strong> Si durante el primer mes de suscripción no estás conforme con el servicio te devolvemos la inversión. 
+					<strong>Satisfacción garantizada:</strong> Si durante el primer mes de suscripción no estás conforme con el servicio te devolvemos la inversión. Estar en el directorio de terapeutas certificado más amplio y actualizado del país.
 					</p>
 				</div>
 			</div>
@@ -68,7 +65,7 @@
 			</div>
 			<div class="columna30 lastChild">
 			<h3>Políticas de funcionamiento de la Gestión Terapéutica.</h3>
-			<p>Dentro de los servicios del proyecto informativo implementado por el Equipo de Buscoterapia.cl, la Gestión Terapéutica emerge como ..<a href="<%= root_url %>/politicas_funcionamiento_gestion_terapeutica.pdf">Leer más.</a></p>
+			<p>Reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. <a href="#">Leer más.</a></p>
 			</div>
 		</div><!--columna-335-right-->
 		
@@ -79,12 +76,13 @@
 				<p>Registrate <strong>gratuitamente</strong> en buscoterapia.cl y <strong>obtén</strong>:</p>
 
 				<ol>
-					<li>Información básica de tus servicios y especialidades.</li>
-					<li>Personalización de tu ficha personal.</li>
-					<li>Aparecer en nuestra plataforma y los principales buscadores de Internet.</li>
-					<li>Estadísticas de uso de tu ficha.</li>
+					<li>Incremento en tus atenciones.</li>
+					<li>Información básica de tu perfil</li>
+					<li>Personalización de tu ficha personal</li>
+					
+
+					
 				</ol>
-				
 				<div class="box-contratar">
 					<div class="precio-borde precio-borde-left top"></div>
 					<div class="precio-borde precio-borde-right top"></div>
@@ -93,24 +91,22 @@
 					</div>
 					<div class="precio-borde precio-borde-left"></div>
 					<div class="precio-borde precio-borde-right"></div>
-					<p>&nbsp;</p><p>&nbsp;</p><br />
-					<div><%= link_to 'Contratar', new_terapeuta_path(:tipo => "gratuito"), :class => "boton-azul" %></div>
+					<%= link_to 'Contratar', new_terapeuta_path(:tipo => "gratuito"), :class => "boton-azul" %>
 				</div>
 			</div>
 			<div class="plan plan1">
-				<h1>Plan Información Total</h1>
+				<h1>Plan</h1>
 				
 				<p><strong>Contratando este plan obtén:</strong></p>
 
 				<ol>
-					<li>Información <strong>completa</strong> de tus servicios y especialidades</li>
-					<li>Publicar tus datos de contacto.</li>
-					<li>Publicar el mapa que señale tu lugar de atención.</li>
-					<li>Aparecer en nuestra plataforma y los principales buscadores de Internet.</li>
-					<li>Estadísticas de uso de tu ficha.</li>
-					<li>Sugerencia de tus servicios a los usuarios que buscan solicitan nuestros servicios.</li>
-					<li>Confirmación el día de atención de los consultantes referenciados desde nuestro sitio.</li>
-					<li>Contacto directo con nuestro equipo de soporte en caso de dudas.</li>
+					<li>Incremento en tus atenciones.</li>
+					<li>Información básica de tu perfil</li>
+					<li>Personalización de tu ficha personal</li>
+					<li>Información de teléfono, web y mail de contacto.</li>
+					<li>Personalización de logo y foto en la ficha.</li>
+					<li>Información completa de las especualidades.</li>
+					<li>Mapa indexado del centro o terapéuta.</li>
 					
 	
 				</ol>
@@ -118,14 +114,13 @@
 					<div class="precio-borde precio-borde-left top"></div>
 					<div class="precio-borde precio-borde-right top"></div>
 					<div class="precios">
-						<p>Trimestral:<span class="precio_valor"> <%=h number_to_currency RefDatum.find_by_nombre("Plan Trimestral").valor %> </span></p>
-						<p>Semestral:<span class="precio_valor"> <%=h number_to_currency RefDatum.find_by_nombre("Plan Semestral").valor %> </span></p>
-						<p>Anual:<span class="precio_valor"> <%=h number_to_currency RefDatum.find_by_nombre("Plan Anual").valor %> </span></p>
+						<p>1 mes:<span class="precio_valor"> $ 12.700 </span><strong>mensuales</strong></p>
+						<p>6 meses:<span class="precio_valor"> $ 8.100 </span><strong>mensuales</strong></p>
+						<p>12 meses:<span class="precio_valor"> $ 5.900 </span><strong>mensuales</strong></p>
 					</div>
 					<div class="precio-borde precio-borde-left"></div>
 					<div class="precio-borde precio-borde-right"></div>
-					<p>&nbsp;</p>
-					<div><%= link_to 'Contratar', new_terapeuta_path(:tipo => "pagado"), :class => "boton-azul" %></div>
+					<%= link_to 'Contratar', new_terapeuta_path(:tipo => "pagado"), :class => "boton-azul" %>
 				</div>
 			</div>
 
@@ -133,4 +128,3 @@
 		
 		</div><!-- #content -->
 	</div><!-- block-content -->
-	
