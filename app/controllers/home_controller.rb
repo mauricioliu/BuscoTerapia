@@ -6,6 +6,10 @@ class HomeController < ApplicationController
     @search = Terapeuta.search(params[:search])
     @terapeutas = @search.all
     @articulos = Articulo.where("tipo = 'articulo' and mostrar_carrusel='1'").order("created_at desc")
+    
+    if params[:notice]
+      @notice = params[:notice]
+    end
   end
   
   def preguntas_frecuentes
@@ -27,7 +31,7 @@ class HomeController < ApplicationController
       mensaje = params[:mensaje]
       TerapeutaMailer.contacto(nombre,email,mensaje).deliver
       
-      redirect_to root_url
+      redirect_to(:controller => "home", :action => "index", :notice => "Se ha enviado su contacto exitosamente")
     end
   end
 

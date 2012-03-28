@@ -227,9 +227,9 @@ class TerapeutasController < ApplicationController
       reset_password_link = root_url + "validate_email?code="+encrypt_url(terapeuta.email+"|||"+Date.today.to_s)
       
       TerapeutaMailer.forgot_password(terapeuta,reset_password_link).deliver
-      redirect_to root_url, :notice => "Se ha enviado su contraseña a su casilla"
+      redirect_to root_url(:notice => "Se ha enviado su contraseña a su casilla")
     else
-      redirect_to forgot_password_path, :notice => "Correo electrónico no se encuentra registrado"  
+      redirect_to forgot_password_path(:notice => "Correo electrónico no se encuentra registrado")  
     end
   end
   
@@ -318,6 +318,9 @@ private
 
   def set_title
     @title = "Terapeutas"
-    @menu = "buscar terapeuta"   
+    @menu = "buscar terapeuta" 
+    if params[:notice]
+      @notice = params[:notice]
+    end  
   end  
 end
