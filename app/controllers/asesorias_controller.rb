@@ -1,10 +1,11 @@
 # encoding: utf-8
 class AsesoriasController < ApplicationController
   before_filter :set_title
+  http_basic_authenticate_with :name => "btp", :password => "btp.123!", :only => [:index, :ver_asesoria]
   # GET /asesoria
   # GET /asesoria.json
   def index
-    @asesorias = Asesoria.all
+    @asesorias = Asesoria.order("id desc")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -108,6 +109,10 @@ class AsesoriasController < ApplicationController
     @asesoria = Asesoria.find(params[:id])
     AsesoriaMailer.send_confirmation(@asesoria).deliver
     AsesoriaMailer.inform_request(@asesoria).deliver
+  end
+  
+  def ver_asesoria
+    @asesoria = Asesoria.find(params[:id])
   end
 
 private

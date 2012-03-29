@@ -47,6 +47,7 @@ BuscoTerapia::Application.routes.draw do
   match "calendario" =>  "terapeutas#calendario"
   
   match '/ver_comprobante/:id' => 'asesorias#ver_comprobante', :as => 'ver_comprobante'
+  match '/ver_asesoria/:id' => 'asesorias#ver_asesoria', :as => 'ver_asesoria'
   
   match '/validar_terapeuta/:id' => 'validar_terapeuta#show', :as => 'revisar_terapeuta'
   match '/validar_terapeuta/' => 'validar_terapeuta#index'

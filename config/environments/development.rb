@@ -38,7 +38,7 @@ ActionMailer::Base.smtp_settings = {
   :port => 587,
   :domain => 'www.buscoterapia.cl',
   :user_name => 'no-reply@buscoterapia.cl',
-  :password => 'Abc.123!',
+  :password => 'Buscoterapia09',
   :authentication => 'plain',
   :enable_starttls_auto => true
 } 
