@@ -3,7 +3,11 @@
 
 	<div class="columna-670-left">
 		<div class="busqueda-box-center">
-			<div class="ver-ficha-persona">
+			<% if @terapeuta.plan_tipo != "Gratis" %>
+				<div class="ver-ficha-persona">
+			<% else %>
+				<div class="ver-ficha-persona ficha-simple">
+			<% end %>
 			<% if @terapeuta.imagen_url.length != 0 %>
 				<div class="foto"><%= image_tag @terapeuta.imagen_url.terapeuta_thumb.url.to_s %></div>
 			<% else %>
@@ -61,9 +65,11 @@
 								<h3>Datos de Contacto:</h3>
 								<ul>
 									<li><span><strong>Dirección:</strong> <%= @terapeuta.direccion %>, <%= @terapeuta.comuna %>, <%= @terapeuta.region %>.</span></li>
+									<% if @terapeuta.plan_tipo != "Gratis" %>
 									<li><span><strong>Teléfonos de contacto:</strong> <%= @terapeuta.telefono %></span></li>
 									<li><span><strong>Correo electrónico:</strong> <%= @terapeuta.email %></span></li> 
 									<% if @terapeuta.sitio_web.length > 0 %><li><span><strong>Sitio web:</strong> <%= link_to @terapeuta.sitio_web, "http://"+@terapeuta.sitio_web, :rel => "nofollow", :target => "_blank" %></span></li><% end %>
+									<% end %>
 								</ul>
 								
 								<% if @contacto %>
@@ -72,6 +78,7 @@
 								
 							</div><!-- ficha-columna -->
 							<div class="ficha-sidebar">
+								<% if @terapeuta.plan_tipo != "Gratis" %>
 								<div class="box box-mapa">
 									<h3>Mapa de Ubicación</h3>
 									<div class="map-container">
@@ -80,6 +87,7 @@
 										</div>
 									</div>
 								</div>
+								<% end %>
 							</div><!-- ficha-sidebar -->
 					</div><!--descirpcion full-->
 					</div><!--contenido ficha-->

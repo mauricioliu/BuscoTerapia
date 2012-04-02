@@ -16,6 +16,7 @@
 						</div>
 					</div>
 					
+					<% if @terapeuta != "Gratis" %>
 					<div class="form-block one-line">
 						<div class="label">Correo electrónico:</div>
 						<div class="input_field">
@@ -25,6 +26,7 @@
 							<!-- / -->
 						</div>
 					</div>
+					<% end %>
 					
 					<div class="form-block one-line listaDias">
 						<div class="label">Profesión:</div>
@@ -91,7 +93,7 @@
 							<!-- / -->
 						</div>
 					</div>
-					
+					<% if @terapeuta != "Gratis" %>
 					<div class="form-block one-line">
 						<div class="label">Teléfono de contacto <strong>fijo</strong>:</div>
 						<div class="input_field">
@@ -112,6 +114,7 @@
 							<%= @terapeuta.sitio_web %>
 						</div>
 					</div>
+					<% end %>
 				</div><!--MIS DATOS-->
 				
 				<div class="mis-datos">
