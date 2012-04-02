@@ -355,13 +355,6 @@ $(document).ready(function () {
 				function(){
 					$(this).parent().parent().addClass("abierta");
 					$(this).find(".map-container iframe").attr("src",$(this).attr("src"));
-					
-					jQuery.ajax({
-				    	data: 'id=1',
-				    	dataType: 'script',
-				    	type: 'post',
-				    	url: "/terapeutas/visita/1"
-			    	});
 				}
 				
 				);
