@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
         render "terapeutas/change_password"
       else
         Terapeuta.update(terapeuta.id, { :last_logged_in => Time.now })
-        redirect_to root_url, :notice => "Logged in!"
+        redirect_to edit_terapeuta_path(terapeuta)
       end
     else
       #flash.now.alert = "Invalid email or password"
