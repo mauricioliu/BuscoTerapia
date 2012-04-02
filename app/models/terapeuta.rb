@@ -65,7 +65,7 @@ class Terapeuta < ActiveRecord::Base
     indexes arancel
     indexes region
     indexes comuna
-    indexes plan_tipo
+    indexes plan_tipo, :sortable => true
     indexes estado
     indexes updated_at, :sortable => true
     indexes convenios.valor

@@ -30,7 +30,7 @@ $(document).ready(function() {
             url: '/events/get/'+ $('#terapeuta_id').html(),
             color: '#FF7A00',
             textColor: 'black',
-            ignoreTimezone: false
+            ignoreTimezone: true
         }],
         
         timeFormat: 'h:mm t{ - h:mm t} ',

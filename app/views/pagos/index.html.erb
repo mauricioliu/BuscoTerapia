@@ -1,31 +1,35 @@
-<h1>Listing pagos</h1>
+<div id="block-content" class="block-wrapper">
+	<div class="wrapper" id="content">
 
-<table>
-  <tr>
-    <th>Terapeuta</th>
-    <th>Tipo</th>
-    <th>Monto</th>
-    <th>Estado</th>
-    <th>Fecha pago</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @pagos.each do |pago| %>
-  <tr>
-    <td><%= pago.terapeuta_id %></td>
-    <td><%= pago.tipo %></td>
-    <td><%= pago.monto %></td>
-    <td><%= pago.estado %></td>
-    <td><%= pago.fecha_pago %></td>
-    <td><%= link_to 'Show', pago %></td>
-    <td><%= link_to 'Edit', edit_pago_path(pago) %></td>
-    <td><%= link_to 'Destroy', pago, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Pago', new_pago_path %>
+		<div class="columna-full">
+		<h1>Listing pagos</h1>
+		<h4><%= link_to 'Pendientes', pagos_path(:status => "pendiente") %> |
+		<%= link_to 'Pagados', pagos_path(:status => "pagados") %> </h4><br />
+		<table id="table-2">
+		  <tr>
+		    <th>Terapeuta</th>
+		    <th>Tipo</th>
+		    <th>Monto</th>
+		    <th>Estado</th>
+		    <th>Fecha emision</th>
+		    <th></th>
+		  </tr>
+		
+		<% @pagos.each do |pago| %>
+		<% if pago.terapeuta %>
+		  <tr>
+		    <td><%= pago.terapeuta.nombre %></td>
+		    <td><%= pago.tipo %></td>
+		    <td><%= pago.monto %></td>
+		    <td><%= pago.estado %></td>
+		    <td><%= pago.created_at %></td>
+		    <td><%= link_to 'Ver', pago %></td>
+		  </tr>
+		<% end %>
+		<% end %>
+		</table>
+		
+		<br />
+		</div>
+	</div>	
+</div>

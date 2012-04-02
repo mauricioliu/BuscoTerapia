@@ -2,7 +2,6 @@
 	<div class="wrapper" id="content">
 
 	<div class="columna-670-left">
-		<h2>Mi ficha:</h2>
 		<div class="busqueda-box-center">
 		
 			<div class="form-box form-perfil">
@@ -251,6 +250,9 @@
 
 
 	</div><!--columna-670-left-->
+	<% if @terapeuta.plan_tipo != "pagado" %>
+		<%= render "aumenta_tus_atenciones"%>
+	<% end %>
 	
 	<%= render "home/preguntas_frecuentes" %>
 	

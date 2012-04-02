@@ -186,7 +186,7 @@ a.buscoterapia{
 }
 #login p{
 	margin: 0;
-	font-size: 1.4em;
+	font-size: 1.2em;
 }
 
 #login p a{
@@ -1559,13 +1559,15 @@ textarea{
 	display:none;
 }
 .descripcion-full{
-	width:560px;
 	display:none;
 	float:left;
 }
 
+.descripcion-full.ficha-full{
+	width:560px;
+}
 
-/* Paginaci�n busqueda: */
+/* Paginación busqueda: */
 
 .pagination{
 	color:#6f6f6f;
@@ -1585,7 +1587,7 @@ textarea{
 	margin-top:15px;
 	font-size:16px;
 }
-/* paginaci�n antigua:
+/* paginación antigua:
 .pagination ul li{
 	color:#4483be;
 	min-width:28px;
@@ -2653,7 +2655,7 @@ margin-right:-15px;
 
 
 
-/** estad�sticas **/
+/** estadísticas **/
 .estadisticas{
 	
 }
@@ -2790,8 +2792,6 @@ h4{
 	
 }
 
-
-
 /* formulario ligthbox contactar terapeuta */
 
 .contactarTerapeutaForm{
@@ -2808,15 +2808,26 @@ h4{
 	float:right;
 }
 .contactarTerapeutaForm textarea{
-	width:472px;
+width:472px;
 }
 .contactarTerapeutaForm .boton-morado{
 	float:right;
 	margin: 10px 0;
 }
 
-
 /* Mauricio */
+.columna-full{
+	width:1000px;
+	float:left;
+	min-height:250px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-color:#fff;
+	padding: 15px;
+	position:relative;
+}
+
 .event-field{
 	width: 100px;
 	margin-right: 20px;
@@ -2848,4 +2859,61 @@ h4{
 	right:5px;
 	top:6px;
 	cursor:pointer;
+}
+
+
+#table-2 {
+	border: 1px solid #e3e3e3;
+	background-color: #f2f2f2;
+        width: 100%;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+}
+#table-2 td, #table-2 th {
+	padding: 5px;
+	color: #333;
+}
+#table-2 thead {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	padding: .2em 0 .2em .5em;
+	text-align: left;
+	color: #4B4B4B;
+	background-color: #C8C8C8;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#e3e3e3), color-stop(.6,#B3B3B3));
+	background-image: -moz-linear-gradient(top, #D6D6D6, #B0B0B0, #B3B3B3 90%);
+	border-bottom: solid 1px #999;
+}
+#table-2 th {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 17px;
+	line-height: 20px;
+	font-style: normal;
+	font-weight: normal;
+	text-align: left;
+	text-shadow: white 1px 1px 1px;
+}
+#table-2 td {
+	line-height: 20px;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	border-bottom: 1px solid #fff;
+	border-top: 1px solid #fff;
+}
+#table-2 tr:hover {
+	background-color: #fff;
+}
+
+.multiples-campos-boton-añadir{
+	margin-left:305px;
+	color:#4483BE;
+	font-size:11px;
+	cursor:pointer;
+	display:block;
+	float:left;
+	height:22px;
+}
+
+.boton-morado.derecha {
+	margin-left: 150px;
 }

@@ -3,8 +3,11 @@ class PagosController < ApplicationController
   # GET /pagos
   # GET /pagos.json
   def index
-    @pagos = Pago.all
-
+    if params[:status] and params[:status] != "pendiente"
+      @pagos = Pago.where("estado <> 'pendiente'")
+    else
+      @pagos = Pago.where("estado = 'pendiente'")
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @pagos }
@@ -80,5 +83,21 @@ class PagosController < ApplicationController
       format.html { redirect_to pagos_url }
       format.json { head :ok }
     end
+  end
+  
+  def validar_pago
+    pago = Pago.find(params[:id])
+    pago.estado = "validado manualmente"
+    pago.fecha_pago = Time.now
+    if pago.tipo = "Suscripcion Completa Anual"
+      pago.terapeuta.plan_expira =  1.year.from_now
+    elsif pago.tipo = "Suscripcion Completa Semestral"
+      pago.terapeuta.plan_expira =  6.month.from_now
+    else 
+      pago.terapeuta.plan_expira =  3.month.from_now
+    end
+    pago.terapeuta.save
+    pago.save
+    redirect_to pagos_path
   end
 end

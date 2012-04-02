@@ -38,6 +38,8 @@ BuscoTerapia::Application.routes.draw do
   match "validate_email" => "terapeutas#validate_email", :as => "validate_email"
   match "/terapeutas/borrar_recurrente/:id" => "events#borrar_recurrente", :as => "borrar_recurrente"
   match "/terapeutas/ficha/:id" => "terapeutas#ver_ficha", :as => "ficha"
+  match "/terapeutas/visita/:id" => "terapeutas#visita", :as => "visita"
+  match "/terapeutas/upgrade_plan/:id" => "terapeutas#upgrade_plan", :as => "upgrade_plan"
   
   # match "submit_payment" => "terapeutas#submit_payment"
   match "payment_success" => "terapeutas#payment_success"
@@ -62,6 +64,8 @@ BuscoTerapia::Application.routes.draw do
   match '/admin' => 'admin#index', :as => 'admin'
 
   match '/events/get/:id' => 'events#get_terapeuta_events', :as => 'get_terapeuta_events'
+  
+  match '/pagos/validar_pago/:id' => 'pagos#validar_pago', :as => 'validar_pago'
 
   # map.connect "/sessions/change_password", :controller => "sessions", :action => "change_password"
   # get "signup" => "users#new", :as => "signup"

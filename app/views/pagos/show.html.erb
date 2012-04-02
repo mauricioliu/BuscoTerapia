@@ -1,30 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div id="block-content" class="block-wrapper">
+	<div class="wrapper" id="content">
 
-<p>
-  <b>Terapeuta:</b>
-  <%= @pago.terapeuta_id %>
-</p>
-
-<p>
-  <b>Tipo:</b>
-  <%= @pago.tipo %>
-</p>
-
-<p>
-  <b>Monto:</b>
-  <%= @pago.monto %>
-</p>
-
-<p>
-  <b>Estado:</b>
-  <%= @pago.estado %>
-</p>
-
-<p>
-  <b>Fecha pago:</b>
-  <%= @pago.fecha_pago %>
-</p>
-
-
-<%= link_to 'Edit', edit_pago_path(@pago) %> |
-<%= link_to 'Back', pagos_path %>
+		<div class="columna-full">
+		<p id="notice"><%= notice %></p>
+		
+		<p>
+		  <b>Terapeuta:</b>
+		  <%= @pago.terapeuta.nombre %>
+		</p>
+		
+		<p>
+		  <b>Tipo:</b>
+		  <%= @pago.tipo %>
+		</p>
+		
+		<p>
+		  <b>Monto:</b>
+		  <%= @pago.monto %>
+		</p>
+		
+		<p>
+		  <b>Estado:</b>
+		  <%= @pago.estado %>
+		</p>
+		
+		<p>
+		  <b>Fecha pago:</b>
+		  <%= @pago.fecha_pago %>
+		</p>
+		
+		<% if @pago.estado == "pendiente" %>
+			<%= link_to 'validar pago', validar_pago_path(@pago) %> |
+		<% end %>
+		<%= link_to 'modificar', edit_pago_path(@pago) %> |
+		<%= link_to 'volver', pagos_path %>
+		</div>
+	</div>	
+</div>

@@ -28,7 +28,7 @@ class TerapeutasController < ApplicationController
                                      :page => params[:page], :per_page => 10,
                                      :conditions => @h,
                                      :sort_mode => :extended,
-                                     :order => "random_me desc")
+                                     :order => "plan_tipo desc random_me desc")
         @total = @terapeutas.total_entries
     end
     # @search = Terapeuta.search(params[:search])
@@ -118,6 +118,7 @@ class TerapeutasController < ApplicationController
   def create
     @terapeuta = Terapeuta.new(params[:terapeuta])
     @terapeuta.estado = "pendiente de validar"
+    @terapeuta.plan_tipo = "Gratis"
     
     random_password = Array.new(10).map { (65 + rand(58)).chr }.join
     @terapeuta.password=random_password
@@ -266,7 +267,14 @@ class TerapeutasController < ApplicationController
       if terapeuta.email == email
         pago = terapeuta.pagos.find(pid)
         if pago && pago.estado == "pendiente"
-          terapeuta.plan_tipo = pago.tipo
+          terapeuta.plan_tipo = "pagado"
+          if pago.tipo = "Suscripcion Completa Anual"
+            terapeuta.plan_expira =  1.year.from_now
+          elsif pago.tipo = "Suscripcion Completa Semestral"
+            terapeuta.plan_expira =  6.month.from_now
+          else 
+            terapeuta.plan_expira =  3.month.from_now
+          end
           pago.estado = status
           pago.fecha_pago = Date.today
           pago.save
@@ -290,6 +298,10 @@ class TerapeutasController < ApplicationController
     redirect_to terapeutas_path
   end
   
+  def visita
+    
+  end
+  
   def estadisticas
     
   end
@@ -300,6 +312,19 @@ class TerapeutasController < ApplicationController
 
   def calendario
     @event = Event.new
+  end
+  
+  def upgrade_plan
+    @terapeuta = session[:terapeuta]
+    plan_ciclo = params[:plan_ciclo]
+    Pago.delete_all(:terapeuta_id => @terapeuta_id, :estado => 'pendiente')
+    @pago = @terapeuta.pagos.create(:tipo => "Suscripcion Completa "+plan_ciclo, 
+                                    :monto => RefDatum.where(:nombre => "Plan "+plan_ciclo).first().valor, 
+                                    :estado => "pendiente" )
+    @pago_codigo = "Susc-BT-"+plan_ciclo
+    
+    @success_url = root_url + "payment_success?code="+encrypt_url(@terapeuta.email+"|||"+@terapeuta.id.to_s+"|||"+@pago.id.to_s+"|||pago exitoso a través de dinero mail")
+    render "submit_payment" 
   end
 private 
   def resolve_layout

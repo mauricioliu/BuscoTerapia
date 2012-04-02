@@ -1,0 +1,32 @@
+<div class="busqueda-box-center">
+	<div class="ficha-persona">
+		<div class="ver-contenido-ficha">
+		<p class="nombre-ficha">Plan Información Total</p>
+			<h3>Tipo de suscripción.</h3>
+				<%= form_tag upgrade_plan_path do %>
+				<div class="form-block one-line radio-button">
+					<div class="label"><%= radio_button_tag :plan_ciclo, "Anual", :checked => true %></div>
+					<div class="columna30">
+			  	  		Suscripción completa <strong>anual</strong>. <br/><%= number_to_currency(RefDatum.find_by_nombre("Plan Anual").valor.to_i/12) %> por mes. Total <%= number_to_currency(@plan_anual.to_i) %> 
+					</div>
+				</div>
+				<div class="form-block one-line radio-button">
+					<div class="label"><%= radio_button_tag :plan_ciclo, "Semestral" %></div>
+					<div class="columna30">
+			  	  		Suscripción <strong>semestral</strong>. <br/> <%= number_to_currency(RefDatum.find_by_nombre("Plan Semestral").valor.to_i/6) %> por mes. Total <%= number_to_currency(@plan_semestral.to_i) %>
+					</div>
+				</div>
+				<div class="form-block one-line radio-button">
+					<div class="label"><%= radio_button_tag :plan_ciclo, "Trimestral" %></div>
+					<div class="columna30">
+			  	  		Suscripción <strong>trimestral</strong>. <br/><%= number_to_currency(RefDatum.find_by_nombre("Plan Trimestral").valor.to_i/3) %> por mes.  Total <%= number_to_currency(@plan_trimestral.to_i) %>
+					</div>
+				</div>
+				<div align="right">
+				<%= submit_tag "Contratar", :class => "boton-morado derecha" %>
+				</div>
+				<% end %>
+			</div><!-- ficha-columna -->
+		</div><!--contenido ficha-->
+	</div><!--ficha persona-->
+</div><!--box center-->
