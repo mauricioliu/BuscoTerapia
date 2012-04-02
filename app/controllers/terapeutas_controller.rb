@@ -315,15 +315,15 @@ class TerapeutasController < ApplicationController
   end
   
   def upgrade_plan
-    @terapeuta = session[:terapeuta]
+    @terapeuta = Terapeuta.find(session[:terapeuta].id)
     plan_ciclo = params[:plan_ciclo]
-    Pago.delete_all(:terapeuta_id => @terapeuta_id, :estado => 'pendiente')
-    @pago = @terapeuta.pagos.create(:tipo => "Suscripcion Completa "+plan_ciclo, 
-                                    :monto => RefDatum.where(:nombre => "Plan "+plan_ciclo).first().valor, 
-                                    :estado => "pendiente" )
+    Pago.delete_all(:terapeuta_id => session[:terapeuta].id, :estado => 'pendiente')
+    @pago = session[:terapeuta].pagos.create(:tipo => "Suscripcion Completa "+plan_ciclo, 
+                                             :monto => RefDatum.where(:nombre => "Plan "+plan_ciclo).first().valor, 
+                                              :estado => "pendiente" )
     @pago_codigo = "Susc-BT-"+plan_ciclo
     
-    @success_url = root_url + "payment_success?code="+encrypt_url(@terapeuta.email+"|||"+@terapeuta.id.to_s+"|||"+@pago.id.to_s+"|||pago exitoso a través de dinero mail")
+    @success_url = root_url + "payment_success?code="+encrypt_url(session[:terapeuta].email+"|||"+session[:terapeuta].id.to_s+"|||"+session[:terapeuta].id.to_s+"|||pago exitoso a través de dinero mail")
     render "submit_payment" 
   end
 private 
