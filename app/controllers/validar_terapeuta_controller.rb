@@ -93,10 +93,27 @@ class ValidarTerapeutaController < ApplicationController
     redirect_to validar_terapeuta_todos_path
   end
   
+  def cambiar_tipo_plan
+    if params[:cambiar_plan_expira]
+      terapeuta = Terapeuta.find(params[:terapeuta])
+      terapeuta.plan_tipo = "Pagado"
+      terapeuta.plan_expira = params[:cambiar_plan_expira]
+      terapeuta.save
+      redirect_to validar_terapeuta_todos_path
+    else
+      @terapeuta = Terapeuta.find(params[:id])
+      if @terapeuta.plan_tipo == "Pagado"
+        @terapeuta.plan_tipo = "Gratis"
+        @terapeuta.save
+        redirect_to validar_terapeuta_todos_path
+      end
+    end
+  end
+  
 private
   def authenticate
     case action_name
-    when "todos","edit","destroy","invalidar"
+    when "todos","edit","destroy","invalidar", "cambiar_tipo_plan"
       authenticate_or_request_with_http_basic do |username, password|
         username == "btpadmin" && password == "btp.123!admin"
       end 

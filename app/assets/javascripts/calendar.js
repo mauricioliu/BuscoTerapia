@@ -6,6 +6,7 @@ $(document).ready(function() {
 	var y = date.getFullYear();
 	
 	$('#calendar').fullCalendar({
+		ignoreTimezone: true,
 		editable: true,
 		firstDay: 1,        
 		header: {
@@ -30,7 +31,6 @@ $(document).ready(function() {
             url: '/events/get/'+ $('#terapeuta_id').html(),
             color: '#FF7A00',
             textColor: 'black',
-            ignoreTimezone: true
         }],
         
         timeFormat: 'h:mm t{ - h:mm t} ',

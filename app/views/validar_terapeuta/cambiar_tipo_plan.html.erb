@@ -1,0 +1,13 @@
+<div id="block-content" class="block-wrapper">
+	<div class="wrapper" id="content">
+
+	<div class="columna-670-left">
+	<%= form_tag cambiar_tipo_plan_path do %>
+		<%= hidden_field_tag :terapeuta, @terapeuta.id %>
+		Fecha Expira: <%= text_field_tag :cambiar_plan_expira %>  
+		
+		<%= submit_tag "Cambiar terapeuta a pagado" %>
+	<% end %>
+	</div>
+	</div>
+</div>

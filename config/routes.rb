@@ -60,6 +60,7 @@ BuscoTerapia::Application.routes.draw do
   match '/ver_terapeutas' => 'validar_terapeuta#ver_terapeutas', :as => 'ver_terapeutas'
   match '/ver_disponibilidad/:id' => 'validar_terapeuta#ver_disponibilidad', :as => 'ver_disponibilidad'
   match '/bo_crear_disponibilidad' => 'validar_terapeuta#bo_crear_disponibilidad', :as => 'bo_crear_disponibilidad'
+  match '/validar_terapeuta/cambiar_tipo_plan/:id' => 'validar_terapeuta#cambiar_tipo_plan', :as => 'cambiar_tipo_plan'
   
   match '/admin' => 'admin#index', :as => 'admin'
 

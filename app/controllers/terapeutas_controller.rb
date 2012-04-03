@@ -326,6 +326,7 @@ class TerapeutasController < ApplicationController
     @success_url = root_url + "payment_success?code="+encrypt_url(@terapeuta.email+"|||"+@terapeuta.id.to_s+"|||"+@terapeuta.id.to_s+"|||pago exitoso a través de dinero mail")
     render "submit_payment" 
   end
+  
 private 
   def resolve_layout
     case action_name

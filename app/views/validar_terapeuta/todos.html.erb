@@ -13,6 +13,11 @@
 			<div class="form-box form-perfil">
 			
 			<% @terapeutas.each do |terapeuta| %>
+				<% if terapeuta.plan_tipo == "Gratis" %>
+					<strong>Tipo Plan: <%= link_to terapeuta.plan_tipo, cambiar_tipo_plan_path(terapeuta) %></strong><br />
+				<% else %>
+					<strong>Tipo Plan: <%= link_to terapeuta.plan_tipo, cambiar_tipo_plan_path(terapeuta), :confirm => "¿Desea cambiar tipo de plan a gratis?" %></strong><br />
+				<% end %>
 				Nombre: <%= terapeuta.nombre %> <br />
 				Rut: <%= terapeuta.rut %> <br />
 				Email: <%= terapeuta.email %><br />
