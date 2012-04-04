@@ -25,7 +25,7 @@
 			<% @terapeutas.each do |terapeuta| %>
 				<% if terapeuta and terapeuta.plan_tipo == "Gratis" %>
 					<div class="ficha-persona ficha-simple">
-					<div class="foto"><%= image_tag 'img/terapeuta_thumb_perfil-default.png'%></div>
+					<div class="foto default"></div>
 					<div class="contenido-ficha">
 						<h2 class="nombre-ficha"><%= link_to terapeuta.nombre.titleize, ficha_path(terapeuta), :class => "nombre-ficha-link" %></h2>
 						<p>
@@ -41,6 +41,7 @@
 							<% end %>
 							</br>
 						</p>
+						<div class="find-me" style="display: none;"><%= terapeuta.id %></div>
 						<div class="descripcion-full ficha-full">
 							<p><strong>Dirección:</strong> <%= terapeuta.direccion %>, <%= terapeuta.comuna %>, <%= terapeuta.region %></p>
 							<input type="button" value="Contactar al Terapeuta" class="boton-morado" id="boton-contactar-terapeuta" />
@@ -53,7 +54,7 @@
 					<% if terapeuta.imagen_url.size != 0 %>
 						<div class="foto"><%= image_tag terapeuta.imagen_url.terapeuta_thumb.url.to_s %></div>
 					<% else %>
-						<div class="foto"><%= image_tag 'img/terapeuta_thumb_perfil-default.png'%></div>
+						<div class="foto default"></div>
 					<% end %>
 					<div class="contenido-ficha">
 						
@@ -69,6 +70,7 @@
 							</br>
 							<%= terapeuta.direccion %>, <%= terapeuta.comuna %>, <%= terapeuta.region %> 
 						</p>
+						<div class="find-me" style="display: none;"><%= terapeuta.id %></div>
 						<div class="descripcion-full ficha-full">
 							<div class="ficha-columna">
 								<h3>Información de experiencia y formación académica:</h3>

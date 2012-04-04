@@ -63,6 +63,8 @@ class TerapeutasController < ApplicationController
     @contacto = true
     @title = @terapeuta.nombre
     
+    registrar_visita(@terapeuta.id)
+    
     render "show"
   end
   
@@ -299,7 +301,12 @@ class TerapeutasController < ApplicationController
   end
   
   def visita
+    #terapeuta = Terapeuta.find(params[:id])
+    registrar_visita(params[:id])
     
+    respond_to do |format|
+      format.js
+    end
   end
   
   def estadisticas
@@ -349,4 +356,21 @@ private
       @notice = params[:notice]
     end  
   end  
+  
+  def registrar_visita(terapeuta_id)
+    visita = Visitas.where("terapeuta_id = ? and 
+                            YEAR(created_at) = ? and 
+                            MONTH(created_at) = ? and 
+                            DAY(created_at) = ?",
+                            terapeuta_id,Time.now.year,Time.now.month,Time.now.day).first()
+    if visita
+      visita.cantidad = visita.cantidad + 1
+      visita.save 
+    else
+      visita = Visitas.new
+      visita.terapeuta_id = terapeuta_id
+      visita.cantidad = 1
+      visita.save  
+    end
+  end
 end

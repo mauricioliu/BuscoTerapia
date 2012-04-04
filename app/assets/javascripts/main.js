@@ -359,6 +359,15 @@ $(document).ready(function () {
 				
 				);
 				
+				terapeuta_id = $(this).parent().find(".find-me").text();
+				
+				jQuery.ajax({
+					data: 'id=1',
+					dataType: 'script',
+					type: 'post',
+					url: "/terapeutas/visita/"+terapeuta_id
+				});
+					
 			}
 		});
 	});

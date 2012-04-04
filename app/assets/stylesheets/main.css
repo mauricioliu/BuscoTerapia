@@ -1442,7 +1442,7 @@ textarea{
 	font-size: 18px !important;
 	color: #6a63a4;
 	font-weight:bold;
-	margin: -2px 0 0;
+	margin: 0px 0 0;
 }
 .contenido-ficha h3{
 	color:#4483be;
@@ -1800,7 +1800,7 @@ textarea{
 	margin: 5px 0;
 }
 .ficha-terapias .nombre-ficha{
-	margin: -4px 0 8px;
+	margin: 0px 0 8px;
 }
 .ficha-terapias .descripcion-full{
 	float: none;
@@ -2916,4 +2916,9 @@ width:472px;
 
 .boton-morado.derecha {
 	margin-left: 150px;
+}
+
+
+.foto.default {
+	background:url(img/terapeuta_thumb_perfil-default.png) no-repeat 0 0 transparent;
 }
