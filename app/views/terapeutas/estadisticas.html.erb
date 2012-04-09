@@ -1,21 +1,50 @@
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  new Highcharts.Chart({
+    chart: { renderTo: 'orders_chart' },
+    title: { text: 'Visitas' },
+    xAxis: { type: 'datetime' },
+    yAxis: {
+      title: { text: 'cantidad' }
+    },
+    
+    tooltip: {
+      formatter: function () {
+        return 'Cantidad de visitas: <strong>' +
+          this.y + '</strong><br/>' + Highcharts.dateFormat("%e de %B, %Y", this.x);
+      }
+    },
+        
+    series: [{
+      name: "Visitas",
+      pointInterval: <%= 1.day * 1000 %>,
+      pointStart: <%= 3.weeks.ago.at_midnight.to_i * 1000 %>,
+      data: <%= visitas_chart_series(3.weeks.ago, session[:terapeuta].id) %>
+    }]
+  });
+  
+	Highcharts.setOptions({
+		lang: {
+			months: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 
+				'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+			weekdays: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+			shortMonths: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic']
+		}
+	});
+});
+</script>
+
+
 <div id="block-content" class="block-wrapper">
 	<div class="wrapper" id="content">
 
+		<div class="columna-670-left">
+			<div class="busqueda-box-center">
 	
+			<div id="orders_chart" style="width: 650px; height: 300px;"></div>
 	
-	
-	<div class="columna-one-full content404">
-		<div class="text-box">
-		<h2>Estadísticas.</h2>
-		<p class="busqueda-mensaje-resultado">
-			Estimado terapeuta, estamos trabajando en el desarrollo de esta página.  A fin de mes podrás revisar las estadísticas de tu ficha y del sitio.
-		</p>
-		
+			</div>
 		</div>
-	</div><!--columna-one-full-->
-	
-	
-	
-	
-	</div><!-- #content -->
-</div><!-- block-content -->
+		<%= render "home/preguntas_frecuentes" %>
+	</div>	
+</div>

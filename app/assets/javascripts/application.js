@@ -12,6 +12,7 @@
 //= require jquery.rest
 //= require jquery-ui-1.8.18.custom.min
 //= require jquery-ui-timepicker-addon
+//= require highcharts
 
 jQuery(function($){
 	$.datepicker.regional['es'] = {

@@ -25,4 +25,15 @@ module TerapeutasHelper
       return false
     end
   end
+  
+  def visitas_chart_series(start_time, terapeuta_id)
+    visitas_by_day = Visitas.where(:created_at => start_time.beginning_of_day..Time.zone.now.end_of_day,
+                                   :terapeuta_id => terapeuta_id).
+                    group("date(created_at)").
+                    select("created_at, sum(cantidad) as cantidad")
+    (start_time.to_date..Date.today).map do |date|
+      visita = visitas_by_day.detect { |visita| visita.created_at.to_date == date }
+      visita && visita.cantidad.to_i || 0
+    end.inspect
+  end
 end
