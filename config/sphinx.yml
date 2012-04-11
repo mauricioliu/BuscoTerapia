@@ -85,6 +85,8 @@ development:
         U+1EF7->y, U+1EF8->y, U+1EF9->y" 
         
 production:
+  morphology:  libstemmer_es
+  min_stemming_len: 4
   mem_limit: 128M
   bin_path: /usr/local/bin/
   charset_table: "0..9, a..z, _, A..Z->a..z, U+00C0->a, U+00C1->a,
