@@ -596,12 +596,13 @@ $(document).ready(function () {
 //aca creamos el div de una ficha tipo, con todos los tags html iguales a los de antes...
 //hay que insertarle los valores reales, se pueden obtener de los inputs cuando tengan id o nombre
 function generarFichaPersona(){
+	terapeuta = $(".nonmbre-terapeuta").text()
 	fichaPersona = '	<div class="busqueda-box-center">'
 	fichaPersona += '	<div class="ficha-persona">'
 	fichaPersona += '		<div class="ver-contenido-ficha">'
 	fichaPersona += '		<p class="nombre-ficha">Plan Información Total</p>'
 	fichaPersona += '			<h3>Tipo de suscripción.</h3><br />'
-	fichaPersona += '				<form accept-charset="UTF-8" action="/terapeutas/upgrade_plan/mauricio" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="pkKb3pECaOh8coEUJSLk3lYZ/w1/PIPKV3K7RPiyrgg=" /></div>'
+	fichaPersona += '				<form accept-charset="UTF-8" action="/terapeutas/upgrade_plan/'+terapeuta+'" method="post"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="pkKb3pECaOh8coEUJSLk3lYZ/w1/PIPKV3K7RPiyrgg=" /></div>'
 	fichaPersona += '				<div class="form-block one-line radio-button">'
 	fichaPersona += '					<div class="label"><input checked="checked" id="plan_ciclo_Anual" name="plan_ciclo" type="radio" value="Anual" /></div>'
 	fichaPersona += '					<div class="columna30">'

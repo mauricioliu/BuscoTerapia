@@ -12,6 +12,9 @@
 				<li><span>Mapa indexado del centro o terapéuta.</span></li>
 			</ul>
 			<p class="destacado">Desde <strong><%=h number_to_currency RefDatum.find_by_nombre("Plan Anual").valor.to_i/12 %> mensuales</strong></p>
-			<p class="right"><a href="#" id="previsualizar-otra-ficha">Contratar</a></p>
+			<div class="nonmbre-terapeuta" style="display: none"><%= session[:terapeuta].id %></div>
+			<p class="right">
+				<a href="#" id="previsualizar-otra-ficha">Contratar</a>
+			</p>
 		</div>
 	</div><!--columna-335-right-->
