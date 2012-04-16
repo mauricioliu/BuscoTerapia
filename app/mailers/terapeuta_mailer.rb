@@ -45,7 +45,7 @@ class TerapeutaMailer < ActionMailer::Base
     end
   end
   
-  def contactar_terapeuta(terapeuta,cnombre,cemail,cmensaje)
+  def contactar_terapeuta(terapeuta,cnombre,cemail,ctelefono,cmensaje)
     recipients = RefDatum.where(:nombre => "Back Office Email")
     email = Array.new
     recipients.each do |recipient|
@@ -55,6 +55,7 @@ class TerapeutaMailer < ActionMailer::Base
     @terapeuta = terapeuta
     @nombre = cnombre
     @email = cemail
+    @telefono = ctelefono
     @mensaje = cmensaje
 
     # mail(:to => email, :subject => "Un nuevo terapeuta se ha registrado")

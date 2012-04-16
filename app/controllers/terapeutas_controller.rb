@@ -295,8 +295,9 @@ class TerapeutasController < ApplicationController
     terapeuta = params[:terapeuta_nombre]
     nombre = params[:nombre]
     email = params[:email]
+    telefono = params[:telefono]
     mensaje = params[:mensaje]
-    TerapeutaMailer.contactar_terapeuta(terapeuta,nombre,email,mensaje).deliver
+    TerapeutaMailer.contactar_terapeuta(terapeuta,nombre,email,telefono,mensaje).deliver
     
     redirect_to terapeutas_path
   end
@@ -327,7 +328,7 @@ class TerapeutasController < ApplicationController
     plan_ciclo = params[:plan_ciclo]
     Pago.delete_all(:terapeuta_id => @terapeuta.id, :estado => 'pendiente')
     @pago = @terapeuta.pagos.create(:tipo => "Suscripcion Completa "+plan_ciclo, 
-                                             :monto => RefDatum.where(:nombre => "Plan "+plan_ciclo).first().valor, 
+                                             :monto => 500, 
                                               :estado => "pendiente" )
     @pago_codigo = "Susc-BT-"+plan_ciclo
     
