@@ -328,7 +328,7 @@ class TerapeutasController < ApplicationController
     plan_ciclo = params[:plan_ciclo]
     Pago.delete_all(:terapeuta_id => @terapeuta.id, :estado => 'pendiente')
     @pago = @terapeuta.pagos.create(:tipo => "Suscripcion Completa "+plan_ciclo, 
-                                             :monto => 500, 
+                                              :monto => RefDatum.where(:nombre => "Plan "+plan_ciclo).first().valor, 
                                               :estado => "pendiente" )
     @pago_codigo = "Susc-BT-"+plan_ciclo
     
