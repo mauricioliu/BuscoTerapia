@@ -2,6 +2,13 @@
 
 class Asesoria < ActiveRecord::Base
   
+  PRECIOS = [
+              "el dinero no es determinante",
+              "$5.000",
+              "$15.000",
+              "$25.000"
+  ]
+  
   has_many :dias_atencion, :dependent => :destroy
   
   accepts_nested_attributes_for :dias_atencion, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }, :allow_destroy => true

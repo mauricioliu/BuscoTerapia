@@ -24,6 +24,7 @@ Lugar preferente de atención: <%= @asesoria.lugar_preferencia %>
 Día preferente de atención: <% @asesoria.dias_atencion.each do |dia_atencion| %> <%= dia_atencion.dia %>, <% end %>
 Fecha estimativa
 Rango de horario: <%= @asesoria.hora_desde %> - <%= @asesoria.hora_hasta %>
+Monto maximo: <%= @asesoria.precio_max %>
 
 Perfil de terapeuta
 Otro: <%= @asesoria.terapeuta_otro %>

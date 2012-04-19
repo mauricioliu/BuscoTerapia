@@ -129,6 +129,20 @@ para facilitar la búsqueda de tu terapeuta.</small></h2>
 				<%= f.collection_select :hora_hasta, RefDatum.where(:nombre => "Hora Asesoria"), :valor, :valor, :prompt => "Seleccione horario" %>
 			</div>
 		</div>
+		
+		<div class="label"><br />
+			Monto máximo que te es posible pagar por sesión:
+			<p class="message">(considera descuentos de nuestros profesionales y de isapres, Fonasa o seguros)</p>
+		</div>
+		
+		
+		<div class="form-block one-line">
+		<div class="label">Monto</div>
+		<div class="input_field">
+			<%= f.select :precio_max, Asesoria::PRECIOS, {} %>
+			<!-- mensaje aparece solo cuando no completó -->
+		</div>
+	</div>
 	</div>
 	<p>&nbsp;</p>
 	<div class="form-block">
