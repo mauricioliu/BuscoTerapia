@@ -25,7 +25,8 @@
 				Estado: <%= terapeuta.estado %><br />
 				<%= link_to 'ver/modificar', editar_terapeuta_path(terapeuta) %> |
 				<%= link_to 'invalidar', invalidar_terapeuta_path(terapeuta), :confirm => "Esta acción dará de baja al terapeuta pero seguirá permaneciendo en la base de terapeutas sin poder ser encontrado por el buscador de la página.  ¿Seguro desea continuar?" %> |  
-				<%= link_to 'eliminar', destroy_terapeuta_path(terapeuta), :confirm => "Esto eliminará terapeuta de manera permanente.  ¿Seguro desea continuar?" %><br /><br />
+				<%= link_to 'eliminar', destroy_terapeuta_path(terapeuta), :confirm => "Esto eliminará terapeuta de manera permanente.  ¿Seguro desea continuar?" %> | 
+				<%= link_to 'cambiar contraseña', modificar_password_url(terapeuta) %> <br /><br />
 			<% end %>
 			</div>
 		</div>

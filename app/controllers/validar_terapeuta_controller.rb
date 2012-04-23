@@ -111,6 +111,17 @@ class ValidarTerapeutaController < ApplicationController
     end
   end
   
+  def modificar_password
+    if params[:new_password]
+      terapeuta = Terapeuta.find(params[:terapeuta])
+      terapeuta.password = params[:new_password] 
+      terapeuta.save!
+      redirect_to validar_terapeuta_todos_path
+    else
+      @terapeuta = Terapeuta.find(params[:id])
+    end
+  end
+  
 private
   def authenticate
     case action_name
