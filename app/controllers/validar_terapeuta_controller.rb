@@ -115,7 +115,7 @@ class ValidarTerapeutaController < ApplicationController
     if params[:new_password]
       terapeuta = Terapeuta.find(params[:terapeuta])
       terapeuta.password = params[:new_password] 
-      terapeuta.save!
+      terapeuta.save
       redirect_to validar_terapeuta_todos_path
     else
       @terapeuta = Terapeuta.find(params[:id])
