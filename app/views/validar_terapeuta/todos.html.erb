@@ -14,9 +14,9 @@
 			
 			<% @terapeutas.each do |terapeuta| %>
 				<% if terapeuta.plan_tipo == "Gratis" %>
-					<strong>Tipo Plan: <%= link_to terapeuta.plan_tipo, cambiar_tipo_plan_path(terapeuta) %></strong><br />
+					Tipo Plan: <strong><%= terapeuta.plan_tipo %></strong> (<%= link_to 'cambiar', cambiar_tipo_plan_path(terapeuta) %>)<br />
 				<% else %>
-					<strong>Tipo Plan: <%= link_to terapeuta.plan_tipo, cambiar_tipo_plan_path(terapeuta), :confirm => "¿Desea cambiar tipo de plan a gratis?" %></strong><br />
+					Tipo Plan: <strong><%= terapeuta.plan_tipo %></strong> (<%= link_to 'cambiar', cambiar_tipo_plan_path(terapeuta), :confirm => "¿Desea cambiar tipo de plan a gratis?" %>)<br />
 				<% end %>
 				Nombre: <%= terapeuta.nombre %> <br />
 				Rut: <%= terapeuta.rut %> <br />
