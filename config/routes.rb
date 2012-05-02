@@ -49,7 +49,6 @@ BuscoTerapia::Application.routes.draw do
   match "calendario" =>  "terapeutas#calendario"
   
   match '/ver_comprobante/:id' => 'asesorias#ver_comprobante', :as => 'ver_comprobante'
-  match '/ver_asesoria/:id' => 'asesorias#ver_asesoria', :as => 'ver_asesoria'
   
   match '/validar_terapeuta/:id' => 'validar_terapeuta#show', :as => 'revisar_terapeuta'
   match '/validar_terapeuta/' => 'validar_terapeuta#index'
@@ -62,12 +61,18 @@ BuscoTerapia::Application.routes.draw do
   match '/bo_crear_disponibilidad' => 'validar_terapeuta#bo_crear_disponibilidad', :as => 'bo_crear_disponibilidad'
   match '/validar_terapeuta/cambiar_tipo_plan/:id' => 'validar_terapeuta#cambiar_tipo_plan', :as => 'cambiar_tipo_plan'
   match '/validar_terapeuta/:id/modificar_password' => 'validar_terapeuta#modificar_password', :as => 'modificar_password'
-  
-  match '/admin' => 'admin#index', :as => 'admin'
 
+  match '/admin' => 'admin#index', :as => 'admin'
+  # gestion asesorias
+  match '/admin/asesorias_index' => 'admin#asesorias_index', :as => 'asesorias_index'
+  match '/admin/ver_asesoria/:id' => 'admin#ver_asesoria', :as => 'ver_asesoria'
+  match '/admin/cambiar_asesoria_status' => 'admin#cambiar_asesoria_status', :as => 'cambiar_asesoria_status'
+  
   match '/events/get/:id' => 'events#get_terapeuta_events', :as => 'get_terapeuta_events'
   
   match '/pagos/validar_pago/:id' => 'pagos#validar_pago', :as => 'validar_pago'
+
+
 
   # map.connect "/sessions/change_password", :controller => "sessions", :action => "change_password"
   # get "signup" => "users#new", :as => "signup"

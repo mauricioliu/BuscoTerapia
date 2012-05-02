@@ -23,7 +23,7 @@
 		<% end %>
 		<% if @terapeutas != nil %>
 			<% @terapeutas.each do |terapeuta| %>
-				<% if terapeuta and terapeuta.plan_tipo == "Gratis" %>
+				<% if terapeuta and (terapeuta.plan_tipo == "Gratis" or is_plan_expira(terapeuta.plan_expira)) %>
 					<div class="ficha-persona ficha-simple">
 					<div class="foto default"></div>
 					<div class="contenido-ficha">

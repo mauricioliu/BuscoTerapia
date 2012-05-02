@@ -1,0 +1,24 @@
+<div id="block-content" class="block-wrapper">
+	<div class="wrapper" id="content">
+
+	<div class="columna-670-left">
+		<div class="busqueda-box-center">
+		<h2>Asesorias</h2>
+		<%= link_to "Pendientes", asesorias_index_path %> | <%= link_to "Cerrados", asesorias_index_path(:filtro => "cerrado") %> 
+		<br />
+			<div class="form-box form-perfil">
+				
+			<% @asesorias.each do |asesoria| %>
+				<% if asesoria.status == "nuevo" %><strong><%end%>
+			    N° Asesoria: <%= asesoria.id %><br />
+			    Nombre Paciente: <%= asesoria.paciente_nombre %><br />
+			    Fecha Solicitud: <%= I18n.localize(asesoria.created_at, :format => "%e de %B, %Y")%><br />
+			    Estado: <%= asesoria.status %>
+			    <%= link_to 'Ver', ver_asesoria_path(asesoria) %><br /><br />
+			    <% if asesoria.status == "nuevo" %></strong><%end%>
+			<% end %>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>

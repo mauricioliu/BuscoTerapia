@@ -10,6 +10,7 @@ class TerapeutasController < ApplicationController
   # GET /terapeuta
   # GET /terapeuta.json
   def index
+    @today = Time.now
     @sepa = params
     if @sepa[:search] != nil
       @h = Hash.new

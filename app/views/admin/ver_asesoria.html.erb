@@ -1,0 +1,183 @@
+<div id="block-content" class="block-wrapper">
+	<div class="wrapper" id="content">
+
+	<div class="columna-670-left">
+		<div class="articulo-volver">
+			<%= link_to '<< Volver', asesorias_index_path %>
+		</div>
+		<div class="busqueda-box-center">
+			<div class="form-box form-perfil">
+				<div class="mi-perfil">
+				
+				<div class="form-block one-line">
+				<div class="label">1. ¿Por qué necesitas una terapia? </div>
+				<div class="input_field">
+	  				<%= @asesoria.necesidad_1 %>
+	  			</div>
+	  			</div>
+	  			
+	  			<div class="form-block one-line">
+				<div class="label">2. ¿Cómo te imaginas tu terapia? </div>
+				<div class="input_field">
+	  				<%= @asesoria.necesidad_2 %>
+	  			</div>
+	  			</div>
+	  			
+	  			<div class="form-block one-line">
+				<div class="label">Nombre paciente </div>
+				<div class="input_field">
+	  				<%= @asesoria.paciente_nombre %>
+	  			</div>
+	  			</div>
+	  			
+	  			<div class="form-block one-line">
+				<div class="label">Edad</div>
+				<div class="input_field">
+	  				<%= @asesoria.paciente_edad %>
+	  			</div>
+	  			</div>
+	  			
+	  			<div class="form-block one-line">
+				<div class="label">Esta terapia es para: </div>
+				<div class="input_field">
+	  				<%= @asesoria.terapia_para %>
+	  			</div>
+	  			</div>
+	  			
+	  			<div class="form-block one-line">
+				<div class="label">Tipo de terapia </div>
+				<div class="input_field">
+	  				<%= @asesoria.terapia_tipo %>
+	  			</div>
+	  			</div>
+	  			
+	  			<div class="form-block one-line">
+				<div class="label">Teléfono de contacto: </div>
+				<div class="input_field">
+	  				<%= @asesoria.paciente_telefono %>
+	  			</div>
+	  			</div>
+	  			
+	  			<div class="form-block one-line">
+				<div class="label">Email: </div>
+				<div class="input_field">
+	  				<%= @asesoria.paciente_email %>
+	  			</div>
+	  			</div>
+	  			
+	  			<div class="form-block one-line">
+				<div class="label">Lugar de preferencia </div>
+				<div class="input_field">
+	  				<%= @asesoria.lugar_preferencia %>
+	  			</div>
+	  			</div>
+	  			
+	  			<div class="form-block one-line">
+				<div class="label">Dia preferente de atencion </div>
+				<div class="input_field">
+	  				<% @asesoria.dias_atencion.each do |dia_atencion| %> <%= dia_atencion.dia %>, <% end %>
+	  			</div>
+	  			</div>
+	  			
+	  			<div class="form-block one-line">
+				<div class="label">Horario preferente </div>
+				<div class="input_field">
+	  				<%= @asesoria.hora_desde %> --> <%= @asesoria.hora_hasta %>
+	  			</div>
+	  			</div>
+	  			
+	  			<div class="form-block one-line">
+				<div class="label">Monto máximo </div>
+				<div class="input_field">
+	  				<%= @asesoria.precio_max %>
+	  			</div>
+	  			</div>
+	  			
+	  			<div class="form-block one-line">
+				<div class="label">Algún otro aspecto que te parezca relevante mencionar </div>
+				<div class="input_field">
+	  				<%= @asesoria.terapeuta_otro %>
+	  			</div>
+	  			</div>
+	  			
+			</div>
+		</div>
+			<div class="form-box form-perfil">
+				<div class="mi-perfil">
+					<%= form_tag cambiar_asesoria_status_path do %>
+						<%= hidden_field_tag :asesoria_id, @asesoria.id %>
+						<div class="form-block one-line">
+						<div class="label">Estado asesoria </div>
+						<div class="input_field">
+			  				<%= select :asesoria, :status, Asesoria::ESTADO %>
+			  			</div>
+			  			</div>
+			  			
+			  			<div class="form-block one-line" id="terapeuta_asignado">
+						<div class="label">Asignado a: </div>
+						<div class="input_field">
+			  				<%= select :asesoria, :terapeuta_id, Terapeuta.order("nombre asc").collect {|p| [ p.nombre.titleize + " - " + p.email.downcase, p.id ] }, {:include_blank => 'Seleccione'} %>
+			  			</div>
+			  			</div>
+			  			
+			  			<div class="form-block one-line" id="terapeuta_asignado">
+						<div class="label">Asignado a: </div>
+						<div class="input_field">
+			  				<%= text_area :asesoria, :comentarios, :class => "area_big" %>
+			  			</div>
+			  			</div>
+			  			
+			  			<div class="form-block one-line">
+			  			<div class="label">&nbsp;</div>
+			  			<div class="input_field">
+							<%= submit_tag 'Actualizar' %>
+						</div>
+						</div>
+					<% end %>
+				</div>
+			</div>
+			<% if @asesoria.asesoria_h.size > 0 %>
+			<div class="form-box form-perfil">
+				<div class="mi-perfil">
+					<% @asesoria.asesoria_h.each do |h| %>
+						<div class="form-block one-line" id="terapeuta_asignado">
+						<div class="label">Fecha: </div>
+						<div class="input_field">
+							<%= I18n.localize(h.created_at, :format => "%e de %B, %Y")%>
+			  			</div>
+			  			</div>
+			  			
+			  			<div class="form-block one-line" id="terapeuta_asignado">
+						<div class="label">Hora: </div>
+						<div class="input_field">
+							<%= h.created_at.strftime("%I:%M %p") %>
+			  			</div>
+			  			</div>
+			  			
+			  			
+						
+						<div class="form-block one-line" id="terapeuta_asignado">
+						<div class="label">Estado asesoria: </div>
+						<div class="input_field">
+			  				<%= h.status %>
+			  			</div>
+			  			</div>
+			  			
+			  			<div class="form-block one-line" id="terapeuta_asignado">
+						<div class="label">Comentarios: </div>
+						<div class="input_field">
+			  				<%= h.comentarios %>
+			  			</div>
+			  			</div>
+			  			<p>&nbsp;</p>
+					<% end %>
+				</div>
+			</div>
+			<% end %>
+		</div>
+		<div class="articulo-volver">
+			<%= link_to '<< Volver', asesorias_index_path %>
+		</div>
+	</div>
+	</div>
+</div>

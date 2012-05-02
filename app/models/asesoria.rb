@@ -9,7 +9,17 @@ class Asesoria < ActiveRecord::Base
               "$25.000"
   ]
   
+  ESTADO = [
+              "pendiente",
+              "no responde el telefono",
+              "se envía info al mail",
+              "volver a llamar",
+              "agendado",
+              "cerrado"
+  ]
+  
   has_many :dias_atencion, :dependent => :destroy
+  has_many :asesoria_h, :dependent => :destroy, :class_name => "AsesoriaH"
   
   accepts_nested_attributes_for :dias_atencion, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }, :allow_destroy => true
   

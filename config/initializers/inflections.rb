@@ -23,4 +23,6 @@ inflect.irregular "convenio", "convenios"
 inflect.irregular "terapia_terapeuta", "terapia_terapeutas"
 inflect.irregular "event", "events"
 inflect.irregular "visitas", "visitas"
+inflect.irregular "asesoriah", "asesoriah"
+inflect.irregular "asesoria_h", "asesoria_h"
 end

@@ -36,4 +36,14 @@ module TerapeutasHelper
       visita && visita.cantidad.to_i || 0
     end.inspect
   end
+  
+  def is_plan_expira(plan_expira)
+    if plan_expira == nil
+      return true
+    elsif plan_expira < Time.now
+      return true
+    else
+      return false
+    end
+  end
 end

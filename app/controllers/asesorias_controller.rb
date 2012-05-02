@@ -111,10 +111,6 @@ class AsesoriasController < ApplicationController
     AsesoriaMailer.inform_request(@asesoria).deliver
   end
   
-  def ver_asesoria
-    @asesoria = Asesoria.find(params[:id])
-  end
-
 private
   def set_title
     @title = "Asesórate con nuestros profesionales"
