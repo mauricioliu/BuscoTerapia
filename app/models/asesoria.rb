@@ -18,6 +18,8 @@ class Asesoria < ActiveRecord::Base
               "cerrado"
   ]
   
+  belongs_to :terapeuta
+  
   has_many :dias_atencion, :dependent => :destroy
   has_many :asesoria_h, :dependent => :destroy, :class_name => "AsesoriaH"
   

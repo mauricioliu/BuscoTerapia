@@ -140,14 +140,14 @@
 			<div class="form-box form-perfil">
 				<div class="mi-perfil">
 					<% @asesoria.asesoria_h.each do |h| %>
-						<div class="form-block one-line" id="terapeuta_asignado">
+						<div class="form-block one-line">
 						<div class="label">Fecha: </div>
 						<div class="input_field">
 							<%= I18n.localize(h.created_at, :format => "%e de %B, %Y")%>
 			  			</div>
 			  			</div>
 			  			
-			  			<div class="form-block one-line" id="terapeuta_asignado">
+			  			<div class="form-block one-line">
 						<div class="label">Hora: </div>
 						<div class="input_field">
 							<%= h.created_at.strftime("%I:%M %p") %>
@@ -156,14 +156,14 @@
 			  			
 			  			
 						
-						<div class="form-block one-line" id="terapeuta_asignado">
+						<div class="form-block one-line">
 						<div class="label">Estado asesoria: </div>
 						<div class="input_field">
 			  				<%= h.status %>
 			  			</div>
 			  			</div>
 			  			
-			  			<div class="form-block one-line" id="terapeuta_asignado">
+			  			<div class="form-block one-line">
 						<div class="label">Comentarios: </div>
 						<div class="input_field">
 			  				<%= h.comentarios %>

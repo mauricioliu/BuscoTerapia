@@ -38,7 +38,11 @@ class AdminController < ApplicationController
       @asesoria_h = AsesoriaH.new
       @asesoria_h.asesoria_id = @asesoria.id
       @asesoria_h.status = @asesoria.status
-      @asesoria_h.comentarios = @asesoria.comentarios
+      if @asesoria.status == "agendado"
+        @asesoria_h.comentarios = "Agendado a: " + @asesoria.terapeuta.nombre + "\n" + @asesoria.comentarios
+      else
+        @asesoria_h.comentarios = @asesoria.comentarios
+      end
       @asesoria_h.save
       @asesoria.save
     end
