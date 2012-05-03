@@ -4,6 +4,7 @@
 	<div class="columna-670-left">
 		<div class="busqueda-box-center">
 		<h2>Terapeutas</h2>
+		asdf <%= session[:test] %>
 		<p>
 		<%= form_tag validar_terapeuta_todos_path, :method => 'get' do%>
 			<%= text_field_tag :search, params[:search] %>
@@ -17,6 +18,9 @@
 					Tipo Plan: <strong><%= terapeuta.plan_tipo %></strong> (<%= link_to 'cambiar', cambiar_tipo_plan_path(terapeuta) %>)<br />
 				<% else %>
 					Tipo Plan: <strong><%= terapeuta.plan_tipo %></strong> (<%= link_to 'cambiar', cambiar_tipo_plan_path(terapeuta), :confirm => "¿Desea cambiar tipo de plan a gratis?" %>)<br />
+					<% if terapeuta.plan_expira %>
+					Plan Expira: <%= I18n.localize(terapeuta.plan_expira, :format => "%e de %B, %Y") %> <br />
+					<% end %>
 				<% end %>
 				Nombre: <%= terapeuta.nombre %> <br />
 				Rut: <%= terapeuta.rut %> <br />

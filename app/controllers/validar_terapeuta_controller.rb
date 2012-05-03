@@ -95,11 +95,12 @@ class ValidarTerapeutaController < ApplicationController
   end
   
   def cambiar_tipo_plan
+    session[:test] = params[:cambiar_plan_expira]
     if params[:cambiar_plan_expira]
       terapeuta = Terapeuta.find(params[:terapeuta])
       terapeuta.plan_tipo = "Pagado"
-      terapeuta.plan_expira = params[:cambiar_plan_expira]
-      terapeuta.save
+      terapeuta.plan_expira = Date.parse(params[:cambiar_plan_expira])
+      terapeuta.save!
       redirect_to validar_terapeuta_todos_path
     else
       @terapeuta = Terapeuta.find(params[:id])

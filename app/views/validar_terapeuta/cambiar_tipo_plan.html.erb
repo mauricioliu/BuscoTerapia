@@ -2,6 +2,7 @@
 	<div class="wrapper" id="content">
 
 	<div class="columna-670-left">
+		asdf <%= session[:test] %>
 	<%= form_tag cambiar_tipo_plan_path do %>
 		<%= hidden_field_tag :terapeuta, @terapeuta.id %>
 		Fecha Expira: <%= text_field_tag :cambiar_plan_expira %>  
