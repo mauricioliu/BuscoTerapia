@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
       end
     else
       #flash.now.alert = "Invalid email or password"
-      redirect_to new_session_path, :notice => "Correo o contraseña equivacada"
+      redirect_to new_session_path, :notice => "Correo o contraseña equivocada"
     end
   end
 
