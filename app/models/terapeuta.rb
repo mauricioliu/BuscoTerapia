@@ -27,6 +27,7 @@ class Terapeuta < ActiveRecord::Base
   accepts_nested_attributes_for :estudios, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? or v == '' } }, :allow_destroy => true
   accepts_nested_attributes_for :forma_pagos, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }, :allow_destroy => true
   accepts_nested_attributes_for :convenios, :allow_destroy => true, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? or v == '' } }, :allow_destroy => true
+  validates :terms_of_service, :acceptance => true
   
   #accepts_nested_attributes_for :tipo_terapias, :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }, :allow_destroy => true
   

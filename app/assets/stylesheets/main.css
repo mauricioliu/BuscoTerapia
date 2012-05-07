@@ -2922,3 +2922,10 @@ width:472px;
 .foto.default {
 	background:url(/terapeuta_thumb_perfil-default.bmp) no-repeat 0 0 transparent;
 }
+
+
+.form-block.long-line .label{
+	width:650px;
+	padding:7px 12px 0 0 ;
+	text-align:center;
+}
