@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120502032534) do
+ActiveRecord::Schema.define(:version => 20120508000317) do
 
   create_table "articulos", :force => true do |t|
     t.string   "titulo"
@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(:version => 20120502032534) do
     t.string   "status",                                :default => "nuevo"
     t.integer  "terapeuta_id"
     t.text     "comentarios",       :limit => 16777215
+    t.string   "prevision"
+    t.string   "como_se_entero"
   end
 
   create_table "comunas", :force => true do |t|

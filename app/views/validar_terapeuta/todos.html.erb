@@ -26,6 +26,7 @@
 				Email: <%= terapeuta.email %><br />
 				Telefono: <%= terapeuta.telefono %><br />
 				Estado: <%= terapeuta.estado %><br />
+				Fecha de Ingreso: <%= I18n.localize(terapeuta.created_at, :format => "%e de %B, %Y") %><br />
 				<%= link_to 'ver/modificar', editar_terapeuta_path(terapeuta) %> |
 				<%= link_to 'invalidar', invalidar_terapeuta_path(terapeuta), :confirm => "Esta acción dará de baja al terapeuta pero seguirá permaneciendo en la base de terapeutas sin poder ser encontrado por el buscador de la página.  ¿Seguro desea continuar?" %> |  
 				<%= link_to 'eliminar', destroy_terapeuta_path(terapeuta), :confirm => "Esto eliminará terapeuta de manera permanente.  ¿Seguro desea continuar?" %> | 

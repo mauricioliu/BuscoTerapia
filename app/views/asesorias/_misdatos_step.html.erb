@@ -132,15 +132,20 @@ para facilitar la búsqueda de tu terapeuta.</small></h2>
 		
 		<div class="label"><br />
 			Monto máximo que te es posible pagar por sesión:
-			<p class="message">(considera descuentos de nuestros profesionales y de isapres, Fonasa o seguros)</p>
+			<p class="message">(considere que el costo promedio de este tipo de atención es de 20.000 por sesión. Sin embargo, si está cubierta por FONASA o ISAPRE, el costo puede reducirse significativamente.)</p>
 		</div>
-		
 		
 		<div class="form-block one-line">
 		<div class="label">Monto</div>
 		<div class="input_field">
 			<%= f.select :precio_max, Asesoria::PRECIOS, {} %>
 			<!-- mensaje aparece solo cuando no completó -->
+		</div>
+		
+		<div class="form-block one-line">
+		<div class="label">Previsión</div>
+		<div class="input_field">
+			<%= f.collection_select :prevision, RefDatum.where(:nombre => "Prevision"), :valor, :valor, :prompt => "Seleccione prevision" %>
 		</div>
 	</div>
 	</div>
@@ -153,5 +158,13 @@ para facilitar la búsqueda de tu terapeuta.</small></h2>
 		</div>
 		<div class="input_field">
 			<%= f.text_area :terapeuta_otro, :class => "area_small" %>
+		</div>
+	</div>
+	
+	<div class="form-block">
+		<h3>¿Cómo te enteraste de buscoterapia.cl?</h3>
+		<div class="input_field">
+			<%= f.text_area :como_se_entero, :class => "area_small" %>
+			<!-- acá mensaje alerta -->
 		</div>
 	</div>
