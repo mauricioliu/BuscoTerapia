@@ -7,7 +7,7 @@ class Asesoria < ActiveRecord::Base
               "$10.000 ~ $15.000",
               "$15.000 ~ $25.000",
               "$25.000 ~ $35.000",
-              "$más de 35.000"
+              "más de $35.000"
   ]
   
   ESTADO = [

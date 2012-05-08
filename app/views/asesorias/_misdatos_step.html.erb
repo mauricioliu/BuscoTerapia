@@ -145,7 +145,7 @@ para facilitar la búsqueda de tu terapeuta.</small></h2>
 		<div class="form-block one-line">
 		<div class="label">Previsión</div>
 		<div class="input_field">
-			<%= f.collection_select :prevision, RefDatum.where(:nombre => "Prevision"), :valor, :valor, :prompt => "Seleccione prevision" %>
+			<%= f.collection_select :prevision, RefDatum.where(:nombre => "Prevision").order("valor asc"), :valor, :valor, :prompt => "Sin prevision" %>
 		</div>
 	</div>
 	</div>
