@@ -9,7 +9,6 @@
 			<%= nested_form_for(@terapeuta) do |f| %>
 				<div class="mi-perfil">
 					<h3>Mi perfil</h3>
-					<% if @terapeuta.plan_tipo != "Gratis" %>
 					<div class="form-block one-line">
 						<div class="label">Foto:</div>
 						<div class="input_field">
@@ -19,7 +18,6 @@
 							<!-- / -->
 						</div>
 					</div>
-					<% end %>
 					<div class="form-block one-line">
 						<div class="label"><span class="message">*</span>Mi nombre:</div>
 						<div class="input_field">
@@ -239,7 +237,7 @@
 						</div>
 					</div>
 				</div><!--MIS DATOS-->
-				
+				<% if !(@terapeuta.plan_tipo == "Gratis" or is_plan_expira(@terapeuta.plan_expira)) %> 
 				<div class="mis-datos">
 					<h3>Tipo de suscripción:</h3>
 					<div class="form-block one-line radio-button">
@@ -267,7 +265,7 @@
 						</div>
 					</div>
 				</div>
-				
+				<% end %>
 			</div><!-- form-perfil -->
 			
 			<div class="guardar-cambios">
