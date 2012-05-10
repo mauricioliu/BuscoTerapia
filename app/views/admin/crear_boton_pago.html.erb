@@ -1,0 +1,20 @@
+<div id="block-content" class="block-wrapper">
+	<div class="wrapper" id="content">
+
+	<div class="columna-670-left">
+	<%= form_tag crear_boton_pago_path do %>
+	<table>
+		<tr>
+			<td>Monto:</td>
+			<td><%= text_field_tag :monto %></td>
+		</tr>
+		<tr>
+			<td>Descripción:</td>
+			<td><%= text_field_tag :descripcion %></td>
+		</tr>
+	</table><br />
+		<%= submit_tag "Crear boton de pago" %> <%= link_to 'Volver', admin_url %>
+	<% end %>
+	</div>
+	</div>
+</div>

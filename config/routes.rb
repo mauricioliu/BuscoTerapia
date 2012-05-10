@@ -67,6 +67,7 @@ BuscoTerapia::Application.routes.draw do
   match '/admin/asesorias_index' => 'admin#asesorias_index', :as => 'asesorias_index'
   match '/admin/ver_asesoria/:id' => 'admin#ver_asesoria', :as => 'ver_asesoria'
   match '/admin/cambiar_asesoria_status' => 'admin#cambiar_asesoria_status', :as => 'cambiar_asesoria_status'
+  match '/admin/crear_boton_pago' => 'admin#crear_boton_pago', :as => 'crear_boton_pago'
   
   match '/events/get/:id' => 'events#get_terapeuta_events', :as => 'get_terapeuta_events'
   
