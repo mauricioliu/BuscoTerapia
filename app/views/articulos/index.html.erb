@@ -12,6 +12,7 @@
 			<% end %>
 			
 			<% @articulos.each do |articulo| %>
+				<% if articulo.ocultar == '0' %>
 				<div class="ficha-articulo">
 					<div class="contenido-ficha">
 						<% if articulo.imagen_url.size != 0 %>
@@ -29,6 +30,7 @@
 						</p>						
 					</div><!--contenido ficha-->
 				</div><!--ficha articulo-->
+				<% end %>
 				<% end %>
 			<%= will_paginate @articulos, previous_label: h("<"), next_label: h(">") %>
 		</div><!--form-box-center-->

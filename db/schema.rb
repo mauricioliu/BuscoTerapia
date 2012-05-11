@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120508000317) do
+ActiveRecord::Schema.define(:version => 20120511021708) do
 
   create_table "articulos", :force => true do |t|
     t.string   "titulo"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20120508000317) do
     t.datetime "updated_at"
     t.string   "slug"
     t.string   "mostrar_carrusel"
+    t.string   "ocultar",                                :default => "0"
   end
 
   add_index "articulos", ["slug"], :name => "index_articulos_on_slug"
