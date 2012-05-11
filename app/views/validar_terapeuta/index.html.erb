@@ -11,6 +11,7 @@
 				Rut: <%= terapeuta.rut %> <br />
 				Email: <%= terapeuta.email %>
 				Telefono: <%= terapeuta.ptelefono %>-<%= terapeuta.telefono %>
+				<%= link_to 'ver/modificar', editar_terapeuta_path(terapeuta) %> | 
 				<%= link_to 'validar', revisar_terapeuta_path(terapeuta) %><br /><br />
 			<% end %>
 			</div>
