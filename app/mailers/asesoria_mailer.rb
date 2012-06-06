@@ -11,7 +11,7 @@ class AsesoriaMailer < ActionMailer::Base
   
   def inform_request(asesoria)
     @asesoria = asesoria
-    recipients = RefDatum.where(:nombre => "Back Office Email")
+    recipients = RefDatum.where(:nombre => "Asesoria Email")
     email = Array.new
     recipients.each do |recipient|
       email << recipient.valor

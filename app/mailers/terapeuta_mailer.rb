@@ -33,7 +33,7 @@ class TerapeutaMailer < ActionMailer::Base
   def notify_new_terapeuta(terapeuta)
     @terapeuta = terapeuta
     
-    recipients = RefDatum.where(:nombre => "Back Office Email")
+    recipients = RefDatum.where(:nombre => "Suscripcion Email")
     email = Array.new
     recipients.each do |recipient|
       email << recipient.valor
@@ -46,11 +46,12 @@ class TerapeutaMailer < ActionMailer::Base
   end
   
   def contactar_terapeuta(terapeuta,cnombre,cemail,ctelefono,cmensaje)
-    recipients = RefDatum.where(:nombre => "Back Office Email")
+    recipients = RefDatum.where(:nombre => "Contacto Email")
     email = Array.new
     recipients.each do |recipient|
       email << recipient.valor
     end
+    #email << terapeuta.email
     
     @terapeuta = terapeuta
     @nombre = cnombre
@@ -63,7 +64,7 @@ class TerapeutaMailer < ActionMailer::Base
   end
   
   def contacto(cnombre,cemail,cmensaje)
-    recipients = RefDatum.where(:nombre => "Back Office Email")
+    recipients = RefDatum.where(:nombre => "Contacto Email")
     email = Array.new
     recipients.each do |recipient|
       email << recipient.valor
