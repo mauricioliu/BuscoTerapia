@@ -121,7 +121,7 @@ class TerapeutasController < ApplicationController
   # POST /terapeuta.json
   def create
     @terapeuta = Terapeuta.new(params[:terapeuta])
-    @terapeuta.estado = "pendiente de validar"
+    @terapeuta.estado = "pendiente"
     @terapeuta.plan_tipo = "Gratis"
     
     random_password = Array.new(10).map { (65 + rand(58)).chr }.join

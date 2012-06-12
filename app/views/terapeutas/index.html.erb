@@ -6,7 +6,7 @@
 		
 		<div class="busqueda-box-center">
 		<%= render "search_form"%>
-		<% if @terapeutas != nil %>
+		<% if @terapeutas != nil || @terapeutas.estado == "validado" %>
 		<% if @h.size > 0 %>
 			<p class="busqueda-mensaje-resultado">
 			Se han encontrado <strong><%= @terapeutas.total_entries %></strong> resultados

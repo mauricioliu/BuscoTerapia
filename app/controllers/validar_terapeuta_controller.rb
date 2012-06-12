@@ -4,7 +4,7 @@ class ValidarTerapeutaController < ApplicationController
   http_basic_authenticate_with :name => "btp", :password => "btp.123!"
   
   def index
-    @terapeutas = Terapeuta.where(:estado => "pendiente de validar")
+    @terapeutas = Terapeuta.where(:estado => "pendiente")
   end
   
   def todos
