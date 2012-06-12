@@ -12,9 +12,9 @@ class TerapeutasController < ApplicationController
   def index
     @today = Time.now
     @sepa = params
+    @h = Hash.new
+    @h["estado"] = "validado"
     if @sepa[:search] != nil
-      @h = Hash.new
-      @h["estado"] = "validado"
       if params[:form] != nil and params[:form][:tipo_terapeuta] != nil and params[:form][:tipo_terapeuta] != ''
         @search_me = escape_characters_in_string(params[:form][:tipo_terapeuta])
       end
