@@ -122,7 +122,7 @@ class TerapeutasController < ApplicationController
   def create
     @terapeuta = Terapeuta.new(params[:terapeuta])
     @terapeuta.estado = "pendiente"
-    @terapeuta.plan_tipo = "Gratis"
+    #@terapeuta.plan_tipo = "Gratis"
     
     random_password = Array.new(10).map { (65 + rand(58)).chr }.join
     @terapeuta.password=random_password
