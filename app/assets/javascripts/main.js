@@ -760,3 +760,62 @@ $(document).ready(function () {
 	})
 	
 })
+
+
+
+
+// EL EQUIPO
+currentFichaEq = ""
+function abrirFicha(queFicha){
+	
+	if(currentFichaEq != queFicha && currentFichaEq != ""){
+		$("#"+currentFichaEq).stop().hide();
+	}
+	
+	$("#"+queFicha).fadeIn("slow")
+	currentFichaEq = queFicha
+}
+$(document).ready(function () {
+
+	
+	$(".qs-ficha").each(function(index){
+	
+		newId = ""
+		if($(this).attr("id") == undefined || $(this).attr("id") == ""){
+			newId = "qs-ficha-id-"+index
+			$(this).attr("id", newId)
+		}else{
+			newId = $(this).attr("id")
+		}
+		if($(this).hasClass("eq-asesoria") || $(this).hasClass("eq-coordinacion")){
+			fotoPersona = $(this).find(".foto_persona img").attr("src")
+			if(fotoPersona == undefined){ 
+				fotoPersona = "";
+				claseEq=" class='eq-no-image' "
+			}else{
+				claseEq = "";
+			}
+			nombrePersona = $(this).find("h3").html();
+			
+			fotoBoton = '<img onClick="abrirFicha(\''+newId+'\')" src="'+fotoPersona+'" '+claseEq+' alt="'+nombrePersona+'" title="'+nombrePersona+'" />'
+			if($(this).hasClass("eq-asesoria"))
+			$("#eq-asesoria-minis").append(fotoBoton)
+			
+			if($(this).hasClass("eq-coordinacion"))
+			$("#eq-coordinacion-minis").append(fotoBoton)
+			
+			$(this).append("<div onClick=\"abrirFicha('equipo')\" class='qs-boton-cerrar'>x<div>")
+			
+			
+		}
+		
+		$(this).stop().hide();
+	
+	
+	})
+	
+	
+
+	
+	abrirFicha("equipo")
+});

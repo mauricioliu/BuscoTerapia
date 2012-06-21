@@ -12,24 +12,27 @@
 	<% else %>
 		<meta name="description" content="Buscoterapia te ofrece de manera gratuita el más amplio y completo servicio de búsqueda de terapias y terapeutas a nivel nacional." />
 	<% end %>
-	<meta name="keywords" content="<%= @title ? @title + " - BuscoTerapia" : "Busco Terapia, Psicologo, Psiquiatra, Medico Alternativo" %>" />
-  	<title><%= @title ? @title + " - BuscoTerapia" : "Buscoterapia" %></title>
-	 	<%= stylesheet_link_tag "main", "fullcalendar", "jquery-ui" %>
-  		<%= javascript_include_tag 'application', 'fullcalendar' %>
-  		<%= csrf_meta_tag %>
-        <script type="text/javascript">
+	<meta name="keywords" content="<%= @title ? @title + " - BuscoTerapia" : "Terapia, Psicologo, Psiquiatra, Medico Alternativo" %>" />
+	
+	<title><%= @title ? @title + " - BuscoTerapia" : "Buscoterapia" %></title>
+	<%= stylesheet_link_tag "main", "fullcalendar", "jquery-ui" %>
+  	<%= javascript_include_tag 'application', 'fullcalendar' %>
+  	<%= csrf_meta_tag %>
+  	
+  	 <script type="text/javascript">
 
-          var _gaq = _gaq || [];
-          _gaq.push(['_setAccount', 'UA-29129784-1']);
-          _gaq.push(['_trackPageview']);
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-29129784-1']);
+      _gaq.push(['_trackPageview']);
 
-          (function() {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-          })();
+      (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
 
-        </script>
+    </script>
+	
 	<script type="text/javascript">
 	<% if @notice %>
 	$(document).ready(function() {
@@ -37,19 +40,15 @@
 	});
 	<% end %>
 	</script>
-	
-	<!--script type="text/javascript">(function(){var src = ("https:" == document.location.protocol ? "https://" : "http://") + "buscoterapia.csupporthq.com/external/chat-float-inline.js";
-	document.write("<script src='"+src+"' type='text/javascript'><\/script>");
-	})();
-	</script-->
-	
 </head>
-<body>
+<body class="loggedIn">
 	<div id="header">
 		<div class="wrapper">
 		<div id="branding">
 			<h1><%= link_to 'Buscoterapia', root_url, :class => "buscoterapia", :title => "Buscoterapia" %></h1>
+			<p class="sub-title">Encontramos la terapia que necesitas con un profesional a tu medida</p>
 		</div><!-- branding -->
+		
 		<% if session[:terapeuta] == nil %>
 		<div id="login">
 			<p><a href="#"><strong>¿Quieres Iniciar tu sesión?</strong></a></p>
@@ -98,10 +97,15 @@
 				<% else %>
 					<li><%= link_to 'Inicio', root_url %></li>
 				<% end %>
-				<% if @menu=="asesoria" %>
-					<li class="current"><%= link_to 'Solicitar asesoría terapeutica', new_asesoria_path %></li>
+				<% if @menu=="quienes_somos" %>
+					<li class="current"><%= link_to 'Quienes Somos', quienes_somos_url %></li>
 				<% else %>
-					<li><%= link_to 'Solicitar asesoría terapeutica', new_asesoria_path %></li>
+					<li><%= link_to 'Quienes Somos', quienes_somos_url %></li>
+				<% end %>
+				<% if @menu=="asesoria" %>
+					<li class="current"><%= link_to 'Solicitar ayuda', new_asesoria_path %></li>
+				<% else %>
+					<li><%= link_to 'Solicitar ayuda', new_asesoria_path %></li>
 				<% end %>
 				<% if @menu=="buscar terapeuta"%>
 					<li class="current"><%= link_to 'Buscar terapeutas', terapeutas_path %></li>
@@ -114,9 +118,9 @@
 					<li><%= link_to 'Tipo de Terapias', terapias_path %></li>
 				<% end %>
 				<% if @menu=="articulos"%>
-					<li class="current"><%= link_to 'Noticias y artículos', articulos_path %></li>
+					<li class="current"><%= link_to 'Noticias', articulos_path %></li>
 				<% else %>
-					<li><%= link_to 'Noticias y artículos', articulos_path %></li>
+					<li><%= link_to 'Noticias', articulos_path %></li>
 				<% end %>
 			</ul>
 			<ul class="acceso">
@@ -129,8 +133,24 @@
 		</div><!-- nav -->
 	</div><!-- block-nav -->
 	
+	<!--<div id="block-mensaje" class="block-wrapper">
+		<div class="wrapper">
+			<div id="mensaje-top">
+				<div class="boton-cerrar-mensaje" obj="#block-mensaje">cerrar X</div>
+				<div class="mensaje-titulo">
+				<p>Buscoterapia te ofrece de manera gratuita el más amplio y completo servicio de búsqueda de terapias y terapeutas a nivel nacional.</p>
+				</div>
+				<div class="mensaje-texto">
+				<p>Para ello brindamos sin costo el servicio de <strong>Asesoría Terapéutica</strong>, donde un equipo de <strong>profesionales de la Salud Mental</strong> te <strong>ayudará en línea</strong> a encontrar la terapia y el terapeuta que más se ajuste a tus necesidades, de manera <strong>confiable</strong> y <strong>estrictamente confidencial</strong>. </p>
+				<p>No te preocupes más, <strong>estás en buenas manos</strong>. </p>
+				</div>
+			</div>
+		</div>
+	</div><!-- block-mensaje -->
+	
 	<%= yield %>
 	
 	<%= render "home/footer" %>
+	
 </body>
 </html>

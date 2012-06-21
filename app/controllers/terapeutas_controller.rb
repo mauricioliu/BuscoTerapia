@@ -72,11 +72,13 @@ class TerapeutasController < ApplicationController
   
   def acceso_terapeutas
     @menu = "acceso terapeuta"
+    @noticias = Articulo.where("tipo = 'noticia' and mostrar_carrusel='1'").order("created_at desc").limit(3)
   end
 
   # GET /terapeuta/new
   # GET /terapeuta/new.json
   def new
+    @menu = "acceso terapeuta"
     @tipo_suscripcion = params[:tipo]
     #tipo de pago
     @terapeuta = Terapeuta.new
@@ -106,6 +108,7 @@ class TerapeutasController < ApplicationController
 
   # GET /terapeuta/1/edit
   def edit
+    @menu = "mi_ficha"
     @terapeuta = Terapeuta.find(params[:id])
     @title = @terapeuta.nombre
     if @terapeuta.id != session[:terapeuta].id
@@ -313,7 +316,7 @@ class TerapeutasController < ApplicationController
   end
   
   def estadisticas
-    
+    @menu = "estadisticas"
   end
   
   def plan_beneficios
@@ -321,6 +324,7 @@ class TerapeutasController < ApplicationController
   end
 
   def calendario
+    @menu = "horario"
     @event = Event.new
   end
   

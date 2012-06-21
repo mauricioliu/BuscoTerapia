@@ -1,38 +1,57 @@
-<!--
-<div id="block-mensaje" class="block-wrapper">
-	<div class="wrapper">
-		<div id="mensaje-top">
-			<div class="boton-cerrar-mensaje" obj="#block-mensaje">cerrar X</div>
-			<div class="mensaje-titulo">
-			<p>Nuestro equipo de profesionales te ofrece sin costo y en menos de 90 minutos la información necesaria para que elijas la terapia que sea más beneficiosa...</p>
+	<div id="block-content" class="block-wrapper">
+		<div class="wrapper" id="content">
+			<div class="columna-one-full" id="te_ayudamos">
+				<div class="te_ayudamos_etiqueta" alt="Confidencial, Profesional & Eficiente" title="Confidencial, Profesional & Eficiente" ></div>
+				<h1 class="superStrong">Te <strong>ayudamos a encontrar</strong> la terapia que necesitas con un <br/>profesional a tu medida... aunque parezca extraño, <strong>sin costo para ti</strong>.</h1>
+				<div class="borde-linea"><div></div></div>
+				<div class="ayudamos-paso ayudamos-paso-1">
+					<div class="paso-header">
+						<div class="number">1</div>
+						<p>Cuéntanos tus problemas</p>
+					</div>
+					<p class="paso-bajada">Responde un par de preguntas. Cuéntanos lo que necesitas y esperas de tu terapia.
+					<br>
+					<%= link_to "Solicita ayuda", new_asesoria_path %>
+					</p>
+				</div>
+				<div class="ayudamos-paso ayudamos-paso-2">
+					<div class="paso-header">
+						<div class="number">2</div>
+						<p>En menos de 24 horas nuestro equipo analizará tu caso</p>
+					</div>
+					<p class="paso-bajada">Buscaremos entre los cientos de especialistas de nuestro portal a quienes mejor puedan ayudarte.
+					<br>
+					<%= link_to "Conoce a nuestro equipo", quienes_somos_url %>
+					</p>
+				</div>
+				<div class="ayudamos-paso ayudamos-paso-3">
+					<div class="paso-header">
+						<div class="number">3</div>
+						<p>Escoge tu terapeuta y agenda tu hora de terapia</p>
+					</div>
+					<p class="paso-bajada p-comienza"><%= link_to "Comenzar", new_asesoria_path, :class => "boton-naranjo"%></p>
+					<p class="paso-bajada">Comienza a enfrentar tus problemas junto a un profesional a tu medida.
+					</p>
+				</div>
+				
+				
+			</div><!-- asesoria_terapeutas -->
+			
+<%= render 'search_form' %>
+			
+			<div id="home-comentarios-usuarios" class="columna-620-right">
+				<h2>Comentarios de usuarios</h2>
+				<p>Me inscribí de manera gratuita en el sitio para ver qué pasaba, recibí dos llamados al día siguiente y un muy buen servicio de la gente del equipo por lo que decidí a suscribirme, tener un mes de garantía fue de todas maneras un alivio. Hoy llevo dos meses y estoy feliz, mis atenciones se incrementaron y la inversión en comparación con los beneficios es muy baja.</p>
+				<p class="firma"><strong>María José en <a href="#">La Nación</a></strong></p>
+				
+				<p>Había estado buscando un psicólogo hace tiempo, escuchaba recomendaciones de mis conocidos, pero uno se da cuenta que en realidad no todas las terapias son las mismas y que tenía que encontrar la mía. Finalmente me metí a la página y en el mismo día ya tenía 3 alternativas, escogí una, me agendaron la hora y me ha resultado mucho mejor de lo que esperaba</p>
+				<p class="firma"><strong>Daniela 28/05/2012</strong></p>
+				
 			</div>
-			<div class="mensaje-texto">
-			<p><strong>Analizamos tu solicitud de manera confidencial, basándonos en los cientos de terapeutas de nuestro directorio, el más amplio y completo a nivel nacional.</strong></p>
-			<p>También puedes utilizar nuestro buscador de terapias y terapeutas para que te informes personalmente.</p>
-			</div>
-		</div>
-	</div>
-</div>
--->
-<!-- block-mensaje -->
 
-<div id="block-content" class="block-wrapper">
-	<div class="wrapper" id="content">
-		<div id="asesoria_terapeutas" class="col_8">
-			<div class="texto-asesoria">
-				<h2>Asesoría Terapéutica</h2>
-				<h1>Pide ayuda a nuestro equipo</h1>
-				<p>Ingresa <strong>en sólo dos pasos</strong> el problema que te aqueja o la solución que buscas y serás asesorado por nuestro equipo de especialistas en terapias.</p>
-				<p>Ellos analizarán tu problema y realizarán una búsqueda, dentro del directorio de especialistas más grande del país, para encontrar los terapeutas que mejor te puedan ayudar con tus problemas.</p>
-				<%= button_to "Solicitar Asesoría", new_asesoria_path, :method => 'get', :id => "boton-solicita-home",:class => "boton-morado"%>
-			</div>
-		</div><!-- asesoria_terapeutas -->
-		
-		<%= render 'search_form' %>
-		<div class="clear"></div>
-	</div><!-- #content -->
-</div><!-- block-content -->
-
+		</div><!-- #content -->
+	</div><!-- block-content -->
+	
 <div id="block-destacados_del_dia" class="block-wrapper">
 	<div class="wrapper">
 	
@@ -47,7 +66,7 @@
 				<%= image_tag articulo.imagen_url.carusel_thumb.url.to_s %>
 				<h3><%= link_to articulo.titulo, articulo_path(articulo) %></h3>
 				<p>
-					<%= articulo.contenido[0,170 ]%>								 
+					<%= simple_format(articulo.contenido[0,170 ])%>								 
 					... <%= link_to 'Ver más', articulo_path(articulo) %>.
 				</p>
 				</div>

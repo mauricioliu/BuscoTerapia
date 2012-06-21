@@ -24,6 +24,10 @@ class HomeController < ApplicationController
     
   end
   
+  def quienes_somos
+    @menu = "quienes_somos"
+  end
+  
   def contacto
     if params[:nombre]
       nombre = params[:nombre]

@@ -29,6 +29,7 @@ BuscoTerapia::Application.routes.draw do
   match "condiciones_de_uso" => "home#condiciones_de_uso"
   match "privacidad" => "home#privacidad"
   match "contacto" => "home#contacto"
+  match "quienes_somos" => "home#quienes_somos"
   
   # rutas terapeutas
   match "change_password" => "terapeutas#change_password"

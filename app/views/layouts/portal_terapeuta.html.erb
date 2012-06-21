@@ -75,11 +75,28 @@
 	<div id="block-nav" class="block-wrapper">
 		<div id="nav" class="wrapper">
 			<ul class="main">
-				<li class="current"><a href="#"><%= link_to "Inicio", root_url %></a></li>
-				<li><a href="#"><%= link_to "Mi ficha", edit_terapeuta_path(session[:terapeuta]) %></a></li>
-				<li><%= link_to "Mi horario atención", calendario_path %></li>
-				<li><%= link_to "Mi plan y beneficios", plan_beneficios_path %></li>
-				<li><%= link_to "Estadísticas", estadisticas_path %></li>
+				<% if @menu=="inicio" %>
+					<li class="current"><%= link_to "Inicio", root_url %></li>
+				<% else %>
+					<li><%= link_to "Inicio", root_url %></li>
+				<% end %>
+				<% if @menu=="mi_ficha" %>
+					<li class="current"><%= link_to "Mi ficha", edit_terapeuta_path(session[:terapeuta]) %></li>
+				<% else %>
+					<li><%= link_to "Mi ficha", edit_terapeuta_path(session[:terapeuta]) %></li>
+				<% end %>
+				<% if @menu=="horario" %>
+					<li class="current"><%= link_to "Mi horario atención", calendario_path %></li>
+				<% else %>
+					<li><%= link_to "Mi horario atención", calendario_path %></li>
+				<% end %>
+				<% if @menu=="estadisticas" %>
+					<li class="current"><%= link_to "Estadísticas", estadisticas_path %></li>
+				<% else %>
+					<li><%= link_to "Estadísticas", estadisticas_path %></li>
+				<% end %>
+				<!--<li><%= link_to "Mi plan y beneficios", plan_beneficios_path %></li>-->
+				<li></li>
 				<li><a href="#">&nbsp;</a></li>
 				<li class="bt-nav-faq"><a href="#">&nbsp;</a></li>
 			</ul>
