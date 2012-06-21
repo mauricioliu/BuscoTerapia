@@ -10,6 +10,7 @@ class TerapeutasController < ApplicationController
   # GET /terapeuta
   # GET /terapeuta.json
   def index
+    @menu = "buscar terapeuta" 
     @today = Time.now
     @sepa = params
     @h = Hash.new
@@ -51,6 +52,7 @@ class TerapeutasController < ApplicationController
   # GET /terapeuta/1
   # GET /terapeuta/1.json
   def show
+    @menu = "buscar terapeuta" 
     @terapeuta = Terapeuta.find(params[:id])
     @title = @terapeuta.nombre
 
@@ -61,6 +63,7 @@ class TerapeutasController < ApplicationController
   end
   
   def ver_ficha
+    @menu = "buscar terapeuta" 
     @terapeuta = Terapeuta.find(params[:id])
     @contacto = true
     @title = @terapeuta.nombre
@@ -358,7 +361,7 @@ private
 
   def set_title
     @title = "Terapeutas"
-    @menu = "buscar terapeuta" 
+    #@menu = "buscar terapeuta" 
     if params[:notice]
       @notice = params[:notice]
     end  
