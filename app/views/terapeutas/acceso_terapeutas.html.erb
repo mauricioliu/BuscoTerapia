@@ -164,12 +164,12 @@
 							<th>&#8194;</th>
 							<td class="parcial">
 								<p>
-								<%= button_to 'Inscribirse gratis', new_terapeuta_path(:tipo => "gratuito"), :method => 'get', :class => "boton-gris" %>
+								<%= link_to 'Inscribirse gratis', new_terapeuta_path(:tipo => "gratuito"), :class => "boton-gris" %>
 								</p>
 							</td>
 							<td class="completa">
 							<p>
-							<%= button_to 'Suscribir', new_terapeuta_path(:tipo => "pagado"), :method => 'get', :class => "boton-azul" %>
+							<%= link_to 'Suscribir', new_terapeuta_path(:tipo => "pagado"), :class => "boton-azul" %>
 							</p>
 							</td>
 						</tr>
