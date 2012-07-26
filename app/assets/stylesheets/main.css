@@ -856,7 +856,7 @@ width:500px;
 	width:125px;
 }
 #busca_tu_terapeuta .tab2{
-	width:209px;
+	width:208px;
 	margin-right: -2px !important;
 }
 
@@ -1866,6 +1866,7 @@ textarea{
 .descripcion-full{
 	display:none;
 	float:left;
+	width:100%;
 }
 
 
@@ -2077,7 +2078,7 @@ textarea{
 	border-radius: 5px;
 	float:left;
 	margin-right:12px;
-	margin-bottom: 12px;
+	margin-bottom: 14px;
 }
 .ficha-terapias .contenido-ficha{
 	float:left;
@@ -2102,7 +2103,7 @@ textarea{
 	margin: 5px 0;
 }
 .ficha-terapias .nombre-ficha{
-	margin: -4px 0 8px;
+	margin: 0 0 8px;
 }
 .ficha-terapias .descripcion-full{
 	float: none;
@@ -2233,7 +2234,7 @@ textarea{
 	font-size: 13px;
 }
 .ficha-articulo .encabezado{
-	margin: -4px 0 12px;
+	margin: 0 0 12px;
 }
 .encabezado h3{
 	color:#6a63a4;
