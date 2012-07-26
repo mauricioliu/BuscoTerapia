@@ -60,7 +60,9 @@ class TerapeutaMailer < ActionMailer::Base
     @mensaje = cmensaje
 
     # mail(:to => email, :subject => "Un nuevo terapeuta se ha registrado")
-    mail(:to => email, :subject => "Un usuario se ha tratado de contactar con: "+@terapeuta) 
+    mail(:to => terapeuta.email, :bcc => email, :subject => "Un usuario se ha tratado de contactar contigo "+@terapeuta.nombre) do |format|
+      format.html
+    end
   end
   
   def contacto(cnombre,cemail,cmensaje)

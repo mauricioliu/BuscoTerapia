@@ -27,6 +27,7 @@
 					<div class="ficha-persona ficha-simple">
 					<div class="foto default"></div>
 					<div class="contenido-ficha">
+						<div class="terapeuta-id" style="display: none;"><%= terapeuta.id %></div>
 						<h2 class="nombre-ficha"><%= terapeuta.nombre.titleize %></h2>
 						<p>
 							<% terapeuta.tipo_terapias.each do |tt| %>
@@ -41,7 +42,6 @@
 							<% end %>
 							</br>
 						</p>
-						<div class="find-me" style="display: none;"><%= terapeuta.id %></div>
 						<div class="descripcion-full ficha-full">
 							<p><strong>Dirección:</strong> <%= terapeuta.comuna %>, <%= terapeuta.region %></p>
 							<input type="button" value="Contactar al Terapeuta" class="boton-morado" id="boton-contactar-terapeuta" />
@@ -57,7 +57,7 @@
 						<div class="foto default"></div>
 					<% end %>
 					<div class="contenido-ficha">
-						
+						<div class="terapeuta-id" style="display: none;"><%= terapeuta.id %></div>
 						<h2 class="nombre-ficha"><%= terapeuta.nombre.titleize %></h2>
 						<p>
 							<% terapeuta.tipo_terapias.each do |tt| %>
@@ -70,7 +70,6 @@
 							</br>
 							<%= terapeuta.direccion %>, <%= terapeuta.comuna %>, <%= terapeuta.region %> 
 						</p>
-						<div class="find-me" style="display: none;"><%= terapeuta.id %></div>
 						<div class="descripcion-full ficha-full">
 							<div class="ficha-columna">
 								<h3>Información de experiencia y formación académica:</h3>

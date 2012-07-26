@@ -299,7 +299,7 @@ class TerapeutasController < ApplicationController
   end
   
   def contactar_terapeuta
-    terapeuta = params[:terapeuta_nombre]
+    terapeuta = Terapeuta.find(params[:terapeuta_id])
     nombre = params[:nombre]
     email = params[:email]
     telefono = params[:telefono]

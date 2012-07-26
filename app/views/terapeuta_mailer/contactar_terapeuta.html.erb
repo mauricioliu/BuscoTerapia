@@ -1,0 +1,14 @@
+<p>nombre: <%= @nombre %></p>
+<p>email: <%= @email %></p>
+<p>telefono: <%= @telefono %></p>
+<p>mensaje: <%= @mensaje %></p>
+
+<% if @terapeuta.plan_tipo == "Gratis" %>
+<p>
+Te recordamos que este mensaje te llega como usuario gratuito de nuestro sitio, en el caso de que estuvieras suscrito podrías recibir <strong>10 veces más contactos</strong>. Te invitamos a que te informes de las formas de participación pagada en nuestro proyecto en el sitio <a href="http://buscoterapia.cl/acceso_terapeutas">http://buscoterapia.cl/acceso_terapeutas</a> 
+</p>
+Te solicitamos que te contactes con nuestra usuaria a la brevedad.
+<p>
+Que tengas un buen día.
+</p>
+<% end %>

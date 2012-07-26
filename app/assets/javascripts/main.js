@@ -653,7 +653,7 @@ $(document).ready(function () {
 			fichaContacto = '			<div class="busqueda-box-center">'
 			fichaContacto += '				<div class="ficha-persona">'
 			fichaContacto += '				<form method="post" action="/contactar_terapeuta" accept-charset="UTF-8">'
-			fichaContacto += '				<input type="hidden" value="'+rootFicha.find(".nombre-ficha").html()+'" name="terapeuta_nombre" id="terapeuta_nombre">'
+			fichaContacto += '				<input type="hidden" value="'+rootFicha.find(".terapeuta-id").html()+'" name="terapeuta_id" id="terapeuta_id">'
 			fichaContacto += '				<div class="foto"><img src="'+rootFicha.find(".foto img").attr("src")+'" width="42" height="42" border="0" /></div>'
 			fichaContacto += '					<div class="contenido-ficha">'
 			fichaContacto += '						<p class="nombre-ficha">'+rootFicha.find(".nombre-ficha").html()+'</p>'
