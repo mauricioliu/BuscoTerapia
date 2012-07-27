@@ -104,18 +104,45 @@ $(document).ready(function(e) {
 	//alert(_faqPosY)
 	//var _faqMarginLeft = $('#scrollDownFaq').css("margin-left");
 	function moverPreguntas(){
-		if($('#scrollDownFaq').length != 0){
-			/*Preguntas frecuentes mover*/
-			if($('#scrollDownFaq').offset().top >= $('#block-content').offset().top+$('#block-content').height()-$('#scrollDownFaq').height() && $(window).scrollTop() > $('#scrollDownFaq').offset().top - 45){
-				$('#scrollDownFaq').css({position:"absolute",right:"0px",top:($('#block-content').height()-$('#scrollDownFaq').height())+'px',zIndex:100});
-			}else if ( _faqPosY <= $(window).scrollTop() + 45) {
-				//$('#scrollDownFaq').css('position', 'fixed').css({top:45+'px',left:_faqPosX+'px',marginLeft:'0px',zIndex:100});
-				$('#scrollDownFaq').css({position:"absolute",right:"0px",top:($(window).scrollTop()+45-$('#block-content').offset().top)+'px',zIndex:100});
-			} else {
-				//$('#scrollDownFaq').css('position', 'relative').css({top:'0px',left:'0px',marginLeft:_faqMarginLeft,zIndex:0});
-				$('#scrollDownFaq').css({position:"relative",right:"none",top:'0px',zIndex:0});
+
+		if($('#scrollDownFaq').length != 0 ){
+			/*  si el faq es mas chico que el contenido de la izquierda
+				entonces le damos un mínimo de alto al contenido de la izquierda
+				para que no se bugee	*/
+			if($('#scrollDownFaq').height() < $('#block-content').height()){
+				$('#block-content').css("min-height",$('#scrollDownFaq').height()+"px")
 			}
-			//alert("mover")
+		
+			/*Preguntas frecuentes mover*/
+			/*  si el faq es mas chico que la ventana del navegador, el faq se mantiene arriba  */
+			if($(window).height()	< $('#scrollDownFaq').height() + 45) { 
+				if(
+				$(window).scrollTop()  >= $('#block-content').offset().top + $('#block-content').height() - $(window).height()			
+				){
+					$('#scrollDownFaq').css({position:"absolute",right:"0px",top:($('#block-content').height()-$('#scrollDownFaq').height())+'px',zIndex:100});
+				}else if ( _faqPosY <= $(window).scrollTop()-$('#scrollDownFaq').height() + 10 + $(window).height() &&  $(window).height()	< $('#scrollDownFaq').height() + 45) {
+					$('#scrollDownFaq').css({position:"absolute",right:"0px",top:($(window).scrollTop()+10-$('#block-content').offset().top-$('#scrollDownFaq').height()+ $(window).height())+'px',zIndex:100});
+				} else {
+					$('#scrollDownFaq').css({position:"relative",right:"none",top:'0px',zIndex:0});
+				}
+			}else{
+				/*  si el faq es mas grande que la ventana del navegador, el faq se mantiene abajo  */
+				
+				/*Preguntas frecuentes mover*/
+				if(
+				$(window).scrollTop()  >= $('#block-content').offset().top + $('#block-content').height() - $('#scrollDownFaq').height() - 45
+				){
+					$('#scrollDownFaq').css({position:"absolute",right:"0px",top:($('#block-content').height()-$('#scrollDownFaq').height())+'px',zIndex:100});
+				}else if ( _faqPosY <= $(window).scrollTop() + 45) {
+					$('#scrollDownFaq').css({position:"absolute",right:"0px",top:($(window).scrollTop()+45-$('#block-content').offset().top)+'px',zIndex:100});
+				} else {
+					$('#scrollDownFaq').css({position:"relative",right:"none",top:'0px',zIndex:0});
+				}
+					
+				
+
+			}
+			
 		}
 	}
 	moverPreguntas()

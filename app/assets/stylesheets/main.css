@@ -1649,7 +1649,10 @@ textarea{
 	top:-10px;
 	right:-97px;
 }
-
+#scrollDownFaq{
+	background:none;
+	padding-bottom:0;
+}
 
 
 .busqueda-box-center{
