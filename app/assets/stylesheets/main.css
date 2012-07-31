@@ -1254,7 +1254,7 @@ select {
 	background-color:#ccc;
 	display:inline-block;
 	text-align:center;
-	font-size:16px;
+	font-size:17px;
 	font-weight:bold;
 	-webkit-border-radius: 15px;
 	-moz-border-radius: 15px;
@@ -1569,8 +1569,9 @@ textarea{
 .acordeon-header p{
 	font-size:13px;
 	width:80%;
-	line-height:30px;
+	line-height:130%;
 	margin:0;
+	padding:8px 0;
 	padding-left:10px;
 	color:#fff;
 	font-weight:bold;
@@ -1649,6 +1650,13 @@ textarea{
 	top:-10px;
 	right:-97px;
 }
+.necesita-ayuda .boton-naranjo{
+	font-size: 14px;
+    line-height: 250%;
+    margin: 20px;
+    padding: 0 25px;
+}
+
 #scrollDownFaq{
 	background:none;
 	padding-bottom:0;
