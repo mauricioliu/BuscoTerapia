@@ -90,7 +90,7 @@
 				<ul class="noticias-list">
 				<% @noticias.each do |noticia| %>
 				<li>
-					<p><%= link_to noticia.titulo, articulo_path(noticia) %> <%= noticia.contenido[1,170 ]%>... 
+					<p><%= link_to noticia.titulo, articulo_path(noticia) %> <%= simple_format(noticia.contenido[0,170 ])%>... 
 						<%= link_to 'ver más', articulo_path(noticia) %>.</a> 
 					<!--<a href="#">ver más</a>-->
 					</p>

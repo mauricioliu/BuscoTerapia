@@ -11,20 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120511021708) do
+ActiveRecord::Schema.define(:version => 20120802025146) do
 
   create_table "articulos", :force => true do |t|
     t.string   "titulo"
     t.string   "autor"
     t.string   "especialidad"
-    t.text     "contenido",        :limit => 2147483647
+    t.text     "contenido",                :limit => 2147483647
     t.string   "tipo"
     t.string   "imagen_url"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
     t.string   "mostrar_carrusel"
-    t.string   "ocultar",                                :default => "0"
+    t.string   "ocultar",                                        :default => "0"
+    t.string   "mostrar_acceso_terapeuta",                       :default => "0"
   end
 
   add_index "articulos", ["slug"], :name => "index_articulos_on_slug"
@@ -48,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20120511021708) do
     t.string   "paciente_email"
     t.string   "hora_desde"
     t.string   "hora_hasta"
-    t.string   "terapeuta_otro"
+    t.text     "terapeuta_otro",    :limit => 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "lugar_preferencia"

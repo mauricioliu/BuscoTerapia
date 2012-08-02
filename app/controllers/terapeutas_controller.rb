@@ -75,7 +75,7 @@ class TerapeutasController < ApplicationController
   
   def acceso_terapeutas
     @menu = "acceso terapeuta"
-    @noticias = Articulo.where("tipo = 'noticia' and mostrar_carrusel='1'").order("created_at desc").limit(3)
+    @noticias = Articulo.where("mostrar_acceso_terapeuta='1'").order("created_at desc").limit(3)
   end
 
   # GET /terapeuta/new
