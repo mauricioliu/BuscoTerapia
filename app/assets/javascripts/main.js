@@ -386,7 +386,7 @@ $(document).ready(function () {
 				
 				);
 				
-				terapeuta_id = $(this).parent().find(".find-me").text();
+				terapeuta_id = $(this).parent().find(".terapeuta-id").text();
 				
 				jQuery.ajax({
 					data: 'id=1',
@@ -788,6 +788,48 @@ $(document).ready(function () {
 	
 })
 
+
+
+// HIDDEN CONTENT .dimicHide
+
+$(document).ready(function () {
+	$(".dinamicHide").each(function(index){
+		myId = ""
+		if($(this).attr("id") == undefined || $(this).attr("id") == ""){
+			myId = "dinamicHide"+index
+			$(this).attr("id", myId)
+		}else{
+			myId = $(this).attr("id")
+		}
+		$(this).find(".hiddenContent").hide();
+		$(this).find(".hideButton").data("myId",myId).click(function(evt){
+			evt.preventDefault();
+			$("#"+$(this).data("myId")).find(".hideWhenShow").hide()
+			$("#"+$(this).data("myId")).find(".hiddenContent").show("slow")
+		
+			/** Marcacion para las fichas de terapeutas **/
+			if($(this).hasClass("marcarDatos")){
+				idToSend = $(this).attr("rel")
+				if(idToSend != "" && idToSend != undefined){
+					//alert(idToSend);
+					jQuery.ajax({
+						data: 'id=1',
+						dataType: 'script',
+						type: 'post',
+						url: "/terapeutas/contacto/"+idToSend
+					});
+					
+					
+				}	
+			}
+			/** end of Marcacion para las fichas de terapeutas **/
+		
+		
+		});
+
+	});
+
+});
 
 
 
