@@ -40,6 +40,7 @@ BuscoTerapia::Application.routes.draw do
   match "/terapeutas/borrar_recurrente/:id" => "events#borrar_recurrente", :as => "borrar_recurrente"
   match "/terapeutas/ficha/:id" => "terapeutas#ver_ficha", :as => "ficha"
   match "/terapeutas/visita/:id" => "terapeutas#visita", :as => "visita"
+  match "/terapeutas/contactos/:id" => "terapeutas#contactos", :as => "contactos"
   match "/terapeutas/upgrade_plan/:id" => "terapeutas#upgrade_plan", :as => "upgrade_plan"
   
   # match "submit_payment" => "terapeutas#submit_payment"

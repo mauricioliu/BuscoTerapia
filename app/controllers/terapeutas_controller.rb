@@ -318,6 +318,14 @@ class TerapeutasController < ApplicationController
     end
   end
   
+  def contactos
+    registrar_contacto(params[:id])
+    
+    respond_to do |format|
+      format.js
+    end
+  end
+  
   def estadisticas
     @menu = "estadisticas"
   end
@@ -381,6 +389,23 @@ private
       visita.terapeuta_id = terapeuta_id
       visita.cantidad = 1
       visita.save  
+    end
+  end
+  
+  def registrar_contacto(terapeuta_id)
+    contacto = Contacto.where("terapeuta_id = ? and 
+                            YEAR(created_at) = ? and 
+                            MONTH(created_at) = ? and 
+                            DAY(created_at) = ?",
+                            terapeuta_id,Time.now.year,Time.now.month,Time.now.day).first()
+    if contacto
+      contacto.cantidad = contacto.cantidad + 1
+      contacto.save 
+    else
+      contacto = Contacto.new
+      contacto.terapeuta_id = terapeuta_id
+      contacto.cantidad = 1
+      contacto.save  
     end
   end
 end

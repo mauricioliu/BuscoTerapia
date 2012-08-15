@@ -816,10 +816,8 @@ $(document).ready(function () {
 						data: 'id=1',
 						dataType: 'script',
 						type: 'post',
-						url: "/terapeutas/contacto/"+idToSend
+						url: "/terapeutas/contactos/"+idToSend
 					});
-					
-					
 				}	
 			}
 			/** end of Marcacion para las fichas de terapeutas **/

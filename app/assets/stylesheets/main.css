@@ -2612,6 +2612,9 @@ blockquote{
 .guardar-cambios{
 	text-align:center;
 	padding-bottom:20px;
+	margin-top:15px;
+	float:left;
+	width:100%;
 }
 .guardar-cambios input{
 	float:none;

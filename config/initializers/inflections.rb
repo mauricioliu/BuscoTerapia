@@ -25,4 +25,5 @@ inflect.irregular "event", "events"
 inflect.irregular "visitas", "visitas"
 inflect.irregular "asesoriah", "asesoriah"
 inflect.irregular "asesoria_h", "asesoria_h"
+inflect.irregular "contacto", "contactos"
 end
